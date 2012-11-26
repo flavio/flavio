@@ -1,0 +1,28 @@
+---
+author: Flavio
+date: '2010-08-11 21:29:29'
+layout: post
+slug: jump
+status: publish
+title: 'Jump: a bookmarking system for the bash shell'
+comments: true
+categories: [bash, zsh, ruby]
+---
+
+[](http://flavio.castelli.name/wp-content/uploads/2010/08/van-halen-
+jump.jpeg)Let me introduce a small project I've been working on with a friend
+of mine, [Giuseppe Capizzi](http://twitter.com/gcapizzi). The project is
+called **jump** and ﻿allows you to quickly change directories in the bash
+shell using bookmarks.
+
+Thanks to Jump, you won't have to type those long paths anymore.
+
+{% img /images/jump/van-halen-jump.jpeg %}
+
+You can find jump's source code, detailed documentation and installation
+instructions [here](http://github.com/flavio/jump).
+
+SUSE packages can be found
+[here](http://software.opensuse.org/search?baseproject=ALL&p=1&q=rubygem-
+jump).
+

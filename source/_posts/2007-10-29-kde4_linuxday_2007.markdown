@@ -1,0 +1,29 @@
+---
+author: Flavio
+date: '2007-10-29 12:37:49'
+layout: post
+slug: kde4_linuxday_2007
+status: publish
+title: Linux Day 2007
+comments: true
+categories: [bglug, Italy, KDE, Linux Day]
+---
+
+Last Saturday _Linux day 2007_ took place.
+
+_Linux Day_ is an Italian manifestation that promotes Linux and FOSS. During
+this day different organizations (mostly [Linux User
+Groups](http://en.wikipedia.org/wiki/Linux_User_Group)) arrange events with
+speeches, installation parties and more.
+
+Since lot of people requested it, I gave a speech about KDE 4 during the
+_Linux day_ organized by my LUG ([BGLug](http://www.bglug.it)).
+
+The presentation covers the main changes and features introduced by KDE 4. I
+took inspiration from Troy's _"Road to KDE 4"_ articles (I like them really
+much).
+
+People liked the speech and, most important of all, showed great interest for
+KDE 4.
+
+<div style="width:425px" id="__ss_12631095"><strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/fcastelli/kde4-ld2007" title="KDE4 ld2007">KDE4 ld2007</a></strong><object id="__sse12631095" width="425" height="355"><param name="movie" value="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=kde4-ld2007-120421100713-phpapp02&stripped_title=kde4-ld2007&userName=fcastelli" /><param name="allowFullScreen" value="true"/><param name="allowScriptAccess" value="always"/><param name="wmode" value="transparent"/><embed name="__sse12631095" src="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=kde4-ld2007-120421100713-phpapp02&stripped_title=kde4-ld2007&userName=fcastelli" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="transparent" width="425" height="355"></embed></object><div style="padding:5px 0 12px">View more <a href="http://www.slideshare.net/">presentations</a> from <a href="http://www.slideshare.net/fcastelli">Flavio Castelli</a>.</div></div>
