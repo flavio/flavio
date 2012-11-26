@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: xesam | Flavio Castelli]]></title>
-  <link href="http://flavio.github.com/flavio/blog/categories/xesam/atom.xml" rel="self"/>
-  <link href="http://flavio.github.com/flavio/"/>
-  <updated>2012-11-26T15:32:29+01:00</updated>
-  <id>http://flavio.github.com/flavio/</id>
+  <link href="http://flavio.castelli.name/blog/categories/xesam/atom.xml" rel="self"/>
+  <link href="http://flavio.castelli.name/"/>
+  <updated>2012-11-26T17:31:30+01:00</updated>
+  <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[My current tasks]]></title>
-    <link href="http://flavio.github.com/flavio/2008/01/18/my_current_tasks/"/>
+    <link href="http://flavio.castelli.name/2008/01/18/my_current_tasks/"/>
     <updated>2008-01-18T15:31:23+01:00</updated>
-    <id>http://flavio.github.com/flavio/2008/01/18/my_current_tasks</id>
+    <id>http://flavio.castelli.name/2008/01/18/my_current_tasks</id>
     <content type="html"><![CDATA[<p>Usually I write blog posts announcing <strong>what I have done</strong>, but this time
 <a href="http://pollycoke.net/2008/01/14/strigi-ha-un-piano-di-sviluppo-%0Afinalmente/">it</a> <a href="http://www.kdedevelopers.org/node/3204">is</a>
 <a href="http://strigi.sourceforge.net/?q=strigi_metting_summary">useless</a>. So I'm
@@ -52,9 +52,9 @@ we'll use <a href="http://svnbook.red-bean.com/nightly/en/svn.advanced.externals
   
   <entry>
     <title type="html"><![CDATA[Strigi gains full Xesam queries support]]></title>
-    <link href="http://flavio.github.com/flavio/2007/08/31/strigi_full_xesam_support/"/>
+    <link href="http://flavio.castelli.name/2007/08/31/strigi_full_xesam_support/"/>
     <updated>2007-08-31T17:30:52+02:00</updated>
-    <id>http://flavio.github.com/flavio/2007/08/31/strigi_full_xesam_support</id>
+    <id>http://flavio.castelli.name/2007/08/31/strigi_full_xesam_support</id>
     <content type="html"><![CDATA[<p>As I said in
 <a href="http://www.flavio.castelli.name/strigi_xesam_query_language_support">this</a>
 previous post, Strigi's Xesam support was half-done since <a href="http://wiki.freedesktop.org/wiki/XesamUserSearchLanguage">XesamUserSearchLanguage</a> wasn’t yet
@@ -99,9 +99,9 @@ generators.</p>
   
   <entry>
     <title type="html"><![CDATA[Xesam and bathroom hacking]]></title>
-    <link href="http://flavio.github.com/flavio/2007/08/10/xesam-and-bathroom-hacking/"/>
+    <link href="http://flavio.castelli.name/2007/08/10/xesam-and-bathroom-hacking/"/>
     <updated>2007-08-10T15:00:21+02:00</updated>
-    <id>http://flavio.github.com/flavio/2007/08/10/xesam-and-bathroom-hacking</id>
+    <id>http://flavio.castelli.name/2007/08/10/xesam-and-bathroom-hacking</id>
     <content type="html"><![CDATA[<p>Yesterday morning I was quite arrived at work when Laura (my gf) called me.
 Something went wrong in our bathroom and water was everywhere. She closed the
 main water tap and I took the first train for home (yes, since I'm an outlier
@@ -131,9 +131,9 @@ objects.</p>
   
   <entry>
     <title type="html"><![CDATA[How to have some fun with Strigi and Xesam queries]]></title>
-    <link href="http://flavio.github.com/flavio/2007/08/09/query_strigi_using_xesam/"/>
+    <link href="http://flavio.castelli.name/2007/08/09/query_strigi_using_xesam/"/>
     <updated>2007-08-09T13:10:30+02:00</updated>
-    <id>http://flavio.github.com/flavio/2007/08/09/query_strigi_using_xesam</id>
+    <id>http://flavio.castelli.name/2007/08/09/query_strigi_using_xesam</id>
     <content type="html"><![CDATA[<p>Last day just after I hit the <em>"submit"</em> button a doubt came into my mind:
 "did I say everything ?" Well, the answer is <strong>"No!"</strong> In fact I forgot to
 tell you one of the most important things: <em>how to have some fun with Strigi

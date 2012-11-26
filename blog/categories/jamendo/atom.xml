@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: jamendo | Flavio Castelli]]></title>
-  <link href="http://flavio.github.com/flavio/blog/categories/jamendo/atom.xml" rel="self"/>
-  <link href="http://flavio.github.com/flavio/"/>
-  <updated>2012-11-26T15:32:29+01:00</updated>
-  <id>http://flavio.github.com/flavio/</id>
+  <link href="http://flavio.castelli.name/blog/categories/jamendo/atom.xml" rel="self"/>
+  <link href="http://flavio.castelli.name/"/>
+  <updated>2012-11-26T17:31:30+01:00</updated>
+  <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Ruby downloader for Jamendo]]></title>
-    <link href="http://flavio.github.com/flavio/2008/10/03/ruby-downloader-for-jamendo/"/>
+    <link href="http://flavio.castelli.name/2008/10/03/ruby-downloader-for-jamendo/"/>
     <updated>2008-10-03T11:28:28+02:00</updated>
-    <id>http://flavio.github.com/flavio/2008/10/03/ruby-downloader-for-jamendo</id>
+    <id>http://flavio.castelli.name/2008/10/03/ruby-downloader-for-jamendo</id>
     <content type="html"><![CDATA[<p>Also this year I'll attend the Linux day (a day dedicated to Gnu/Linux  and
 FLOSS that occurs every year in Italy) organized by my <a href="http://bglug.it">LUG</a>.
 Guess what I'll be talking about... ;)</p>

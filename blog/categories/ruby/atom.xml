@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: ruby | Flavio Castelli]]></title>
-  <link href="http://flavio.github.com/flavio/blog/categories/ruby/atom.xml" rel="self"/>
-  <link href="http://flavio.github.com/flavio/"/>
-  <updated>2012-11-26T15:32:29+01:00</updated>
-  <id>http://flavio.github.com/flavio/</id>
+  <link href="http://flavio.castelli.name/blog/categories/ruby/atom.xml" rel="self"/>
+  <link href="http://flavio.castelli.name/"/>
+  <updated>2012-11-26T17:31:30+01:00</updated>
+  <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Introducing dister, a Heroku like solution for SUSE Studio]]></title>
-    <link href="http://flavio.github.com/flavio/2011/03/29/introducing-dister-a-heroku-like-solution-for-suse-studio/"/>
+    <link href="http://flavio.castelli.name/2011/03/29/introducing-dister-a-heroku-like-solution-for-suse-studio/"/>
     <updated>2011-03-29T15:39:21+02:00</updated>
-    <id>http://flavio.github.com/flavio/2011/03/29/introducing-dister-a-heroku-like-solution-for-suse-studio</id>
+    <id>http://flavio.castelli.name/2011/03/29/introducing-dister-a-heroku-like-solution-for-suse-studio</id>
     <content type="html"><![CDATA[<p><a href="http://susestudio.com">SUSE Studio</a> is  an awesome tool, with a couple of
 clicks you can create an openSUSE/SUSE based system and deploy to your hard
 drive, an usb flash,  a live dvd, a VMware/VirtualBox/Xen server and even
@@ -175,9 +175,9 @@ code</a>, apply now!</p>
   
   <entry>
     <title type="html"><![CDATA[Jump: a bookmarking system for the bash shell]]></title>
-    <link href="http://flavio.github.com/flavio/2010/08/11/jump/"/>
+    <link href="http://flavio.castelli.name/2010/08/11/jump/"/>
     <updated>2010-08-11T21:29:29+02:00</updated>
-    <id>http://flavio.github.com/flavio/2010/08/11/jump</id>
+    <id>http://flavio.castelli.name/2010/08/11/jump</id>
     <content type="html"><![CDATA[<p><a href="http://flavio.castelli.name/wp-content/uploads/2010/08/van-halen-%0Ajump.jpeg"></a>Let me introduce a small project I've been working on with a friend
 of mine, <a href="http://twitter.com/gcapizzi">Giuseppe Capizzi</a>. The project is
 called <strong>jump</strong> and ﻿allows you to quickly change directories in the bash
@@ -197,9 +197,9 @@ instructions <a href="http://github.com/flavio/jump">here</a>.</p>
   
   <entry>
     <title type="html"><![CDATA[How to run a single rails unit test]]></title>
-    <link href="http://flavio.github.com/flavio/2010/05/28/rails_execute_single_test/"/>
+    <link href="http://flavio.castelli.name/2010/05/28/rails_execute_single_test/"/>
     <updated>2010-05-28T15:57:57+02:00</updated>
-    <id>http://flavio.github.com/flavio/2010/05/28/rails_execute_single_test</id>
+    <id>http://flavio.castelli.name/2010/05/28/rails_execute_single_test</id>
     <content type="html"><![CDATA[<p>This post explains how to execute a single unit test (or even a single test
 method) instead of running the complete unit test suite.</p>
 
@@ -363,9 +363,9 @@ not been applied to the test database.</p>
   
   <entry>
     <title type="html"><![CDATA[Ruby downloader for Jamendo]]></title>
-    <link href="http://flavio.github.com/flavio/2008/10/03/ruby-downloader-for-jamendo/"/>
+    <link href="http://flavio.castelli.name/2008/10/03/ruby-downloader-for-jamendo/"/>
     <updated>2008-10-03T11:28:28+02:00</updated>
-    <id>http://flavio.github.com/flavio/2008/10/03/ruby-downloader-for-jamendo</id>
+    <id>http://flavio.castelli.name/2008/10/03/ruby-downloader-for-jamendo</id>
     <content type="html"><![CDATA[<p>Also this year I'll attend the Linux day (a day dedicated to Gnu/Linux  and
 FLOSS that occurs every year in Italy) organized by my <a href="http://bglug.it">LUG</a>.
 Guess what I'll be talking about... ;)</p>

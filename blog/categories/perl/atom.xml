@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: perl | Flavio Castelli]]></title>
-  <link href="http://flavio.github.com/flavio/blog/categories/perl/atom.xml" rel="self"/>
-  <link href="http://flavio.github.com/flavio/"/>
-  <updated>2012-11-26T15:32:29+01:00</updated>
-  <id>http://flavio.github.com/flavio/</id>
+  <link href="http://flavio.castelli.name/blog/categories/perl/atom.xml" rel="self"/>
+  <link href="http://flavio.castelli.name/"/>
+  <updated>2012-11-26T17:31:30+01:00</updated>
+  <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Gentoo documentation checker]]></title>
-    <link href="http://flavio.github.com/flavio/2005/12/08/gentoo-documentation-checker/"/>
+    <link href="http://flavio.castelli.name/2005/12/08/gentoo-documentation-checker/"/>
     <updated>2005-12-08T18:52:16+01:00</updated>
-    <id>http://flavio.github.com/flavio/2005/12/08/gentoo-documentation-checker</id>
+    <id>http://flavio.castelli.name/2005/12/08/gentoo-documentation-checker</id>
     <content type="html"><![CDATA[<p>gen-docheck is a useful tool for the <a href="http://www.gentoo.org/doc/it/index.xml">gentoo italian translation team</a>.
 gen-dockeck compares the version number of english document and italian translation.</p>
 

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: json | Flavio Castelli]]></title>
-  <link href="http://flavio.github.com/flavio/blog/categories/json/atom.xml" rel="self"/>
-  <link href="http://flavio.github.com/flavio/"/>
-  <updated>2012-11-26T15:32:29+01:00</updated>
-  <id>http://flavio.github.com/flavio/</id>
+  <link href="http://flavio.castelli.name/blog/categories/json/atom.xml" rel="self"/>
+  <link href="http://flavio.castelli.name/"/>
+  <updated>2012-11-26T17:31:30+01:00</updated>
+  <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[QJson: a Qt-based library for mapping JSON data to QVariant objects]]></title>
-    <link href="http://flavio.github.com/flavio/2008/11/04/qjson_qt_json_library/"/>
+    <link href="http://flavio.castelli.name/2008/11/04/qjson_qt_json_library/"/>
     <updated>2008-11-04T13:37:07+01:00</updated>
-    <id>http://flavio.github.com/flavio/2008/11/04/qjson_qt_json_library</id>
+    <id>http://flavio.castelli.name/2008/11/04/qjson_qt_json_library</id>
     <content type="html"><![CDATA[<p>In order to realize a project of mine I started looking for a Qt library for
 mapping JSON data to Qt objects.</p>
 

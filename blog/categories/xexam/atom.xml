@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: xexam | Flavio Castelli]]></title>
-  <link href="http://flavio.github.com/flavio/blog/categories/xexam/atom.xml" rel="self"/>
-  <link href="http://flavio.github.com/flavio/"/>
-  <updated>2012-11-26T15:32:29+01:00</updated>
-  <id>http://flavio.github.com/flavio/</id>
+  <link href="http://flavio.castelli.name/blog/categories/xexam/atom.xml" rel="self"/>
+  <link href="http://flavio.castelli.name/"/>
+  <updated>2012-11-26T17:31:30+01:00</updated>
+  <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Strigi gets XesamQueryLanguage queries support]]></title>
-    <link href="http://flavio.github.com/flavio/2007/08/07/strigi_xesam_query_language_support/"/>
+    <link href="http://flavio.castelli.name/2007/08/07/strigi_xesam_query_language_support/"/>
     <updated>2007-08-07T14:43:27+02:00</updated>
-    <id>http://flavio.github.com/flavio/2007/08/07/strigi_xesam_query_language_support</id>
+    <id>http://flavio.castelli.name/2007/08/07/strigi_xesam_query_language_support</id>
     <content type="html"><![CDATA[<p>Since last Thursday Strigi gained <em>XesamQueryLanguage</em> support. This means
 that now is possible to process queries formulated using this syntax.</p>
 

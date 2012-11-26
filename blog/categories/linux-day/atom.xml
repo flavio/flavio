@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Linux Day | Flavio Castelli]]></title>
-  <link href="http://flavio.github.com/flavio/blog/categories/linux-day/atom.xml" rel="self"/>
-  <link href="http://flavio.github.com/flavio/"/>
-  <updated>2012-11-26T15:32:29+01:00</updated>
-  <id>http://flavio.github.com/flavio/</id>
+  <link href="http://flavio.castelli.name/blog/categories/linux-day/atom.xml" rel="self"/>
+  <link href="http://flavio.castelli.name/"/>
+  <updated>2012-11-26T17:31:30+01:00</updated>
+  <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Linux Day 2007]]></title>
-    <link href="http://flavio.github.com/flavio/2007/10/29/kde4_linuxday_2007/"/>
+    <link href="http://flavio.castelli.name/2007/10/29/kde4_linuxday_2007/"/>
     <updated>2007-10-29T12:37:49+01:00</updated>
-    <id>http://flavio.github.com/flavio/2007/10/29/kde4_linuxday_2007</id>
+    <id>http://flavio.castelli.name/2007/10/29/kde4_linuxday_2007</id>
     <content type="html"><![CDATA[<p>Last Saturday <em>Linux day 2007</em> took place.</p>
 
 <p><em>Linux Day</em> is an Italian manifestation that promotes Linux and FOSS. During
@@ -42,9 +42,9 @@ KDE 4.</p>
   
   <entry>
     <title type="html"><![CDATA[Desktop searching]]></title>
-    <link href="http://flavio.github.com/flavio/2007/06/05/desktop-searching/"/>
+    <link href="http://flavio.castelli.name/2007/06/05/desktop-searching/"/>
     <updated>2007-06-05T14:22:16+02:00</updated>
-    <id>http://flavio.github.com/flavio/2007/06/05/desktop-searching</id>
+    <id>http://flavio.castelli.name/2007/06/05/desktop-searching</id>
     <content type="html"><![CDATA[<p>An overview of desktop searching under linux.</p>
 
 <p>This speech illustrates:</p>
@@ -65,9 +65,9 @@ KDE 4.</p>
   
   <entry>
     <title type="html"><![CDATA[Netiquette]]></title>
-    <link href="http://flavio.github.com/flavio/2006/10/28/netiquette/"/>
+    <link href="http://flavio.castelli.name/2006/10/28/netiquette/"/>
     <updated>2006-10-28T12:41:20+02:00</updated>
-    <id>http://flavio.github.com/flavio/2006/10/28/netiquette</id>
+    <id>http://flavio.castelli.name/2006/10/28/netiquette</id>
     <content type="html"><![CDATA[<p>An introduction to netiquette. <em><strong>Revised version</strong></em></p>
 
 <p>This speech illustrates:</p>
@@ -88,9 +88,9 @@ KDE 4.</p>
   
   <entry>
     <title type="html"><![CDATA[Linux on console]]></title>
-    <link href="http://flavio.github.com/flavio/2006/04/01/linux-on-console/"/>
+    <link href="http://flavio.castelli.name/2006/04/01/linux-on-console/"/>
     <updated>2006-04-01T12:38:05+02:00</updated>
-    <id>http://flavio.github.com/flavio/2006/04/01/linux-on-console</id>
+    <id>http://flavio.castelli.name/2006/04/01/linux-on-console</id>
     <content type="html"><![CDATA[<p>These slides are about linux and modern console</p>
 
 <p>The article focuses on the installation of linux over some modern console

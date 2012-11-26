@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: qjson | Flavio Castelli]]></title>
-  <link href="http://flavio.github.com/flavio/blog/categories/qjson/atom.xml" rel="self"/>
-  <link href="http://flavio.github.com/flavio/"/>
-  <updated>2012-11-26T15:32:29+01:00</updated>
-  <id>http://flavio.github.com/flavio/</id>
+  <link href="http://flavio.castelli.name/blog/categories/qjson/atom.xml" rel="self"/>
+  <link href="http://flavio.castelli.name/"/>
+  <updated>2012-11-26T17:31:30+01:00</updated>
+  <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[QJson 0.8.0 released]]></title>
-    <link href="http://flavio.github.com/flavio/2012/11/21/qjson-0-dot-8-0-released/"/>
+    <link href="http://flavio.castelli.name/2012/11/21/qjson-0-dot-8-0-released/"/>
     <updated>2012-11-21T22:03:00+01:00</updated>
-    <id>http://flavio.github.com/flavio/2012/11/21/qjson-0-dot-8-0-released</id>
+    <id>http://flavio.castelli.name/2012/11/21/qjson-0-dot-8-0-released</id>
     <content type="html"><![CDATA[<p>Almost three years passed since latest release of QJson.
 A lot of stuff happened in my life and QJson definitely paid for that.
 I have to admit I'm a bit ashamed.</p>
@@ -79,9 +79,9 @@ or checkout <a href="http://qjson.sourceforge.net">QJson's website</a>.</p>
   
   <entry>
     <title type="html"><![CDATA[QJson and Symbian]]></title>
-    <link href="http://flavio.github.com/flavio/2010/03/14/qjson-symbian/"/>
+    <link href="http://flavio.castelli.name/2010/03/14/qjson-symbian/"/>
     <updated>2010-03-14T00:55:51+01:00</updated>
-    <id>http://flavio.github.com/flavio/2010/03/14/qjson-symbian</id>
+    <id>http://flavio.castelli.name/2010/03/14/qjson-symbian</id>
     <content type="html"><![CDATA[<p>I'm really pleased to announce that latest version of QJson on master is
 working on Symbian. You can find the installation instruction
 <a href="http://qjson.sourceforge.net/get_it/symbian.html">here</a>.</p>
@@ -100,9 +100,9 @@ page</a>.</p>
   
   <entry>
     <title type="html"><![CDATA[QJson code moves to gitorious]]></title>
-    <link href="http://flavio.github.com/flavio/2009/12/05/qjson-code-moves-to-gitorious/"/>
+    <link href="http://flavio.castelli.name/2009/12/05/qjson-code-moves-to-gitorious/"/>
     <updated>2009-12-05T16:48:25+01:00</updated>
-    <id>http://flavio.github.com/flavio/2009/12/05/qjson-code-moves-to-gitorious</id>
+    <id>http://flavio.castelli.name/2009/12/05/qjson-code-moves-to-gitorious</id>
     <content type="html"><![CDATA[<p>Just a quick note: I have just moved QJson source code to
 <a href="http://gitorious.org/qjson">this</a> git repository hosted by gitorious.</p>
 
@@ -112,9 +112,9 @@ page</a>.</p>
   
   <entry>
     <title type="html"><![CDATA[QJson: from QObject to JSON and vice-versa]]></title>
-    <link href="http://flavio.github.com/flavio/2009/12/04/qjson-qobject-serialization-deserialization/"/>
+    <link href="http://flavio.castelli.name/2009/12/04/qjson-qobject-serialization-deserialization/"/>
     <updated>2009-12-04T01:07:48+01:00</updated>
-    <id>http://flavio.github.com/flavio/2009/12/04/qjson-qobject-serialization-deserialization</id>
+    <id>http://flavio.castelli.name/2009/12/04/qjson-qobject-serialization-deserialization</id>
     <content type="html"><![CDATA[<p>Some days ago I introduced the possibility to serialize a QObject instance to
 JSON. Today I'm going to show you the opposite operation: initializing a
 QObject using a JSON object.</p>
@@ -261,9 +261,9 @@ using the JSON values:</p>
   
   <entry>
     <title type="html"><![CDATA[QJson: easier serialization of QObject instances to JSON]]></title>
-    <link href="http://flavio.github.com/flavio/2009/11/30/qjson-easier-serialization-of-qobject-instances-to-json/"/>
+    <link href="http://flavio.castelli.name/2009/11/30/qjson-easier-serialization-of-qobject-instances-to-json/"/>
     <updated>2009-11-30T20:20:58+01:00</updated>
-    <id>http://flavio.github.com/flavio/2009/11/30/qjson-easier-serialization-of-qobject-instances-to-json</id>
+    <id>http://flavio.castelli.name/2009/11/30/qjson-easier-serialization-of-qobject-instances-to-json</id>
     <content type="html"><![CDATA[<p>I have just committed into trunk a couple of changes that make easier to
 serialize a QObject instance to JSON.</p>
 

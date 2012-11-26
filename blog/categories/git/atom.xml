@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: git | Flavio Castelli]]></title>
-  <link href="http://flavio.github.com/flavio/blog/categories/git/atom.xml" rel="self"/>
-  <link href="http://flavio.github.com/flavio/"/>
-  <updated>2012-11-26T15:32:29+01:00</updated>
-  <id>http://flavio.github.com/flavio/</id>
+  <link href="http://flavio.castelli.name/blog/categories/git/atom.xml" rel="self"/>
+  <link href="http://flavio.castelli.name/"/>
+  <updated>2012-11-26T17:31:30+01:00</updated>
+  <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Updated git-svn howto]]></title>
-    <link href="http://flavio.github.com/flavio/2007/11/23/updated-git-svn-howto/"/>
+    <link href="http://flavio.castelli.name/2007/11/23/updated-git-svn-howto/"/>
     <updated>2007-11-23T15:49:12+01:00</updated>
-    <id>http://flavio.github.com/flavio/2007/11/23/updated-git-svn-howto</id>
+    <id>http://flavio.castelli.name/2007/11/23/updated-git-svn-howto</id>
     <content type="html"><![CDATA[<p>Maybe someone has already experimented this situation:</p>
 
 <blockquote><p>You're hacking on your local working copy and you want to keep it up-to-date
@@ -35,9 +35,9 @@ there's a <em>"cleaner"</em> solution, if you're interested read the last part o
   
   <entry>
     <title type="html"><![CDATA[Howto use Git and svn together]]></title>
-    <link href="http://flavio.github.com/flavio/2007/09/04/howto_use_git_with_svn/"/>
+    <link href="http://flavio.castelli.name/2007/09/04/howto_use_git_with_svn/"/>
     <updated>2007-09-04T12:22:15+02:00</updated>
-    <id>http://flavio.github.com/flavio/2007/09/04/howto_use_git_with_svn</id>
+    <id>http://flavio.castelli.name/2007/09/04/howto_use_git_with_svn</id>
     <content type="html"><![CDATA[<p>In these days I've heard lot of rumors around <a href="http://git.or.cz/">Git</a>. After
 reading some manual/tutorial/guide I discovered that it can be really useful,
 especially if you spend lot of time coding off-line (that's my situation).</p>

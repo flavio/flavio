@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: strigi | Flavio Castelli]]></title>
-  <link href="http://flavio.github.com/flavio/blog/categories/strigi/atom.xml" rel="self"/>
-  <link href="http://flavio.github.com/flavio/"/>
-  <updated>2012-11-26T15:32:29+01:00</updated>
-  <id>http://flavio.github.com/flavio/</id>
+  <link href="http://flavio.castelli.name/blog/categories/strigi/atom.xml" rel="self"/>
+  <link href="http://flavio.castelli.name/"/>
+  <updated>2012-11-26T17:31:30+01:00</updated>
+  <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Still coding]]></title>
-    <link href="http://flavio.github.com/flavio/2008/05/27/still-coding/"/>
+    <link href="http://flavio.castelli.name/2008/05/27/still-coding/"/>
     <updated>2008-05-27T21:36:29+02:00</updated>
-    <id>http://flavio.github.com/flavio/2008/05/27/still-coding</id>
+    <id>http://flavio.castelli.name/2008/05/27/still-coding</id>
     <content type="html"><![CDATA[<p>Yes, long time has passed since my last post (really strange, isn't it :D ).
 It has been a busy period, full of work, dog training and... coding
 (fortunately!).</p>
@@ -34,9 +34,9 @@ of XesamQLib on KDE repository. I'll keep you updated.</p>
   
   <entry>
     <title type="html"><![CDATA[My current tasks]]></title>
-    <link href="http://flavio.github.com/flavio/2008/01/18/my_current_tasks/"/>
+    <link href="http://flavio.castelli.name/2008/01/18/my_current_tasks/"/>
     <updated>2008-01-18T15:31:23+01:00</updated>
-    <id>http://flavio.github.com/flavio/2008/01/18/my_current_tasks</id>
+    <id>http://flavio.castelli.name/2008/01/18/my_current_tasks</id>
     <content type="html"><![CDATA[<p>Usually I write blog posts announcing <strong>what I have done</strong>, but this time
 <a href="http://pollycoke.net/2008/01/14/strigi-ha-un-piano-di-sviluppo-%0Afinalmente/">it</a> <a href="http://www.kdedevelopers.org/node/3204">is</a>
 <a href="http://strigi.sourceforge.net/?q=strigi_metting_summary">useless</a>. So I'm
@@ -71,9 +71,9 @@ we'll use <a href="http://svnbook.red-bean.com/nightly/en/svn.advanced.externals
   
   <entry>
     <title type="html"><![CDATA[Strigi irc meeting]]></title>
-    <link href="http://flavio.github.com/flavio/2008/01/11/strigi_irc_meeting_january/"/>
+    <link href="http://flavio.castelli.name/2008/01/11/strigi_irc_meeting_january/"/>
     <updated>2008-01-11T10:59:09+01:00</updated>
-    <id>http://flavio.github.com/flavio/2008/01/11/strigi_irc_meeting_january</id>
+    <id>http://flavio.castelli.name/2008/01/11/strigi_irc_meeting_january</id>
     <content type="html"><![CDATA[<p>Just giving more voice to <a href="http://strigi.sourceforge.net/?q=january_2008_strigi_irc_meeting">original announce</a>:
 Tomorrow, Saturday 12 January, at 17 UTC an irc meeting will take place on
 <em>#strigi</em> channel (it's on freenode if you don't know).</p>
@@ -86,9 +86,9 @@ Tomorrow, Saturday 12 January, at 17 UTC an irc meeting will take place on
   
   <entry>
     <title type="html"><![CDATA[Tyding up Strigi analyzers]]></title>
-    <link href="http://flavio.github.com/flavio/2008/01/10/tyding_up_strigi_analyzers/"/>
+    <link href="http://flavio.castelli.name/2008/01/10/tyding_up_strigi_analyzers/"/>
     <updated>2008-01-10T15:49:17+01:00</updated>
-    <id>http://flavio.github.com/flavio/2008/01/10/tyding_up_strigi_analyzers</id>
+    <id>http://flavio.castelli.name/2008/01/10/tyding_up_strigi_analyzers</id>
     <content type="html"><![CDATA[<p>As you may know, KDE4 will use Strigi for meta information extraction instead
 of the old <a href="http://api.kde.org/3.5-api/kdelibs-%0Aapidocs/kio/kio/html/classKFilePlugin.html">KFilePlugin</a> classes.</p>
 
@@ -115,9 +115,9 @@ there's still some work to do, but don't worry... I'll try to do the best ;)</p>
   
   <entry>
     <title type="html"><![CDATA[Strigi gains FAM support]]></title>
-    <link href="http://flavio.github.com/flavio/2007/11/26/strigi-gains-fam-support/"/>
+    <link href="http://flavio.castelli.name/2007/11/26/strigi-gains-fam-support/"/>
     <updated>2007-11-26T12:33:52+01:00</updated>
-    <id>http://flavio.github.com/flavio/2007/11/26/strigi-gains-fam-support</id>
+    <id>http://flavio.castelli.name/2007/11/26/strigi-gains-fam-support</id>
     <content type="html"><![CDATA[<p>Last Monday I submitted lot of changes into Strigi's trunk. I've heavily
 refactored some classes in order to obtain a more flexible file system
 notification infrastructure. Thanks to this work now it will be easier to add

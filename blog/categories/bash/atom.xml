@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: bash | Flavio Castelli]]></title>
-  <link href="http://flavio.github.com/flavio/blog/categories/bash/atom.xml" rel="self"/>
-  <link href="http://flavio.github.com/flavio/"/>
-  <updated>2012-11-26T15:32:29+01:00</updated>
-  <id>http://flavio.github.com/flavio/</id>
+  <link href="http://flavio.castelli.name/blog/categories/bash/atom.xml" rel="self"/>
+  <link href="http://flavio.castelli.name/"/>
+  <updated>2012-11-26T17:31:30+01:00</updated>
+  <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Jump: a bookmarking system for the bash shell]]></title>
-    <link href="http://flavio.github.com/flavio/2010/08/11/jump/"/>
+    <link href="http://flavio.castelli.name/2010/08/11/jump/"/>
     <updated>2010-08-11T21:29:29+02:00</updated>
-    <id>http://flavio.github.com/flavio/2010/08/11/jump</id>
+    <id>http://flavio.castelli.name/2010/08/11/jump</id>
     <content type="html"><![CDATA[<p><a href="http://flavio.castelli.name/wp-content/uploads/2010/08/van-halen-%0Ajump.jpeg"></a>Let me introduce a small project I've been working on with a friend
 of mine, <a href="http://twitter.com/gcapizzi">Giuseppe Capizzi</a>. The project is
 called <strong>jump</strong> and ﻿allows you to quickly change directories in the bash
@@ -37,9 +37,9 @@ instructions <a href="http://github.com/flavio/jump">here</a>.</p>
   
   <entry>
     <title type="html"><![CDATA[Svn cleaner]]></title>
-    <link href="http://flavio.github.com/flavio/2006/02/15/svn-cleaner/"/>
+    <link href="http://flavio.castelli.name/2006/02/15/svn-cleaner/"/>
     <updated>2006-02-15T00:17:23+01:00</updated>
-    <id>http://flavio.github.com/flavio/2006/02/15/svn-cleaner</id>
+    <id>http://flavio.castelli.name/2006/02/15/svn-cleaner</id>
     <content type="html"><![CDATA[<p>This simple program removes recursively all .svn directories.</p>
 
 <p><strong>Requirements:</strong> In order to run <em>remove-svn</em> requires python.</p>
@@ -55,9 +55,9 @@ An example: <code>remove-svn</code>pwd``</p>
   
   <entry>
     <title type="html"><![CDATA[Howto edit multime id3 tags from command line]]></title>
-    <link href="http://flavio.github.com/flavio/2005/12/08/howto-edit-multime-id3-tags-from-command-line/"/>
+    <link href="http://flavio.castelli.name/2005/12/08/howto-edit-multime-id3-tags-from-command-line/"/>
     <updated>2005-12-08T18:45:39+01:00</updated>
-    <id>http://flavio.github.com/flavio/2005/12/08/howto-edit-multime-id3-tags-from-command-line</id>
+    <id>http://flavio.castelli.name/2005/12/08/howto-edit-multime-id3-tags-from-command-line</id>
     <content type="html"><![CDATA[<h3>Goal</h3>
 
 <p>id3medit is a simple script for tagging all mp3/ogg files present in a

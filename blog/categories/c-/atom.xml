@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: c++ | Flavio Castelli]]></title>
-  <link href="http://flavio.github.com/flavio/blog/categories/c-/atom.xml" rel="self"/>
-  <link href="http://flavio.github.com/flavio/"/>
-  <updated>2012-11-26T15:32:29+01:00</updated>
-  <id>http://flavio.github.com/flavio/</id>
+  <link href="http://flavio.castelli.name/blog/categories/c-/atom.xml" rel="self"/>
+  <link href="http://flavio.castelli.name/"/>
+  <updated>2012-11-26T17:31:30+01:00</updated>
+  <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[rockmarble: see who is going to rock in your town]]></title>
-    <link href="http://flavio.github.com/flavio/2009/04/07/rockmarble-rock-in-your-town/"/>
+    <link href="http://flavio.castelli.name/2009/04/07/rockmarble-rock-in-your-town/"/>
     <updated>2009-04-07T17:40:45+02:00</updated>
-    <id>http://flavio.github.com/flavio/2009/04/07/rockmarble-rock-in-your-town</id>
+    <id>http://flavio.castelli.name/2009/04/07/rockmarble-rock-in-your-town</id>
     <content type="html"><![CDATA[<p>During the last weekend I hacked a bit on rockmarble and I added a new
 feature: retrieve all the events happening in a certain city.</p>
 
@@ -42,9 +42,9 @@ github wiki ;)</p>
   
   <entry>
     <title type="html"><![CDATA[rockmarble: how to follow your favourite artists tour with Marble]]></title>
-    <link href="http://flavio.github.com/flavio/2009/04/02/rockmarble-follow-artists-tours-with-marble/"/>
+    <link href="http://flavio.castelli.name/2009/04/02/rockmarble-follow-artists-tours-with-marble/"/>
     <updated>2009-04-02T08:51:43+02:00</updated>
-    <id>http://flavio.github.com/flavio/2009/04/02/rockmarble-follow-artists-tours-with-marble</id>
+    <id>http://flavio.castelli.name/2009/04/02/rockmarble-follow-artists-tours-with-marble</id>
     <content type="html"><![CDATA[<p>During the last weekend I wanted to have some fun with
 <a href="http://qjson.sourceforge.net/">QJson</a>. So I came out with this idea: retrieve
 from <a href="http://www.last.fm/home">last.fm</a> the tour dates of my favourite artists
@@ -105,9 +105,9 @@ some artist with a blank name. I’m going to fix this issue asap.</p>
   
   <entry>
     <title type="html"><![CDATA[Tyding up Strigi analyzers]]></title>
-    <link href="http://flavio.github.com/flavio/2008/01/10/tyding_up_strigi_analyzers/"/>
+    <link href="http://flavio.castelli.name/2008/01/10/tyding_up_strigi_analyzers/"/>
     <updated>2008-01-10T15:49:17+01:00</updated>
-    <id>http://flavio.github.com/flavio/2008/01/10/tyding_up_strigi_analyzers</id>
+    <id>http://flavio.castelli.name/2008/01/10/tyding_up_strigi_analyzers</id>
     <content type="html"><![CDATA[<p>As you may know, KDE4 will use Strigi for meta information extraction instead
 of the old <a href="http://api.kde.org/3.5-api/kdelibs-%0Aapidocs/kio/kio/html/classKFilePlugin.html">KFilePlugin</a> classes.</p>
 
@@ -134,9 +134,9 @@ there's still some work to do, but don't worry... I'll try to do the best ;)</p>
   
   <entry>
     <title type="html"><![CDATA[Strigi gains FAM support]]></title>
-    <link href="http://flavio.github.com/flavio/2007/11/26/strigi-gains-fam-support/"/>
+    <link href="http://flavio.castelli.name/2007/11/26/strigi-gains-fam-support/"/>
     <updated>2007-11-26T12:33:52+01:00</updated>
-    <id>http://flavio.github.com/flavio/2007/11/26/strigi-gains-fam-support</id>
+    <id>http://flavio.castelli.name/2007/11/26/strigi-gains-fam-support</id>
     <content type="html"><![CDATA[<p>Last Monday I submitted lot of changes into Strigi's trunk. I've heavily
 refactored some classes in order to obtain a more flexible file system
 notification infrastructure. Thanks to this work now it will be easier to add
@@ -157,9 +157,9 @@ add <em>File Alteration Monitor</em> (aka <em>FAM</em>) support I had to write o
   
   <entry>
     <title type="html"><![CDATA[Strigi gains full Xesam queries support]]></title>
-    <link href="http://flavio.github.com/flavio/2007/08/31/strigi_full_xesam_support/"/>
+    <link href="http://flavio.castelli.name/2007/08/31/strigi_full_xesam_support/"/>
     <updated>2007-08-31T17:30:52+02:00</updated>
-    <id>http://flavio.github.com/flavio/2007/08/31/strigi_full_xesam_support</id>
+    <id>http://flavio.castelli.name/2007/08/31/strigi_full_xesam_support</id>
     <content type="html"><![CDATA[<p>As I said in
 <a href="http://www.flavio.castelli.name/strigi_xesam_query_language_support">this</a>
 previous post, Strigi's Xesam support was half-done since <a href="http://wiki.freedesktop.org/wiki/XesamUserSearchLanguage">XesamUserSearchLanguage</a> wasn’t yet
