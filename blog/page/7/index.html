@@ -1,0 +1,963 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Flavio Castelli</title>
+  <meta name="author" content="Flavio Castelli">
+
+  
+  <meta name="description" content="Svn-commit is a command line utility for making rapid commit with subversion.
+Suppose you&#8217;re working on your local copy of a subversion project &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://flavio.github.com/flavio/blog/page/7">
+  <link href="/flavio/favicon.png" rel="icon">
+  <link href="/flavio/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/flavio/javascripts/modernizr-2.0.js"></script>
+  <script src="/flavio/javascripts/ender.js"></script>
+  <script src="/flavio/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/flavio/atom.xml" rel="alternate" title="Flavio Castelli" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+<!-- openid delegation -->
+<link rel="openid.server" href="http://www.myopenid.com/server" />
+<link rel="openid.delegate" href="http://flavio.castelli.myopenid.com/" />
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-3214988-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/flavio/">Flavio Castelli</a></h1>
+  
+    <h2>Debugging my life.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/flavio/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:flavio.github.com/flavio" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+<ul class="main-navigation">
+  <li><a href="/flavio/">Blog</a></li>
+  <li><a href="/flavio/blog/archives">Archives</a></li>
+  <li><a href="/flavio/about">About</a></li>
+  <li><a href="/flavio/cv">CV</a></li>
+  <li><a href="/flavio/contacts">Contacts</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/flavio/2006/02/16/svn-commit-helper/">Svn Commit Helper</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-02-16T12:51:41+01:00" pubdate data-updated="true">Feb 16<span>th</span>, 2006</time>
+        
+         | <a href="/flavio/2006/02/16/svn-commit-helper/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Svn-commit is a command line utility for making rapid commit with subversion.
+Suppose you&#8217;re working on your local copy of a subversion project. If you
+forget to run commands like svn del file or svn add file each time you add or
+remove a file, when you&#8217;ll try to commit your working copy you&#8217;ll obtain
+something like this:</p>
+
+<ul>
+<li><em>? file</em>: for each file/directory that isn&#8217;t under the revision system</li>
+<li><p><em>! file</em>: for each file/directory you&#8217;ve removed without the command svn del
+svn-commit will prevent these errors because it will tell svn to:</p></li>
+<li><p>add all your unversioned files to the repository</p></li>
+<li>delete all the files you&#8217;ve removed from your working directory (be careful !!)</li>
+</ul>
+
+
+<h3>Requirements:</h3>
+
+<p>svn-commit requires:</p>
+
+<ul>
+<li>python</li>
+<li>svn client utilities</li>
+</ul>
+
+
+<h3>Synopsis:</h3>
+
+<p>svn-commit syntax: <code>svn-commit directory</code> A simple example: <code>svn commit</code>pwd&#8220;</p>
+
+<h3>Code</h3>
+
+<figure class='code'><figcaption><span>[svn-commit.py] [] </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#! /usr/bin/python</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># svn-commit</span>
+</span><span class='line'><span class="c"># Created by Flavio Castelli &lt;flavio.castelli@gmail.com&gt;</span>
+</span><span class='line'><span class="c"># svn-commit follows GPL v2</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span><span class="nn">popen2</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">sys</span> <span class="kn">import</span> <span class="n">argv</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nb">dir</span><span class="o">=</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span><span class='line'>  <span class="n">pipe</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">popen</span> <span class="p">(</span><span class="s">&#39;svn status </span><span class="si">%s</span><span class="s">&#39;</span><span class="o">%</span><span class="p">(</span><span class="nb">dir</span><span class="p">))</span> <span class="c">#executes shell command</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">pipe</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span> <span class="p">]</span>
+</span><span class='line'>  <span class="n">pipe</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">to_add</span><span class="o">=</span><span class="p">[]</span>
+</span><span class='line'>  <span class="n">to_remove</span><span class="o">=</span><span class="p">[]</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;?&#39;</span><span class="p">)</span><span class="o">!=-</span><span class="mi">1</span><span class="p">:</span>
+</span><span class='line'>      <span class="n">to_add</span><span class="o">+=</span><span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">):</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)]]</span>
+</span><span class='line'>    <span class="k">elif</span> <span class="n">x</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;!&#39;</span><span class="p">)</span><span class="o">!=-</span><span class="mi">1</span><span class="p">:</span>
+</span><span class='line'>      <span class="n">to_remove</span><span class="o">+=</span><span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">):</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)]]</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">print</span> <span class="s">&quot;To add</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">to_add</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">print</span> <span class="p">(</span><span class="s">&quot;Command svn add </span><span class="si">%s</span><span class="s">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</span><span class='line'>    <span class="n">pipe</span><span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">popen</span> <span class="p">(</span><span class="s">&quot;svn add </span><span class="se">\&quot;</span><span class="si">%s</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</span><span class='line'>    <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">pipe</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span> <span class="p">]</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+</span><span class='line'>      <span class="k">print</span> <span class="n">y</span>
+</span><span class='line'>    <span class="n">pipe</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span><span class='line'>  <span class="k">print</span> <span class="s">&quot;To remove</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">to_remove</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">print</span> <span class="p">(</span><span class="s">&quot;Command svn delete </span><span class="se">\&quot;</span><span class="si">%s</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</span><span class='line'>    <span class="n">pipe</span><span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">popen</span> <span class="p">(</span><span class="s">&quot;svn delete </span><span class="se">\&quot;</span><span class="si">%s</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</span><span class='line'>    <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">pipe</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span> <span class="p">]</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+</span><span class='line'>      <span class="k">print</span> <span class="n">y</span>
+</span><span class='line'>    <span class="n">pipe</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/flavio/2006/02/16/regexp-with-boost/">Regexp With Boost</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-02-16T12:42:50+01:00" pubdate data-updated="true">Feb 16<span>th</span>, 2006</time>
+        
+         | <a href="/flavio/2006/02/16/regexp-with-boost/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>How can you add regular expressions to C++?
+Here you&#8217;re three small examples.</p>
+
+<h2>Pattern matching</h2>
+
+<p>In this example you’ll find how you can match a regexp in a string.</p>
+
+<figure class='code'><figcaption><span>[pattern matching] [++] </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="c1">// Created by Flavio Castelli &lt;flavio.castelli_AT_gmail.com&gt;</span>
+</span><span class='line'><span class="c1">// distrubuted under GPL v2 license</span>
+</span><span class='line'>
+</span><span class='line'><span class="cp">#include &lt;boost/regex.hpp&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;string&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">boost</span><span class="o">::</span><span class="n">regex</span> <span class="n">pattern</span> <span class="p">(</span><span class="s">&quot;bg|olug&quot;</span><span class="p">,</span><span class="n">boost</span><span class="o">::</span><span class="n">regex_constants</span><span class="o">::</span><span class="n">icase</span><span class="o">|</span><span class="n">boost</span><span class="o">::</span><span class="n">regex_constants</span><span class="o">::</span><span class="n">perl</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">stringa</span> <span class="p">(</span><span class="s">&quot;Searching for BsLug&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">regex_search</span> <span class="p">(</span><span class="n">stringa</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">boost</span><span class="o">::</span><span class="n">regex_constants</span><span class="o">::</span><span class="n">format_perl</span><span class="p">))</span>
+</span><span class='line'>    <span class="n">printf</span> <span class="p">(</span><span class="s">&quot;found</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">else</span>
+</span><span class='line'>    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;not found</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Substitutions</h2>
+
+<p>In this example you’ll find how you can replace a string matching a pattern.</p>
+
+<figure class='code'><figcaption><span>[substitutions] [++] </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="c1">// Created by Flavio Castelli &lt;flavio.castelli@gmail.com&gt;</span>
+</span><span class='line'><span class="c1">// distrubuted under GPL v2 license</span>
+</span><span class='line'>
+</span><span class='line'><span class="cp">#include &lt;boost/regex.hpp&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;string&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">boost</span><span class="o">::</span><span class="n">regex</span> <span class="n">pattern</span> <span class="p">(</span><span class="s">&quot;b.lug&quot;</span><span class="p">,</span><span class="n">boost</span><span class="o">::</span><span class="n">regex_constants</span><span class="o">::</span><span class="n">icase</span><span class="o">|</span><span class="n">boost</span><span class="o">::</span><span class="n">regex_constants</span><span class="o">::</span><span class="n">perl</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">stringa</span> <span class="p">(</span><span class="s">&quot;Searching for bolug&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">replace</span> <span class="p">(</span><span class="s">&quot;BgLug&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">newString</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">newString</span> <span class="o">=</span> <span class="n">boost</span><span class="o">::</span><span class="n">regex_replace</span> <span class="p">(</span><span class="n">stringa</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">replace</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;The new string is: |%s|</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">newString</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Split</h2>
+
+<p>In this example you’ll find how you tokenize a string with a pattern.</p>
+
+<figure class='code'><figcaption><span>[split] [++] </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="c1">// Created by Flavio Castelli &lt;flavio.castelli@gmail.com&gt;</span>
+</span><span class='line'><span class="c1">// distrubuted under GPL v2 license</span>
+</span><span class='line'>
+</span><span class='line'><span class="cp">#include &lt;boost/regex.hpp&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;string&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">boost</span><span class="o">::</span><span class="n">regex</span> <span class="n">pattern</span> <span class="p">(</span><span class="s">&quot;</span><span class="se">\\</span><span class="s">D&quot;</span><span class="p">,</span><span class="n">boost</span><span class="o">::</span><span class="n">regex_constants</span><span class="o">::</span><span class="n">icase</span><span class="o">|</span><span class="n">boost</span><span class="o">::</span><span class="n">regex_constants</span><span class="o">::</span><span class="n">perl</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">stringa</span> <span class="p">(</span><span class="s">&quot;26/11/2005 17:30&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">temp</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">boost</span><span class="o">::</span><span class="n">sregex_token_iterator</span> <span class="n">i</span><span class="p">(</span><span class="n">stringa</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">stringa</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">pattern</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">boost</span><span class="o">::</span><span class="n">sregex_token_iterator</span> <span class="n">j</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">while</span><span class="p">(</span><span class="n">i</span> <span class="o">!=</span> <span class="n">j</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">{</span>
+</span><span class='line'>    <span class="n">temp</span> <span class="o">=</span> <span class="o">*</span><span class="n">i</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">printf</span> <span class="p">(</span><span class="s">&quot;token %i = |%s|</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="o">++</span><span class="n">counter</span><span class="p">,</span> <span class="n">temp</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+</span><span class='line'>    <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Requirements</h2>
+
+<p>In order to build this examples you’ll need:</p>
+
+<ul>
+<li>a c++ compiler (like g++)</li>
+<li><a href="http://www.boost.org/libs/regex/doc/index.html">boost regexp library</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/flavio/2006/02/15/svn-cleaner/">Svn Cleaner</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-02-15T00:17:23+01:00" pubdate data-updated="true">Feb 15<span>th</span>, 2006</time>
+        
+         | <a href="/flavio/2006/02/15/svn-cleaner/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This simple program removes recursively all .svn directories.</p>
+
+<p><strong>Requirements:</strong> In order to run <em>remove-svn</em> requires python.</p>
+
+<p><strong>Synopsis:</strong> <em>remove-svn</em> syntax is: <code>remove-svn dir</code> in this way remove-svn will recursively remove all <em>.svn</em> directories found under dir.<br/>
+An example: <code>remove-svn</code>pwd&#8220;</p>
+
+<p><strong>UPDATE</strong> A faster way for removing <em>.svn</em> file through this simple bash command: <code>find ./ -name *svn* | xargs rm -rf</code></p>
+
+<p>The old script has been removed.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/flavio/2006/01/01/qtcanvas/">QtCanvas</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-01-01T00:13:43+01:00" pubdate data-updated="true">Jan 1<span>st</span>, 2006</time>
+        
+         | <a href="/flavio/2006/01/01/qtcanvas/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Finally qtcanvas classes are available for Qt 4 series</p>
+
+<p>This isn&#8217;t the final version of qtcanvas, it&#8217;s only a backport of the original
+classes shipped with Qt3.</p>
+
+<p>So what&#8217;s the difference between this qtcanvas and qt3canvas (available only
+through Qt3 support with Qt4)? Simple this version works with all open-source
+versions of Qt >= 4.1.0!!</p>
+
+<p>In this way you can use qtcanvas also under windows (before it wasn&#8217;t possible
+with the open-source edition).</p>
+
+<p>I&#8217;ve tried qtcanvas under Mac OS X Tiger, Gnu-Linux and Windows XP and they
+work fine.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/flavio/2005/12/08/gentoo-documentation-checker/">Gentoo Documentation Checker</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2005-12-08T18:52:16+01:00" pubdate data-updated="true">Dec 8<span>th</span>, 2005</time>
+        
+         | <a href="/flavio/2005/12/08/gentoo-documentation-checker/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>gen-docheck is a useful tool for the <a href="http://www.gentoo.org/doc/it/index.xml">gentoo italian translation team</a>.
+gen-dockeck compares the version number of english document and italian translation.</p>
+
+<p>In this way you can watch the status of one or more guides, keeping the
+translations updated.</p>
+
+<h3>Features:</h3>
+
+<ul>
+<li>mail notification support (straight to guide&#8217;s translator or to a specified address)</li>
+<li>filter guides using regular expressions</li>
+</ul>
+
+
+<h3>Requirements:</h3>
+
+<p>gen-dockeck requires:</p>
+
+<ul>
+<li>perl</li>
+<li>perl module <a href="http://search.cpan.org/dist/libwww-perl/lib/LWP/Simple.pm">LWP::Simple</a> (under debian is provided by <a href="http://packages.debian.org/cgi-bin/search_packages.pl?searchon=names&amp;subword=1&amp;version=all&amp;release=all&amp;keywords=libwww-perl&amp;sourceid=mozilla-search">libwww-perl</a>)</li>
+<li>perl module <a href="http://search.cpan.org/~gbarr/libnet/Net/SMTP.pm">Net::SMTP</a></li>
+<li>perl module <a href="http://search.cpan.org/~jv/Getopt-Long-2.35/lib/Getopt/Long.pm">Getopt::Long</a> (usually available by default with all perl installation)</li>
+<li>perl module <a href="http://search.cpan.org/~marekr/Pod-Parser-1.34/lib/Pod/Usage.pm">Pod::Usage</a> (usually available by default with all perl installation)</li>
+</ul>
+
+
+<h3>Synopsis:</h3>
+
+<p>gen-docheck syntax: <code>gen-docheck [--help] [--man] [--config configuration
+file]</code> for more informations read the man page: <code>gen-docheck --manan</code></p>
+
+<h3>Configuration file:</h3>
+
+<p>gen-docheck support also configuration files.</p>
+
+<p>This is an example:</p>
+
+<pre><code>#mail sender
+sender = gentoo_doccheck@gentoo.orgThis email address is being protected from spam bots, you need Javascript enabled to view it  
+#check only guides mathing these names (use "." to match all, "," to separate names)
+checkonly = diskless,macos
+#checkonly = .  
+#send mail notify to translator
+mailnotify = 0  
+#send all mail notify to this address
+force_mail_destination = flavio.castelli@gmail.com  
+# smtp server
+smtp = smtp.tiscali.it  
+# debug smtp commands
+smtpdebug = 0
+</code></pre>
+
+<h3>Usage:</h3>
+
+<p>You can automate gen-docheck adding it to cron.</p>
+
+<p>Here&#8217;s an example:</p>
+
+<pre><code>0 10 * * 0 /home/micron/gen\-docheck/gen\-docheck.pl --config /home/micron/gen\-docheck/gen\-docheck.conff
+</code></pre>
+
+<p>In this way you&#8217;ll run gen-docheck every sunday at 10:00 AM</p>
+
+<h3>Download</h3>
+
+<p>The code can be found inside of <a href="https://github.com/flavio/gentoo_doc_checker">this</a> git repository.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/flavio/2005/12/08/howto-edit-multime-id3-tags-from-command-line/">Howto Edit Multime Id3 Tags From Command Line</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2005-12-08T18:45:39+01:00" pubdate data-updated="true">Dec 8<span>th</span>, 2005</time>
+        
+         | <a href="/flavio/2005/12/08/howto-edit-multime-id3-tags-from-command-line/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Goal</h3>
+
+<p>id3medit is a simple script for tagging all mp3/ogg files present in a
+directory.</p>
+
+<h3>Requirements:</h3>
+
+<p>id3medit relies on id3v2, a command-line tool for editing id3v2 tags file
+names must be in format: <em>&#8217;## - trackname.ext&#8217;</em>. Where <em>##</em> is track&#8217;s number,
+and <em>ext</em> is file&#8217;s extension (mp3 or ogg in case insensitive format)</p>
+
+<h3>Synopsis:</h3>
+
+<p>id3medit syntax is: <code>id3medit artist album year(*) genre(*)</code> Where <em>*</em> denotes
+optional arguments You can obtain genre identification number in this way:
+<code>id3v2 -L | grep -i genre</code></p>
+
+<h3>Example</h3>
+
+<pre><code>id3v2 -L | grep -i rock
+
+   1: Classic Rock
+  17: Rock
+  40: Alt. Rock
+  47: Instrum. Rock
+  56: Southern Rock
+  78: Rock &amp; Roll
+  79: Hard Rock
+  81: Folk/Rock
+  91: Gothic Rock
+  92: Progress. Rock
+  93: Psychadel. Rock
+  94: Symphonic Rock 
+  95: Slow Rock
+ 121: Punk Rock
+ 141: Christian Rock
+</code></pre>
+
+<h3>Code</h3>
+
+<div><script src='https://gist.github.com/2469919.js?file='></script>
+<noscript><pre><code>#!/bin/bash 
+
+counter=0
+
+if [ -n &quot;$1&quot; ]; then
+ if [[ $1 = &quot;help&quot; ]]; then
+   echo syntax: id3medit artist album year\(*\) genre\(*\)
+   echo *=optional
+   exit 0
+ else
+  artist=$1
+ fi
+else
+  echo syntax: id3medit artist album year\(*\) genre\(*\)
+  echo *=optional
+  exit 0
+fi
+
+if [ -n &quot;$2&quot; ]; then 
+ album=$2
+fi
+
+if [ -n &quot;$3&quot; ]; then
+ year=$3
+else
+ year=0000
+fi
+
+if [ -n &quot;$4&quot; ]; then
+ genre=$4
+else
+ genre=255
+fi
+
+for file in *.{[Mm][Pp]3,[Oo][Gg][Gg]}
+#for file in *.[Mm][Pp]3
+do
+ echo \-\-\&gt; Processing file: $file
+ id3v2 -D &quot;$file&quot; #we delete old tags
+ temp=`echo ${file#**-}`
+ #temp=`echo ${temp:2}`
+ title=`echo ${temp%.*3}`
+ id3v2 -t &quot;$title&quot; -T $counter -a &quot;$artist&quot; -A &quot;$album&quot; -y $year -g $genre &quot;$file&quot;
+ let 'counter +=1' 
+done 
+
+let 'counter -=1'
+echo Work done!
+echo Converted $counter files,
+echo &quot;See you... ;-D&quot;</code></pre></noscript></div>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/flavio/2005/08/12/linux-and-cryptography/">Linux and Cryptography</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2005-08-12T12:31:05+02:00" pubdate data-updated="true">Aug 12<span>th</span>, 2005</time>
+        
+         | <a href="/flavio/2005/08/12/linux-and-cryptography/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A speech about cryptography and linux.</p>
+
+<p>This speech is about:</p>
+
+<ul>
+<li>crypted email with gnupg</li>
+<li>crypted file system avaible under linux, an overview and a comparison of loop-AES , cryptoloop, dm-crypt, bestcrypt</li>
+<li>creation of a full crypted file-system, root included. The most interesting feature is system&#8217;s boot sequence, which uses a usb token for authenticating users</li>
+</ul>
+
+
+<div style="width:425px" id="__ss_12649796"><strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/fcastelli/seminario-crittografialinuxday2004" title="Seminario crittografia-linux-day-2004">Seminario crittografia-linux-day-2004</a></strong><object id="__sse12649796" width="425" height="355"><param name="movie" value="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=seminario-crittografia-linux-day-2004-120423044912-phpapp02&stripped_title=seminario-crittografialinuxday2004&userName=fcastelli" /><param name="allowFullScreen" value="true"/><param name="allowScriptAccess" value="always"/><param name="wmode" value="transparent"/><embed name="__sse12649796" src="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=seminario-crittografia-linux-day-2004-120423044912-phpapp02&stripped_title=seminario-crittografialinuxday2004&userName=fcastelli" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="transparent" width="425" height="355"></embed></object><div style="padding:5px 0 12px">View more <a href="http://www.slideshare.net/">presentations</a> from <a href="http://www.slideshare.net/fcastelli">Flavio Castelli</a>.</div></div>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+    <a href="/flavio/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/flavio/blog/page/6/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/flavio/2012/11/21/qjson-0-dot-8-0-released/">QJson 0.8.0 released</a>
+      </li>
+    
+      <li class="post">
+        <a href="/flavio/2011/03/29/introducing-dister-a-heroku-like-solution-for-suse-studio/">Introducing dister, a Heroku like solution for SUSE Studio</a>
+      </li>
+    
+      <li class="post">
+        <a href="/flavio/2010/08/11/jump/">Jump: a bookmarking system for the bash shell</a>
+      </li>
+    
+      <li class="post">
+        <a href="/flavio/2010/07/23/fast-user-switch-plasmoid-improvements/">Fast user switch plasmoid improvements</a>
+      </li>
+    
+      <li class="post">
+        <a href="/flavio/2010/07/15/fast-user-switch-plasmoid/">Fast user switch plasmoid</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Github Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/flavio">@flavio</a> on Github
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'flavio',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/flavio/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("flavio_castelli", 4, false);
+    });
+  </script>
+  <script src="/flavio/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/flavio_castelli" class="twitter-follow-button" data-width="208px" data-show-count="false">Follow @flavio_castelli</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Flavio Castelli -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'flavio-castelli-name';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

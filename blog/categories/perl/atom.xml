@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: perl | Flavio Castelli]]></title>
+  <link href="http://flavio.github.com/flavio/blog/categories/perl/atom.xml" rel="self"/>
+  <link href="http://flavio.github.com/flavio/"/>
+  <updated>2012-11-26T15:32:29+01:00</updated>
+  <id>http://flavio.github.com/flavio/</id>
+  <author>
+    <name><![CDATA[Flavio Castelli]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Gentoo documentation checker]]></title>
+    <link href="http://flavio.github.com/flavio/2005/12/08/gentoo-documentation-checker/"/>
+    <updated>2005-12-08T18:52:16+01:00</updated>
+    <id>http://flavio.github.com/flavio/2005/12/08/gentoo-documentation-checker</id>
+    <content type="html"><![CDATA[<p>gen-docheck is a useful tool for the <a href="http://www.gentoo.org/doc/it/index.xml">gentoo italian translation team</a>.
+gen-dockeck compares the version number of english document and italian translation.</p>
+
+<p>In this way you can watch the status of one or more guides, keeping the
+translations updated.</p>
+
+<h3>Features:</h3>
+
+<ul>
+<li>mail notification support (straight to guide's translator or to a specified address)</li>
+<li>filter guides using regular expressions</li>
+</ul>
+
+
+<h3>Requirements:</h3>
+
+<p>gen-dockeck requires:</p>
+
+<ul>
+<li>perl</li>
+<li>perl module <a href="http://search.cpan.org/dist/libwww-perl/lib/LWP/Simple.pm">LWP::Simple</a> (under debian is provided by <a href="http://packages.debian.org/cgi-bin/search_packages.pl?searchon=names&amp;subword=1&amp;version=all&amp;release=all&amp;keywords=libwww-perl&amp;sourceid=mozilla-search">libwww-perl</a>)</li>
+<li>perl module <a href="http://search.cpan.org/~gbarr/libnet/Net/SMTP.pm">Net::SMTP</a></li>
+<li>perl module <a href="http://search.cpan.org/~jv/Getopt-Long-2.35/lib/Getopt/Long.pm">Getopt::Long</a> (usually available by default with all perl installation)</li>
+<li>perl module <a href="http://search.cpan.org/~marekr/Pod-Parser-1.34/lib/Pod/Usage.pm">Pod::Usage</a> (usually available by default with all perl installation)</li>
+</ul>
+
+
+<h3>Synopsis:</h3>
+
+<p>gen-docheck syntax: <code>gen-docheck [--help] [--man] [--config configuration
+file]</code> for more informations read the man page: <code>gen-docheck --manan</code></p>
+
+<h3>Configuration file:</h3>
+
+<p>gen-docheck support also configuration files.</p>
+
+<p>This is an example:</p>
+
+<pre><code>#mail sender
+sender = gentoo_doccheck@gentoo.orgThis email address is being protected from spam bots, you need Javascript enabled to view it  
+#check only guides mathing these names (use "." to match all, "," to separate names)
+checkonly = diskless,macos
+#checkonly = .  
+#send mail notify to translator
+mailnotify = 0  
+#send all mail notify to this address
+force_mail_destination = flavio.castelli@gmail.com  
+# smtp server
+smtp = smtp.tiscali.it  
+# debug smtp commands
+smtpdebug = 0
+</code></pre>
+
+<h3>Usage:</h3>
+
+<p>You can automate gen-docheck adding it to cron.</p>
+
+<p>Here's an example:</p>
+
+<pre><code>0 10 * * 0 /home/micron/gen\-docheck/gen\-docheck.pl --config /home/micron/gen\-docheck/gen\-docheck.conff
+</code></pre>
+
+<p>In this way you'll run gen-docheck every sunday at 10:00 AM</p>
+
+<h3>Download</h3>
+
+<p>The code can be found inside of <a href="https://github.com/flavio/gentoo_doc_checker">this</a> git repository.</p>
+]]></content>
+  </entry>
+  
+</feed>

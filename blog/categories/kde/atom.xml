@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: kde | Flavio Castelli]]></title>
+  <link href="http://flavio.github.com/flavio/blog/categories/kde/atom.xml" rel="self"/>
+  <link href="http://flavio.github.com/flavio/"/>
+  <updated>2012-11-26T15:32:29+01:00</updated>
+  <id>http://flavio.github.com/flavio/</id>
+  <author>
+    <name><![CDATA[Flavio Castelli]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[QJson 0.8.0 released]]></title>
+    <link href="http://flavio.github.com/flavio/2012/11/21/qjson-0-dot-8-0-released/"/>
+    <updated>2012-11-21T22:03:00+01:00</updated>
+    <id>http://flavio.github.com/flavio/2012/11/21/qjson-0-dot-8-0-released</id>
+    <content type="html"><![CDATA[<p>Almost three years passed since latest release of QJson.
+A lot of stuff happened in my life and QJson definitely paid for that.
+I have to admit I'm a bit ashamed.</p>
+
+<p>So here we go, QJson 0.8.0 is out!</p>
+
+<h2>What changed</h2>
+
+<p>A lot of bugs has been smashed during this time, this new release will fix
+issues like <a href="https://bugs.gentoo.org/show_bug.cgi?id=428256">this</a> one and
+<a href="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=687537">this</a> in a nicer way.</p>
+
+<p>QJson's API is still backward compatible, while the ABI changed.</p>
+
+<h2>Symbian support</h2>
+
+<p>Some work has also been done to get QJson work on the Symbian platform. The
+development happened a long time before <a href="http://www.wired.com/business/2011/02/nokia-burning-platform/all/">Symbian was declared dead</a>.</p>
+
+<p>Currently I do not offer any kind of support for the Symbian platform because
+IMHO Symbian development is a mess and given the current situation in the mobile
+world I don't see any point in investing more efforts on that.</p>
+
+<p>Obviously Symbian patches and documentation are still accepted, as long as they
+don't cause issues to the other target platforms.</p>
+
+<h2>QMake support</h2>
+
+<p>QJson always used cmake as build system but since some Windows developers
+had problems with it I decided to add some <code>.pro</code> files. That proved to be a
+bad choice for me since I had to support two build systems. I prefer to invest
+my time fixing bugs in the code and adding interesting features rather then
+triaging qmake issues on Windows. Hence I decided to remove them from git.</p>
+
+<p>If you are a nostalgic you can still grab these files from git. They
+have been removed with commit <a href="https://github.com/flavio/qjson/commit/66d10c44dd3b21d693933f320c32b3c9a175a693">66d10c44dd3b21</a>.</p>
+
+<h2>Relocating to Github</h2>
+
+<p>I decided to move QJson's code from Gitorious to <a href="https://github.com/flavio/qjson">Github</a>.
+<a href="https://github.com/flavio/qjson/issues">Github's issue sysyem</a> is going to replace Sourceforge's bug tracking system.</p>
+
+<p>I currently use Github a lot, both for personal projects and for work, and I simply love it.
+I think it offers the best tools in the market and that's really important to me.</p>
+
+<p><a href="http://qjson.sourceforge.net">QJson's website</a> and mailing lists are still going to be hosted on Sourceforge.</p>
+
+<hr>
+
+
+<br>
+
+
+<p>I think that's all from now. If you want more details about the changes introduced
+take a look at the <a href="https://github.com/flavio/qjson/blob/master/ChangeLog">changelog</a>
+or checkout <a href="http://qjson.sourceforge.net">QJson's website</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>

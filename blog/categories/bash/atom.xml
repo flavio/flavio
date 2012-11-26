@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: bash | Flavio Castelli]]></title>
+  <link href="http://flavio.github.com/flavio/blog/categories/bash/atom.xml" rel="self"/>
+  <link href="http://flavio.github.com/flavio/"/>
+  <updated>2012-11-26T15:32:29+01:00</updated>
+  <id>http://flavio.github.com/flavio/</id>
+  <author>
+    <name><![CDATA[Flavio Castelli]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Jump: a bookmarking system for the bash shell]]></title>
+    <link href="http://flavio.github.com/flavio/2010/08/11/jump/"/>
+    <updated>2010-08-11T21:29:29+02:00</updated>
+    <id>http://flavio.github.com/flavio/2010/08/11/jump</id>
+    <content type="html"><![CDATA[<p><a href="http://flavio.castelli.name/wp-content/uploads/2010/08/van-halen-%0Ajump.jpeg"></a>Let me introduce a small project I've been working on with a friend
+of mine, <a href="http://twitter.com/gcapizzi">Giuseppe Capizzi</a>. The project is
+called <strong>jump</strong> and ﻿allows you to quickly change directories in the bash
+shell using bookmarks.</p>
+
+<p>Thanks to Jump, you won't have to type those long paths anymore.</p>
+
+<p><img src="/images/jump/van-halen-jump.jpeg"></p>
+
+<p>You can find jump's source code, detailed documentation and installation
+instructions <a href="http://github.com/flavio/jump">here</a>.</p>
+
+<p>SUSE packages can be found
+<a href="http://software.opensuse.org/search?baseproject=ALL&amp;p=1&amp;q=rubygem-%0Ajump">here</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Svn cleaner]]></title>
+    <link href="http://flavio.github.com/flavio/2006/02/15/svn-cleaner/"/>
+    <updated>2006-02-15T00:17:23+01:00</updated>
+    <id>http://flavio.github.com/flavio/2006/02/15/svn-cleaner</id>
+    <content type="html"><![CDATA[<p>This simple program removes recursively all .svn directories.</p>
+
+<p><strong>Requirements:</strong> In order to run <em>remove-svn</em> requires python.</p>
+
+<p><strong>Synopsis:</strong> <em>remove-svn</em> syntax is: <code>remove-svn dir</code> in this way remove-svn will recursively remove all <em>.svn</em> directories found under dir.<br/>
+An example: <code>remove-svn</code>pwd``</p>
+
+<p><strong>UPDATE</strong> A faster way for removing <em>.svn</em> file through this simple bash command: <code>find ./ -name *svn* | xargs rm -rf</code></p>
+
+<p>The old script has been removed.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Howto edit multime id3 tags from command line]]></title>
+    <link href="http://flavio.github.com/flavio/2005/12/08/howto-edit-multime-id3-tags-from-command-line/"/>
+    <updated>2005-12-08T18:45:39+01:00</updated>
+    <id>http://flavio.github.com/flavio/2005/12/08/howto-edit-multime-id3-tags-from-command-line</id>
+    <content type="html"><![CDATA[<h3>Goal</h3>
+
+<p>id3medit is a simple script for tagging all mp3/ogg files present in a
+directory.</p>
+
+<h3>Requirements:</h3>
+
+<p>id3medit relies on id3v2, a command-line tool for editing id3v2 tags file
+names must be in format: <em>'## - trackname.ext'</em>. Where <em>##</em> is track's number,
+and <em>ext</em> is file's extension (mp3 or ogg in case insensitive format)</p>
+
+<h3>Synopsis:</h3>
+
+<p>id3medit syntax is: <code>id3medit artist album year(*) genre(*)</code> Where <em>*</em> denotes
+optional arguments You can obtain genre identification number in this way:
+<code>id3v2 -L | grep -i genre</code></p>
+
+<h3>Example</h3>
+
+<pre><code>id3v2 -L | grep -i rock
+
+   1: Classic Rock
+  17: Rock
+  40: Alt. Rock
+  47: Instrum. Rock
+  56: Southern Rock
+  78: Rock &amp; Roll
+  79: Hard Rock
+  81: Folk/Rock
+  91: Gothic Rock
+  92: Progress. Rock
+  93: Psychadel. Rock
+  94: Symphonic Rock 
+  95: Slow Rock
+ 121: Punk Rock
+ 141: Christian Rock
+</code></pre>
+
+<h3>Code</h3>
+
+<p><div><script src='https://gist.github.com/2469919.js?file='></script>
+<noscript><pre><code>#!/bin/bash 
+
+counter=0
+
+if [ -n &quot;$1&quot; ]; then
+ if [[ $1 = &quot;help&quot; ]]; then
+   echo syntax: id3medit artist album year\(*\) genre\(*\)
+   echo *=optional
+   exit 0
+ else
+  artist=$1
+ fi
+else
+  echo syntax: id3medit artist album year\(*\) genre\(*\)
+  echo *=optional
+  exit 0
+fi
+
+if [ -n &quot;$2&quot; ]; then 
+ album=$2
+fi
+
+if [ -n &quot;$3&quot; ]; then
+ year=$3
+else
+ year=0000
+fi
+
+if [ -n &quot;$4&quot; ]; then
+ genre=$4
+else
+ genre=255
+fi
+
+for file in *.{[Mm][Pp]3,[Oo][Gg][Gg]}
+#for file in *.[Mm][Pp]3
+do
+ echo \-\-\&gt; Processing file: $file
+ id3v2 -D &quot;$file&quot; #we delete old tags
+ temp=`echo ${file#**-}`
+ #temp=`echo ${temp:2}`
+ title=`echo ${temp%.*3}`
+ id3v2 -t &quot;$title&quot; -T $counter -a &quot;$artist&quot; -A &quot;$album&quot; -y $year -g $genre &quot;$file&quot;
+ let 'counter +=1' 
+done 
+
+let 'counter -=1'
+echo Work done!
+echo Converted $counter files,
+echo &quot;See you... ;-D&quot;</code></pre></noscript></div>
+</p>
+]]></content>
+  </entry>
+  
+</feed>

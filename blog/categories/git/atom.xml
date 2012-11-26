@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: git | Flavio Castelli]]></title>
+  <link href="http://flavio.github.com/flavio/blog/categories/git/atom.xml" rel="self"/>
+  <link href="http://flavio.github.com/flavio/"/>
+  <updated>2012-11-26T15:32:29+01:00</updated>
+  <id>http://flavio.github.com/flavio/</id>
+  <author>
+    <name><![CDATA[Flavio Castelli]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Updated git-svn howto]]></title>
+    <link href="http://flavio.github.com/flavio/2007/11/23/updated-git-svn-howto/"/>
+    <updated>2007-11-23T15:49:12+01:00</updated>
+    <id>http://flavio.github.com/flavio/2007/11/23/updated-git-svn-howto</id>
+    <content type="html"><![CDATA[<p>Maybe someone has already experimented this situation:</p>
+
+<blockquote><p>You're hacking on your local working copy and you want to keep it up-to-date
+but, since you have some uncommitted changes, <em>git-svn rebase</em> cannot be
+executed</p></blockquote>
+
+<p>I was just thinking to write something about<em> </em>this problem when I read a
+<a href="http://www.digikam.org/?q=node/270">post</a> on digikam blog.</p>
+
+<p>In this post Marcel proposes a workaround using a bash function. In fact
+there's a <em>"cleaner"</em> solution, if you're interested read the last part of my
+<a href="http://www.flavio.castelli.name/howto_use_git_with_svn">git-svn howto</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Howto use Git and svn together]]></title>
+    <link href="http://flavio.github.com/flavio/2007/09/04/howto_use_git_with_svn/"/>
+    <updated>2007-09-04T12:22:15+02:00</updated>
+    <id>http://flavio.github.com/flavio/2007/09/04/howto_use_git_with_svn</id>
+    <content type="html"><![CDATA[<p>In these days I've heard lot of rumors around <a href="http://git.or.cz/">Git</a>. After
+reading some manual/tutorial/guide I discovered that it can be really useful,
+especially if you spend lot of time coding off-line (that's my situation).</p>
+
+<p>This is a really small howto that describes how to work on a project versioned
+with svn (maybe taken from KDE repository ;) ) using git.</p>
+
+<h3>What're the advantages?</h3>
+
+<p>Since Git is a distributed revision control system (while svn is a centralized
+one) you can perform commits, brances, merges,... on your local working dir
+without being connected to internet.</p>
+
+<p>Next time you'll be online, you will be able to <em>"push"</em> your changes back to
+the central svn server.</p>
+
+<h3>Steps to follow:</h3>
+
+<p>You've to:</p>
+
+<ol>
+<li>install <em>git</em> and <em>git-svn</em></li>
+<li>create the working dir: <code>mkdir strigi</code></li>
+<li>init your git working dir: <code>cd strigi &amp;&amp; git-svn init https://svn.kde.org/home/kde/trunk/kdesupport/strigi</code> <em>git-svn init</em> command is followed by the address of the svn repository (in this case we point to strigi's repository)</li>
+<li>Find a commit regarding the project (you can get it from <a href="http://cia.vc/">cia version control</a>). <strong>Warning:</strong> the command <em>git-log</em> will show project's history starting from this revision.</li>
+<li>Perform the command <code>git-svn fetch -rREVISION</code> Where <em>REVISION</em> is the number obtained before.</li>
+<li>Update your working dir: <code>git-svn rebase</code>
+Now you'll be able to work on your project using git as revision control
+system.</li>
+</ol>
+
+
+<p>To <strong>keep update</strong> your working copy just perform:</p>
+
+<p><code>git-svn rebase</code></p>
+
+<p>You can <strong>commit your changes </strong> to the svn server using the command:</p>
+
+<p><code>git-svn dcommit</code></p>
+
+<p>In this way each commit made with git will be <em>"transformed"</em> into a svn one.</p>
+
+<h3>Solve git-svn rebase problems</h3>
+
+<p>While adding new cool features to your program, you may experiment some
+problem when synchronizing with the main development tree. In fact you have to
+commit all local modifications (using the <code>git-commit</code> command) before
+invoking <code>git-svn rebase</code>.</p>
+
+<p>Sometimes it isn't reasonable since your changes are not yet ready to be
+committed (you haven't finished/tested/improved your work). But don't worry,
+git has a native solution also for this problem, just follow these steps:</p>
+
+<ol>
+<li>put aside your changes using the command: <code>git-stash</code></li>
+<li>update your working copy using: <code>git-svn rebase</code> as usual</li>
+<li>take back your changes typing: <code>git-stash apply</code></li>
+<li>clear <em>"the stash"</em> typing: <code>git-stash clear</code>
+After the first step all your uncommitted changes will disappear from the
+working copy, so you'll be able to perform the rebase command without
+problems.</li>
+</ol>
+
+
+<p>For further informations read <code>git-stash</code> man page.</p>
+
+<p>That's all.</p>
+
+<p>A special mention goes to Thiago Macieira for his help.</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: bglug | Flavio Castelli]]></title>
+  <link href="http://flavio.github.com/flavio/blog/categories/bglug/atom.xml" rel="self"/>
+  <link href="http://flavio.github.com/flavio/"/>
+  <updated>2012-11-26T15:32:29+01:00</updated>
+  <id>http://flavio.github.com/flavio/</id>
+  <author>
+    <name><![CDATA[Flavio Castelli]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Linux Day 2007]]></title>
+    <link href="http://flavio.github.com/flavio/2007/10/29/kde4_linuxday_2007/"/>
+    <updated>2007-10-29T12:37:49+01:00</updated>
+    <id>http://flavio.github.com/flavio/2007/10/29/kde4_linuxday_2007</id>
+    <content type="html"><![CDATA[<p>Last Saturday <em>Linux day 2007</em> took place.</p>
+
+<p><em>Linux Day</em> is an Italian manifestation that promotes Linux and FOSS. During
+this day different organizations (mostly <a href="http://en.wikipedia.org/wiki/Linux_User_Group">Linux User
+Groups</a>) arrange events with
+speeches, installation parties and more.</p>
+
+<p>Since lot of people requested it, I gave a speech about KDE 4 during the
+<em>Linux day</em> organized by my LUG (<a href="http://www.bglug.it">BGLug</a>).</p>
+
+<p>The presentation covers the main changes and features introduced by KDE 4. I
+took inspiration from Troy's <em>"Road to KDE 4"</em> articles (I like them really
+much).</p>
+
+<p>People liked the speech and, most important of all, showed great interest for
+KDE 4.</p>
+
+<div style="width:425px" id="__ss_12631095"><strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/fcastelli/kde4-ld2007" title="KDE4 ld2007">KDE4 ld2007</a></strong><object id="__sse12631095" width="425" height="355"><param name="movie" value="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=kde4-ld2007-120421100713-phpapp02&stripped_title=kde4-ld2007&userName=fcastelli" /><param name="allowFullScreen" value="true"/><param name="allowScriptAccess" value="always"/><param name="wmode" value="transparent"/><embed name="__sse12631095" src="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=kde4-ld2007-120421100713-phpapp02&stripped_title=kde4-ld2007&userName=fcastelli" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="transparent" width="425" height="355"></embed></object><div style="padding:5px 0 12px">View more <a href="http://www.slideshare.net/">presentations</a> from <a href="http://www.slideshare.net/fcastelli">Flavio Castelli</a>.</div></div>
+
+]]></content>
+  </entry>
+  
+</feed>

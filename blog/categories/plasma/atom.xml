@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: plasma | Flavio Castelli]]></title>
+  <link href="http://flavio.github.com/flavio/blog/categories/plasma/atom.xml" rel="self"/>
+  <link href="http://flavio.github.com/flavio/"/>
+  <updated>2012-11-26T15:32:29+01:00</updated>
+  <id>http://flavio.github.com/flavio/</id>
+  <author>
+    <name><![CDATA[Flavio Castelli]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Fast user switch plasmoid improvements]]></title>
+    <link href="http://flavio.github.com/flavio/2010/07/23/fast-user-switch-plasmoid-improvements/"/>
+    <updated>2010-07-23T23:32:31+02:00</updated>
+    <id>http://flavio.github.com/flavio/2010/07/23/fast-user-switch-plasmoid-improvements</id>
+    <content type="html"><![CDATA[<p>Just a quick note, I released a new version of the fastuserswitch plasmoid.
+This new release implements all the improvements suggested by the users plus
+some minor fixes.</p>
+
+<p>Code can be downloaded from <a href="http://gitorious.org/fast_user_switch">here</a>.
+openSUSE packages are already available on the <a href="http://software.opensuse.org/search?q=plasmoid-%0Afastuserswitch&amp;baseproject=ALL&amp;lang=en&amp;exclude_debug=true">build
+service</a>.</p>
+
+<p>These are some screenshots illustrating fastuserswitch's new features.</p>
+
+<p><img src="/images/fast_user_switch/fastuserswitch011.png">
+<img src="/images/fast_user_switch/fastuserswitch021.png">
+<img src="/images/fast_user_switch/fastuserswitch03.png"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Fast user switch plasmoid]]></title>
+    <link href="http://flavio.github.com/flavio/2010/07/15/fast-user-switch-plasmoid/"/>
+    <updated>2010-07-15T07:23:11+02:00</updated>
+    <id>http://flavio.github.com/flavio/2010/07/15/fast-user-switch-plasmoid</id>
+    <content type="html"><![CDATA[<p>Last week my mother in law started to share her Linux laptop with my wife.
+Suddenly my wife asked me how she could switch from one user session to
+another. She was looking for something similar to <a href="http://bit.ly/auzc56">OS X fast user
+switch</a> feature but she couldn't find it. In fact there
+wasn't a fast and easy way to switch between users' sessions with KDE,
+until... now :)</p>
+
+<p>Let me introduce my first plasmoid: the fast user switch plasmoid. It's a
+simple icon in the panel that allows users to swich to another open session or
+to open a new login page. Here you can see the mandatory screenshots.</p>
+
+<p><img src="/images/fast_user_switch/fastuserswitch02.png">
+<img src="/images/fast_user_switch/fastuserswitch01.png"></p>
+
+<p>You can find the source code
+<a href="http://gitorious.org/fast_user_switch#more">here</a>. Binary packages for
+openSUSE are already available on the <a href="http://software.opensuse.org/search?q=plasmoid-%0Afastuserswitch&amp;baseproject=ALL&amp;lang=en&amp;exclude_debug=true">build
+service</a>.</p>
+
+<h2>One last thought about KDM</h2>
+
+<p>I think that KDM should allow to switch back to an already open session in a
+more transparent way. Right now if an user has already one session open, he
+goes back to the login screen and enters his credentials a <strong>new </strong> session is
+started. I think that most users would expect to be switched back to their
+already running session. Starting a new session is just confusing for them.</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: xexam | Flavio Castelli]]></title>
+  <link href="http://flavio.github.com/flavio/blog/categories/xexam/atom.xml" rel="self"/>
+  <link href="http://flavio.github.com/flavio/"/>
+  <updated>2012-11-26T15:32:29+01:00</updated>
+  <id>http://flavio.github.com/flavio/</id>
+  <author>
+    <name><![CDATA[Flavio Castelli]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Strigi gets XesamQueryLanguage queries support]]></title>
+    <link href="http://flavio.github.com/flavio/2007/08/07/strigi_xesam_query_language_support/"/>
+    <updated>2007-08-07T14:43:27+02:00</updated>
+    <id>http://flavio.github.com/flavio/2007/08/07/strigi_xesam_query_language_support</id>
+    <content type="html"><![CDATA[<p>Since last Thursday Strigi gained <em>XesamQueryLanguage</em> support. This means
+that now is possible to process queries formulated using this syntax.</p>
+
+<p>But why is this important?  If you aren't able to answer the previous question
+probably you don't know what is Xesam. Here's a short definition taken from
+the <a href="http://www.freedesktop.org/wiki/XesamAbout">official site</a>:  Xesam is an
+umbrella project with the purpose of providing unified apis and specs for
+desktop search- and metadata services.  Thanks to dbus and Xesam it will be
+possible to access the informations indexed by Strigi (and all the desktop
+searching programs supporting these technologies) in a standard and easier
+way. Isn't it cool?</p>
+
+<h3>Credits</h3>
+
+<p>I've to say a big <em><strong>"thank you"</strong></em> to <a href="http://developer.berlios.de/blog/authors/6825-Fabrice-Colin">Fabrice Colin</a> (author of
+<a href="http://pinot.berlios.de/">pinot</a>) because my Xesam code relies upon his work.</p>
+
+<h3>Future tasks</h3>
+
+<p>My work isn't yet finished. Xesam defines two kind of queries:</p>
+
+<ul>
+<li>Xesam user language queries</li>
+<li>Xesam query language queries
+Fabrice's code for <em>XesamUserLanguage</em> queries uses <a href="http://spirit.sourceforge.net/">Spirit library</a>. Since we don't want to depend
+against the boost library, I'll write a new parser for this language.</li>
+</ul>
+
+
+<p>By now I'm thinking to accomplish this task using flex, but I'm just in a
+preliminary state. Suggestions are welcome!</p>
+
+<p><strong>P.S.</strong> I'm really happy because this is my first post published on <a href="http://www.planetkde.org">PlanetKDE</a>. Hello to everybody!</p>
+]]></content>
+  </entry>
+  
+</feed>

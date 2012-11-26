@@ -1,0 +1,488 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>iBook console keyboard mapping - Flavio Castelli</title>
+  <meta name="author" content="Flavio Castelli">
+
+  
+  <meta name="description" content="How to have a comfortable italian keyboard layout on your iBook. Target We just want this mapping: apple key = alt gr
+numpad return (the key near to &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://flavio.github.com/flavio/2006/05/12/ibook-console-keyboard-mapping">
+  <link href="/flavio/favicon.png" rel="icon">
+  <link href="/flavio/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/flavio/javascripts/modernizr-2.0.js"></script>
+  <script src="/flavio/javascripts/ender.js"></script>
+  <script src="/flavio/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/flavio/atom.xml" rel="alternate" title="Flavio Castelli" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+<!-- openid delegation -->
+<link rel="openid.server" href="http://www.myopenid.com/server" />
+<link rel="openid.delegate" href="http://flavio.castelli.myopenid.com/" />
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-3214988-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/flavio/">Flavio Castelli</a></h1>
+  
+    <h2>Debugging my life.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/flavio/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:flavio.github.com/flavio" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+<ul class="main-navigation">
+  <li><a href="/flavio/">Blog</a></li>
+  <li><a href="/flavio/blog/archives">Archives</a></li>
+  <li><a href="/flavio/about">About</a></li>
+  <li><a href="/flavio/cv">CV</a></li>
+  <li><a href="/flavio/contacts">Contacts</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">iBook Console Keyboard Mapping</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-05-12T12:05:14+02:00" pubdate data-updated="true">May 12<span>th</span>, 2006</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>How to have a comfortable italian keyboard layout on your iBook.</p>
+
+<h3>Target</h3>
+
+<p>We just want this mapping:</p>
+
+<pre><code>apple key = alt gr
+numpad return (the key near to left arrow) = canc
+</code></pre>
+
+<h3>Procedure</h3>
+
+<p>Simply download the file at the end of the page and load it using <code>loadkeys
+ibook-it.map.gz</code></p>
+
+<p>Simple, isn&#8217;t it?</p>
+
+<h3>Download</h3>
+
+<p>I found this file over internet, the author is Dario Besseghini. Thank you
+Dario!</p>
+
+<div><script src='https://gist.github.com/2469779.js?file='></script>
+<noscript><pre><code># Italian keymap with emacs enhancements
+#     Beta version Mon May  2 19:57:25 WET DST 1994
+# Available for anon. ftp at cnuce_arch.cnr.it:/pub/Linux-local/kbd/it.map
+#
+# Based on all other keymaps available in Slackware-1.2.0.
+#
+# '@', '#', '[', and ']' are obtained by AltGr with the appropriate key.
+#
+# I have added '{', '}', '~', '`', iacute and uacute.
+# They can be obtained by AltGr-(, AltGr-), AltGr-=, AltGr-', AltGr-igrave
+# and AltGr-ugrave respectively.
+#
+# I have also added most Alt-Shift and Ctrl-Alt codes needed for emacs
+# with the standard keymap of the fundamental mode.
+#
+# Place in your ~/.emacs the following two lines:
+#      (standard-display-european t)
+#      (set-input-mode nil nil 1)
+#
+# Place in your /usr/lib/X11/Xconfig:
+#      LeftAlt  Meta
+#      RightAlt ModeShift
+#
+# To use high characters with other programs, read the documentation ;-)
+# Please report all bugs and improvement proposals to the address below.
+#
+# Buona fortuna,
+# Dario Besseghini &lt;besseghi@dm.unipi.it&gt;
+#
+keymaps 0-2,4,6,8-9,12
+include &quot;linux-with-alt-and-altgr&quot;
+strings as usual
+
+keycode 125 = AltGr
+keycode 96  = Remove
+
+keycode   1 = Escape           Escape
+    alt     keycode   1 = Meta_Escape
+keycode   2 = one              exclam
+    alt     keycode   2 = Meta_one
+    shift alt keycode 2 = Meta_exclam
+keycode   3 = two              quotedbl
+    control keycode   3 = nul
+    alt     keycode   3 = Meta_two
+    control alt keycode 3 = Meta_nul
+keycode   4 = three            sterling
+    control keycode   4 = Escape
+    alt     keycode   4 = Meta_three
+    control alt keycode 4 = Meta_Escape
+keycode   5 = four             dollar
+    control keycode   5 = Control_backslash
+    alt     keycode   5 = Meta_four
+    shift alt keycode 5 = Meta_dollar
+    control alt keycode 5 = Meta_Control_backslash
+keycode   6 = five             percent
+    control keycode   6 = Control_bracketright
+    alt     keycode   6 = Meta_five
+    shift alt keycode 6 = Meta_percent
+keycode   7 = six              ampersand
+    control keycode   7 = Control_asciicircum
+    alt     keycode   7 = Meta_six
+keycode   8 = seven            slash
+    control keycode   8 = Control_underscore
+    alt     keycode   8 = Meta_seven
+    shift alt keycode 8 = Meta_slash
+keycode   9 = eight            parenleft    braceleft
+    control keycode   9 = Delete
+    alt     keycode   9 = Meta_eight
+    shift alt keycode 9 = Meta_parenleft
+    control alt keycode 9 = Meta_Delete
+keycode  10 = nine             parenright       braceright
+    alt     keycode  10 = Meta_nine
+    shift alt keycode 10 = Meta_parenright
+keycode  11 = zero             equal        asciitilde
+    alt     keycode  11 = Meta_zero
+    shift alt keycode 11 = Meta_equal
+keycode  12 = apostrophe       question     grave
+    control keycode  12 = Delete
+    alt     keycode  12 = Meta_minus
+    control alt keycode 12 = Meta_Delete
+keycode  13 = igrave           asciicircum  iacute
+    control keycode  13 = Control_asciicircum
+    alt     keycode  13 = Meta_equal
+    shift alt keycode 13 = Meta_asciicircum
+keycode  14 = Delete           Delete
+    control keycode  14 = Control_underscore
+    alt     keycode  14 = Meta_Delete
+keycode  15 = Tab              Tab
+    alt     keycode  15 = Meta_Tab
+keycode  16 = q
+keycode  17 = w
+keycode  18 = e
+keycode  19 = r
+keycode  20 = t
+keycode  21 = y
+keycode  22 = u
+keycode  23 = i
+keycode  24 = o
+keycode  25 = p
+keycode  26 = egrave           eacute       bracketleft
+    control keycode  26 = Escape
+    alt     keycode  26 = Meta_bracketleft
+keycode  27 = plus             asterisk         bracketright
+    control keycode  27 = Control_bracketright
+    alt     keycode  27 = Meta_bracketright
+keycode  28 = Return
+    alt     keycode  28 = Meta_Control_m
+keycode  29 = Control
+keycode  30 = a
+keycode  31 = s
+keycode  32 = d
+keycode  33 = f
+keycode  34 = g
+keycode  35 = h
+keycode  36 = j
+keycode  37 = k
+keycode  38 = l
+keycode  39 = ograve           ccedilla     at
+    control keycode  39 = nul
+    alt     keycode  39 = Meta_at
+    control alt keycode 39 = Meta_nul
+keycode  40 = agrave           degree       numbersign
+
+    control keycode  40 = Control_g
+keycode  41 = backslash        bar
+    control keycode  41 = Control_backslash
+    alt     keycode  41 = Meta_backslash
+    shift alt keycode 41 = Meta_bar
+keycode  42 = Shift
+keycode  43 = ugrave           section      uacute
+keycode  44 = z
+keycode  45 = x
+keycode  46 = c
+keycode  47 = v
+keycode  48 = b
+keycode  49 = n
+keycode  50 = m
+keycode  51 = comma            semicolon
+    alt     keycode  51 = Meta_comma
+    shift alt keycode 51 = Meta_semicolon
+keycode  52 = period           colon
+    alt     keycode  52 = Meta_period
+keycode  53 = minus        underscore
+    control keycode  53 = Control_underscore
+    alt keycode  53 = Meta_minus
+keycode  54 = Shift
+keycode  56 = Alt
+keycode  57 = space
+    control keycode  57 = nul
+    alt     keycode  57 = Meta_space
+    control alt keycode 57 = Meta_nul
+keycode  58 = Caps_Lock
+keycode  86 = less         greater
+    alt     keycode  86 = Meta_less
+    shift alt keycode 86 = Meta_greater
+keycode  97 = Control
+</code></pre></noscript></div>
+
+
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Flavio</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-05-12T12:05:14+02:00" pubdate data-updated="true">May 12<span>th</span>, 2006</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/flavio/blog/categories/howto/'>howto</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://flavio.github.com/flavio/2006/05/12/ibook-console-keyboard-mapping/" data-via="flavio_castelli" data-counturl="http://flavio.github.com/flavio/2006/05/12/ibook-console-keyboard-mapping/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/flavio/2006/05/10/no-more-exams/" title="Previous Post: No more exams!">&laquo; No more exams!</a>
+      
+      
+        <a class="basic-alignment right" href="/flavio/2006/05/12/ibook-x-keyboard-mapping/" title="next Post: iBook X keyboard mapping">iBook X keyboard mapping &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/flavio/2012/11/21/qjson-0-dot-8-0-released/">QJson 0.8.0 released</a>
+      </li>
+    
+      <li class="post">
+        <a href="/flavio/2011/03/29/introducing-dister-a-heroku-like-solution-for-suse-studio/">Introducing dister, a Heroku like solution for SUSE Studio</a>
+      </li>
+    
+      <li class="post">
+        <a href="/flavio/2010/08/11/jump/">Jump: a bookmarking system for the bash shell</a>
+      </li>
+    
+      <li class="post">
+        <a href="/flavio/2010/07/23/fast-user-switch-plasmoid-improvements/">Fast user switch plasmoid improvements</a>
+      </li>
+    
+      <li class="post">
+        <a href="/flavio/2010/07/15/fast-user-switch-plasmoid/">Fast user switch plasmoid</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Github Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/flavio">@flavio</a> on Github
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'flavio',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/flavio/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("flavio_castelli", 4, false);
+    });
+  </script>
+  <script src="/flavio/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/flavio_castelli" class="twitter-follow-button" data-width="208px" data-show-count="false">Follow @flavio_castelli</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Flavio Castelli -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'flavio-castelli-name';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://flavio.github.com/flavio/2006/05/12/ibook-console-keyboard-mapping/';
+        var disqus_url = 'http://flavio.github.com/flavio/2006/05/12/ibook-console-keyboard-mapping/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: zsh | Flavio Castelli]]></title>
+  <link href="http://flavio.github.com/flavio/blog/categories/zsh/atom.xml" rel="self"/>
+  <link href="http://flavio.github.com/flavio/"/>
+  <updated>2012-11-26T15:32:29+01:00</updated>
+  <id>http://flavio.github.com/flavio/</id>
+  <author>
+    <name><![CDATA[Flavio Castelli]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Jump: a bookmarking system for the bash shell]]></title>
+    <link href="http://flavio.github.com/flavio/2010/08/11/jump/"/>
+    <updated>2010-08-11T21:29:29+02:00</updated>
+    <id>http://flavio.github.com/flavio/2010/08/11/jump</id>
+    <content type="html"><![CDATA[<p><a href="http://flavio.castelli.name/wp-content/uploads/2010/08/van-halen-%0Ajump.jpeg"></a>Let me introduce a small project I've been working on with a friend
+of mine, <a href="http://twitter.com/gcapizzi">Giuseppe Capizzi</a>. The project is
+called <strong>jump</strong> and ﻿allows you to quickly change directories in the bash
+shell using bookmarks.</p>
+
+<p>Thanks to Jump, you won't have to type those long paths anymore.</p>
+
+<p><img src="/images/jump/van-halen-jump.jpeg"></p>
+
+<p>You can find jump's source code, detailed documentation and installation
+instructions <a href="http://github.com/flavio/jump">here</a>.</p>
+
+<p>SUSE packages can be found
+<a href="http://software.opensuse.org/search?baseproject=ALL&amp;p=1&amp;q=rubygem-%0Ajump">here</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>

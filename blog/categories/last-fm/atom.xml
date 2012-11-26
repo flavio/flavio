@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: last.fm | Flavio Castelli]]></title>
+  <link href="http://flavio.github.com/flavio/blog/categories/last-fm/atom.xml" rel="self"/>
+  <link href="http://flavio.github.com/flavio/"/>
+  <updated>2012-11-26T15:32:29+01:00</updated>
+  <id>http://flavio.github.com/flavio/</id>
+  <author>
+    <name><![CDATA[Flavio Castelli]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[rockmarble: see who is going to rock in your town]]></title>
+    <link href="http://flavio.github.com/flavio/2009/04/07/rockmarble-rock-in-your-town/"/>
+    <updated>2009-04-07T17:40:45+02:00</updated>
+    <id>http://flavio.github.com/flavio/2009/04/07/rockmarble-rock-in-your-town</id>
+    <content type="html"><![CDATA[<p>During the last weekend I hacked a bit on rockmarble and I added a new
+feature: retrieve all the events happening in a certain city.</p>
+
+<p>As usual data is provided by last.fm, which should return also the events
+<em>"near" </em>the specified city (don't ask me to define a value for <em>near</em> :) ).</p>
+
+<p>I have created new openSUSE packages, this time everything should work fine.
+Just make sure to remove all <a href="http://qjson.sourceforge.net/">qjson</a> packages
+before installing this release (in fact all the previous problems were due to
+packaging errors of qjson, now I have created new packages called libqjson0).</p>
+
+<p>Packages are available for openSUSE 11.0, 11.1 and Factory (both for i586 and
+x86_64 architectures).</p>
+
+<p>One last news: rockmarble has also a new
+<a href="http://rockmarble.sourceforge.net">site</a>, something slightly better than
+github wiki ;)</p>
+
+<p><a href="http://cloud.github.com/downloads/flavio%0A/rockmarble/rockmarble.ymp"><img src="/images/rockmarble/rockmarble_1click.png" alt="" /></a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[rockmarble: how to follow your favourite artists tour with Marble]]></title>
+    <link href="http://flavio.github.com/flavio/2009/04/02/rockmarble-follow-artists-tours-with-marble/"/>
+    <updated>2009-04-02T08:51:43+02:00</updated>
+    <id>http://flavio.github.com/flavio/2009/04/02/rockmarble-follow-artists-tours-with-marble</id>
+    <content type="html"><![CDATA[<p>During the last weekend I wanted to have some fun with
+<a href="http://qjson.sourceforge.net/">QJson</a>. So I came out with this idea: retrieve
+from <a href="http://www.last.fm/home">last.fm</a> the tour dates of my favourite artists
+and display the locations using <a href="http://edu.kde.org/marble/">Marble</a>.</p>
+
+<p>After some hacking I created this small application: <em>rockmarble</em>...</p>
+
+<p><img src="/images/rockmarble/flow.png"></p>
+
+<p>If you have a last.fm account rockmarble will import your favourite artist
+list. Otherwise you can add one artists at a time.</p>
+
+<p>The tour location will be displayed inside Marble, using
+<a href="http://www.openstreetmap.org/">openstreetmap</a>.</p>
+
+<h2>Requirements</h2>
+
+<p>In order to build/run it you will need:</p>
+
+<ul>
+<li><a href="http://www.qtsoftware.com/downloads">Qt4</a></li>
+<li><a href="http://edu.kde.org/marble/">marble</a></li>
+<li><a href="http://qjson.sourceforge.net/">QJson</a></li>
+</ul>
+
+
+<h2>Installation</h2>
+
+<p>You can grab the source code of rockmarble
+<a href="http://github.com/flavio/rockmarble/tree/master">here</a>.</p>
+
+<p>If you are an openSUSE user you can use 1click install:</p>
+
+<p><a href="http://cloud.github.com/downloads/flavio%0A/rockmarble/rockmarble.ymp"><img src="/images/rockmarble/rockmarble_1click.png" alt="" /></a></p>
+
+<h2>Issues</h2>
+
+<h3>Geolocalization</h3>
+
+<p>The geolocalization data are given by last.fm, so if you discover that
+Metallica are going to give a concert in the middle of the Pacific Ocean
+please don’t bother me :)</p>
+
+<h3>Special names</h3>
+
+<p>It seems that QJson doesn’t handle properly special characters. Maybe you will
+some artist with a blank name. I’m going to fix this issue asap.</p>
+
+<h2>More details</h2>
+
+<p>Visit <a href="http://rockmarble.sourceforge.net">rockmarble website</a></p>
+
+<h2>Future</h2>
+
+<p>Who wants to integrate it into amarok's context view? ;)</p>
+]]></content>
+  </entry>
+  
+</feed>

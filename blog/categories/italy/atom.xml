@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Italy | Flavio Castelli]]></title>
+  <link href="http://flavio.github.com/flavio/blog/categories/italy/atom.xml" rel="self"/>
+  <link href="http://flavio.github.com/flavio/"/>
+  <updated>2012-11-26T15:32:29+01:00</updated>
+  <id>http://flavio.github.com/flavio/</id>
+  <author>
+    <name><![CDATA[Flavio Castelli]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Linux Day 2007]]></title>
+    <link href="http://flavio.github.com/flavio/2007/10/29/kde4_linuxday_2007/"/>
+    <updated>2007-10-29T12:37:49+01:00</updated>
+    <id>http://flavio.github.com/flavio/2007/10/29/kde4_linuxday_2007</id>
+    <content type="html"><![CDATA[<p>Last Saturday <em>Linux day 2007</em> took place.</p>
+
+<p><em>Linux Day</em> is an Italian manifestation that promotes Linux and FOSS. During
+this day different organizations (mostly <a href="http://en.wikipedia.org/wiki/Linux_User_Group">Linux User
+Groups</a>) arrange events with
+speeches, installation parties and more.</p>
+
+<p>Since lot of people requested it, I gave a speech about KDE 4 during the
+<em>Linux day</em> organized by my LUG (<a href="http://www.bglug.it">BGLug</a>).</p>
+
+<p>The presentation covers the main changes and features introduced by KDE 4. I
+took inspiration from Troy's <em>"Road to KDE 4"</em> articles (I like them really
+much).</p>
+
+<p>People liked the speech and, most important of all, showed great interest for
+KDE 4.</p>
+
+<div style="width:425px" id="__ss_12631095"><strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/fcastelli/kde4-ld2007" title="KDE4 ld2007">KDE4 ld2007</a></strong><object id="__sse12631095" width="425" height="355"><param name="movie" value="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=kde4-ld2007-120421100713-phpapp02&stripped_title=kde4-ld2007&userName=fcastelli" /><param name="allowFullScreen" value="true"/><param name="allowScriptAccess" value="always"/><param name="wmode" value="transparent"/><embed name="__sse12631095" src="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=kde4-ld2007-120421100713-phpapp02&stripped_title=kde4-ld2007&userName=fcastelli" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="transparent" width="425" height="355"></embed></object><div style="padding:5px 0 12px">View more <a href="http://www.slideshare.net/">presentations</a> from <a href="http://www.slideshare.net/fcastelli">Flavio Castelli</a>.</div></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Desktop searching]]></title>
+    <link href="http://flavio.github.com/flavio/2007/06/05/desktop-searching/"/>
+    <updated>2007-06-05T14:22:16+02:00</updated>
+    <id>http://flavio.github.com/flavio/2007/06/05/desktop-searching</id>
+    <content type="html"><![CDATA[<p>An overview of desktop searching under linux.</p>
+
+<p>This speech illustrates:</p>
+
+<ul>
+<li>what's desktop searching</li>
+<li>what're the benefits of desktop searching technology</li>
+<li>what're the programs availables under linux</li>
+<li>overview of Beagle</li>
+<li>overview of Strigi</li>
+</ul>
+
+
+<div style="width:425px" id="__ss_12640080"><strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/fcastelli/desktop-searching" title="Desktop searching">Desktop searching</a></strong><object id="__sse12640080" width="425" height="355"><param name="movie" value="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=desktop-searching-120422101028-phpapp01&stripped_title=desktop-searching&userName=fcastelli" /><param name="allowFullScreen" value="true"/><param name="allowScriptAccess" value="always"/><param name="wmode" value="transparent"/><embed name="__sse12640080" src="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=desktop-searching-120422101028-phpapp01&stripped_title=desktop-searching&userName=fcastelli" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="transparent" width="425" height="355"></embed></object><div style="padding:5px 0 12px">View more <a href="http://www.slideshare.net/">presentations</a> from <a href="http://www.slideshare.net/fcastelli">Flavio Castelli</a>.</div></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[KDE4 preview at Gazzaniga (BG)]]></title>
+    <link href="http://flavio.github.com/flavio/2007/05/29/kde4_preview_gazzaniga/"/>
+    <updated>2007-05-29T12:38:37+02:00</updated>
+    <id>http://flavio.github.com/flavio/2007/05/29/kde4_preview_gazzaniga</id>
+    <content type="html"><![CDATA[<p>A KDE 4 small overview This speech illustrates some of the major KDE4
+features. Slides are shorts since has been made for a <em>"wiki-night"</em> :)</p>
+
+<div style="width:425px" id="__ss_12640108"><strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/fcastelli/kde4-preview" title="Kde4 preview">Kde4 preview</a></strong><object id="__sse12640108" width="425" height="355"><param name="movie" value="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=kde4-preview-120422101452-phpapp02&stripped_title=kde4-preview&userName=fcastelli" /><param name="allowFullScreen" value="true"/><param name="allowScriptAccess" value="always"/><param name="wmode" value="transparent"/><embed name="__sse12640108" src="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=kde4-preview-120422101452-phpapp02&stripped_title=kde4-preview&userName=fcastelli" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="transparent" width="425" height="355"></embed></object><div style="padding:5px 0 12px">View more <a href="http://www.slideshare.net/">presentations</a> from <a href="http://www.slideshare.net/fcastelli">Flavio Castelli</a>.</div></div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Netiquette]]></title>
+    <link href="http://flavio.github.com/flavio/2006/10/28/netiquette/"/>
+    <updated>2006-10-28T12:41:20+02:00</updated>
+    <id>http://flavio.github.com/flavio/2006/10/28/netiquette</id>
+    <content type="html"><![CDATA[<p>An introduction to netiquette. <em><strong>Revised version</strong></em></p>
+
+<p>This speech illustrates:</p>
+
+<ul>
+<li>what's a mailing list and how does it works</li>
+<li>what's a newsgroup</li>
+<li>what's netiquette</li>
+<li>how to quote</li>
+<li>how to don't break mailing lists threads</li>
+</ul>
+
+
+<div style="width:425px" id="__ss_12640217"><strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/fcastelli/netiquette-v11" title="Netiquette v11">Netiquette v11</a></strong><object id="__sse12640217" width="425" height="355"><param name="movie" value="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=netiquette-v11-120422103202-phpapp01&stripped_title=netiquette-v11&userName=fcastelli" /><param name="allowFullScreen" value="true"/><param name="allowScriptAccess" value="always"/><param name="wmode" value="transparent"/><embed name="__sse12640217" src="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=netiquette-v11-120422103202-phpapp01&stripped_title=netiquette-v11&userName=fcastelli" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="transparent" width="425" height="355"></embed></object><div style="padding:5px 0 12px">View more <a href="http://www.slideshare.net/">presentations</a> from <a href="http://www.slideshare.net/fcastelli">Flavio Castelli</a>.</div></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Regular expressions]]></title>
+    <link href="http://flavio.github.com/flavio/2006/09/12/regular-expressions/"/>
+    <updated>2006-09-12T12:13:13+02:00</updated>
+    <id>http://flavio.github.com/flavio/2006/09/12/regular-expressions</id>
+    <content type="html"><![CDATA[<p>An introduction to Regular Expressions.  This speech illustrates:</p>
+
+<ul>
+<li>regular expressions language main rules</li>
+<li>regexps with c++ (with boost library)</li>
+<li>regexps with python</li>
+<li>regexps with perl</li>
+<li>regexps with bash</li>
+</ul>
+
+
+<div style="width:425px" id="__ss_12649419"><strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/fcastelli/regular-expressions-12649419" title="Regular expressions">Regular expressions</a></strong><object id="__sse12649419" width="425" height="355"><param name="movie" value="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=regular-expressions-120423041620-phpapp01&stripped_title=regular-expressions-12649419&userName=fcastelli" /><param name="allowFullScreen" value="true"/><param name="allowScriptAccess" value="always"/><param name="wmode" value="transparent"/><embed name="__sse12649419" src="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=regular-expressions-120423041620-phpapp01&stripped_title=regular-expressions-12649419&userName=fcastelli" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="transparent" width="425" height="355"></embed></object><div style="padding:5px 0 12px">View more <a href="http://www.slideshare.net/">presentations</a> from <a href="http://www.slideshare.net/fcastelli">Flavio Castelli</a>.</div></div>
+
+]]></content>
+  </entry>
+  
+</feed>

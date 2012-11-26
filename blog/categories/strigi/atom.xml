@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: strigi | Flavio Castelli]]></title>
+  <link href="http://flavio.github.com/flavio/blog/categories/strigi/atom.xml" rel="self"/>
+  <link href="http://flavio.github.com/flavio/"/>
+  <updated>2012-11-26T15:32:29+01:00</updated>
+  <id>http://flavio.github.com/flavio/</id>
+  <author>
+    <name><![CDATA[Flavio Castelli]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Still coding]]></title>
+    <link href="http://flavio.github.com/flavio/2008/05/27/still-coding/"/>
+    <updated>2008-05-27T21:36:29+02:00</updated>
+    <id>http://flavio.github.com/flavio/2008/05/27/still-coding</id>
+    <content type="html"><![CDATA[<p>Yes, long time has passed since my last post (really strange, isn't it :D ).
+It has been a busy period, full of work, dog training and... coding
+(fortunately!).</p>
+
+<p>During this time I've been working on XesamQLib creation. This is a Qt based
+library for accessing <a href="http://www.xesam.org/main">Xesam</a> services. Its API is
+going to be similar to <a href="http://xesam.org/people/kamstrup/xesam-%0Aglib/">Xesam-glib</a> one and it will make life easier for developers who want to interact
+with programs exposing Xesam service (who talked about <em>Strigi</em>? :D )</p>
+
+<p>Right now I'm finishing to clean the code, in order to publish a first version
+of XesamQLib on KDE repository. I'll keep you updated.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[My current tasks]]></title>
+    <link href="http://flavio.github.com/flavio/2008/01/18/my_current_tasks/"/>
+    <updated>2008-01-18T15:31:23+01:00</updated>
+    <id>http://flavio.github.com/flavio/2008/01/18/my_current_tasks</id>
+    <content type="html"><![CDATA[<p>Usually I write blog posts announcing <strong>what I have done</strong>, but this time
+<a href="http://pollycoke.net/2008/01/14/strigi-ha-un-piano-di-sviluppo-%0Afinalmente/">it</a> <a href="http://www.kdedevelopers.org/node/3204">is</a>
+<a href="http://strigi.sourceforge.net/?q=strigi_metting_summary">useless</a>. So I'm
+going to blog about <strong>what I'm going to do</strong>.  After latest Strigi irc
+meeting, I came out with this task:</p>
+
+<blockquote><p>KDE integration: Flavio will coordinate the definition of interfaces over
+which KDE will handle searching and metadata. He can ask Aaron, Evgeny and Jos
+for help with the interface design. The interface will cover:</p>
+
+<ul>
+<li><p>Querying via Xesam</p></li>
+<li><p>Configuration of the Strigi daemon</p></li>
+<li><p>Indexing and deindexing of data by passing it to the daemon (allowing
+for indexing for more than just files)</p></li>
+<li><p>Controlling the daemon (starting, stopping, pausing)</p></li>
+</ul>
+</blockquote>
+
+<p>Once this interface will be ready, it will be easy to integrate Strigi
+functionalities inside KDE programs. This mean (just reporting the most
+relevant cases) that it will be possible to create a Strigi krunner, have
+metadata extraction inside Dolphin and Konqueror, interact with Akonadi...</p>
+
+<p>Talking about Xesam, right in these days I got a mail from <a href="http://developer.berlios.de/blog/authors/6825-Fabrice-Colin">Fabrice Colin</a>, author of
+<a href="http://pinot.berlios.de/">Pinot</a>. Recently Fabrice made some improvements on
+Pinot's <em>XesamQueryLanguage</em> parser (which is also <a href="http://www.flavio.castelli.name/strigi_xesam_query_language_support">used by Strigi</a>).
+We're now figuring out how to share our code in a more convenient way. Maybe
+we'll use <a href="http://svnbook.red-bean.com/nightly/en/svn.advanced.externals.html">svn external</a>...</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Strigi irc meeting]]></title>
+    <link href="http://flavio.github.com/flavio/2008/01/11/strigi_irc_meeting_january/"/>
+    <updated>2008-01-11T10:59:09+01:00</updated>
+    <id>http://flavio.github.com/flavio/2008/01/11/strigi_irc_meeting_january</id>
+    <content type="html"><![CDATA[<p>Just giving more voice to <a href="http://strigi.sourceforge.net/?q=january_2008_strigi_irc_meeting">original announce</a>:
+Tomorrow, Saturday 12 January, at 17 UTC an irc meeting will take place on
+<em>#strigi</em> channel (it's on freenode if you don't know).</p>
+
+<p>During the meeting Strigi developers will discuss about the future developments of Strigi.</p>
+
+<p>Special guest: Aaron Aseigo. You're all welcome.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Tyding up Strigi analyzers]]></title>
+    <link href="http://flavio.github.com/flavio/2008/01/10/tyding_up_strigi_analyzers/"/>
+    <updated>2008-01-10T15:49:17+01:00</updated>
+    <id>http://flavio.github.com/flavio/2008/01/10/tyding_up_strigi_analyzers</id>
+    <content type="html"><![CDATA[<p>As you may know, KDE4 will use Strigi for meta information extraction instead
+of the old <a href="http://api.kde.org/3.5-api/kdelibs-%0Aapidocs/kio/kio/html/classKFilePlugin.html">KFilePlugin</a> classes.</p>
+
+<p>Since Strigi's analyzer work in a different way, lot of code has to be ported.
+Unfortunately, after a good start, some relevant analyzers were still missing.</p>
+
+<p>But in the last weeks Strigi gained support of:</p>
+
+<ul>
+<li>wave file</li>
+<li>avi files</li>
+<li>txt files</li>
+<li>dds files</li>
+<li>rgb files</li>
+<li>sid files</li>
+<li>ico files</li>
+</ul>
+
+
+<p>I've also updated <a href="http://wiki.kde.org/tiki-index.php?page=Porting+KFilePlugin+Progress">this</a> summary page. As you can see
+there's still some work to do, but don't worry... I'll try to do the best ;)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Strigi gains FAM support]]></title>
+    <link href="http://flavio.github.com/flavio/2007/11/26/strigi-gains-fam-support/"/>
+    <updated>2007-11-26T12:33:52+01:00</updated>
+    <id>http://flavio.github.com/flavio/2007/11/26/strigi-gains-fam-support</id>
+    <content type="html"><![CDATA[<p>Last Monday I submitted lot of changes into Strigi's trunk. I've heavily
+refactored some classes in order to obtain a more flexible file system
+notification infrastructure. Thanks to this work now it will be easier to add
+support for new file system notification facilities.  For example, in order to
+add <em>File Alteration Monitor</em> (aka <em>FAM</em>) support I had to write only 576 loc
+(including license and documentation stuff).</p>
+
+<p>So, by now, Strigi supports the following file system monitoring facilities:</p>
+
+<ul>
+<li>polling: used when nothing else is available</li>
+<li>inotify: available only on linux platform with kernel >= 2.6.13</li>
+<li>FAM: available on most of the *nix systems, I recommend to use Gamin instead of FAM (most linux distributions already use it by default)</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: real | Flavio Castelli]]></title>
+  <link href="http://flavio.github.com/flavio/blog/categories/real/atom.xml" rel="self"/>
+  <link href="http://flavio.github.com/flavio/"/>
+  <updated>2012-11-26T15:32:29+01:00</updated>
+  <id>http://flavio.github.com/flavio/</id>
+  <author>
+    <name><![CDATA[Flavio Castelli]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[No more exams!]]></title>
+    <link href="http://flavio.github.com/flavio/2006/05/10/no-more-exams/"/>
+    <updated>2006-05-10T19:10:07+02:00</updated>
+    <id>http://flavio.github.com/flavio/2006/05/10/no-more-exams</id>
+    <content type="html"><![CDATA[<p>Just a small announcement: last month (by 14th september) I've finished
+<strong>all</strong> my exams!!</p>
+
+<p>Obviously I'm really happy but I'm also really busy because I'm working hard
+on strigi. I'll let you know something more about it in these days...</p>
+]]></content>
+  </entry>
+  
+</feed>
