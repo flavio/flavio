@@ -4,7 +4,7 @@
   <title><![CDATA[Category: kde | Flavio Castelli]]></title>
   <link href="http://flavio.castelli.name/blog/categories/kde/atom.xml" rel="self"/>
   <link href="http://flavio.castelli.name/"/>
-  <updated>2012-11-26T17:31:30+01:00</updated>
+  <updated>2012-11-27T11:29:59+01:00</updated>
   <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
@@ -12,6 +12,23 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[qjson 0.8.1 released]]></title>
+    <link href="http://flavio.castelli.name/2012/11/27/qjson-0-dot-8-1-released/"/>
+    <updated>2012-11-27T11:24:00+01:00</updated>
+    <id>http://flavio.castelli.name/2012/11/27/qjson-0-dot-8-1-released</id>
+    <content type="html"><![CDATA[<p>Just a quick information, QJson 0.8.1 has been released. This release ensure API and ABI compatibility with version 0.7.1.</p>
+
+<p>The previous 0.8.0 release broke ABI compatibility without changing the <code>SOVERSION</code>.</p>
+
+<h2>Toward QJson 1.0.0</h2>
+
+<p>I'm not entirely happy with some parts of QJson's API. I addressed these issues inside of the <a href="https://github.com/flavio/qjson/tree/1_0_0">1_0_0</a> branch.</p>
+
+<p>I would appreciate to hear your opinion before merging this branch into master and releasing QJson 1.0.0.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[QJson 0.8.0 released]]></title>

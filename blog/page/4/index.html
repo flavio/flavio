@@ -9,8 +9,10 @@
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="Yesterday morning I was quite arrived at work when Laura (my gf) called me.
-Something went wrong in our bathroom and water was everywhere. She closed &hellip;">
+  <meta name="description" content="As I said in
+this
+previous post, Strigi&#8217;s Xesam support was half-done since XesamUserSearchLanguage wasn’t yet
+handled. Well, this is no longer &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +84,84 @@ Something went wrong in our bathroom and water was everywhere. She closed &helli
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2007/08/31/strigi_full_xesam_support/">Strigi Gains Full Xesam Queries Support</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-08-31T17:30:52+02:00" pubdate data-updated="true">Aug 31<span>st</span>, 2007</time>
+        
+         | <a href="/2007/08/31/strigi_full_xesam_support/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>As I said in
+<a href="http://www.flavio.castelli.name/strigi_xesam_query_language_support">this</a>
+previous post, Strigi&#8217;s Xesam support was half-done since <a href="http://wiki.freedesktop.org/wiki/XesamUserSearchLanguage">XesamUserSearchLanguage</a> wasn’t yet
+handled. Well, this is no longer true&#8230; ;) In these weeks I’ve been working
+on <em>XesamUserSearchLanguage</em> support. Ehm&#8230; to be honest, I’ve been
+<em><strong>fighting</strong></em> with <a href="http://www.gnu.org/software/bison/">Bison</a>.</p>
+
+<p>But in the end I tamed the beast and now
+<a href="http://wiki.freedesktop.org/wiki/XesamAbout">Xesam</a> support in Strigi is
+full.</p>
+
+<p>IMHO <em>XesamUserSearchLanguage</em> can be considered more important than
+<a href="http://wiki.freedesktop.org/wiki/XesamQueryLanguage">XesamQueryLanguage</a>
+since common users will write queries in this way.</p>
+
+<p>As reported on the project page:</p>
+
+<blockquote><p>It is _[XesamUserSearchLanguage]_ designed as an extended synthesis of<br/>Apple&#8217;s spotlight and Google&#8217;s search languages.</p></blockquote>
+
+
+<p>These are some possible queries (examples taken from freedesktop site):</p>
+
+<ul>
+<li><code>_type:music hendrix_</code> will return all music items related to hendrix</li>
+<li><code>_type:image size&gt;=1mb tag:flower africa_</code> will return all pictures displaying a flower greater than 1 Mb and related with africa</li>
+</ul>
+
+
+<h3>Technical aspects</h3>
+
+<p>The Xesam&#8217;s UserSearchLanguage query &#8211;> Strigi::Query object conversion is
+made using a hand-written scanner and a C++ parser created by Bison.</p>
+
+<p>You don&#8217;t have to worry if you don&#8217;t have Bison installed on your system since
+all parser generated code is already put into svn. In these days, as soon as
+I&#8217;ll have some spare time (when?!), I&#8217;ll write another post about open-source
+scanner and parser generators.</p>
+
+<p>By now I would like to thank <a href="http://apaku.wordpress.com">Andreas Pakulat</a>
+(developer of <a href="http://www.kdevelop.org/">KDevelop</a>) for his help with parser
+generators.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -613,60 +693,6 @@ helped me a lot (in fact he has done all the dirty jobs).</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2007/06/07/site-updates/">Site Updates</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-06-07T18:49:20+02:00" pubdate data-updated="true">Jun 7<span>th</span>, 2007</time>
-        
-         | <a href="/2007/06/07/site-updates/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In these days I decided to improve the site switching from Joomla to Drupal.
-I liked Joomla very much because it was really easy and immediate to use. But
-there was a think I didn&#8217;t like about it: the way it handled news. I wanted to
-have something similar to a blog, and this isn&#8217;t Joomla mission. So, after
-using Drupal for <a href="http://strigi.sf.net">strigi&#8217;s website</a>, I fall in love with
-it and I decided to make <em>&#8220;the switch&#8221;</em>.</p>
-
-<p>During the upgrade I also installed a <em>&#8220;real&#8221;</em> gallery program (I&#8217;m referring
-to <em><a href="http://gallery.sourceforge.net/">Gallery</a></em>), you can navigate through it
-clicking <a href="/gallery">here</a>.</p>
-
-<p>I hope you&#8217;ll like the new look and will enjoy it!</p>
-
-<p>I also promise that I&#8217;ll keep this site more updated, stay tuned&#8230; in the
-next weeks I&#8217;ll start writing some good technical post ;)</p>
-
-<p>Btw, during the upgrade I ported all previous contents and comments to drupal.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -684,6 +710,10 @@ next weeks I&#8217;ll start writing some good technical post ;)</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2012/11/27/qjson-0-dot-8-1-released/">qjson 0.8.1 released</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/11/21/qjson-0-dot-8-0-released/">QJson 0.8.0 released</a>
       </li>
     
@@ -697,10 +727,6 @@ next weeks I&#8217;ll start writing some good technical post ;)</p>
     
       <li class="post">
         <a href="/2010/07/23/fast-user-switch-plasmoid-improvements/">Fast user switch plasmoid improvements</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2010/07/15/fast-user-switch-plasmoid/">Fast user switch plasmoid</a>
       </li>
     
   </ul>

@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Fast user switch plasmoid improvements - Flavio Castelli</title>
+  <title>qjson 0.8.1 released - Flavio Castelli</title>
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="Just a quick note, I released a new version of the fastuserswitch plasmoid.
-This new release implements all the improvements suggested by the users &hellip;">
+  <meta name="description" content="Just a quick information, QJson 0.8.1 has been released. This release ensure API and ABI compatibility with version 0.7.1. The previous 0.8.0 release &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@ This new release implements all the improvements suggested by the users &hellip;
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://flavio.castelli.name/2010/07/23/fast-user-switch-plasmoid-improvements">
+  <link rel="canonical" href="http://flavio.castelli.name/2012/11/27/qjson-0-dot-8-1-released">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -85,7 +84,7 @@ This new release implements all the improvements suggested by the users &hellip;
   
   <header>
     
-      <h1 class="entry-title">Fast User Switch Plasmoid Improvements</h1>
+      <h1 class="entry-title">Qjson 0.8.1 Released</h1>
     
     
       <p class="meta">
@@ -101,7 +100,7 @@ This new release implements all the improvements suggested by the users &hellip;
   
 
 
-<time datetime="2010-07-23T23:32:31+02:00" pubdate data-updated="true">Jul 23<span>rd</span>, 2010</time>
+<time datetime="2012-11-27T11:24:00+01:00" pubdate data-updated="true">Nov 27<span>th</span>, 2012</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -110,19 +109,15 @@ This new release implements all the improvements suggested by the users &hellip;
   </header>
 
 
-<div class="entry-content"><p>Just a quick note, I released a new version of the fastuserswitch plasmoid.
-This new release implements all the improvements suggested by the users plus
-some minor fixes.</p>
+<div class="entry-content"><p>Just a quick information, QJson 0.8.1 has been released. This release ensure API and ABI compatibility with version 0.7.1.</p>
 
-<p>Code can be downloaded from <a href="http://gitorious.org/fast_user_switch">here</a>.
-openSUSE packages are already available on the <a href="http://software.opensuse.org/search?q=plasmoid-%0Afastuserswitch&amp;baseproject=ALL&amp;lang=en&amp;exclude_debug=true">build
-service</a>.</p>
+<p>The previous 0.8.0 release broke ABI compatibility without changing the <code>SOVERSION</code>.</p>
 
-<p>These are some screenshots illustrating fastuserswitch&#8217;s new features.</p>
+<h2>Toward QJson 1.0.0</h2>
 
-<p><img src="/images/fast_user_switch/fastuserswitch011.png">
-<img src="/images/fast_user_switch/fastuserswitch021.png">
-<img src="/images/fast_user_switch/fastuserswitch03.png"></p>
+<p>I&#8217;m not entirely happy with some parts of QJson&#8217;s API. I addressed these issues inside of the <a href="https://github.com/flavio/qjson/tree/1_0_0">1_0_0</a> branch.</p>
+
+<p>I would appreciate to hear your opinion before merging this branch into master and releasing QJson 1.0.0.</p>
 </div>
 
 
@@ -131,7 +126,7 @@ service</a>.</p>
       
   
 
-<span class="byline author vcard">Posted by <span class="fn">Flavio</span></span>
+<span class="byline author vcard">Posted by <span class="fn">Flavio Castelli</span></span>
 
       
 
@@ -145,12 +140,12 @@ service</a>.</p>
   
 
 
-<time datetime="2010-07-23T23:32:31+02:00" pubdate data-updated="true">Jul 23<span>rd</span>, 2010</time>
+<time datetime="2012-11-27T11:24:00+01:00" pubdate data-updated="true">Nov 27<span>th</span>, 2012</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/kde/'>KDE</a>, <a class='category' href='/blog/categories/plasma/'>plasma</a>
+    <a class='category' href='/blog/categories/kde/'>kde</a>, <a class='category' href='/blog/categories/qjson/'>qjson</a>, <a class='category' href='/blog/categories/qt/'>qt</a>
   
 </span>
 
@@ -159,7 +154,7 @@ service</a>.</p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://flavio.castelli.name/2010/07/23/fast-user-switch-plasmoid-improvements/" data-via="flavio_castelli" data-counturl="http://flavio.castelli.name/2010/07/23/fast-user-switch-plasmoid-improvements/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://flavio.castelli.name/2012/11/27/qjson-0-dot-8-1-released/" data-via="flavio_castelli" data-counturl="http://flavio.castelli.name/2012/11/27/qjson-0-dot-8-1-released/" >Tweet</a>
   
   
   
@@ -168,10 +163,8 @@ service</a>.</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/2010/07/15/fast-user-switch-plasmoid/" title="Previous Post: Fast user switch plasmoid">&laquo; Fast user switch plasmoid</a>
+        <a class="basic-alignment left" href="/2012/11/21/qjson-0-dot-8-0-released/" title="Previous Post: QJson 0.8.0 released">&laquo; QJson 0.8.0 released</a>
       
-      
-        <a class="basic-alignment right" href="/2010/08/11/jump/" title="next Post: Jump: a bookmarking system for the bash shell">Jump: a bookmarking system for the bash shell &raquo;</a>
       
     </p>
   </footer>
@@ -283,8 +276,8 @@ service</a>.</p>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://flavio.castelli.name/2010/07/23/fast-user-switch-plasmoid-improvements/';
-        var disqus_url = 'http://flavio.castelli.name/2010/07/23/fast-user-switch-plasmoid-improvements/';
+        var disqus_identifier = 'http://flavio.castelli.name/2012/11/27/qjson-0-dot-8-1-released/';
+        var disqus_url = 'http://flavio.castelli.name/2012/11/27/qjson-0-dot-8-1-released/';
         var disqus_script = 'embed.js';
       
     (function () {

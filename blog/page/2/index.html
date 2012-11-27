@@ -9,8 +9,8 @@
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="Some weeks have passed since the announcement of kaveau. I&#8217;m really proud and
-happy about this project because I received a lot of positive &hellip;">
+  <meta name="description" content="I have just committed into trunk a couple of changes that make easier to
+serialize a QObject instance to JSON. This solution relies on the awesome Qt &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +82,138 @@ happy about this project because I received a lot of positive &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/11/30/qjson-easier-serialization-of-qobject-instances-to-json/">QJson: Easier Serialization of QObject Instances to JSON</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-30T20:20:58+01:00" pubdate data-updated="true">Nov 30<span>th</span>, 2009</time>
+        
+         | <a href="/2009/11/30/qjson-easier-serialization-of-qobject-instances-to-json/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have just committed into trunk a couple of changes that make easier to
+serialize a QObject instance to JSON.</p>
+
+<p>This solution relies on the awesome <a href="http://doc.trolltech.com/latest/properties.html">Qt&#8217;s property system</a>.</p>
+
+<p>Suppose the declaration of Person class looks like this:</p>
+
+<figure class='code'><figcaption><span>[class definition] [] </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">class</span> <span class="nc">Person</span> <span class="o">:</span> <span class="k">public</span> <span class="n">QObject</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">Q_OBJECT</span>
+</span><span class='line'>    <span class="n">Q_PROPERTY</span><span class="p">(</span><span class="n">QString</span> <span class="n">name</span> <span class="n">READ</span> <span class="n">name</span> <span class="n">WRITE</span> <span class="n">setName</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">Q_PROPERTY</span><span class="p">(</span><span class="kt">int</span> <span class="n">phoneNumber</span> <span class="n">READ</span> <span class="n">phoneNumber</span> <span class="n">WRITE</span> <span class="n">setPhoneNumber</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">Q_PROPERTY</span><span class="p">(</span><span class="n">Gender</span> <span class="n">gender</span> <span class="n">READ</span> <span class="n">gender</span> <span class="n">WRITE</span> <span class="n">setGender</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">Q_PROPERTY</span><span class="p">(</span><span class="n">QDate</span> <span class="n">dob</span> <span class="n">READ</span> <span class="n">dob</span> <span class="n">WRITE</span> <span class="n">setDob</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">Q_ENUMS</span><span class="p">(</span><span class="n">Gender</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">public</span><span class="o">:</span>
+</span><span class='line'>    <span class="n">Person</span><span class="p">(</span><span class="n">QObject</span><span class="o">*</span> <span class="n">parent</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+</span><span class='line'>    <span class="o">~</span><span class="n">Person</span><span class="p">();</span>
+</span><span class='line'>    <span class="n">QString</span> <span class="n">name</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span><span class='line'>    <span class="kt">void</span> <span class="n">setName</span><span class="p">(</span><span class="k">const</span> <span class="n">QString</span><span class="o">&amp;</span> <span class="n">name</span><span class="p">);</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">phoneNumber</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span><span class='line'>    <span class="kt">void</span> <span class="n">setPhoneNumber</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span>  <span class="n">phoneNumber</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">enum</span> <span class="n">Gender</span> <span class="p">{</span><span class="n">Male</span><span class="p">,</span> <span class="n">Female</span><span class="p">};</span>
+</span><span class='line'>    <span class="kt">void</span> <span class="n">setGender</span><span class="p">(</span><span class="n">Gender</span> <span class="n">gender</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">Gender</span> <span class="n">gender</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">QDate</span> <span class="n">dob</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span><span class='line'>    <span class="kt">void</span> <span class="n">setDob</span><span class="p">(</span><span class="k">const</span> <span class="n">QDate</span><span class="o">&amp;</span> <span class="n">dob</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">private</span><span class="o">:</span>
+</span><span class='line'>    <span class="n">QString</span> <span class="n">m_name</span><span class="p">;</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">m_phoneNumber</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">Gender</span> <span class="n">m_gender</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">QDate</span> <span class="n">m_dob</span><span class="p">;</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The following code will serialize an instance of Person to JSON:</p>
+
+<figure class='code'><figcaption><span>[Serialize to JSON] [] </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'>    <span class="n">Person</span> <span class="n">person</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">person</span><span class="p">.</span><span class="n">setName</span><span class="p">(</span><span class="s">&quot;Flavio&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">person</span><span class="p">.</span><span class="n">setPhoneNumber</span><span class="p">(</span><span class="mi">123456</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">person</span><span class="p">.</span><span class="n">setGender</span><span class="p">(</span><span class="n">Person</span><span class="o">::</span><span class="n">Male</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">person</span><span class="p">.</span><span class="n">setDob</span><span class="p">(</span><span class="n">QDate</span><span class="p">(</span><span class="mi">1982</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">));</span>
+</span><span class='line'>    <span class="n">Serializer</span> <span class="n">serializer</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">qDebug</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">serializer</span><span class="p">.</span><span class="n">serialize</span><span class="p">(</span> <span class="o">&amp;</span><span class="n">person</span><span class="p">;);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The generated output will be:</p>
+
+<figure class='code'><figcaption><span>[JSON data] [] </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'>    <span class="p">{</span> <span class="nt">&quot;dob&quot;</span> <span class="p">:</span> <span class="s2">&quot;1982-07-12&quot;</span><span class="p">,</span> <span class="nt">&quot;gender&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;Flavio&quot;</span><span class="p">,</span> <span class="nt">&quot;phoneNumber&quot;</span> <span class="p">:</span> <span class="mi">123456</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I hope you will find this new feature useful. I&#8217;m also considering to create a
+similar method inside the Parser class.</p>
+
+<p>As usual suggestions are welcome.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -992,76 +1124,6 @@ open('downloaded.json','w') { |f| f &lt;&lt; @downloaded.to_json }
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2008/07/16/can-dreams-became-true/">Can Dreams Became True?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-07-16T13:57:52+02:00" pubdate data-updated="true">Jul 16<span>th</span>, 2008</time>
-        
-         | <a href="/2008/07/16/can-dreams-became-true/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>During the last years of university I spent some time wondering about my
-future job. After the degree I received  lot of offers (fortunately also good
-ones), but none of them matched with my <em>&#8220;dream job&#8221;</em> . There was always
-something missing/different. I was just trying to convince myself that the
-<em>&#8220;perfect job&#8221;</em> can exist only in our dreams when my feed reader pointed me
-<a href="http://www.kdedevelopers.org/node/3484">here</a>.</p>
-
-<p>After reading these lines:</p>
-
-<blockquote><p>&#8221; We are exploring new technologies, creating prototypes of future systems,
-and trying to find and shape some of the features that will be part of
-upcoming SUSE products and the ecosystem around that. It&#8217;s a fascinating job,
-challenging, fun, and always exciting. For somebody like me who loves to
-create new things and enjoys working with an awesome team of innovative people
-this is a dream job.&#8221;</p></blockquote>
-
-<p>I realized the description matched with all my wishes!</p>
-
-<p>I immediately applied for the position and now, after more than a month, I&#8217;m
-looking at a signed proposal.</p>
-
-<p>I&#8217;ve waited a long time before spreading my joy to the rest of the world&#8230;
-but now I just want to say that starting from 1st August I&#8217;ll be part of
-Suse&#8217;s Incubation team! :D</p>
-
-<p>I&#8217;m really happy, excited and honoured for this awesome opportunity.</p>
-
-<p><strong>I wish you&#8217;ll be able to realize your dreams too!</strong><br/>
-Just a funny note&#8230; While Cornelius was writing about the job offer on his
-blog, I was having a dinner with another Novell employee:
-<a href="http://primates.ximian.com/~massi/blog/">Massimiliano Mantione</a>. I was
-listening to his personal story, wishing to find a dream job like his one.
-I have to admit I was a bit jealous :)</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -1079,6 +1141,10 @@ I have to admit I was a bit jealous :)</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2012/11/27/qjson-0-dot-8-1-released/">qjson 0.8.1 released</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/11/21/qjson-0-dot-8-0-released/">QJson 0.8.0 released</a>
       </li>
     
@@ -1092,10 +1158,6 @@ I have to admit I was a bit jealous :)</p>
     
       <li class="post">
         <a href="/2010/07/23/fast-user-switch-plasmoid-improvements/">Fast user switch plasmoid improvements</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2010/07/15/fast-user-switch-plasmoid/">Fast user switch plasmoid</a>
       </li>
     
   </ul>
