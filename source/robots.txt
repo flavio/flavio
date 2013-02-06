@@ -1,3 +1,7 @@
+---
+layout: nil
+---
 User-agent: *
-Disallow:
-Sitemap: http://flavio.castelli.name/sitemap.xml
+Disallow: 
+
+Sitemap: {{ site.url }}/sitemap.xml 
