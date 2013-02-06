@@ -19,7 +19,7 @@ JSON. Today I&#8217;m going to show you the opposite operation: &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://flavio.castelli.name/2009/12/04/qjson-qobject-serialization-deserialization">
+  <link rel="canonical" href="http://flavio.castelli.name/2009/12/04/qjson-qobject-serialization-deserialization/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -31,8 +31,13 @@ JSON. Today I&#8217;m going to show you the opposite operation: &hellip;">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
 <!-- openid delegation -->
-<link rel="openid.server" href="http://www.myopenid.com/server" />
-<link rel="openid.delegate" href="http://flavio.castelli.myopenid.com/" />
+<!-- myopenid -->
+<!--<link rel="openid.server" href="http://www.myopenid.com/server" />-->
+<!--<link rel="openid.delegate" href="http://flavio.castelli.myopenid.com/" />-->
+
+ <!--claimid -->
+<link rel="openid.server" href="http://openid.claimid.com/server" />
+<link rel="openid.delegate" href="http://openid.claimid.com/flaviocastelli" />
 
   
   <script type="text/javascript">
@@ -63,12 +68,14 @@ JSON. Today I&#8217;m going to show you the opposite operation: &hellip;">
   <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
   
 </ul>
+  
 <form action="http://google.com/search" method="get">
   <fieldset role="search">
     <input type="hidden" name="q" value="site:flavio.castelli.name" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
+  
 <ul class="main-navigation">
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
@@ -292,7 +299,7 @@ using the JSON values:</p>
         <a class="basic-alignment left" href="/2009/11/30/qjson-easier-serialization-of-qobject-instances-to-json/" title="Previous Post: QJson: easier serialization of QObject instances to JSON">&laquo; QJson: easier serialization of QObject instances to JSON</a>
       
       
-        <a class="basic-alignment right" href="/2009/12/05/qjson-code-moves-to-gitorious/" title="next Post: QJson code moves to gitorious">QJson code moves to gitorious &raquo;</a>
+        <a class="basic-alignment right" href="/2009/12/05/qjson-code-moves-to-gitorious/" title="Next Post: QJson code moves to gitorious">QJson code moves to gitorious &raquo;</a>
       
     </p>
   </footer>
@@ -336,12 +343,12 @@ using the JSON values:</p>
 </section>
 
 <section>
-  <h1>Github Repos</h1>
+  <h1>GitHub Repos</h1>
   <ul id="gh_repos">
     <li class="loading">Status updating...</li>
   </ul>
   
-  <a href="https://github.com/flavio">@flavio</a> on Github
+  <a href="https://github.com/flavio">@flavio</a> on GitHub
   
   <script type="text/javascript">
     $.domReady(function(){
@@ -377,7 +384,7 @@ using the JSON values:</p>
   </script>
   <script src="/javascripts/twitter.js" type="text/javascript"> </script>
   
-    <a href="http://twitter.com/flavio_castelli" class="twitter-follow-button" data-width="208px" data-show-count="false">Follow @flavio_castelli</a>
+    <a href="http://twitter.com/flavio_castelli" class="twitter-follow-button" data-show-count="false">Follow @flavio_castelli</a>
   
 </section>
 
@@ -392,7 +399,7 @@ using the JSON values:</p>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Flavio Castelli -
+  Copyright &copy; 2013 - Flavio Castelli -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
