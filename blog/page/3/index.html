@@ -9,8 +9,9 @@
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="During the last years of university I spent some time wondering about my
-future job. After the degree I received  lot of offers (fortunately also &hellip;">
+  <meta name="description" content="Also this year I&#8217;ll attend the Linux day (a day dedicated to Gnu/Linux  and
+FLOSS that occurs every year in Italy) organized by my LUG.
+Guess &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -89,6 +90,225 @@ future job. After the degree I received  lot of offers (fortunately also &helli
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2008/10/03/ruby-downloader-for-jamendo/">Ruby Downloader for Jamendo</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-10-03T11:28:28+02:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2008</time>
+        
+         | <a href="/2008/10/03/ruby-downloader-for-jamendo/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Also this year I&#8217;ll attend the Linux day (a day dedicated to Gnu/Linux  and
+FLOSS that occurs every year in Italy) organized by my <a href="http://bglug.it">LUG</a>.
+Guess what I&#8217;ll be talking about&#8230; ;)</p>
+
+<p>While organizing the event somebody proposed to setup a local server with some
+music released under CC license. He suggested to download some albums from
+<a href="http://www.jamendo.com">Jamendo</a> (due to network issues we won&#8217;t be able to
+provide direct access to the website).</p>
+
+<p>Since nobody wanted to download the albums by hand, last night I wrote a small
+ruby program that does the dirty job.</p>
+
+<h3>Requirements:</h3>
+
+<p>Ruby and json gem have to be installed on you machine.</p>
+
+<h3>Usage:</h3>
+
+<p>Help:<a href="http://www.flavio.castelli.name/wp-%0Acontent/uploads/2008/10/jamendo_downloader.rb"></a></p>
+
+<p>   ./jamendo_downloader.rb &#8211;help</p>
+
+<p>Download the top 10 rock albums:</p>
+
+<p>  ./jamendo_downloader.rb -g rock -t 10</p>
+
+<h3>Have fun</h3>
+
+<p>I think there&#8217;s nothing more to say&#8230; enjoy it!</p>
+
+<div><script src='https://gist.github.com/2437530.js?file=jamendo_downloader.rb'></script>
+<noscript><pre><code>#!/usr/bin/ruby
+
+require 'rubygems'
+require 'open-uri'
+require 'json'
+require 'ftools'
+require 'cgi'
+require 'optparse'
+
+@download_dir = nil
+@genre = nil
+@top_num = nil
+# move cursor to beginning of line
+cr = &quot;\r&quot;
+cwd = Dir.getwd
+# ANSI escape code to clear line from cursor to end of line
+# &quot;\e&quot; is an alternative to &quot;\033&quot;
+# cf. http://en.wikipedia.org/wiki/ANSI_escape_code
+clear = &quot;\e[0K&quot;
+
+# reset lines
+@reset = cr + clear
+
+# if possible restore downloaded album_id array
+begin
+    @downloaded = JSON.parse(File.new('downloaded.json').read.gsub(/\t|\r/,''))
+rescue
+    @downloaded = []
+end
+
+# Add colorizing functionalities to String #####################################
+
+class String
+    def red; colorize(self, &quot;\e[1m\e[31m&quot;); end
+    def green; colorize(self, &quot;\e[1m\e[32m&quot;); end
+    def dark_green; colorize(self, &quot;\e[32m&quot;); end
+    def yellow; colorize(self, &quot;\e[1m\e[33m&quot;); end
+    def dark_yellow; colorize(self, &quot;\e[33m&quot;); end
+    def blue; colorize(self, &quot;\e[1m\e[34m&quot;); end
+    def dark_blue; colorize(self, &quot;\e[34m&quot;); end
+    def pur; colorize(self, &quot;\e[1m\e[35m&quot;); end
+    def colorize(text, color_code)  &quot;#{color_code}#{text}\e[0m&quot; end
+end
+
+################################################################################
+
+# Functions ####################################################################
+
+def download(genre,album,tracks_url)
+    artist_name = album['artist_name']
+    album_name  = album['name']
+    album_id    = album['id']
+
+    local_download_path = File.expand_path &quot;#{@download_dir}/#{genre}/#{artist_name}/#{album_name}&quot;
+    File.makedirs local_download_path
+    Dir.chdir local_download_path
+
+    print &quot;\n\n&quot;
+    puts &quot;Going to download of \&quot;#{album_name}\&quot; by \&quot;#{artist_name}\&quot; finished&quot;.dark_blue
+    counter = 1
+    tracks_url.each do |url|
+      print &quot;#{@reset}downloading #{counter}/#{tracks_url.size}&quot;
+      $stdout.flush
+
+      open(CGI.unescape(url.split(/\?/).first.split(/\//).last),&quot;wb&quot;).write(open(url).read)
+      counter +=1
+    end
+
+    @downloaded &lt;&lt; album_id
+    
+    puts &quot;\nDownload finished&quot;.green
+end
+
+################################################################################
+
+# parse command line options ###################################################
+
+opt = OptionParser.new
+opt.banner = &quot;Usage: run_tests [options]&quot;
+
+opt.on( &quot;-h&quot;, &quot;--help&quot;, &quot;Print this message&quot; ) do
+  puts opt
+  exit
+end
+
+opt.on( &quot;-g&quot;, &quot;--genre&quot;, &quot;=GENRE_NAME&quot;, &quot;download music of the specified genre&quot; ) do |val|
+  @genre = val
+end
+
+opt.on( &quot;-d&quot;, &quot;--download_dir&quot;, &quot;=DONWLOAD_DIR&quot;, &quot;place where the music files will be downloaded&quot; ) do |val|
+  @download_dir = val
+end
+
+opt.on( &quot;-t&quot;, &quot;=TOP_NUM&quot;, &quot;download only TOP_NUM album of the specified genre &quot; ) do |val|
+  @top_num = val
+end
+
+begin
+  opt.parse!( ARGV )
+rescue OptionParser::InvalidOption
+  puts $!
+  puts opt
+  exit
+end
+
+if ARGV.size &gt; 0
+  puts &quot;Too many arguments&quot;
+  puts opt
+  exit
+end
+
+if @genre.nil?
+  puts 'You have to specify the genre'
+  puts opt
+  exit 1
+end
+
+if @top_num.nil?
+  puts 'You have to specify the top num param'
+  puts opt
+  exit 1
+end
+
+if @download_dir.nil?
+  @download_dir = &quot;#{Dir.pwd}/downloaded_files&quot;
+  puts 'You have not specified the download dir'
+  puts &quot;Files will be download inside #{@download_dir}&quot;
+end
+
+################################################################################
+
+query_url = &quot;http://api.jamendo.com/get2/id+name+artist_name/album/jsonpretty/?tag_idstr=#{@genre}&amp;n=#{@top_num}&amp;order=rating_desc&quot;
+query_url += &quot;&amp;idexclude=#{@downloaded.join('+')}&quot; unless @downloaded.empty?
+
+JSON.parse(open(query_url).read.gsub(/\t|\r/,'')).each do |album|
+  album_download_urls = &quot;http://www.jamendo.com/get/track/id/album/audio/plain/#{album['id']}/&quot;
+  
+  tracks_url = []
+  open(album_download_urls).each do |track_url|
+    tracks_url &lt;&lt; track_url.chomp
+  end
+
+  download(@genre, album, tracks_url)
+end
+
+Dir.chdir cwd
+open('downloaded.json','w') { |f| f &lt;&lt; @downloaded.to_json }
+</code></pre></noscript></div>
+
+
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -585,112 +805,6 @@ KDE 4.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2007/09/04/howto_use_git_with_svn/">Howto Use Git and Svn Together</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-09-04T12:22:15+02:00" pubdate data-updated="true">Sep 4<span>th</span>, 2007</time>
-        
-         | <a href="/2007/09/04/howto_use_git_with_svn/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In these days I&#8217;ve heard lot of rumors around <a href="http://git.or.cz/">Git</a>. After
-reading some manual/tutorial/guide I discovered that it can be really useful,
-especially if you spend lot of time coding off-line (that&#8217;s my situation).</p>
-
-<p>This is a really small howto that describes how to work on a project versioned
-with svn (maybe taken from KDE repository ;) ) using git.</p>
-
-<h3>What&#8217;re the advantages?</h3>
-
-<p>Since Git is a distributed revision control system (while svn is a centralized
-one) you can perform commits, brances, merges,&#8230; on your local working dir
-without being connected to internet.</p>
-
-<p>Next time you&#8217;ll be online, you will be able to <em>&#8220;push&#8221;</em> your changes back to
-the central svn server.</p>
-
-<h3>Steps to follow:</h3>
-
-<p>You&#8217;ve to:</p>
-
-<ol>
-<li>install <em>git</em> and <em>git-svn</em></li>
-<li>create the working dir: <code>mkdir strigi</code></li>
-<li>init your git working dir: <code>cd strigi &amp;&amp; git-svn init https://svn.kde.org/home/kde/trunk/kdesupport/strigi</code> <em>git-svn init</em> command is followed by the address of the svn repository (in this case we point to strigi&#8217;s repository)</li>
-<li>Find a commit regarding the project (you can get it from <a href="http://cia.vc/">cia version control</a>). <strong>Warning:</strong> the command <em>git-log</em> will show project&#8217;s history starting from this revision.</li>
-<li>Perform the command <code>git-svn fetch -rREVISION</code> Where <em>REVISION</em> is the number obtained before.</li>
-<li>Update your working dir: <code>git-svn rebase</code>
-Now you&#8217;ll be able to work on your project using git as revision control
-system.</li>
-</ol>
-
-
-<p>To <strong>keep update</strong> your working copy just perform:</p>
-
-<p><code>git-svn rebase</code></p>
-
-<p>You can <strong>commit your changes </strong> to the svn server using the command:</p>
-
-<p><code>git-svn dcommit</code></p>
-
-<p>In this way each commit made with git will be <em>&#8220;transformed&#8221;</em> into a svn one.</p>
-
-<h3>Solve git-svn rebase problems</h3>
-
-<p>While adding new cool features to your program, you may experiment some
-problem when synchronizing with the main development tree. In fact you have to
-commit all local modifications (using the <code>git-commit</code> command) before
-invoking <code>git-svn rebase</code>.</p>
-
-<p>Sometimes it isn&#8217;t reasonable since your changes are not yet ready to be
-committed (you haven&#8217;t finished/tested/improved your work). But don&#8217;t worry,
-git has a native solution also for this problem, just follow these steps:</p>
-
-<ol>
-<li>put aside your changes using the command: <code>git-stash</code></li>
-<li>update your working copy using: <code>git-svn rebase</code> as usual</li>
-<li>take back your changes typing: <code>git-stash apply</code></li>
-<li>clear <em>&#8220;the stash&#8221;</em> typing: <code>git-stash clear</code>
-After the first step all your uncommitted changes will disappear from the
-working copy, so you&#8217;ll be able to perform the rebase command without
-problems.</li>
-</ol>
-
-
-<p>For further informations read <code>git-stash</code> man page.</p>
-
-<p>That&#8217;s all.</p>
-
-<p>A special mention goes to Thiago Macieira for his help.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -708,6 +822,10 @@ problems.</li>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: a container full of Geekos</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/11/27/qjson-0-dot-8-1-released/">qjson 0.8.1 released</a>
       </li>
     
@@ -721,10 +839,6 @@ problems.</li>
     
       <li class="post">
         <a href="/2010/08/11/jump/">Jump: a bookmarking system for the bash shell</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2010/07/23/fast-user-switch-plasmoid-improvements/">Fast user switch plasmoid improvements</a>
       </li>
     
   </ul>

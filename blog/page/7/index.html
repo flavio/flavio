@@ -9,9 +9,8 @@
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="These slides are about linux and modern console The article focuses on the installation of linux over some modern console
-like: Sega Dreamcast™
-Sony &hellip;">
+  <meta name="description" content="In this really small guide you&#8217;ll discover howto enable mouse button emulation
+on a iBook G4 running linux Target: I just wanted to enable &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,6 +89,70 @@ Sony &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2006/05/05/ibook-mouse-emulation/">iBook Mouse Emulation</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-05-05T12:07:21+02:00" pubdate data-updated="true">May 5<span>th</span>, 2006</time>
+        
+         | <a href="/2006/05/05/ibook-mouse-emulation/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In this really small guide you&#8217;ll discover howto enable mouse button emulation
+on a iBook G4 running linux</p>
+
+<h3>Target:</h3>
+
+<p>I just wanted to enable mouse button emulation on my iBook using the following
+shortcuts:</p>
+
+<pre><code>fn + ctrl = middle mouse button
+fn + alt = left mouse button
+</code></pre>
+
+<h3>Requisites:</h3>
+
+<p>You&#8217;ve to enable <code>CONFIG_MAC_EMUMOUSEBTN</code> in your kernel.</p>
+
+<h3>Commands:</h3>
+
+<p>In order to enable this shortcut at every boot add the following lines to your
+<code>/etc/sysctl.conf</code>:</p>
+
+<pre><code>dev.mac_hid.mouse_button_emulation = 1
+dev.mac_hid.mouse_button2_keycode = 97
+dev.mac_hid.mouse_button3_keycode = 100
+</code></pre>
+
+<p>Simple, isn&#8217;t it?</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -901,6 +964,10 @@ echo &quot;See you... ;-D&quot;</code></pre></noscript></div>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: a container full of Geekos</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/11/27/qjson-0-dot-8-1-released/">qjson 0.8.1 released</a>
       </li>
     
@@ -914,10 +981,6 @@ echo &quot;See you... ;-D&quot;</code></pre></noscript></div>
     
       <li class="post">
         <a href="/2010/08/11/jump/">Jump: a bookmarking system for the bash shell</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2010/07/23/fast-user-switch-plasmoid-improvements/">Fast user switch plasmoid improvements</a>
       </li>
     
   </ul>

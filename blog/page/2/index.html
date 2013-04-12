@@ -9,8 +9,8 @@
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="I have just committed into trunk a couple of changes that make easier to
-serialize a QObject instance to JSON. This solution relies on the awesome Qt &hellip;">
+  <meta name="description" content="Some days ago I introduced the possibility to serialize a QObject instance to
+JSON. Today I&#8217;m going to show you the opposite operation: &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -89,6 +89,177 @@ serialize a QObject instance to JSON. This solution relies on the awesome Qt &he
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/12/04/qjson-qobject-serialization-deserialization/">QJson: From QObject to JSON and Vice-versa</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-04T01:07:48+01:00" pubdate data-updated="true">Dec 4<span>th</span>, 2009</time>
+        
+         | <a href="/2009/12/04/qjson-qobject-serialization-deserialization/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Some days ago I introduced the possibility to serialize a QObject instance to
+JSON. Today I&#8217;m going to show you the opposite operation: initializing a
+QObject using a JSON object.</p>
+
+<p>I refactored a bit my latest changes: I created a new class called
+QObjectHelper that provides the methods required to convert a QObject instance
+to a QVariantMap and vice-versa.</p>
+
+<p>This class can be used in conjunction with the Serializer and Parser classes
+to serialize and deserialize QObject instances to and from JSON.</p>
+
+<p>Let me show a quick example, suppose the declaration of Person class looks
+like this:</p>
+
+<figure class='code'><figcaption><span>[class definition] [] </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">class</span> <span class="nc">Person</span> <span class="o">:</span> <span class="k">public</span> <span class="n">QObject</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">Q_OBJECT</span>
+</span><span class='line'>  <span class="n">Q_PROPERTY</span><span class="p">(</span><span class="n">QString</span> <span class="n">name</span> <span class="n">READ</span> <span class="n">name</span> <span class="n">WRITE</span> <span class="n">setName</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">Q_PROPERTY</span><span class="p">(</span><span class="kt">int</span> <span class="n">phoneNumber</span> <span class="n">READ</span> <span class="n">phoneNumber</span> <span class="n">WRITE</span> <span class="n">setPhoneNumber</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">Q_PROPERTY</span><span class="p">(</span><span class="n">Gender</span> <span class="n">gender</span> <span class="n">READ</span> <span class="n">gender</span> <span class="n">WRITE</span> <span class="n">setGender</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">Q_PROPERTY</span><span class="p">(</span><span class="n">QDate</span> <span class="n">dob</span> <span class="n">READ</span> <span class="n">dob</span> <span class="n">WRITE</span> <span class="n">setDob</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">Q_ENUMS</span><span class="p">(</span><span class="n">Gender</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">public</span><span class="o">:</span>
+</span><span class='line'>    <span class="n">Person</span><span class="p">(</span><span class="n">QObject</span><span class="o">*</span> <span class="n">parent</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+</span><span class='line'>    <span class="o">~</span><span class="n">Person</span><span class="p">();</span>
+</span><span class='line'>    <span class="n">QString</span> <span class="n">name</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span><span class='line'>    <span class="kt">void</span> <span class="n">setName</span><span class="p">(</span><span class="k">const</span> <span class="n">QString</span><span class="o">&amp;</span> <span class="n">name</span><span class="p">);</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">phoneNumber</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span><span class='line'>    <span class="kt">void</span> <span class="n">setPhoneNumber</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span>  <span class="n">phoneNumber</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">enum</span> <span class="n">Gender</span> <span class="p">{</span><span class="n">Male</span><span class="p">,</span> <span class="n">Female</span><span class="p">};</span>
+</span><span class='line'>    <span class="kt">void</span> <span class="n">setGender</span><span class="p">(</span><span class="n">Gender</span> <span class="n">gender</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">Gender</span> <span class="n">gender</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">QDate</span> <span class="n">dob</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span><span class='line'>    <span class="kt">void</span> <span class="n">setDob</span><span class="p">(</span><span class="k">const</span> <span class="n">QDate</span><span class="o">&amp;</span> <span class="n">dob</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">private</span><span class="o">:</span>
+</span><span class='line'>    <span class="n">QString</span> <span class="n">m_name</span><span class="p">;</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">m_phoneNumber</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">Gender</span> <span class="n">m_gender</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">QDate</span> <span class="n">m_dob</span><span class="p">;</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>From QObject to JSON</h3>
+
+<p>The following code will serialize an instance of Person to JSON :</p>
+
+<figure class='code'><figcaption><span>[From QObject to JSON] [] </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="n">Person</span> <span class="n">person</span><span class="p">;</span>
+</span><span class='line'><span class="n">person</span><span class="p">.</span><span class="n">setName</span><span class="p">(</span><span class="s">&quot;Flavio&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="n">person</span><span class="p">.</span><span class="n">setPhoneNumber</span><span class="p">(</span><span class="mi">123456</span><span class="p">);</span>
+</span><span class='line'><span class="n">person</span><span class="p">.</span><span class="n">setGender</span><span class="p">(</span><span class="n">Person</span><span class="o">::</span><span class="n">Male</span><span class="p">);</span>
+</span><span class='line'><span class="n">person</span><span class="p">.</span><span class="n">setDob</span><span class="p">(</span><span class="n">QDate</span><span class="p">(</span><span class="mi">1982</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">));</span>
+</span><span class='line'><span class="n">QVariantMap</span> <span class="n">variant</span> <span class="o">=</span> <span class="n">QObjectHelper</span><span class="o">::</span><span class="n">qobject2qvariant</span><span class="p">(</span><span class="o">&amp;</span><span class="n">person</span><span class="p">;);</span>
+</span><span class='line'><span class="n">Serializer</span> <span class="n">serializer</span><span class="p">;</span>
+</span><span class='line'><span class="n">qDebug</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">serializer</span><span class="p">.</span><span class="n">serialize</span><span class="p">(</span> <span class="n">variant</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The generated output will be:</p>
+
+<figure class='code'><figcaption><span>[JSON data] [] </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span> <span class="nt">&quot;dob&quot;</span> <span class="p">:</span> <span class="s2">&quot;1982-07-12&quot;</span><span class="p">,</span> <span class="nt">&quot;gender&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;Flavio&quot;</span><span class="p">,</span> <span class="nt">&quot;phoneNumber&quot;</span> <span class="p">:</span> <span class="mi">123456</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>From JSON to QObject</h3>
+
+<p>Suppose you have the following JSON data stored into a QString:</p>
+
+<figure class='code'><figcaption><span>[JSON data] [] </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span> <span class="nt">&quot;dob&quot;</span> <span class="p">:</span> <span class="s2">&quot;1982-07-12&quot;</span><span class="p">,</span> <span class="nt">&quot;gender&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;Flavio&quot;</span><span class="p">,</span> <span class="nt">&quot;phoneNumber&quot;</span> <span class="p">:</span> <span class="mi">123456</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The following code will initialize an already allocated instance of Person
+using the JSON values:</p>
+
+<figure class='code'><figcaption><span>[From JSON to QObject] [] </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="n">Parser</span> <span class="n">parser</span><span class="p">;</span>
+</span><span class='line'><span class="n">QVariant</span> <span class="n">variant</span> <span class="o">=</span> <span class="n">parser</span><span class="p">.</span><span class="n">parse</span><span class="p">(</span><span class="n">json</span><span class="p">);</span>
+</span><span class='line'><span class="n">Person</span> <span class="n">person</span><span class="p">;</span>
+</span><span class='line'><span class="n">QObjectHelper</span><span class="o">::</span><span class="n">qvariant2qobject</span><span class="p">(</span><span class="n">variant</span><span class="p">.</span><span class="n">toMap</span><span class="p">(),</span> <span class="o">&amp;</span><span class="n">person</span><span class="p">;);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>A new release</h3>
+
+<p>These changes have been included inside the new release of QJson: 0.7.0.</p>
+
+<p>Packages for openSUSE are building right now.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -912,225 +1083,6 @@ it using a svn client:</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2008/10/03/ruby-downloader-for-jamendo/">Ruby Downloader for Jamendo</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-10-03T11:28:28+02:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2008</time>
-        
-         | <a href="/2008/10/03/ruby-downloader-for-jamendo/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Also this year I&#8217;ll attend the Linux day (a day dedicated to Gnu/Linux  and
-FLOSS that occurs every year in Italy) organized by my <a href="http://bglug.it">LUG</a>.
-Guess what I&#8217;ll be talking about&#8230; ;)</p>
-
-<p>While organizing the event somebody proposed to setup a local server with some
-music released under CC license. He suggested to download some albums from
-<a href="http://www.jamendo.com">Jamendo</a> (due to network issues we won&#8217;t be able to
-provide direct access to the website).</p>
-
-<p>Since nobody wanted to download the albums by hand, last night I wrote a small
-ruby program that does the dirty job.</p>
-
-<h3>Requirements:</h3>
-
-<p>Ruby and json gem have to be installed on you machine.</p>
-
-<h3>Usage:</h3>
-
-<p>Help:<a href="http://www.flavio.castelli.name/wp-%0Acontent/uploads/2008/10/jamendo_downloader.rb"></a></p>
-
-<p>   ./jamendo_downloader.rb &#8211;help</p>
-
-<p>Download the top 10 rock albums:</p>
-
-<p>  ./jamendo_downloader.rb -g rock -t 10</p>
-
-<h3>Have fun</h3>
-
-<p>I think there&#8217;s nothing more to say&#8230; enjoy it!</p>
-
-<div><script src='https://gist.github.com/2437530.js?file=jamendo_downloader.rb'></script>
-<noscript><pre><code>#!/usr/bin/ruby
-
-require 'rubygems'
-require 'open-uri'
-require 'json'
-require 'ftools'
-require 'cgi'
-require 'optparse'
-
-@download_dir = nil
-@genre = nil
-@top_num = nil
-# move cursor to beginning of line
-cr = &quot;\r&quot;
-cwd = Dir.getwd
-# ANSI escape code to clear line from cursor to end of line
-# &quot;\e&quot; is an alternative to &quot;\033&quot;
-# cf. http://en.wikipedia.org/wiki/ANSI_escape_code
-clear = &quot;\e[0K&quot;
-
-# reset lines
-@reset = cr + clear
-
-# if possible restore downloaded album_id array
-begin
-    @downloaded = JSON.parse(File.new('downloaded.json').read.gsub(/\t|\r/,''))
-rescue
-    @downloaded = []
-end
-
-# Add colorizing functionalities to String #####################################
-
-class String
-    def red; colorize(self, &quot;\e[1m\e[31m&quot;); end
-    def green; colorize(self, &quot;\e[1m\e[32m&quot;); end
-    def dark_green; colorize(self, &quot;\e[32m&quot;); end
-    def yellow; colorize(self, &quot;\e[1m\e[33m&quot;); end
-    def dark_yellow; colorize(self, &quot;\e[33m&quot;); end
-    def blue; colorize(self, &quot;\e[1m\e[34m&quot;); end
-    def dark_blue; colorize(self, &quot;\e[34m&quot;); end
-    def pur; colorize(self, &quot;\e[1m\e[35m&quot;); end
-    def colorize(text, color_code)  &quot;#{color_code}#{text}\e[0m&quot; end
-end
-
-################################################################################
-
-# Functions ####################################################################
-
-def download(genre,album,tracks_url)
-    artist_name = album['artist_name']
-    album_name  = album['name']
-    album_id    = album['id']
-
-    local_download_path = File.expand_path &quot;#{@download_dir}/#{genre}/#{artist_name}/#{album_name}&quot;
-    File.makedirs local_download_path
-    Dir.chdir local_download_path
-
-    print &quot;\n\n&quot;
-    puts &quot;Going to download of \&quot;#{album_name}\&quot; by \&quot;#{artist_name}\&quot; finished&quot;.dark_blue
-    counter = 1
-    tracks_url.each do |url|
-      print &quot;#{@reset}downloading #{counter}/#{tracks_url.size}&quot;
-      $stdout.flush
-
-      open(CGI.unescape(url.split(/\?/).first.split(/\//).last),&quot;wb&quot;).write(open(url).read)
-      counter +=1
-    end
-
-    @downloaded &lt;&lt; album_id
-    
-    puts &quot;\nDownload finished&quot;.green
-end
-
-################################################################################
-
-# parse command line options ###################################################
-
-opt = OptionParser.new
-opt.banner = &quot;Usage: run_tests [options]&quot;
-
-opt.on( &quot;-h&quot;, &quot;--help&quot;, &quot;Print this message&quot; ) do
-  puts opt
-  exit
-end
-
-opt.on( &quot;-g&quot;, &quot;--genre&quot;, &quot;=GENRE_NAME&quot;, &quot;download music of the specified genre&quot; ) do |val|
-  @genre = val
-end
-
-opt.on( &quot;-d&quot;, &quot;--download_dir&quot;, &quot;=DONWLOAD_DIR&quot;, &quot;place where the music files will be downloaded&quot; ) do |val|
-  @download_dir = val
-end
-
-opt.on( &quot;-t&quot;, &quot;=TOP_NUM&quot;, &quot;download only TOP_NUM album of the specified genre &quot; ) do |val|
-  @top_num = val
-end
-
-begin
-  opt.parse!( ARGV )
-rescue OptionParser::InvalidOption
-  puts $!
-  puts opt
-  exit
-end
-
-if ARGV.size &gt; 0
-  puts &quot;Too many arguments&quot;
-  puts opt
-  exit
-end
-
-if @genre.nil?
-  puts 'You have to specify the genre'
-  puts opt
-  exit 1
-end
-
-if @top_num.nil?
-  puts 'You have to specify the top num param'
-  puts opt
-  exit 1
-end
-
-if @download_dir.nil?
-  @download_dir = &quot;#{Dir.pwd}/downloaded_files&quot;
-  puts 'You have not specified the download dir'
-  puts &quot;Files will be download inside #{@download_dir}&quot;
-end
-
-################################################################################
-
-query_url = &quot;http://api.jamendo.com/get2/id+name+artist_name/album/jsonpretty/?tag_idstr=#{@genre}&amp;n=#{@top_num}&amp;order=rating_desc&quot;
-query_url += &quot;&amp;idexclude=#{@downloaded.join('+')}&quot; unless @downloaded.empty?
-
-JSON.parse(open(query_url).read.gsub(/\t|\r/,'')).each do |album|
-  album_download_urls = &quot;http://www.jamendo.com/get/track/id/album/audio/plain/#{album['id']}/&quot;
-  
-  tracks_url = []
-  open(album_download_urls).each do |track_url|
-    tracks_url &lt;&lt; track_url.chomp
-  end
-
-  download(@genre, album, tracks_url)
-end
-
-Dir.chdir cwd
-open('downloaded.json','w') { |f| f &lt;&lt; @downloaded.to_json }
-</code></pre></noscript></div>
-
-
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -1148,6 +1100,10 @@ open('downloaded.json','w') { |f| f &lt;&lt; @downloaded.to_json }
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: a container full of Geekos</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/11/27/qjson-0-dot-8-1-released/">qjson 0.8.1 released</a>
       </li>
     
@@ -1161,10 +1117,6 @@ open('downloaded.json','w') { |f| f &lt;&lt; @downloaded.to_json }
     
       <li class="post">
         <a href="/2010/08/11/jump/">Jump: a bookmarking system for the bash shell</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2010/07/23/fast-user-switch-plasmoid-improvements/">Fast user switch plasmoid improvements</a>
       </li>
     
   </ul>

@@ -9,7 +9,9 @@
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="Just a quick information, QJson 0.8.1 has been released. This release ensure API and ABI compatibility with version 0.7.1. The previous 0.8.0 release &hellip;">
+  <meta name="description" content="SUSE&#8217;s Hackweek #9 is over. It has
+been an awesome week during which I worked hard to make docker
+a first class citizen on openSUSE. I also &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +90,289 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: A Container Full of Geekos</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-12T14:45:00+02:00" pubdate data-updated="true">Apr 12<span>th</span>, 2013</time>
+        
+         | <a href="/2013/04/12/docker-and-opensuse/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://hackweek.suse.com/">SUSE&#8217;s Hackweek #9</a> is over. It has
+been an awesome week during which I worked hard to make <a href="http://www.docker.io">docker</a>
+a first class citizen on <a href="http://www.opensuse.org/">openSUSE</a>. I also spent
+some time working on an openSUSE container that could be used by docker&#8217;s users.</p>
+
+<p>The project has been tracked on <a href="https://github.com/SUSE/hackweek/wiki/docker.io-and-openSUSE">this</a>
+page of hackweek&#8217;s wiki, this is a detailed report of what I achieved.</p>
+
+<h2>Installing docker on openSUSE 12.3</h2>
+
+<p>Docker has been packaged inside of <a href="https://build.opensuse.org/project/show?project=home%3Aflavio_castelli%3Adocker">this</a>
+OBS project.</p>
+
+<p>So installing it requires just two commands:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo zypper ar http://download.opensuse.org/repositories/home:/flavio_castelli:/docker/openSUSE_12.3 docker
+</span><span class='line'>sudo zypper in docker</span></code></pre></td></tr></table></div></figure>
+
+
+<p>There&#8217;s also a <a href="http://software.opensuse.org/ymp/home:flavio_castelli:docker/openSUSE_12.3/docker.ymp?base=openSUSE%3A12.3&amp;query=docker">1 Click Install</a>
+for the lazy ones :)</p>
+
+<p>Zypper will install docker and its dependencies which are:</p>
+
+<ul>
+<li><code>lxc</code>: docker&#8217;s &#8220;magic&#8221; is built on top of <a href="http://lxc.sourceforge.net/">LXC</a>.</li>
+<li><code>bridge-utils</code>: is used to setup the bridge interface used by docker&#8217;s
+containers.</li>
+<li><code>dnsmasq</code>: is used to start the dhcp server used by the containers.</li>
+<li><code>iptables</code>: is used to get containers&#8217; networking work.</li>
+<li><code>bsdtar</code>: is used by docker to compress/extract the containers.</li>
+<li><a href="http://aufs.sourceforge.net/">aufs3</a> kernel module: is used by docker to
+track the changes made to the containers.</li>
+</ul>
+
+
+<p>The <code>aufs3</code> kernel module is <strong>not</strong> part of the official kernel and is <strong>not</strong>
+available on the official repositories. Hence adding docker will trigger the
+<strong>installation of a new kernel package</strong> on your machine.</p>
+
+<p>Both the kernel and the aufs3 packages are going to be installed from the
+<em>home:flavio_castelli:docker</em> repository but they
+are in fact links to the packages created by <a href="https://build.opensuse.org/home?user=-miska-">Michal Hrusecky</a>
+inside of his <a href="https://build.opensuse.org/package/show?package=aufs3&amp;project=home%3A-miska-%3Aaufs">aufs project</a>
+on OBS.</p>
+
+<p><strong>Note well:</strong> docker works only on 64bit hosts. That&#8217;s why there are no 32bit
+packages.</p>
+
+<h2>Docker appliance</h2>
+
+<p>If you don&#8217;t want to install docker on your system or you are just curious and
+want to jump straight into action there&#8217;s a <a href="http://susestudio.com">SUSE Studio</a>
+appliance ready for you. You can find it <a href="http://susestudio.com/a/CZ0T0D/docker">here</a>.</p>
+
+<p>If you are not familiar with SUSE Gallery let me tell you two things about it:</p>
+
+<ul>
+<li>you can download the appliance on your computer and play with it or&#8230;</li>
+<li>you can clone the appliance on SUSE Studio and customize it even further or&#8230;</li>
+<li>you can test the appliance from your browser using SUSE Studio&#8217;s Testdrive
+feature (no SUSE Studio account required!).</li>
+</ul>
+
+
+<p>The latter option is really cool, because it will allow you to play with docker
+immediately. There&#8217;s just one thing to keep in mind about Testdrive: outgoing
+connections are disabled, so you won&#8217;t be able to install new stuff (or download
+new docker images). Fortunately this appliance comes with the busybox container
+bundled, so you will be able to play a bit with docker.</p>
+
+<h2>Running docker</h2>
+
+<p>The docker daemon must be running in order to use your containers. The openSUSE
+package comes with a init script which can be used to manage it.</p>
+
+<p>The script is <code>/etc/init.d/docker</code>, but there&#8217;s also the usual symbolic link
+called <code>/usr/sbin/rcdocker</code>.</p>
+
+<p>To start the docker daemon just type:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo /usr/sbin/rcdocker start</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This will trigger the following actions:</p>
+
+<ol>
+<li>The <code>docker0</code> bridge interface is created. This interface is bridged
+with <code>eth0</code>.</li>
+<li>A <code>dnsmasq</code> instance listening on the <code>docker0</code> interface is started.</li>
+<li>IP forwarding and IP masquerading are enabled.</li>
+<li>Docker daemon is started.</li>
+</ol>
+
+
+<p>All the containers will get an IP on the <code>10.0.3.0/24</code> network.</p>
+
+<h2>Playing with docker</h2>
+
+<p>Now is time to play with docker.</p>
+
+<p>First of all you need to download an image: <code>docker pull base</code></p>
+
+<p>This will fetch the official Ubuntu-based image created by the
+<a href="http://www.dotcloud.com/">dotCloud</a> guys.</p>
+
+<p>You will be able to run the Ubuntu container on your openSUSE host without any
+problem, that&#8217;s LXC&#8217;s &#8220;magic&#8221; ;)</p>
+
+<p>If you want to use only &#8220;green&#8221; products just pull the openSUSE 12.3 container
+I created for you:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>docker pull flavio/openSUSE_12.3</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Please <strong>experiment a lot with this image</strong> and <strong>give me your feedback</strong>.
+The dotCloud guys proposed me to promote it to top-level base image, but I want
+to be sure everything works fine before doing that.</p>
+
+<p>Now you can go through the <a href="http://docs.docker.io/en/latest/examples/running_examples/">examples</a>
+reported on the official
+<a href="http://docs.docker.io/en/latest/concepts/containers/">docker&#8217;s documentation</a>.</p>
+
+<h2>Create your own openSUSE images with SUSE Studio</h2>
+
+<p>I think it would be extremely cool to create docker&#8217;s images using
+<a href="http://susestudio.com">SUSE Studio</a>.
+As you might know I&#8217;m part of the SUSE Studio team, so I looked a bit into how
+to add support to this new format.</p>
+
+<p><strong>&#8211; personal opinion &#8211;</strong></p>
+
+<p>There are some technical challenges to solve, but I don&#8217;t think it would be hard
+to address them.</p>
+
+<p><strong>&#8211; personal opinion &#8211;</strong></p>
+
+<p>If you are interested in adding the docker format to SUSE Studio please create
+a new feature request on <a href="https://features.opensuse.org/">openFATE</a> and vote it!</p>
+
+<p>In the meantime there&#8217;s another way to create your custom docker images, just
+keep reading.</p>
+
+<h2>Create your own openSUSE images with KIWI</h2>
+
+<p><a href="http://opensuse.github.io/kiwi">KIWI</a> is the amazing tool at the heart of
+SUSE Studio and can be used to create LXC containers.</p>
+
+<p>As said earlier docker runs LXC containers, so we are going to follow
+<a href="http://doc.opensuse.org/projects/kiwi/doc/#sec.lxc.building">these</a> instructions.</p>
+
+<p>First of all install KIWI from the <a href="https://build.opensuse.org/project/show?project=Virtualization%3AAppliances">Virtualization:Appliances</a> project on OBS:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo zypper ar virtualization:appliances http://download.opensuse.org/repositories/Virtualization:/Appliances/openSUSE_12.3
+</span><span class='line'>sudo zypper in kiwi kiwi-doc</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We are going to use the configuration files of a simple LXC container shipped
+the <code>kiwi-doc</code> package:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cp /usr/share/doc/packages/kiwi/examples/suse-12.3/suse-lxc-guest ~/openSUSE_12_3_docker</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The <code>openSUSE_12_3_docker</code> directory contains two configuration files used by
+KIWI (<code>config.sh</code> and <code>config.xml</code>) plus the <code>root</code> directory.</p>
+
+<p>The contents of this directory are going to be added to the resulting container.
+It&#8217;s really important to create the <code>/etc/resolv.conf</code> file inside of the
+final image since docker is going to mount the <code>resol.conf</code> file of the host
+system inside of the running guest. If the file is not found docker won&#8217;t be able
+to start our container.</p>
+
+<p>An empty file is enough:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>touch ~/openSUSE_12_3_docker/root/etc/resolv.conf</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now we can create the rootfs of the container using KIWI:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo kiwi --prepare ~/openSUSE_12_3_docker --root /tmp/openSUSE_12_3_docker_rootfs</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We can skip the next step reported on KIWI&#8217;s documentation, that&#8217;s not needed
+with docker because it will produce an invalid container. Just execute the
+following command:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo tar cvjpf openSUSE_12_3_docker.tar.bz2 -C /tmp/openSUSE_12_3_docker_rootfs/ .</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This will produce a tarball containing the rootfs of your container.</p>
+
+<p>Now you can import it inside of docker, there are two ways to achieve that:</p>
+
+<ul>
+<li>from a web server.</li>
+<li>from a local file.</li>
+</ul>
+
+
+<p>Importing the image from a web server is really convenient if you ran KIWI
+on a different machine.</p>
+
+<p>Just move the tarball to a directory which is exposed by the web server. If you don&#8217;t
+have one installed just move to the directory containing the tarball and type the following
+command:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>python -m SimpleHTTPServer 8080</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This will start a simple http server listening on port 8080 of your machine.</p>
+
+<p>On the machine running docker just type:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>docker import http://mywebserver/openSUSE_12_3_docker.tar.bz2 my_openSUSE_image latest</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If the tarball is already on the machine running docker you just need to type:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cat ~/openSUSE_12_3_docker.tar.bz2 | docker import - my_openSUSE_image latest</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Docker will download (just in the 1st case) and import the tarball. The resulting
+image will be named <em>&#8216;my_openSUSE_image&#8217;</em> and it will have a tag named <em>&#8216;latest&#8217;</em>.</p>
+
+<p>The name of the tag is really important since docker tries to run the
+image with the <em>&#8216;latest&#8217;</em> tag unless you explicitly specify a different value.</p>
+
+<h2>Conclusion</h2>
+
+<p>Hackweek #9 has been both productive and fun for me. I hope you will have fun
+too using docker on openSUSE.</p>
+
+<p>As usual, feedback is welcome.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -867,177 +1152,6 @@ page</a>.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/12/04/qjson-qobject-serialization-deserialization/">QJson: From QObject to JSON and Vice-versa</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-04T01:07:48+01:00" pubdate data-updated="true">Dec 4<span>th</span>, 2009</time>
-        
-         | <a href="/2009/12/04/qjson-qobject-serialization-deserialization/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Some days ago I introduced the possibility to serialize a QObject instance to
-JSON. Today I&#8217;m going to show you the opposite operation: initializing a
-QObject using a JSON object.</p>
-
-<p>I refactored a bit my latest changes: I created a new class called
-QObjectHelper that provides the methods required to convert a QObject instance
-to a QVariantMap and vice-versa.</p>
-
-<p>This class can be used in conjunction with the Serializer and Parser classes
-to serialize and deserialize QObject instances to and from JSON.</p>
-
-<p>Let me show a quick example, suppose the declaration of Person class looks
-like this:</p>
-
-<figure class='code'><figcaption><span>[class definition] [] </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">class</span> <span class="nc">Person</span> <span class="o">:</span> <span class="k">public</span> <span class="n">QObject</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="n">Q_OBJECT</span>
-</span><span class='line'>  <span class="n">Q_PROPERTY</span><span class="p">(</span><span class="n">QString</span> <span class="n">name</span> <span class="n">READ</span> <span class="n">name</span> <span class="n">WRITE</span> <span class="n">setName</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">Q_PROPERTY</span><span class="p">(</span><span class="kt">int</span> <span class="n">phoneNumber</span> <span class="n">READ</span> <span class="n">phoneNumber</span> <span class="n">WRITE</span> <span class="n">setPhoneNumber</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">Q_PROPERTY</span><span class="p">(</span><span class="n">Gender</span> <span class="n">gender</span> <span class="n">READ</span> <span class="n">gender</span> <span class="n">WRITE</span> <span class="n">setGender</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">Q_PROPERTY</span><span class="p">(</span><span class="n">QDate</span> <span class="n">dob</span> <span class="n">READ</span> <span class="n">dob</span> <span class="n">WRITE</span> <span class="n">setDob</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">Q_ENUMS</span><span class="p">(</span><span class="n">Gender</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">public</span><span class="o">:</span>
-</span><span class='line'>    <span class="n">Person</span><span class="p">(</span><span class="n">QObject</span><span class="o">*</span> <span class="n">parent</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
-</span><span class='line'>    <span class="o">~</span><span class="n">Person</span><span class="p">();</span>
-</span><span class='line'>    <span class="n">QString</span> <span class="n">name</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
-</span><span class='line'>    <span class="kt">void</span> <span class="n">setName</span><span class="p">(</span><span class="k">const</span> <span class="n">QString</span><span class="o">&amp;</span> <span class="n">name</span><span class="p">);</span>
-</span><span class='line'>    <span class="kt">int</span> <span class="n">phoneNumber</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
-</span><span class='line'>    <span class="kt">void</span> <span class="n">setPhoneNumber</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span>  <span class="n">phoneNumber</span><span class="p">);</span>
-</span><span class='line'>    <span class="k">enum</span> <span class="n">Gender</span> <span class="p">{</span><span class="n">Male</span><span class="p">,</span> <span class="n">Female</span><span class="p">};</span>
-</span><span class='line'>    <span class="kt">void</span> <span class="n">setGender</span><span class="p">(</span><span class="n">Gender</span> <span class="n">gender</span><span class="p">);</span>
-</span><span class='line'>    <span class="n">Gender</span> <span class="n">gender</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
-</span><span class='line'>    <span class="n">QDate</span> <span class="n">dob</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
-</span><span class='line'>    <span class="kt">void</span> <span class="n">setDob</span><span class="p">(</span><span class="k">const</span> <span class="n">QDate</span><span class="o">&amp;</span> <span class="n">dob</span><span class="p">);</span>
-</span><span class='line'>  <span class="k">private</span><span class="o">:</span>
-</span><span class='line'>    <span class="n">QString</span> <span class="n">m_name</span><span class="p">;</span>
-</span><span class='line'>    <span class="kt">int</span> <span class="n">m_phoneNumber</span><span class="p">;</span>
-</span><span class='line'>    <span class="n">Gender</span> <span class="n">m_gender</span><span class="p">;</span>
-</span><span class='line'>    <span class="n">QDate</span> <span class="n">m_dob</span><span class="p">;</span>
-</span><span class='line'><span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>From QObject to JSON</h3>
-
-<p>The following code will serialize an instance of Person to JSON :</p>
-
-<figure class='code'><figcaption><span>[From QObject to JSON] [] </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="n">Person</span> <span class="n">person</span><span class="p">;</span>
-</span><span class='line'><span class="n">person</span><span class="p">.</span><span class="n">setName</span><span class="p">(</span><span class="s">&quot;Flavio&quot;</span><span class="p">);</span>
-</span><span class='line'><span class="n">person</span><span class="p">.</span><span class="n">setPhoneNumber</span><span class="p">(</span><span class="mi">123456</span><span class="p">);</span>
-</span><span class='line'><span class="n">person</span><span class="p">.</span><span class="n">setGender</span><span class="p">(</span><span class="n">Person</span><span class="o">::</span><span class="n">Male</span><span class="p">);</span>
-</span><span class='line'><span class="n">person</span><span class="p">.</span><span class="n">setDob</span><span class="p">(</span><span class="n">QDate</span><span class="p">(</span><span class="mi">1982</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">));</span>
-</span><span class='line'><span class="n">QVariantMap</span> <span class="n">variant</span> <span class="o">=</span> <span class="n">QObjectHelper</span><span class="o">::</span><span class="n">qobject2qvariant</span><span class="p">(</span><span class="o">&amp;</span><span class="n">person</span><span class="p">;);</span>
-</span><span class='line'><span class="n">Serializer</span> <span class="n">serializer</span><span class="p">;</span>
-</span><span class='line'><span class="n">qDebug</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">serializer</span><span class="p">.</span><span class="n">serialize</span><span class="p">(</span> <span class="n">variant</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The generated output will be:</p>
-
-<figure class='code'><figcaption><span>[JSON data] [] </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span> <span class="nt">&quot;dob&quot;</span> <span class="p">:</span> <span class="s2">&quot;1982-07-12&quot;</span><span class="p">,</span> <span class="nt">&quot;gender&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;Flavio&quot;</span><span class="p">,</span> <span class="nt">&quot;phoneNumber&quot;</span> <span class="p">:</span> <span class="mi">123456</span> <span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>From JSON to QObject</h3>
-
-<p>Suppose you have the following JSON data stored into a QString:</p>
-
-<figure class='code'><figcaption><span>[JSON data] [] </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span> <span class="nt">&quot;dob&quot;</span> <span class="p">:</span> <span class="s2">&quot;1982-07-12&quot;</span><span class="p">,</span> <span class="nt">&quot;gender&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;Flavio&quot;</span><span class="p">,</span> <span class="nt">&quot;phoneNumber&quot;</span> <span class="p">:</span> <span class="mi">123456</span> <span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The following code will initialize an already allocated instance of Person
-using the JSON values:</p>
-
-<figure class='code'><figcaption><span>[From JSON to QObject] [] </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="n">Parser</span> <span class="n">parser</span><span class="p">;</span>
-</span><span class='line'><span class="n">QVariant</span> <span class="n">variant</span> <span class="o">=</span> <span class="n">parser</span><span class="p">.</span><span class="n">parse</span><span class="p">(</span><span class="n">json</span><span class="p">);</span>
-</span><span class='line'><span class="n">Person</span> <span class="n">person</span><span class="p">;</span>
-</span><span class='line'><span class="n">QObjectHelper</span><span class="o">::</span><span class="n">qvariant2qobject</span><span class="p">(</span><span class="n">variant</span><span class="p">.</span><span class="n">toMap</span><span class="p">(),</span> <span class="o">&amp;</span><span class="n">person</span><span class="p">;);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>A new release</h3>
-
-<p>These changes have been included inside the new release of QJson: 0.7.0.</p>
-
-<p>Packages for openSUSE are building right now.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -1053,6 +1167,10 @@ using the JSON values:</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: a container full of Geekos</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/11/27/qjson-0-dot-8-1-released/">qjson 0.8.1 released</a>
       </li>
     
@@ -1066,10 +1184,6 @@ using the JSON values:</p>
     
       <li class="post">
         <a href="/2010/08/11/jump/">Jump: a bookmarking system for the bash shell</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2010/07/23/fast-user-switch-plasmoid-improvements/">Fast user switch plasmoid improvements</a>
       </li>
     
   </ul>

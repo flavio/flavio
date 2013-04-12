@@ -9,10 +9,8 @@
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="As I said in
-this
-previous post, Strigi&#8217;s Xesam support was half-done since XesamUserSearchLanguage wasn’t yet
-handled. Well, this is no longer &hellip;">
+  <meta name="description" content="In these days I&#8217;ve heard lot of rumors around Git. After
+reading some manual/tutorial/guide I discovered that it can be really useful, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -91,6 +89,112 @@ handled. Well, this is no longer &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2007/09/04/howto_use_git_with_svn/">Howto Use Git and Svn Together</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-09-04T12:22:15+02:00" pubdate data-updated="true">Sep 4<span>th</span>, 2007</time>
+        
+         | <a href="/2007/09/04/howto_use_git_with_svn/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In these days I&#8217;ve heard lot of rumors around <a href="http://git.or.cz/">Git</a>. After
+reading some manual/tutorial/guide I discovered that it can be really useful,
+especially if you spend lot of time coding off-line (that&#8217;s my situation).</p>
+
+<p>This is a really small howto that describes how to work on a project versioned
+with svn (maybe taken from KDE repository ;) ) using git.</p>
+
+<h3>What&#8217;re the advantages?</h3>
+
+<p>Since Git is a distributed revision control system (while svn is a centralized
+one) you can perform commits, brances, merges,&#8230; on your local working dir
+without being connected to internet.</p>
+
+<p>Next time you&#8217;ll be online, you will be able to <em>&#8220;push&#8221;</em> your changes back to
+the central svn server.</p>
+
+<h3>Steps to follow:</h3>
+
+<p>You&#8217;ve to:</p>
+
+<ol>
+<li>install <em>git</em> and <em>git-svn</em></li>
+<li>create the working dir: <code>mkdir strigi</code></li>
+<li>init your git working dir: <code>cd strigi &amp;&amp; git-svn init https://svn.kde.org/home/kde/trunk/kdesupport/strigi</code> <em>git-svn init</em> command is followed by the address of the svn repository (in this case we point to strigi&#8217;s repository)</li>
+<li>Find a commit regarding the project (you can get it from <a href="http://cia.vc/">cia version control</a>). <strong>Warning:</strong> the command <em>git-log</em> will show project&#8217;s history starting from this revision.</li>
+<li>Perform the command <code>git-svn fetch -rREVISION</code> Where <em>REVISION</em> is the number obtained before.</li>
+<li>Update your working dir: <code>git-svn rebase</code>
+Now you&#8217;ll be able to work on your project using git as revision control
+system.</li>
+</ol>
+
+
+<p>To <strong>keep update</strong> your working copy just perform:</p>
+
+<p><code>git-svn rebase</code></p>
+
+<p>You can <strong>commit your changes </strong> to the svn server using the command:</p>
+
+<p><code>git-svn dcommit</code></p>
+
+<p>In this way each commit made with git will be <em>&#8220;transformed&#8221;</em> into a svn one.</p>
+
+<h3>Solve git-svn rebase problems</h3>
+
+<p>While adding new cool features to your program, you may experiment some
+problem when synchronizing with the main development tree. In fact you have to
+commit all local modifications (using the <code>git-commit</code> command) before
+invoking <code>git-svn rebase</code>.</p>
+
+<p>Sometimes it isn&#8217;t reasonable since your changes are not yet ready to be
+committed (you haven&#8217;t finished/tested/improved your work). But don&#8217;t worry,
+git has a native solution also for this problem, just follow these steps:</p>
+
+<ol>
+<li>put aside your changes using the command: <code>git-stash</code></li>
+<li>update your working copy using: <code>git-svn rebase</code> as usual</li>
+<li>take back your changes typing: <code>git-stash apply</code></li>
+<li>clear <em>&#8220;the stash&#8221;</em> typing: <code>git-stash clear</code>
+After the first step all your uncommitted changes will disappear from the
+working copy, so you&#8217;ll be able to perform the rebase command without
+problems.</li>
+</ol>
+
+
+<p>For further informations read <code>git-stash</code> man page.</p>
+
+<p>That&#8217;s all.</p>
+
+<p>A special mention goes to Thiago Macieira for his help.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -642,64 +746,6 @@ improvement == don&#8217;t exceed the 80 chars per line.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2007/07/03/work-work-work-and-new-house/">Work, Work, Work and&#8230; New House!</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-07-03T21:44:47+02:00" pubdate data-updated="true">Jul 3<span>rd</span>, 2007</time>
-        
-         | <a href="/2007/07/03/work-work-work-and-new-house/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In my last message I promised to write some more contents on this site, in
-order to keep it more updated. As usual I disappointed this promise :)  So,
-what I have been doing in these day? Just a simple answer: I&#8217;ve worked a lot.
-&#8220;Work&#8221; can be divided in the following categories:</p>
-
-<ul>
-<li>office work</li>
-<li>KDE &amp; Strigi coding</li>
-<li>Physical work</li>
-</ul>
-
-
-<p>The most important of all is the last one. I&#8217;ve spent all my week-ends working
-in my <strong>new house</strong>. I&#8217;ve been fixing and improving it (wow&#8230; it seems I&#8217;m
-talking about a piece of software ;) ) and now it&#8217;s quite finished.</p>
-
-<p>I&#8217;ve to say a great <em>&#8220;thank you&#8221;</em> to my dad. He&#8217;s able to do everything (he&#8217;s
-something better than <a href="http://en.wikipedia.org/wiki/MacGyver">Mac Gyver</a>) and
-helped me a lot (in fact he has done all the dirty jobs).</p>
-
-<p>Prepare yourself, I&#8217;ll put some photos of the house really soon&#8230;</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -717,6 +763,10 @@ helped me a lot (in fact he has done all the dirty jobs).</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: a container full of Geekos</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/11/27/qjson-0-dot-8-1-released/">qjson 0.8.1 released</a>
       </li>
     
@@ -730,10 +780,6 @@ helped me a lot (in fact he has done all the dirty jobs).</p>
     
       <li class="post">
         <a href="/2010/08/11/jump/">Jump: a bookmarking system for the bash shell</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2010/07/23/fast-user-switch-plasmoid-improvements/">Fast user switch plasmoid improvements</a>
       </li>
     
   </ul>
