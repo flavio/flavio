@@ -19,7 +19,7 @@ you proof ;)
 {% img /images/qjson/qjson_windows_2.png %}
 
 I have written the build instructions on QJson website: just take a look
-[here](http://qjson.sourceforge.net/download.html#windows).
+[here](http://qjson.sourceforge.net/build).
 
 One last note: if you have problems with QJson please subscribe to the
 [developer mailing list](https://lists.sourceforge.net/lists/listinfo/qjson-
