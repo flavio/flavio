@@ -110,7 +110,7 @@ problem, that's LXC's "magic" ;)
 If you want to use only "green" products just pull the openSUSE 12.3 container
 I created for you:
 ```
-docker pull flavio/openSUSE_12.3
+docker pull flavio/opensuse-12-3
 ```
 
 Please **experiment a lot with this image** and **give me your feedback**.
@@ -151,14 +151,14 @@ As said earlier docker runs LXC containers, so we are going to follow
 
 First of all install KIWI from the [Virtualization:Appliances](https://build.opensuse.org/project/show?project=Virtualization%3AAppliances) project on OBS:
 ```
-sudo zypper ar virtualization:appliances http://download.opensuse.org/repositories/Virtualization:/Appliances/openSUSE_12.3
+sudo zypper ar http://download.opensuse.org/repositories/Virtualization:/Appliances/openSUSE_12.3 virtualization:appliances
 sudo zypper in kiwi kiwi-doc
 ```
 
 We are going to use the configuration files of a simple LXC container shipped
 the `kiwi-doc` package:
 ```
-cp /usr/share/doc/packages/kiwi/examples/suse-12.3/suse-lxc-guest ~/openSUSE_12_3_docker
+cp -r /usr/share/doc/packages/kiwi/examples/suse-11.3/suse-lxc-guest ~/openSUSE_12_3_docker
 ```
 
 The `openSUSE_12_3_docker` directory contains two configuration files used by
@@ -177,7 +177,7 @@ touch ~/openSUSE_12_3_docker/root/etc/resolv.conf
 
 Now we can create the rootfs of the container using KIWI:
 ```
-sudo kiwi --prepare ~/openSUSE_12_3_docker --root /tmp/openSUSE_12_3_docker_rootfs
+sudo /usr/sbin/kiwi --prepare ~/openSUSE_12_3_docker --root /tmp/openSUSE_12_3_docker_rootfs
 ```
 
 We can skip the next step reported on KIWI's documentation, that's not needed
