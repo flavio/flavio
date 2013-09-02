@@ -109,7 +109,7 @@ a first class citizen on openSUSE. I also &hellip;">
   
 
 
-<time datetime="2013-04-12T14:45:00+02:00" pubdate data-updated="true">Apr 12<span>th</span>, 2013</time>
+<time datetime="2013-04-12T14:45:00-04:00" pubdate data-updated="true">Apr 12<span>th</span>, 2013</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -234,7 +234,7 @@ problem, that&#8217;s LXC&#8217;s &#8220;magic&#8221; ;)</p>
 I created for you:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>docker pull flavio/openSUSE_12.3</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>docker pull flavio/opensuse-12-3</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Please <strong>experiment a lot with this image</strong> and <strong>give me your feedback</strong>.
@@ -277,7 +277,7 @@ SUSE Studio and can be used to create LXC containers.</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo zypper ar virtualization:appliances http://download.opensuse.org/repositories/Virtualization:/Appliances/openSUSE_12.3
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo zypper ar http://download.opensuse.org/repositories/Virtualization:/Appliances/openSUSE_12.3 virtualization:appliances
 </span><span class='line'>sudo zypper in kiwi kiwi-doc</span></code></pre></td></tr></table></div></figure>
 
 
@@ -285,7 +285,7 @@ SUSE Studio and can be used to create LXC containers.</p>
 the <code>kiwi-doc</code> package:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cp /usr/share/doc/packages/kiwi/examples/suse-12.3/suse-lxc-guest ~/openSUSE_12_3_docker</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cp -r /usr/share/doc/packages/kiwi/examples/suse-11.3/suse-lxc-guest ~/openSUSE_12_3_docker</span></code></pre></td></tr></table></div></figure>
 
 
 <p>The <code>openSUSE_12_3_docker</code> directory contains two configuration files used by
@@ -306,7 +306,7 @@ to start our container.</p>
 <p>Now we can create the rootfs of the container using KIWI:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo kiwi --prepare ~/openSUSE_12_3_docker --root /tmp/openSUSE_12_3_docker_rootfs</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo /usr/sbin/kiwi --prepare ~/openSUSE_12_3_docker --root /tmp/openSUSE_12_3_docker_rootfs</span></code></pre></td></tr></table></div></figure>
 
 
 <p>We can skip the next step reported on KIWI&#8217;s documentation, that&#8217;s not needed
@@ -386,7 +386,7 @@ too using docker on openSUSE.</p>
   
 
 
-<time datetime="2013-04-12T14:45:00+02:00" pubdate data-updated="true">Apr 12<span>th</span>, 2013</time>
+<time datetime="2013-04-12T14:45:00-04:00" pubdate data-updated="true">Apr 12<span>th</span>, 2013</time>
       
 
 <span class="categories">
