@@ -4,7 +4,7 @@
   <title><![CDATA[Category: openSUSE | Flavio Castelli]]></title>
   <link href="http://flavio.castelli.name/blog/categories/opensuse/atom.xml" rel="self"/>
   <link href="http://flavio.castelli.name/"/>
-  <updated>2013-04-12T22:16:36+02:00</updated>
+  <updated>2013-11-28T18:31:30+01:00</updated>
   <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
@@ -12,6 +12,64 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Better Docker experience on openSUSE]]></title>
+    <link href="http://flavio.castelli.name/2013/11/28/better-docker-experience-on-opensuse/"/>
+    <updated>2013-11-28T17:28:00+01:00</updated>
+    <id>http://flavio.castelli.name/2013/11/28/better-docker-experience-on-opensuse</id>
+    <content type="html"><![CDATA[<p>I don't know if you are aware of that, but Docker 0.7.0 has been released a
+couple of days ago.</p>
+
+<p>You can read the full announcement <a href="http://blog.docker.io/2013/11/docker-0-7-docker-now-runs-on-any-linux-distribution/">here</a>,
+but let me talk about the biggest change introduced by this release: storage drivers!</p>
+
+<p>Docker has always used <a href="http://aufs.sourceforge.net/">AUFS</a>,
+a "<a href="https://en.wikipedia.org/wiki/UnionFS">unionfs-like</a>" file system, to power
+its containers. Unfortunately AUFS is neither part of the official kernel nor
+of the openSUSE/SLE one.</p>
+
+<p><a href="http://flavio.castelli.name/2013/04/12/docker-and-opensuse/">In the past</a> I had
+to build a custom patched kernel to run Docker on openSUSE. That proved to be
+a real pain both for me and for the end users.</p>
+
+<p>Now with storage drivers Docker can still use AUFS, but can also opt for something
+different. In our case Docker is going to use <a href="https://lwn.net/Articles/465740/">thin provisioning</a>,
+a consolidated technology which is part of the mainstream kernel since quite some time.</p>
+
+<p>Moreover Docker's community is working on experimental drivers for BTRFS, ZFS,
+Gluster and Ceph.</p>
+
+<h2>What changes now for openSUSE?</h2>
+
+<p>Running Docker is incredibly simple now: just use the <a href="http://software.opensuse.org/package/docker">1 click install</a>
+and download it from the <em>'home:flavio_castelli:docker'</em> project.</p>
+
+<p>As I said earlier: <strong>no custom kernel is required</strong>. You are going to keep the
+one shipped by the official openSUSE repositories.</p>
+
+<p>Just keep in mind that Docker does some initialization tasks on its very first
+execution (it configures thin provisioning). So just wait a little before hitting its
+API with the Docker cli tool (you will just get an error because <code>docker.socket</code>
+is not found).</p>
+
+<h2>The road ahead</h2>
+
+<h3>Support SLE</h3>
+
+<p>Right now Docker works fine on openSUSE 12.3 and 13.1 but not on SLE 11 SP3. During
+the next days I'm going to look into this issue. I want to have a stable and working
+package for SLE.</p>
+
+<h3>Make it more official</h3>
+
+<p>Once the package is proved to be stable enough I'll submit it for inclusion inside
+of the <a href="https://build.opensuse.org/project/show/Virtualization">Virtualization</a>
+project on OBS.</p>
+
+<p>So please, checkout Docker package  and provide me your feedback!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Docker and openSUSE: a container full of Geekos]]></title>
@@ -131,7 +189,7 @@ problem, that's LXC's "magic" ;)</p>
 <p>If you want to use only "green" products just pull the openSUSE 12.3 container
 I created for you:
 <code>
-docker pull flavio/openSUSE_12.3
+docker pull flavio/opensuse-12-3
 </code></p>
 
 <p>Please <strong>experiment a lot with this image</strong> and <strong>give me your feedback</strong>.
@@ -172,14 +230,14 @@ SUSE Studio and can be used to create LXC containers.</p>
 
 <p>First of all install KIWI from the <a href="https://build.opensuse.org/project/show?project=Virtualization%3AAppliances">Virtualization:Appliances</a> project on OBS:
 <code>
-sudo zypper ar virtualization:appliances http://download.opensuse.org/repositories/Virtualization:/Appliances/openSUSE_12.3
+sudo zypper ar http://download.opensuse.org/repositories/Virtualization:/Appliances/openSUSE_12.3 virtualization:appliances
 sudo zypper in kiwi kiwi-doc
 </code></p>
 
 <p>We are going to use the configuration files of a simple LXC container shipped
 the <code>kiwi-doc</code> package:
 <code>
-cp /usr/share/doc/packages/kiwi/examples/suse-12.3/suse-lxc-guest ~/openSUSE_12_3_docker
+cp -r /usr/share/doc/packages/kiwi/examples/suse-11.3/suse-lxc-guest ~/openSUSE_12_3_docker
 </code></p>
 
 <p>The <code>openSUSE_12_3_docker</code> directory contains two configuration files used by
@@ -198,7 +256,7 @@ touch ~/openSUSE_12_3_docker/root/etc/resolv.conf
 
 <p>Now we can create the rootfs of the container using KIWI:
 <code>
-sudo kiwi --prepare ~/openSUSE_12_3_docker --root /tmp/openSUSE_12_3_docker_rootfs
+sudo /usr/sbin/kiwi --prepare ~/openSUSE_12_3_docker --root /tmp/openSUSE_12_3_docker_rootfs
 </code></p>
 
 <p>We can skip the next step reported on KIWI's documentation, that's not needed

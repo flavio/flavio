@@ -201,10 +201,10 @@ do
  #temp=`echo ${temp:2}`
  title=`echo ${temp%.*3}`
  id3v2 -t &quot;$title&quot; -T $counter -a &quot;$artist&quot; -A &quot;$album&quot; -y $year -g $genre &quot;$file&quot;
- let 'counter +=1' 
+ let &#39;counter +=1&#39; 
 done 
 
-let 'counter -=1'
+let &#39;counter -=1&#39;
 echo Work done!
 echo Converted $counter files,
 echo &quot;See you... ;-D&quot;</code></pre></noscript></div>
@@ -280,6 +280,10 @@ echo &quot;See you... ;-D&quot;</code></pre></noscript></div>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/11/28/better-docker-experience-on-opensuse/">Better Docker experience on openSUSE</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: a container full of Geekos</a>
       </li>
     
@@ -293,10 +297,6 @@ echo &quot;See you... ;-D&quot;</code></pre></noscript></div>
     
       <li class="post">
         <a href="/2011/03/29/introducing-dister-a-heroku-like-solution-for-suse-studio/">Introducing dister, a Heroku like solution for SUSE Studio</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2010/08/11/jump/">Jump: a bookmarking system for the bash shell</a>
       </li>
     
   </ul>

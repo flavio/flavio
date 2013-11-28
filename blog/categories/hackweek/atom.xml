@@ -4,7 +4,7 @@
   <title><![CDATA[Category: hackweek | Flavio Castelli]]></title>
   <link href="http://flavio.castelli.name/blog/categories/hackweek/atom.xml" rel="self"/>
   <link href="http://flavio.castelli.name/"/>
-  <updated>2013-04-12T22:16:36+02:00</updated>
+  <updated>2013-11-28T18:31:30+01:00</updated>
   <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
@@ -131,7 +131,7 @@ problem, that's LXC's "magic" ;)</p>
 <p>If you want to use only "green" products just pull the openSUSE 12.3 container
 I created for you:
 <code>
-docker pull flavio/openSUSE_12.3
+docker pull flavio/opensuse-12-3
 </code></p>
 
 <p>Please <strong>experiment a lot with this image</strong> and <strong>give me your feedback</strong>.
@@ -172,14 +172,14 @@ SUSE Studio and can be used to create LXC containers.</p>
 
 <p>First of all install KIWI from the <a href="https://build.opensuse.org/project/show?project=Virtualization%3AAppliances">Virtualization:Appliances</a> project on OBS:
 <code>
-sudo zypper ar virtualization:appliances http://download.opensuse.org/repositories/Virtualization:/Appliances/openSUSE_12.3
+sudo zypper ar http://download.opensuse.org/repositories/Virtualization:/Appliances/openSUSE_12.3 virtualization:appliances
 sudo zypper in kiwi kiwi-doc
 </code></p>
 
 <p>We are going to use the configuration files of a simple LXC container shipped
 the <code>kiwi-doc</code> package:
 <code>
-cp /usr/share/doc/packages/kiwi/examples/suse-12.3/suse-lxc-guest ~/openSUSE_12_3_docker
+cp -r /usr/share/doc/packages/kiwi/examples/suse-11.3/suse-lxc-guest ~/openSUSE_12_3_docker
 </code></p>
 
 <p>The <code>openSUSE_12_3_docker</code> directory contains two configuration files used by
@@ -198,7 +198,7 @@ touch ~/openSUSE_12_3_docker/root/etc/resolv.conf
 
 <p>Now we can create the rootfs of the container using KIWI:
 <code>
-sudo kiwi --prepare ~/openSUSE_12_3_docker --root /tmp/openSUSE_12_3_docker_rootfs
+sudo /usr/sbin/kiwi --prepare ~/openSUSE_12_3_docker --root /tmp/openSUSE_12_3_docker_rootfs
 </code></p>
 
 <p>We can skip the next step reported on KIWI's documentation, that's not needed

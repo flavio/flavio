@@ -9,9 +9,8 @@
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="Also this year I&#8217;ll attend the Linux day (a day dedicated to Gnu/Linux  and
-FLOSS that occurs every year in Italy) organized by my LUG.
-Guess &hellip;">
+  <meta name="description" content="In order to realize a project of mine I started looking for a Qt library for
+mapping JSON data to Qt objects. I came over a couple of solutions but &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -96,6 +95,140 @@ Guess &hellip;">
       
   <header>
     
+      <h1 class="entry-title"><a href="/2008/11/04/qjson_qt_json_library/">QJson: A Qt-based Library for Mapping JSON Data to QVariant Objects</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-11-04T13:37:07+01:00" pubdate data-updated="true">Nov 4<span>th</span>, 2008</time>
+        
+         | <a href="/2008/11/04/qjson_qt_json_library/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In order to realize a project of mine I started looking for a Qt library for
+mapping JSON data to Qt objects.</p>
+
+<p>I came over a couple of solutions but none of them made me happy. So in the
+last weekend I wrote my own library : <strong>QJson</strong> The library is based on Qt
+toolkit and converts JSON data to <em>QVariant</em> instances. JSON arrays will be
+mapped to <em>QVariantList</em> instances, while JSON&#8217;s objects will be mapped to
+<em>QVariantMap</em>. The JSON parser is generated with Bison, while the scanner has
+been coded by me.</p>
+
+<h3>Usage</h3>
+
+<p>Converting JSON&#8217;s data to <em>QVariant</em> instance is really simple:</p>
+
+<figure class='code'><figcaption><span>[] [] </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="c1">// create a JSonDriver instance</span>
+</span><span class='line'><span class="n">JSonDriver</span> <span class="n">driver</span><span class="p">;</span>
+</span><span class='line'><span class="kt">bool</span> <span class="n">ok</span><span class="p">;</span>
+</span><span class='line'><span class="c1">// json is a QString containing the data to convert</span>
+</span><span class='line'><span class="n">QVariant</span> <span class="n">result</span> <span class="o">=</span> <span class="n">driver</span><span class="p">.</span><span class="n">parse</span> <span class="p">(</span><span class="n">json</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ok</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Suppose you&#8217;re going to convert this JSON data:</p>
+
+<figure class='code'><figcaption><span>[JSON data] [] </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span> <span class="nt">&quot;encoding&quot;</span> <span class="p">:</span> <span class="s2">&quot;UTF-8&quot;</span><span class="p">,</span> <span class="nt">&quot;plug-ins&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;python&quot;</span><span class="p">,</span> <span class="s2">&quot;c++&quot;</span><span class="p">,</span> <span class="s2">&quot;ruby&quot;</span> <span class="p">],</span>
+</span><span class='line'>  <span class="nt">&quot;indent&quot;</span> <span class="p">:</span> <span class="p">{</span> <span class="nt">&quot;length&quot;</span> <span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nt">&quot;use_space&quot;</span> <span class="p">:</span> <span class="kc">true</span> <span class="p">}</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The following code would convert the JSON data and parse it:</p>
+
+<figure class='code'><figcaption><span>[] [] </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="n">JSonDriver</span> <span class="n">driver</span><span class="p">;</span>
+</span><span class='line'><span class="kt">bool</span> <span class="n">ok</span><span class="p">;</span>
+</span><span class='line'><span class="n">QVariantMap</span> <span class="n">result</span> <span class="o">=</span> <span class="n">driver</span><span class="p">.</span><span class="n">parse</span> <span class="p">(</span><span class="n">json</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ok</span><span class="p">).</span><span class="n">toMap</span><span class="p">();</span>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">ok</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">qFatal</span><span class="p">(</span><span class="s">&quot;An error occured during parsing&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="n">qDebug</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;encoding:&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">result</span><span class="p">[</span><span class="s">&quot;encoding&quot;</span><span class="p">].</span><span class="n">toString</span><span class="p">();</span>
+</span><span class='line'><span class="n">qDebug</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;plugins:&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="n">foreach</span> <span class="p">(</span><span class="n">QVariant</span> <span class="n">plugin</span><span class="p">,</span> <span class="n">result</span><span class="p">[</span><span class="s">&quot;plug-ins&quot;</span><span class="p">].</span><span class="n">toList</span><span class="p">())</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">qDebug</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\t</span><span class="s">-&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">plugin</span><span class="p">.</span><span class="n">toString</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="n">QVariantMap</span> <span class="n">nestedMap</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s">&quot;indent&quot;</span><span class="p">].</span><span class="n">toMap</span><span class="p">();</span>
+</span><span class='line'><span class="n">qDebug</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;length:&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">nestedMap</span><span class="p">[</span><span class="s">&quot;length&quot;</span><span class="p">].</span><span class="n">toInt</span><span class="p">();</span>
+</span><span class='line'><span class="n">qDebug</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;use_space:&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">nestedMap</span><span class="p">[</span><span class="s">&quot;use_space&quot;</span><span class="p">].</span><span class="n">toBool</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The output would be:</p>
+
+<pre><code>encoding: "UTF-8" plugins: - "python" - "c++" - "ruby" length: 3 use_space: true
+</code></pre>
+
+<h3>Requirements</h3>
+
+<p>QJson requires:</p>
+
+<ul>
+<li>cmake</li>
+<li>Qt</li>
+</ul>
+
+
+<h3>Obtain the source</h3>
+
+<p>Actually QJson code is hosted on KDE subversion repository. You can download
+it using a svn client:</p>
+
+<blockquote><p>svn co svn://anonsvn.kde.org/home/kde/trunk/playground/libs/qjson</p></blockquote>
+
+<p>For more informations visit <a href="http://qjson.sourceforge.net">QJson site</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2008/10/03/ruby-downloader-for-jamendo/">Ruby Downloader for Jamendo</a></h1>
     
     
@@ -154,12 +287,12 @@ ruby program that does the dirty job.</p>
 <div><script src='https://gist.github.com/2437530.js?file=jamendo_downloader.rb'></script>
 <noscript><pre><code>#!/usr/bin/ruby
 
-require 'rubygems'
-require 'open-uri'
-require 'json'
-require 'ftools'
-require 'cgi'
-require 'optparse'
+require &#39;rubygems&#39;
+require &#39;open-uri&#39;
+require &#39;json&#39;
+require &#39;ftools&#39;
+require &#39;cgi&#39;
+require &#39;optparse&#39;
 
 @download_dir = nil
 @genre = nil
@@ -177,7 +310,7 @@ clear = &quot;\e[0K&quot;
 
 # if possible restore downloaded album_id array
 begin
-    @downloaded = JSON.parse(File.new('downloaded.json').read.gsub(/\t|\r/,''))
+    @downloaded = JSON.parse(File.new(&#39;downloaded.json&#39;).read.gsub(/\t|\r/,&#39;&#39;))
 rescue
     @downloaded = []
 end
@@ -201,9 +334,9 @@ end
 # Functions ####################################################################
 
 def download(genre,album,tracks_url)
-    artist_name = album['artist_name']
-    album_name  = album['name']
-    album_id    = album['id']
+    artist_name = album[&#39;artist_name&#39;]
+    album_name  = album[&#39;name&#39;]
+    album_id    = album[&#39;id&#39;]
 
     local_download_path = File.expand_path &quot;#{@download_dir}/#{genre}/#{artist_name}/#{album_name}&quot;
     File.makedirs local_download_path
@@ -264,30 +397,30 @@ if ARGV.size &gt; 0
 end
 
 if @genre.nil?
-  puts 'You have to specify the genre'
+  puts &#39;You have to specify the genre&#39;
   puts opt
   exit 1
 end
 
 if @top_num.nil?
-  puts 'You have to specify the top num param'
+  puts &#39;You have to specify the top num param&#39;
   puts opt
   exit 1
 end
 
 if @download_dir.nil?
   @download_dir = &quot;#{Dir.pwd}/downloaded_files&quot;
-  puts 'You have not specified the download dir'
+  puts &#39;You have not specified the download dir&#39;
   puts &quot;Files will be download inside #{@download_dir}&quot;
 end
 
 ################################################################################
 
 query_url = &quot;http://api.jamendo.com/get2/id+name+artist_name/album/jsonpretty/?tag_idstr=#{@genre}&amp;n=#{@top_num}&amp;order=rating_desc&quot;
-query_url += &quot;&amp;idexclude=#{@downloaded.join('+')}&quot; unless @downloaded.empty?
+query_url += &quot;&amp;idexclude=#{@downloaded.join(&#39;+&#39;)}&quot; unless @downloaded.empty?
 
-JSON.parse(open(query_url).read.gsub(/\t|\r/,'')).each do |album|
-  album_download_urls = &quot;http://www.jamendo.com/get/track/id/album/audio/plain/#{album['id']}/&quot;
+JSON.parse(open(query_url).read.gsub(/\t|\r/,&#39;&#39;)).each do |album|
+  album_download_urls = &quot;http://www.jamendo.com/get/track/id/album/audio/plain/#{album[&#39;id&#39;]}/&quot;
   
   tracks_url = []
   open(album_download_urls).each do |track_url|
@@ -298,7 +431,7 @@ JSON.parse(open(query_url).read.gsub(/\t|\r/,'')).each do |album|
 end
 
 Dir.chdir cwd
-open('downloaded.json','w') { |f| f &lt;&lt; @downloaded.to_json }
+open(&#39;downloaded.json&#39;,&#39;w&#39;) { |f| f &lt;&lt; @downloaded.to_json }
 </code></pre></noscript></div>
 
 
@@ -749,62 +882,6 @@ there&#8217;s a <em>&#8220;cleaner&#8221;</em> solution, if you&#8217;re interes
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2007/10/29/kde4_linuxday_2007/">Linux Day 2007</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-10-29T12:37:49+01:00" pubdate data-updated="true">Oct 29<span>th</span>, 2007</time>
-        
-         | <a href="/2007/10/29/kde4_linuxday_2007/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Last Saturday <em>Linux day 2007</em> took place.</p>
-
-<p><em>Linux Day</em> is an Italian manifestation that promotes Linux and FOSS. During
-this day different organizations (mostly <a href="http://en.wikipedia.org/wiki/Linux_User_Group">Linux User
-Groups</a>) arrange events with
-speeches, installation parties and more.</p>
-
-<p>Since lot of people requested it, I gave a speech about KDE 4 during the
-<em>Linux day</em> organized by my LUG (<a href="http://www.bglug.it">BGLug</a>).</p>
-
-<p>The presentation covers the main changes and features introduced by KDE 4. I
-took inspiration from Troy&#8217;s <em>&#8220;Road to KDE 4&#8221;</em> articles (I like them really
-much).</p>
-
-<p>People liked the speech and, most important of all, showed great interest for
-KDE 4.</p>
-
-<div style="width:425px" id="__ss_12631095"><strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/fcastelli/kde4-ld2007" title="KDE4 ld2007">KDE4 ld2007</a></strong><object id="__sse12631095" width="425" height="355"><param name="movie" value="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=kde4-ld2007-120421100713-phpapp02&stripped_title=kde4-ld2007&userName=fcastelli" /><param name="allowFullScreen" value="true"/><param name="allowScriptAccess" value="always"/><param name="wmode" value="transparent"/><embed name="__sse12631095" src="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=kde4-ld2007-120421100713-phpapp02&stripped_title=kde4-ld2007&userName=fcastelli" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="transparent" width="425" height="355"></embed></object><div style="padding:5px 0 12px">View more <a href="http://www.slideshare.net/">presentations</a> from <a href="http://www.slideshare.net/fcastelli">Flavio Castelli</a>.</div></div>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -822,6 +899,10 @@ KDE 4.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/11/28/better-docker-experience-on-opensuse/">Better Docker experience on openSUSE</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: a container full of Geekos</a>
       </li>
     
@@ -835,10 +916,6 @@ KDE 4.</p>
     
       <li class="post">
         <a href="/2011/03/29/introducing-dister-a-heroku-like-solution-for-suse-studio/">Introducing dister, a Heroku like solution for SUSE Studio</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2010/08/11/jump/">Jump: a bookmarking system for the bash shell</a>
       </li>
     
   </ul>

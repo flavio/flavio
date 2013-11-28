@@ -5,11 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: json - Flavio Castelli</title>
+  <title>Better Docker experience on openSUSE - Flavio Castelli</title>
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="Category: json">
+  <meta name="description" content="I don&#8217;t know if you are aware of that, but Docker 0.7.0 has been released a
+couple of days ago. You can read the full announcement here,
+but &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://flavio.castelli.nameblog/categories/json/">
+  <link rel="canonical" href="http://flavio.castelli.name/2013/11/28/better-docker-experience-on-opensuse/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -87,36 +89,142 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Json</h1>
+    
+      <h1 class="entry-title">Better Docker Experience on openSUSE</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-28T17:28:00+01:00" pubdate data-updated="true">Nov 28<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>I don&#8217;t know if you are aware of that, but Docker 0.7.0 has been released a
+couple of days ago.</p>
 
-  
-  <h2>2008</h2>
+<p>You can read the full announcement <a href="http://blog.docker.io/2013/11/docker-0-7-docker-now-runs-on-any-linux-distribution/">here</a>,
+but let me talk about the biggest change introduced by this release: storage drivers!</p>
 
-<article>
-  
-<h1><a href="/2008/11/04/qjson_qt_json_library/">QJson: a Qt-based library for mapping JSON data to QVariant objects</a></h1>
-<time datetime="2008-11-04T13:37:07+01:00" pubdate><span class='month'>Nov</span> <span class='day'>04</span> <span class='year'>2008</span></time>
+<p>Docker has always used <a href="http://aufs.sourceforge.net/">AUFS</a>,
+a &#8221;<a href="https://en.wikipedia.org/wiki/UnionFS">unionfs-like</a>&#8221; file system, to power
+its containers. Unfortunately AUFS is neither part of the official kernel nor
+of the openSUSE/SLE one.</p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/json/'>json</a>, <a class='category' href='/blog/categories/qjson/'>qjson</a>, <a class='category' href='/blog/categories/qt/'>qt</a></span>
-</footer>
+<p><a href="http://flavio.castelli.name/2013/04/12/docker-and-opensuse/">In the past</a> I had
+to build a custom patched kernel to run Docker on openSUSE. That proved to be
+a real pain both for me and for the end users.</p>
 
+<p>Now with storage drivers Docker can still use AUFS, but can also opt for something
+different. In our case Docker is going to use <a href="https://lwn.net/Articles/465740/">thin provisioning</a>,
+a consolidated technology which is part of the mainstream kernel since quite some time.</p>
 
-</article>
+<p>Moreover Docker&#8217;s community is working on experimental drivers for BTRFS, ZFS,
+Gluster and Ceph.</p>
 
+<h2>What changes now for openSUSE?</h2>
+
+<p>Running Docker is incredibly simple now: just use the <a href="http://software.opensuse.org/package/docker">1 click install</a>
+and download it from the <em>&#8216;home:flavio_castelli:docker&#8217;</em> project.</p>
+
+<p>As I said earlier: <strong>no custom kernel is required</strong>. You are going to keep the
+one shipped by the official openSUSE repositories.</p>
+
+<p>Just keep in mind that Docker does some initialization tasks on its very first
+execution (it configures thin provisioning). So just wait a little before hitting its
+API with the Docker cli tool (you will just get an error because <code>docker.socket</code>
+is not found).</p>
+
+<h2>The road ahead</h2>
+
+<h3>Support SLE</h3>
+
+<p>Right now Docker works fine on openSUSE 12.3 and 13.1 but not on SLE 11 SP3. During
+the next days I&#8217;m going to look into this issue. I want to have a stable and working
+package for SLE.</p>
+
+<h3>Make it more official</h3>
+
+<p>Once the package is proved to be stable enough I&#8217;ll submit it for inclusion inside
+of the <a href="https://build.opensuse.org/project/show/Virtualization">Virtualization</a>
+project on OBS.</p>
+
+<p>So please, checkout Docker package  and provide me your feedback!</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Flavio Castelli</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-28T17:28:00+01:00" pubdate data-updated="true">Nov 28<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/cloud/'>cloud</a>, <a class='category' href='/blog/categories/opensuse/'>openSUSE</a>, <a class='category' href='/blog/categories/paas/'>paas</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://flavio.castelli.name/2013/11/28/better-docker-experience-on-opensuse/" data-via="flavio_castelli" data-counturl="http://flavio.castelli.name/2013/11/28/better-docker-experience-on-opensuse/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2013/04/12/docker-and-opensuse/" title="Previous Post: Docker and openSUSE: a container full of Geekos">&laquo; Docker and openSUSE: a container full of Geekos</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -217,7 +325,10 @@
       var disqus_shortname = 'flavio-castelli-name';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://flavio.castelli.name/2013/11/28/better-docker-experience-on-opensuse/';
+        var disqus_url = 'http://flavio.castelli.name/2013/11/28/better-docker-experience-on-opensuse/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

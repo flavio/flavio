@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ruby | Flavio Castelli]]></title>
   <link href="http://flavio.castelli.name/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://flavio.castelli.name/"/>
-  <updated>2013-04-12T22:16:36+02:00</updated>
+  <updated>2013-11-28T18:31:30+01:00</updated>
   <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
@@ -399,12 +399,12 @@ ruby program that does the dirty job.</p>
 <p><div><script src='https://gist.github.com/2437530.js?file=jamendo_downloader.rb'></script>
 <noscript><pre><code>#!/usr/bin/ruby
 
-require 'rubygems'
-require 'open-uri'
-require 'json'
-require 'ftools'
-require 'cgi'
-require 'optparse'
+require &#39;rubygems&#39;
+require &#39;open-uri&#39;
+require &#39;json&#39;
+require &#39;ftools&#39;
+require &#39;cgi&#39;
+require &#39;optparse&#39;
 
 @download_dir = nil
 @genre = nil
@@ -422,7 +422,7 @@ clear = &quot;\e[0K&quot;
 
 # if possible restore downloaded album_id array
 begin
-    @downloaded = JSON.parse(File.new('downloaded.json').read.gsub(/\t|\r/,''))
+    @downloaded = JSON.parse(File.new(&#39;downloaded.json&#39;).read.gsub(/\t|\r/,&#39;&#39;))
 rescue
     @downloaded = []
 end
@@ -446,9 +446,9 @@ end
 # Functions ####################################################################
 
 def download(genre,album,tracks_url)
-    artist_name = album['artist_name']
-    album_name  = album['name']
-    album_id    = album['id']
+    artist_name = album[&#39;artist_name&#39;]
+    album_name  = album[&#39;name&#39;]
+    album_id    = album[&#39;id&#39;]
 
     local_download_path = File.expand_path &quot;#{@download_dir}/#{genre}/#{artist_name}/#{album_name}&quot;
     File.makedirs local_download_path
@@ -509,30 +509,30 @@ if ARGV.size &gt; 0
 end
 
 if @genre.nil?
-  puts 'You have to specify the genre'
+  puts &#39;You have to specify the genre&#39;
   puts opt
   exit 1
 end
 
 if @top_num.nil?
-  puts 'You have to specify the top num param'
+  puts &#39;You have to specify the top num param&#39;
   puts opt
   exit 1
 end
 
 if @download_dir.nil?
   @download_dir = &quot;#{Dir.pwd}/downloaded_files&quot;
-  puts 'You have not specified the download dir'
+  puts &#39;You have not specified the download dir&#39;
   puts &quot;Files will be download inside #{@download_dir}&quot;
 end
 
 ################################################################################
 
 query_url = &quot;http://api.jamendo.com/get2/id+name+artist_name/album/jsonpretty/?tag_idstr=#{@genre}&amp;n=#{@top_num}&amp;order=rating_desc&quot;
-query_url += &quot;&amp;idexclude=#{@downloaded.join('+')}&quot; unless @downloaded.empty?
+query_url += &quot;&amp;idexclude=#{@downloaded.join(&#39;+&#39;)}&quot; unless @downloaded.empty?
 
-JSON.parse(open(query_url).read.gsub(/\t|\r/,'')).each do |album|
-  album_download_urls = &quot;http://www.jamendo.com/get/track/id/album/audio/plain/#{album['id']}/&quot;
+JSON.parse(open(query_url).read.gsub(/\t|\r/,&#39;&#39;)).each do |album|
+  album_download_urls = &quot;http://www.jamendo.com/get/track/id/album/audio/plain/#{album[&#39;id&#39;]}/&quot;
   
   tracks_url = []
   open(album_download_urls).each do |track_url|
@@ -543,7 +543,7 @@ JSON.parse(open(query_url).read.gsub(/\t|\r/,'')).each do |album|
 end
 
 Dir.chdir cwd
-open('downloaded.json','w') { |f| f &lt;&lt; @downloaded.to_json }
+open(&#39;downloaded.json&#39;,&#39;w&#39;) { |f| f &lt;&lt; @downloaded.to_json }
 </code></pre></noscript></div>
 </p>
 ]]></content>

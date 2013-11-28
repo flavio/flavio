@@ -4,7 +4,7 @@
   <title><![CDATA[Category: bash | Flavio Castelli]]></title>
   <link href="http://flavio.castelli.name/blog/categories/bash/atom.xml" rel="self"/>
   <link href="http://flavio.castelli.name/"/>
-  <updated>2013-04-12T22:16:36+02:00</updated>
+  <updated>2013-11-28T18:31:30+01:00</updated>
   <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
@@ -142,10 +142,10 @@ do
  #temp=`echo ${temp:2}`
  title=`echo ${temp%.*3}`
  id3v2 -t &quot;$title&quot; -T $counter -a &quot;$artist&quot; -A &quot;$album&quot; -y $year -g $genre &quot;$file&quot;
- let 'counter +=1' 
+ let &#39;counter +=1&#39; 
 done 
 
-let 'counter -=1'
+let &#39;counter -=1&#39;
 echo Work done!
 echo Converted $counter files,
 echo &quot;See you... ;-D&quot;</code></pre></noscript></div>
