@@ -9,8 +9,9 @@
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="Just a quick note: I have just moved QJson source code to
-this git repository hosted by gitorious. I&#8217;ll keep the code on KDE&#8217;s svn &hellip;">
+  <meta name="description" content="I&#8217;m really pleased to announce that latest version of QJson on master is
+working on Symbian. You can find the installation instruction
+here. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -89,6 +90,56 @@ this git repository hosted by gitorious. I&#8217;ll keep the code on KDE&#8217;s
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/03/14/qjson-symbian/">QJson and Symbian</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-14T00:55:51+01:00" pubdate data-updated="true">Mar 14<span>th</span>, 2010</time>
+        
+         | <a href="/2010/03/14/qjson-symbian/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;m really pleased to announce that latest version of QJson on master is
+working on Symbian. You can find the installation instruction
+<a href="http://qjson.sourceforge.net/get_it/symbian.html">here</a>.</p>
+
+<p>Since I&#8217;m not a Symbian developer it has been a little hard for me to achieve
+that. I would like to thank <a href="http://gitorious.org/~anluoma">Antti Luoma</a> for
+his help.</p>
+
+<p>There are also good news for Windows developers: now building QJson under
+Windows is easier. Checkout the new <a href="http://qjson.sourceforge.net/get_it/windows.html">installation instruction
+page</a>.</p>
+
+<p>I hope this will help all the Windows developers who want to use QJson.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -898,98 +949,6 @@ github wiki ;)</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/04/02/rockmarble-follow-artists-tours-with-marble/">Rockmarble: How to Follow Your Favourite Artists Tour With Marble</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-04-02T08:51:43+02:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2009</time>
-        
-         | <a href="/2009/04/02/rockmarble-follow-artists-tours-with-marble/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>During the last weekend I wanted to have some fun with
-<a href="http://qjson.sourceforge.net/">QJson</a>. So I came out with this idea: retrieve
-from <a href="http://www.last.fm/home">last.fm</a> the tour dates of my favourite artists
-and display the locations using <a href="http://edu.kde.org/marble/">Marble</a>.</p>
-
-<p>After some hacking I created this small application: <em>rockmarble</em>&#8230;</p>
-
-<p><img src="/images/rockmarble/flow.png"></p>
-
-<p>If you have a last.fm account rockmarble will import your favourite artist
-list. Otherwise you can add one artists at a time.</p>
-
-<p>The tour location will be displayed inside Marble, using
-<a href="http://www.openstreetmap.org/">openstreetmap</a>.</p>
-
-<h2>Requirements</h2>
-
-<p>In order to build/run it you will need:</p>
-
-<ul>
-<li><a href="http://www.qtsoftware.com/downloads">Qt4</a></li>
-<li><a href="http://edu.kde.org/marble/">marble</a></li>
-<li><a href="http://qjson.sourceforge.net/">QJson</a></li>
-</ul>
-
-
-<h2>Installation</h2>
-
-<p>You can grab the source code of rockmarble
-<a href="http://github.com/flavio/rockmarble/tree/master">here</a>.</p>
-
-<p>If you are an openSUSE user you can use 1click install:</p>
-
-<p><a href="http://cloud.github.com/downloads/flavio%0A/rockmarble/rockmarble.ymp"><img src="/images/rockmarble/rockmarble_1click.png" alt="" /></a></p>
-
-<h2>Issues</h2>
-
-<h3>Geolocalization</h3>
-
-<p>The geolocalization data are given by last.fm, so if you discover that
-Metallica are going to give a concert in the middle of the Pacific Ocean
-please don’t bother me :)</p>
-
-<h3>Special names</h3>
-
-<p>It seems that QJson doesn’t handle properly special characters. Maybe you will
-some artist with a blank name. I’m going to fix this issue asap.</p>
-
-<h2>More details</h2>
-
-<p>Visit <a href="http://rockmarble.sourceforge.net">rockmarble website</a></p>
-
-<h2>Future</h2>
-
-<p>Who wants to integrate it into amarok&#8217;s context view? ;)</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -1007,6 +966,10 @@ some artist with a blank name. I’m going to fix this issue asap.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/02/13/docker-and-opensuse-getting-closer/">Docker and openSUSE getting closer</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/11/28/better-docker-experience-on-opensuse/">Better Docker experience on openSUSE</a>
       </li>
     
@@ -1020,10 +983,6 @@ some artist with a blank name. I’m going to fix this issue asap.</p>
     
       <li class="post">
         <a href="/2012/11/21/qjson-0-dot-8-0-released/">QJson 0.8.0 released</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2011/03/29/introducing-dister-a-heroku-like-solution-for-suse-studio/">Introducing dister, a Heroku like solution for SUSE Studio</a>
       </li>
     
   </ul>
@@ -1085,7 +1044,7 @@ some artist with a blank name. I’m going to fix this issue asap.</p>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Flavio Castelli -
+  Copyright &copy; 2014 - Flavio Castelli -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

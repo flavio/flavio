@@ -4,7 +4,7 @@
   <title><![CDATA[Flavio Castelli]]></title>
   <link href="http://flavio.castelli.name/atom.xml" rel="self"/>
   <link href="http://flavio.castelli.name/"/>
-  <updated>2013-11-28T18:31:30+01:00</updated>
+  <updated>2014-02-13T11:00:54+01:00</updated>
   <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
@@ -12,6 +12,28 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Docker and openSUSE getting closer]]></title>
+    <link href="http://flavio.castelli.name/2014/02/13/docker-and-opensuse-getting-closer/"/>
+    <updated>2014-02-13T10:46:00+01:00</updated>
+    <id>http://flavio.castelli.name/2014/02/13/docker-and-opensuse-getting-closer</id>
+    <content type="html"><![CDATA[<p>I have some good news about Docker and openSUSE.</p>
+
+<p>First of all the Docker package has been moved from my personal OBS project
+to the more official <a href="https://build.opensuse.org/package/show?project=Virtualization&amp;package=docker">Virtualization</a>
+one. The next step is to get the Docker package into Factory :)</p>
+
+<p>I&#8217;m going to drop the <code>docker</code> package from <code>home:flavio_castelli:docker</code>,
+so make sure to subscribe to the <code>Virtualization</code> repository to get latest versions of
+Docker.</p>
+
+<p>I have also submitted some openSUSE related documentation to the official Docker
+project. If you visit the <a href="https://www.docker.io/gettingstarted/#h_installation">&#8220;Getting started&#8221;</a>
+page you will notice the familiar geeko logo. Click it to be redirected to the
+openSUSE&#8217;s installation instructions.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Better Docker experience on openSUSE]]></title>
@@ -1374,69 +1396,6 @@ x86_64 architectures).</p>
 github wiki ;)</p>
 
 <p><a href="http://cloud.github.com/downloads/flavio%0A/rockmarble/rockmarble.ymp"><img src="http://flavio.castelli.name/images/rockmarble/rockmarble_1click.png" alt="" /></a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[rockmarble: how to follow your favourite artists tour with Marble]]></title>
-    <link href="http://flavio.castelli.name/2009/04/02/rockmarble-follow-artists-tours-with-marble/"/>
-    <updated>2009-04-02T08:51:43+02:00</updated>
-    <id>http://flavio.castelli.name/2009/04/02/rockmarble-follow-artists-tours-with-marble</id>
-    <content type="html"><![CDATA[<p>During the last weekend I wanted to have some fun with
-<a href="http://qjson.sourceforge.net/">QJson</a>. So I came out with this idea: retrieve
-from <a href="http://www.last.fm/home">last.fm</a> the tour dates of my favourite artists
-and display the locations using <a href="http://edu.kde.org/marble/">Marble</a>.</p>
-
-<p>After some hacking I created this small application: <em>rockmarble</em>&#8230;</p>
-
-<p><img src="http://flavio.castelli.name/images/rockmarble/flow.png"></p>
-
-<p>If you have a last.fm account rockmarble will import your favourite artist
-list. Otherwise you can add one artists at a time.</p>
-
-<p>The tour location will be displayed inside Marble, using
-<a href="http://www.openstreetmap.org/">openstreetmap</a>.</p>
-
-<h2>Requirements</h2>
-
-<p>In order to build/run it you will need:</p>
-
-<ul>
-<li><a href="http://www.qtsoftware.com/downloads">Qt4</a></li>
-<li><a href="http://edu.kde.org/marble/">marble</a></li>
-<li><a href="http://qjson.sourceforge.net/">QJson</a></li>
-</ul>
-
-
-<h2>Installation</h2>
-
-<p>You can grab the source code of rockmarble
-<a href="http://github.com/flavio/rockmarble/tree/master">here</a>.</p>
-
-<p>If you are an openSUSE user you can use 1click install:</p>
-
-<p><a href="http://cloud.github.com/downloads/flavio%0A/rockmarble/rockmarble.ymp"><img src="http://flavio.castelli.name/images/rockmarble/rockmarble_1click.png" alt="" /></a></p>
-
-<h2>Issues</h2>
-
-<h3>Geolocalization</h3>
-
-<p>The geolocalization data are given by last.fm, so if you discover that
-Metallica are going to give a concert in the middle of the Pacific Ocean
-please don’t bother me :)</p>
-
-<h3>Special names</h3>
-
-<p>It seems that QJson doesn’t handle properly special characters. Maybe you will
-some artist with a blank name. I’m going to fix this issue asap.</p>
-
-<h2>More details</h2>
-
-<p>Visit <a href="http://rockmarble.sourceforge.net">rockmarble website</a></p>
-
-<h2>Future</h2>
-
-<p>Who wants to integrate it into amarok&#8217;s context view? ;)</p>
 ]]></content>
   </entry>
   

@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Tyding up Strigi analyzers - Flavio Castelli</title>
+  <title>Docker and openSUSE getting closer - Flavio Castelli</title>
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="As you may know, KDE4 will use Strigi for meta information extraction instead
-of the old KFilePlugin classes. Since Strigi&#8217;s analyzer work in a &hellip;">
+  <meta name="description" content="I have some good news about Docker and openSUSE. First of all the Docker package has been moved from my personal OBS project
+to the more official &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@ of the old KFilePlugin classes. Since Strigi&#8217;s analyzer work in a &hellip;
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://flavio.castelli.name/2008/01/10/tyding_up_strigi_analyzers/">
+  <link rel="canonical" href="http://flavio.castelli.name/2014/02/13/docker-and-opensuse-getting-closer/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -92,7 +92,7 @@ of the old KFilePlugin classes. Since Strigi&#8217;s analyzer work in a &hellip;
   
   <header>
     
-      <h1 class="entry-title">Tyding Up Strigi Analyzers</h1>
+      <h1 class="entry-title">Docker and openSUSE Getting Closer</h1>
     
     
       <p class="meta">
@@ -108,7 +108,7 @@ of the old KFilePlugin classes. Since Strigi&#8217;s analyzer work in a &hellip;
   
 
 
-<time datetime="2008-01-10T15:49:17+01:00" pubdate data-updated="true">Jan 10<span>th</span>, 2008</time>
+<time datetime="2014-02-13T10:46:00+01:00" pubdate data-updated="true">Feb 13<span>th</span>, 2014</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -117,27 +117,20 @@ of the old KFilePlugin classes. Since Strigi&#8217;s analyzer work in a &hellip;
   </header>
 
 
-<div class="entry-content"><p>As you may know, KDE4 will use Strigi for meta information extraction instead
-of the old <a href="http://api.kde.org/3.5-api/kdelibs-%0Aapidocs/kio/kio/html/classKFilePlugin.html">KFilePlugin</a> classes.</p>
+<div class="entry-content"><p>I have some good news about Docker and openSUSE.</p>
 
-<p>Since Strigi&#8217;s analyzer work in a different way, lot of code has to be ported.
-Unfortunately, after a good start, some relevant analyzers were still missing.</p>
+<p>First of all the Docker package has been moved from my personal OBS project
+to the more official <a href="https://build.opensuse.org/package/show?project=Virtualization&amp;package=docker">Virtualization</a>
+one. The next step is to get the Docker package into Factory :)</p>
 
-<p>But in the last weeks Strigi gained support of:</p>
+<p>I&#8217;m going to drop the <code>docker</code> package from <code>home:flavio_castelli:docker</code>,
+so make sure to subscribe to the <code>Virtualization</code> repository to get latest versions of
+Docker.</p>
 
-<ul>
-<li>wave file</li>
-<li>avi files</li>
-<li>txt files</li>
-<li>dds files</li>
-<li>rgb files</li>
-<li>sid files</li>
-<li>ico files</li>
-</ul>
-
-
-<p>I&#8217;ve also updated <a href="http://wiki.kde.org/tiki-index.php?page=Porting+KFilePlugin+Progress">this</a> summary page. As you can see
-there&#8217;s still some work to do, but don&#8217;t worry&#8230; I&#8217;ll try to do the best ;)</p>
+<p>I have also submitted some openSUSE related documentation to the official Docker
+project. If you visit the <a href="https://www.docker.io/gettingstarted/#h_installation">&#8220;Getting started&#8221;</a>
+page you will notice the familiar geeko logo. Click it to be redirected to the
+openSUSE&#8217;s installation instructions.</p>
 </div>
 
 
@@ -146,7 +139,7 @@ there&#8217;s still some work to do, but don&#8217;t worry&#8230; I&#8217;ll try
       
   
 
-<span class="byline author vcard">Posted by <span class="fn">Flavio</span></span>
+<span class="byline author vcard">Posted by <span class="fn">Flavio Castelli</span></span>
 
       
 
@@ -160,12 +153,12 @@ there&#8217;s still some work to do, but don&#8217;t worry&#8230; I&#8217;ll try
   
 
 
-<time datetime="2008-01-10T15:49:17+01:00" pubdate data-updated="true">Jan 10<span>th</span>, 2008</time>
+<time datetime="2014-02-13T10:46:00+01:00" pubdate data-updated="true">Feb 13<span>th</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/kde/'>KDE</a>, <a class='category' href='/blog/categories/c-/'>c++</a>, <a class='category' href='/blog/categories/strigi/'>strigi</a>
+    <a class='category' href='/blog/categories/cloud/'>cloud</a>, <a class='category' href='/blog/categories/opensuse/'>openSUSE</a>, <a class='category' href='/blog/categories/paas/'>paas</a>
   
 </span>
 
@@ -174,7 +167,7 @@ there&#8217;s still some work to do, but don&#8217;t worry&#8230; I&#8217;ll try
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://flavio.castelli.name/2008/01/10/tyding_up_strigi_analyzers/" data-via="flavio_castelli" data-counturl="http://flavio.castelli.name/2008/01/10/tyding_up_strigi_analyzers/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://flavio.castelli.name/2014/02/13/docker-and-opensuse-getting-closer/" data-via="flavio_castelli" data-counturl="http://flavio.castelli.name/2014/02/13/docker-and-opensuse-getting-closer/" >Tweet</a>
   
   
   
@@ -183,10 +176,8 @@ there&#8217;s still some work to do, but don&#8217;t worry&#8230; I&#8217;ll try
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/2007/11/26/strigi-gains-fam-support/" title="Previous Post: Strigi gains FAM support">&laquo; Strigi gains FAM support</a>
+        <a class="basic-alignment left" href="/2013/11/28/better-docker-experience-on-opensuse/" title="Previous Post: Better Docker experience on openSUSE">&laquo; Better Docker experience on openSUSE</a>
       
-      
-        <a class="basic-alignment right" href="/2008/01/11/strigi_irc_meeting_january/" title="Next Post: Strigi irc meeting">Strigi irc meeting &raquo;</a>
       
     </p>
   </footer>
@@ -298,8 +289,8 @@ there&#8217;s still some work to do, but don&#8217;t worry&#8230; I&#8217;ll try
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://flavio.castelli.name/2008/01/10/tyding_up_strigi_analyzers/';
-        var disqus_url = 'http://flavio.castelli.name/2008/01/10/tyding_up_strigi_analyzers/';
+        var disqus_identifier = 'http://flavio.castelli.name/2014/02/13/docker-and-opensuse-getting-closer/';
+        var disqus_url = 'http://flavio.castelli.name/2014/02/13/docker-and-opensuse-getting-closer/';
         var disqus_script = 'embed.js';
       
     (function () {

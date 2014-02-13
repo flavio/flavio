@@ -9,8 +9,9 @@
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="In order to realize a project of mine I started looking for a Qt library for
-mapping JSON data to Qt objects. I came over a couple of solutions but &hellip;">
+  <meta name="description" content="During the last weekend I wanted to have some fun with
+QJson. So I came out with this idea: retrieve
+from last.fm the tour dates of my favourite &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -89,6 +90,98 @@ mapping JSON data to Qt objects. I came over a couple of solutions but &hellip;"
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/04/02/rockmarble-follow-artists-tours-with-marble/">Rockmarble: How to Follow Your Favourite Artists Tour With Marble</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-02T08:51:43+02:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2009</time>
+        
+         | <a href="/2009/04/02/rockmarble-follow-artists-tours-with-marble/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>During the last weekend I wanted to have some fun with
+<a href="http://qjson.sourceforge.net/">QJson</a>. So I came out with this idea: retrieve
+from <a href="http://www.last.fm/home">last.fm</a> the tour dates of my favourite artists
+and display the locations using <a href="http://edu.kde.org/marble/">Marble</a>.</p>
+
+<p>After some hacking I created this small application: <em>rockmarble</em>&#8230;</p>
+
+<p><img src="/images/rockmarble/flow.png"></p>
+
+<p>If you have a last.fm account rockmarble will import your favourite artist
+list. Otherwise you can add one artists at a time.</p>
+
+<p>The tour location will be displayed inside Marble, using
+<a href="http://www.openstreetmap.org/">openstreetmap</a>.</p>
+
+<h2>Requirements</h2>
+
+<p>In order to build/run it you will need:</p>
+
+<ul>
+<li><a href="http://www.qtsoftware.com/downloads">Qt4</a></li>
+<li><a href="http://edu.kde.org/marble/">marble</a></li>
+<li><a href="http://qjson.sourceforge.net/">QJson</a></li>
+</ul>
+
+
+<h2>Installation</h2>
+
+<p>You can grab the source code of rockmarble
+<a href="http://github.com/flavio/rockmarble/tree/master">here</a>.</p>
+
+<p>If you are an openSUSE user you can use 1click install:</p>
+
+<p><a href="http://cloud.github.com/downloads/flavio%0A/rockmarble/rockmarble.ymp"><img src="/images/rockmarble/rockmarble_1click.png" alt="" /></a></p>
+
+<h2>Issues</h2>
+
+<h3>Geolocalization</h3>
+
+<p>The geolocalization data are given by last.fm, so if you discover that
+Metallica are going to give a concert in the middle of the Pacific Ocean
+please don’t bother me :)</p>
+
+<h3>Special names</h3>
+
+<p>It seems that QJson doesn’t handle properly special characters. Maybe you will
+some artist with a blank name. I’m going to fix this issue asap.</p>
+
+<h2>More details</h2>
+
+<p>Visit <a href="http://rockmarble.sourceforge.net">rockmarble website</a></p>
+
+<h2>Future</h2>
+
+<p>Who wants to integrate it into amarok&#8217;s context view? ;)</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -833,55 +926,6 @@ add <em>File Alteration Monitor</em> (aka <em>FAM</em>) support I had to write o
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2007/11/23/updated-git-svn-howto/">Updated Git-svn Howto</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-11-23T15:49:12+01:00" pubdate data-updated="true">Nov 23<span>rd</span>, 2007</time>
-        
-         | <a href="/2007/11/23/updated-git-svn-howto/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Maybe someone has already experimented this situation:</p>
-
-<blockquote><p>You&#8217;re hacking on your local working copy and you want to keep it up-to-date
-but, since you have some uncommitted changes, <em>git-svn rebase</em> cannot be
-executed</p></blockquote>
-
-<p>I was just thinking to write something about<em> </em>this problem when I read a
-<a href="http://www.digikam.org/?q=node/270">post</a> on digikam blog.</p>
-
-<p>In this post Marcel proposes a workaround using a bash function. In fact
-there&#8217;s a <em>&#8220;cleaner&#8221;</em> solution, if you&#8217;re interested read the last part of my
-<a href="http://www.flavio.castelli.name/howto_use_git_with_svn">git-svn howto</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -899,6 +943,10 @@ there&#8217;s a <em>&#8220;cleaner&#8221;</em> solution, if you&#8217;re interes
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/02/13/docker-and-opensuse-getting-closer/">Docker and openSUSE getting closer</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/11/28/better-docker-experience-on-opensuse/">Better Docker experience on openSUSE</a>
       </li>
     
@@ -912,10 +960,6 @@ there&#8217;s a <em>&#8220;cleaner&#8221;</em> solution, if you&#8217;re interes
     
       <li class="post">
         <a href="/2012/11/21/qjson-0-dot-8-0-released/">QJson 0.8.0 released</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2011/03/29/introducing-dister-a-heroku-like-solution-for-suse-studio/">Introducing dister, a Heroku like solution for SUSE Studio</a>
       </li>
     
   </ul>
@@ -977,7 +1021,7 @@ there&#8217;s a <em>&#8220;cleaner&#8221;</em> solution, if you&#8217;re interes
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Flavio Castelli -
+  Copyright &copy; 2014 - Flavio Castelli -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

@@ -9,8 +9,8 @@
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="Last Saturday Linux day 2007 took place. Linux Day is an Italian manifestation that promotes Linux and FOSS. During
-this day different organizations &hellip;">
+  <meta name="description" content="Maybe someone has already experimented this situation: You&#8217;re hacking on your local working copy and you want to keep it up-to-date
+but, since &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -89,6 +89,55 @@ this day different organizations &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2007/11/23/updated-git-svn-howto/">Updated Git-svn Howto</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-11-23T15:49:12+01:00" pubdate data-updated="true">Nov 23<span>rd</span>, 2007</time>
+        
+         | <a href="/2007/11/23/updated-git-svn-howto/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Maybe someone has already experimented this situation:</p>
+
+<blockquote><p>You&#8217;re hacking on your local working copy and you want to keep it up-to-date
+but, since you have some uncommitted changes, <em>git-svn rebase</em> cannot be
+executed</p></blockquote>
+
+<p>I was just thinking to write something about<em> </em>this problem when I read a
+<a href="http://www.digikam.org/?q=node/270">post</a> on digikam blog.</p>
+
+<p>In this post Marcel proposes a workaround using a bash function. In fact
+there&#8217;s a <em>&#8220;cleaner&#8221;</em> solution, if you&#8217;re interested read the last part of my
+<a href="http://www.flavio.castelli.name/howto_use_git_with_svn">git-svn howto</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -703,60 +752,6 @@ and also the <em>&#8220;opening&#8221;</em> of the new house.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2007/07/10/lots-of-improvements-into-strigi-inotify-support/">Lots of Improvements Into Strigi Inotify Support</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-07-10T22:50:34+02:00" pubdate data-updated="true">Jul 10<span>th</span>, 2007</time>
-        
-         | <a href="/2007/07/10/lots-of-improvements-into-strigi-inotify-support/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Some days ago I committed lots of changes regarding inotify support. Goodies
-and improvements have been introduced&#8230;  I had this code laying on my laptop
-for several weeks because I wasn&#8217;t able to fully test it. An annoying bug
-afflicting the <em>update index</em> operations was blocking me. But some days ago
-<a href="http://www.vandenoever.info">Jos</a> fixed it, so I didn&#8217;t have any excuse :)</p>
-
-<p>These are the major changes introduced:</p>
-
-<ol>
-<li>event caching: using a small cache it&#8217;s now possible to <em>simplify multiple events</em> and <em>prevent high cpu usage</em> when lot of changes occur on the same files</li>
-<li>interruption handling during the re-index operations: changing the directories to watch during an indexing operation will break the previous job and start a new one</li>
-<li>other small changes for improving cpu utilization</li>
-</ol>
-
-
-<p>Actually I&#8217;m very happy of the first point, but I think the second one can
-still be improved&#8230;</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -774,6 +769,10 @@ still be improved&#8230;</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/02/13/docker-and-opensuse-getting-closer/">Docker and openSUSE getting closer</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/11/28/better-docker-experience-on-opensuse/">Better Docker experience on openSUSE</a>
       </li>
     
@@ -787,10 +786,6 @@ still be improved&#8230;</p>
     
       <li class="post">
         <a href="/2012/11/21/qjson-0-dot-8-0-released/">QJson 0.8.0 released</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2011/03/29/introducing-dister-a-heroku-like-solution-for-suse-studio/">Introducing dister, a Heroku like solution for SUSE Studio</a>
       </li>
     
   </ul>
@@ -852,7 +847,7 @@ still be improved&#8230;</p>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Flavio Castelli -
+  Copyright &copy; 2014 - Flavio Castelli -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
