@@ -32,8 +32,8 @@ If you want you can follow me on
 
 ## What I like to do when I'm not in front of something using binary code
 
-I love to spend time with my lovely wife Laura. my little daughter Elena and my
-awesome dachshund called Baguette.
+I love to spend time with my lovely wife Laura. my daughters Elena and Alessia,
+my awesome dachshund and my tortoise.
 
 I like to read books (I love Isaac Asimov's ones and I'm a **big** fan of the
 [Dune saga](http://www.dunenovels.com/)), listen to music, watch movies, hang
