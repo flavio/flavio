@@ -4,7 +4,7 @@
   <title><![CDATA[Category: cloud | Flavio Castelli]]></title>
   <link href="http://flavio.castelli.name/blog/categories/cloud/atom.xml" rel="self"/>
   <link href="http://flavio.castelli.name/"/>
-  <updated>2014-02-13T11:00:54+01:00</updated>
+  <updated>2014-05-07T00:04:20+02:00</updated>
   <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
@@ -12,6 +12,147 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Building docker containers with KIWI]]></title>
+    <link href="http://flavio.castelli.name/2014/05/06/building-docker-containers-with-kiwi/"/>
+    <updated>2014-05-06T22:20:00+02:00</updated>
+    <id>http://flavio.castelli.name/2014/05/06/building-docker-containers-with-kiwi</id>
+    <content type="html"><![CDATA[<p>I'm pleased to announce <a href="https://github.com/schaefi">Marcus Schäfer</a> has
+just made possible to build docker containers with <a href="http://opensuse.github.io/kiwi/">KIWI</a>.</p>
+
+<p>For those who never heard about it, KIWI is a tool which creates Linux systems
+for both physical and virtual machines. It can create openSUSE, SUSE and other types of
+Linux distributions.</p>
+
+<h2>Why is this important?</h2>
+
+<p>As you might know Docker has already its <a href="http://docs.docker.io/reference/builder/">build system</a>
+which provides a really easy way to create new containers. However these containers
+must be based on existing ones, which leads to the problem of creating the 1st
+parent container. That's where KIWI comes to the rescue.</p>
+
+<p>Indeed Kiwi can be used to build the openSUSE/SUSE/whatever docker images that are
+going to act as the foundation blocks of other ones.</p>
+
+<h2>Requirements</h2>
+
+<p>Docker support has been added to KIWI 5.06.81. You can find this package inside
+of the <a href="https://build.opensuse.org/project/show?project=Virtualization%3AAppliances">Virtualization:Appliances</a>
+project on OBS.</p>
+
+<p>Install the <code>kiwi</code> and the <code>kiwi-dock</code> packages on your system. Then go to the
+<code>/usr/share/doc/packages/kiwi/examples/</code> directory where you will find a simple
+openSUSE 13.1 template.</p>
+
+<h2>Building the system</h2>
+
+<p>Just copy the whole <code>/usr/share/doc/packages/kiwi/examples/suse-13.1/suse-docker-container</code>
+directory to another location and make your changes.</p>
+
+<p>The heart of the whole container is the <code>config.xml</code> file:</p>
+
+<p>```xml
+&lt;?xml version="1.0" encoding="utf-8"?></p>
+
+<p><image schemaversion="6.1" name="suse-13.1-docker-guest">
+  <description type="system"></p>
+
+<pre><code>&lt;author&gt;Flavio Castelli&lt;/author&gt;
+&lt;contact&gt;fcastelli@suse.com&lt;/contact&gt;
+&lt;specification&gt;openSUSE 13.1 docker container&lt;/specification&gt;
+</code></pre>
+
+<p>  </description>
+  <preferences></p>
+
+<pre><code>&lt;type image="docker" container="os131"&gt;
+  &lt;machine&gt;
+    &lt;vmdisk/&gt;
+    &lt;vmnic interface="eth0" mode="veth"/&gt;
+  &lt;/machine&gt;
+&lt;/type&gt;
+&lt;version&gt;1.0.0&lt;/version&gt;
+&lt;packagemanager&gt;zypper&lt;/packagemanager&gt;
+&lt;rpm-check-signatures&gt;false&lt;/rpm-check-signatures&gt;
+&lt;rpm-force&gt;true&lt;/rpm-force&gt;
+&lt;locale&gt;en_US&lt;/locale&gt;
+&lt;keytable&gt;us.map.gz&lt;/keytable&gt;
+&lt;hwclock&gt;utc&lt;/hwclock&gt;
+&lt;timezone&gt;US/Eastern&lt;/timezone&gt;
+</code></pre>
+
+<p>  </preferences>
+  <users group="root"></p>
+
+<pre><code>&lt;user password="$1$wYJUgpM5$RXMMeASDc035eX.NbYWFl0" home="/root" name="root"/&gt;
+</code></pre>
+
+<p>  </users>
+  <repository type="yast2"></p>
+
+<pre><code>&lt;source path="opensuse://13.1/repo/oss/"/&gt;
+</code></pre>
+
+<p>  </repository>
+  <packages type="image"></p>
+
+<pre><code>&lt;package name="coreutils"/&gt;
+&lt;package name="lxc"/&gt;
+&lt;package name="iputils"/&gt;
+</code></pre>
+
+<p>  </packages>
+  <packages type="bootstrap"></p>
+
+<pre><code>&lt;package name="filesystem"/&gt;
+&lt;package name="glibc-locale"/&gt;
+&lt;package name="module-init-tools"/&gt;
+</code></pre>
+
+<p>  </packages>
+</image>
+```</p>
+
+<p>This is a really minimal image which contains just a bunch of packages.</p>
+
+<p>The first step is the creation of the container's root system:</p>
+
+<p>```
+kiwi -p /usr/share/doc/packages/kiwi/examples/suse-13.1/suse-docker-container \</p>
+
+<pre><code> --root /tmp/mycontainer
+</code></pre>
+
+<p>```</p>
+
+<p>The next step compresses the file system of the container into a single tarball:</p>
+
+<p>```</p>
+
+<pre><code>kiwi --create /tmp/mycontainer --type docker -d /tmp/mycontainer-result
+</code></pre>
+
+<p>```</p>
+
+<p>The tarball can be found under <code>/tmp/mycontainer-result</code>. This can be imported
+into docker using the following command:</p>
+
+<p><code>
+docker import - myContainer &lt; /path/to/mycontainer.tbz
+</code></p>
+
+<p>The container named <code>myContainer</code> is now ready to be used.</p>
+
+<h2>What's next</h2>
+
+<p>In the next days I'll make another blog post explaining how to build docker
+containers using KIWI and the <a href="http://openbuildservice.org/">Open Build Service</a>.
+This is a powerful combination which allows to achieve continuous delivery.</p>
+
+<p>Stay tuned and have fun!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Docker and openSUSE getting closer]]></title>

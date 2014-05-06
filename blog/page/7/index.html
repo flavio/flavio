@@ -9,8 +9,8 @@
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="How to have a comfortable italian keyboard layout on your iBook. Target We just want this mapping: apple key = alt gr
-numpad return (the key near to &hellip;">
+  <meta name="description" content="How to have a comfortable keyboard layout under X. A guide destinated to
+italian iBook linux users Target have the following keymap: apple keyboard &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -89,6 +89,63 @@ numpad return (the key near to &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2006/05/12/ibook-x-keyboard-mapping/">iBook X Keyboard Mapping</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-05-12T18:09:06+02:00" pubdate data-updated="true">May 12<span>th</span>, 2006</time>
+        
+         | <a href="/2006/05/12/ibook-x-keyboard-mapping/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>How to have a comfortable keyboard layout under X. A guide destinated to
+italian iBook linux users</p>
+
+<h3>Target</h3>
+
+<p>have the following keymap: <code>apple keyboard = alt gr</code></p>
+
+<h3>Instructions</h3>
+
+<p>You&#8217;ve to edit your <code>/etc/X11/xkb/keycodes/xfree86</code> file. Remember to make a
+backup copy of this file before editing. These&#8217;re the easy steps:</p>
+
+<ul>
+<li>under X run a program like xev to find the exact keycode of your apple key</li>
+<li>change the  code with the new one</li>
+<li>comment all the old command referring the new keycode</li>
+</ul>
+
+
+<p>Restart X and keep your finger crossed ;)</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1028,137 +1085,6 @@ smtpdebug = 0
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2005/12/08/howto-edit-multime-id3-tags-from-command-line/">Howto Edit Multime Id3 Tags From Command Line</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2005-12-08T18:45:39+01:00" pubdate data-updated="true">Dec 8<span>th</span>, 2005</time>
-        
-         | <a href="/2005/12/08/howto-edit-multime-id3-tags-from-command-line/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>Goal</h3>
-
-<p>id3medit is a simple script for tagging all mp3/ogg files present in a
-directory.</p>
-
-<h3>Requirements:</h3>
-
-<p>id3medit relies on id3v2, a command-line tool for editing id3v2 tags file
-names must be in format: <em>&#8217;## - trackname.ext&#8217;</em>. Where <em>##</em> is track&#8217;s number,
-and <em>ext</em> is file&#8217;s extension (mp3 or ogg in case insensitive format)</p>
-
-<h3>Synopsis:</h3>
-
-<p>id3medit syntax is: <code>id3medit artist album year(*) genre(*)</code> Where <em>*</em> denotes
-optional arguments You can obtain genre identification number in this way:
-<code>id3v2 -L | grep -i genre</code></p>
-
-<h3>Example</h3>
-
-<pre><code>id3v2 -L | grep -i rock
-
-   1: Classic Rock
-  17: Rock
-  40: Alt. Rock
-  47: Instrum. Rock
-  56: Southern Rock
-  78: Rock &amp; Roll
-  79: Hard Rock
-  81: Folk/Rock
-  91: Gothic Rock
-  92: Progress. Rock
-  93: Psychadel. Rock
-  94: Symphonic Rock 
-  95: Slow Rock
- 121: Punk Rock
- 141: Christian Rock
-</code></pre>
-
-<h3>Code</h3>
-
-<div><script src='https://gist.github.com/2469919.js'></script>
-<noscript><pre><code>#!/bin/bash 
-
-counter=0
-
-if [ -n &quot;$1&quot; ]; then
- if [[ $1 = &quot;help&quot; ]]; then
-   echo syntax: id3medit artist album year\(*\) genre\(*\)
-   echo *=optional
-   exit 0
- else
-  artist=$1
- fi
-else
-  echo syntax: id3medit artist album year\(*\) genre\(*\)
-  echo *=optional
-  exit 0
-fi
-
-if [ -n &quot;$2&quot; ]; then 
- album=$2
-fi
-
-if [ -n &quot;$3&quot; ]; then
- year=$3
-else
- year=0000
-fi
-
-if [ -n &quot;$4&quot; ]; then
- genre=$4
-else
- genre=255
-fi
-
-for file in *.{[Mm][Pp]3,[Oo][Gg][Gg]}
-#for file in *.[Mm][Pp]3
-do
- echo \-\-\&gt; Processing file: $file
- id3v2 -D &quot;$file&quot; #we delete old tags
- temp=`echo ${file#**-}`
- #temp=`echo ${temp:2}`
- title=`echo ${temp%.*3}`
- id3v2 -t &quot;$title&quot; -T $counter -a &quot;$artist&quot; -A &quot;$album&quot; -y $year -g $genre &quot;$file&quot;
- let &#39;counter +=1&#39; 
-done 
-
-let &#39;counter -=1&#39;
-echo Work done!
-echo Converted $counter files,
-echo &quot;See you... ;-D&quot;</code></pre></noscript></div>
-
-
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/8/">&larr; Older</a>
@@ -1176,6 +1102,10 @@ echo &quot;See you... ;-D&quot;</code></pre></noscript></div>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/05/06/building-docker-containers-with-kiwi/">Building docker containers with KIWI</a>
+      </li>
+    
+      <li class="post">
         <a href="/2014/02/13/docker-and-opensuse-getting-closer/">Docker and openSUSE getting closer</a>
       </li>
     
@@ -1189,10 +1119,6 @@ echo &quot;See you... ;-D&quot;</code></pre></noscript></div>
     
       <li class="post">
         <a href="/2012/11/27/qjson-0-dot-8-1-released/">qjson 0.8.1 released</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/11/21/qjson-0-dot-8-0-released/">QJson 0.8.0 released</a>
       </li>
     
   </ul>

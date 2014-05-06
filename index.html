@@ -9,8 +9,8 @@
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="I have some good news about Docker and openSUSE. First of all the Docker package has been moved from my personal OBS project
-to the more official &hellip;">
+  <meta name="description" content="I&#8217;m pleased to announce Marcus Schäfer has
+just made possible to build docker containers with KIWI. For those who never heard about it, KIWI is &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -89,6 +89,197 @@ to the more official &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2014/05/06/building-docker-containers-with-kiwi/">Building Docker Containers With KIWI</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-06T22:20:00+02:00" pubdate data-updated="true">May 6<span>th</span>, 2014</time>
+        
+         | <a href="/2014/05/06/building-docker-containers-with-kiwi/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;m pleased to announce <a href="https://github.com/schaefi">Marcus Schäfer</a> has
+just made possible to build docker containers with <a href="http://opensuse.github.io/kiwi/">KIWI</a>.</p>
+
+<p>For those who never heard about it, KIWI is a tool which creates Linux systems
+for both physical and virtual machines. It can create openSUSE, SUSE and other types of
+Linux distributions.</p>
+
+<h2>Why is this important?</h2>
+
+<p>As you might know Docker has already its <a href="http://docs.docker.io/reference/builder/">build system</a>
+which provides a really easy way to create new containers. However these containers
+must be based on existing ones, which leads to the problem of creating the 1st
+parent container. That&#8217;s where KIWI comes to the rescue.</p>
+
+<p>Indeed Kiwi can be used to build the openSUSE/SUSE/whatever docker images that are
+going to act as the foundation blocks of other ones.</p>
+
+<h2>Requirements</h2>
+
+<p>Docker support has been added to KIWI 5.06.81. You can find this package inside
+of the <a href="https://build.opensuse.org/project/show?project=Virtualization%3AAppliances">Virtualization:Appliances</a>
+project on OBS.</p>
+
+<p>Install the <code>kiwi</code> and the <code>kiwi-dock</code> packages on your system. Then go to the
+<code>/usr/share/doc/packages/kiwi/examples/</code> directory where you will find a simple
+openSUSE 13.1 template.</p>
+
+<h2>Building the system</h2>
+
+<p>Just copy the whole <code>/usr/share/doc/packages/kiwi/examples/suse-13.1/suse-docker-container</code>
+directory to another location and make your changes.</p>
+
+<p>The heart of the whole container is the <code>config.xml</code> file:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;image</span> <span class="na">schemaversion=</span><span class="s">&quot;6.1&quot;</span> <span class="na">name=</span><span class="s">&quot;suse-13.1-docker-guest&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;description</span> <span class="na">type=</span><span class="s">&quot;system&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;author&gt;</span>Flavio Castelli<span class="nt">&lt;/author&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;contact&gt;</span>fcastelli@suse.com<span class="nt">&lt;/contact&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;specification&gt;</span>openSUSE 13.1 docker container<span class="nt">&lt;/specification&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/description&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;preferences&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;docker&quot;</span> <span class="na">container=</span><span class="s">&quot;os131&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;machine&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;vmdisk/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;vmnic</span> <span class="na">interface=</span><span class="s">&quot;eth0&quot;</span> <span class="na">mode=</span><span class="s">&quot;veth&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;/machine&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/type&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;version&gt;</span>1.0.0<span class="nt">&lt;/version&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;packagemanager&gt;</span>zypper<span class="nt">&lt;/packagemanager&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;rpm-check-signatures&gt;</span>false<span class="nt">&lt;/rpm-check-signatures&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;rpm-force&gt;</span>true<span class="nt">&lt;/rpm-force&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;locale&gt;</span>en_US<span class="nt">&lt;/locale&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;keytable&gt;</span>us.map.gz<span class="nt">&lt;/keytable&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;hwclock&gt;</span>utc<span class="nt">&lt;/hwclock&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;timezone&gt;</span>US/Eastern<span class="nt">&lt;/timezone&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/preferences&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;users</span> <span class="na">group=</span><span class="s">&quot;root&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;user</span> <span class="na">password=</span><span class="s">&quot;$1$wYJUgpM5$RXMMeASDc035eX.NbYWFl0&quot;</span> <span class="na">home=</span><span class="s">&quot;/root&quot;</span> <span class="na">name=</span><span class="s">&quot;root&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/users&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;repository</span> <span class="na">type=</span><span class="s">&quot;yast2&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;source</span> <span class="na">path=</span><span class="s">&quot;opensuse://13.1/repo/oss/&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/repository&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;image&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;coreutils&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;lxc&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;iputils&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/packages&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;packages</span> <span class="na">type=</span><span class="s">&quot;bootstrap&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;filesystem&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;glibc-locale&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&quot;module-init-tools&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/packages&gt;</span>
+</span><span class='line'><span class="nt">&lt;/image&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is a really minimal image which contains just a bunch of packages.</p>
+
+<p>The first step is the creation of the container&#8217;s root system:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>kiwi -p /usr/share/doc/packages/kiwi/examples/suse-13.1/suse-docker-container \
+</span><span class='line'>     --root /tmp/mycontainer
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The next step compresses the file system of the container into a single tarball:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>kiwi --create /tmp/mycontainer --type docker -d /tmp/mycontainer-result
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The tarball can be found under <code>/tmp/mycontainer-result</code>. This can be imported
+into docker using the following command:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>docker import - myContainer <span class="err">&lt;</span> /path/to/mycontainer.tbz
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The container named <code>myContainer</code> is now ready to be used.</p>
+
+<h2>What&#8217;s next</h2>
+
+<p>In the next days I&#8217;ll make another blog post explaining how to build docker
+containers using KIWI and the <a href="http://openbuildservice.org/">Open Build Service</a>.
+This is a powerful combination which allows to achieve continuous delivery.</p>
+
+<p>Stay tuned and have fun!</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1003,201 +1194,6 @@ already running session. Starting a new session is just confusing for them.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2010/05/28/rails_execute_single_test/">How to Run a Single Rails Unit Test</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-05-28T15:57:57+02:00" pubdate data-updated="true">May 28<span>th</span>, 2010</time>
-        
-         | <a href="/2010/05/28/rails_execute_single_test/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This post explains how to execute a single unit test (or even a single test
-method) instead of running the complete unit test suite.</p>
-
-<p>In order to run the unit tests of your rails application, basically you have
-these official possibilities:</p>
-
-<ul>
-<li><code>rake test</code>: runs all unit, functional and integration tests.</li>
-<li><code>rake test:units</code>: runs all the unit tests.</li>
-<li><code>rake test:functionals</code>: runs all the functional tests.</li>
-<li><code>rake test:integration</code>: runs all the integration tests.
-Each one of these commands requires some time and they are not the best
-solution while developing a new feature or fixing a bug. In this circumstance
-we just want to have a quick feedback from the unit test of the code we are
-editing.</li>
-</ul>
-
-
-<p>Waiting for all the unit/functional tests to complete decreases our
-productivity, what we need is to execute just a single unit test. Fortunately
-there are different solutions for this problem, let&#8217;s go through them.</p>
-
-<h2>The easy approach: use your favorite IDE</h2>
-
-<p>Most of the IDE supporting ruby allow you to run a single unit test. If you
-are using Netbeans running a single unit test is really easy:</p>
-
-<ul>
-<li>make sure the editor if showing the file you want to test or the file containing its unit tests</li>
-<li>Hit <em>Ctrl+Shift+F6</em> or click on the following menu entry: <em>Debug->Debug Test File</em>
-Two new windows will be opened: one will contain the output produced by your
-unit test, the other one will show the results of the unit test.</li>
-</ul>
-
-
-<p>As you will notice the summary window contains also some useful information
-like the:</p>
-
-<ul>
-<li>hyper links to the exact location of the code that produced the error/failure.</li>
-<li>execution time required by each one of the test methods.
-As you will experience it will be like &#8220;compiling&#8221; your ruby code.</li>
-</ul>
-
-
-<h2>From the console</h2>
-
-<p>If you are not using Netbeans you can always rely on some command line tools.</p>
-
-<h3>No additional tools</h3>
-
-<p>These &#8220;tricks&#8221; don&#8217;t require additional gems, hence they will work out of the
-box.</p>
-
-<p>The first solution is to call this rake task:</p>
-
-<pre><code>rake test TEST=path_to_test_file
-</code></pre>
-
-<p>So the final command should look like</p>
-
-<pre><code>rake test TEST=test/unit/invitation_test.rb
-</code></pre>
-
-<p>Unfortunately on my machine this command repeats the same test three times, I
-hope you won&#8217;t have the same weird behavior also on your systems&#8230;</p>
-
-<p>Alternatively you can use the following command:</p>
-
-<pre><code>ruby -I"lib:test" path_to_test_file"
-</code></pre>
-
-<p>It&#8217;s even possible to <strong>call a specific test method of your testcase</strong>:</p>
-
-<pre><code>ruby -I"lib:test" path_to_test_file -n name_of_the_method"
-</code></pre>
-
-<p>So calling:</p>
-
-<pre><code>ruby -I"lib:test" test/unit/invitation_test.rb - test_should_create_invitation
-</code></pre>
-
-<p>will execute <strong>only</strong> <em>InvitationTest::test_should_create_invitation</em>.</p>
-
-<p>It&#8217;s also possible to <strong>execute only the test methods matching a regular
-expression</strong>. Look at this example:</p>
-
-<pre><code>ruby -I"lib:test" test/unit/invitation_test.rb -n /.*between.*/
-</code></pre>
-
-<p>This command will execute only the test methods matching the <em>/.<em>between.</em>/</em>
-regexp.</p>
-
-<h3>Using the single_test gem</h3>
-
-<p>If you want to avoid the awful syntax showed in the previous paragraph there&#8217;s
-a gem that can help you, it&#8217;s called
-<a href="http://github.com/grosser/single_test">single_test</a>.</p>
-
-<p>The github page contains a nice documentation, but let&#8217;s go through the most
-common use cases.</p>
-
-<p>You can install the gem as a rails plugin:</p>
-
-<pre><code>script/plugin install git://github.com/grosser/single_test.git
-</code></pre>
-
-<p>single_test will add new rake tasks to your rails project, but <strong>won&#8217;t</strong>
-override the original ones.</p>
-
-<p>Suppose we want to execute the unit test of <em>user.rb</em>, just type the following
-command:</p>
-
-<pre><code>rake test:user
-</code></pre>
-
-<p>If you want to execute the functional test of <em>User</em> just call:</p>
-
-<pre><code>rake test:user_c
-</code></pre>
-
-<p>Appending <em>&#8221;</em>c&#8221;_ to the class name will automatically execute its functional
-test (if it exists).</p>
-
-<p>It&#8217;s still possible to <strong>execute a specif test method</strong>:</p>
-
-<pre><code>rake test:user_c:_test_name_
-</code></pre>
-
-<p>So calling:</p>
-
-<pre><code>rake test:user_c:test_update_user
-</code></pre>
-
-<p>Will execute the <em>test_update_user</em> method written inside of
-<em>test/functional/user_controller_test.rb</em>.</p>
-
-<p>It&#8217;s still possible to use regexp:</p>
-
-<pre><code>rake test:invitation:.*between.*
-</code></pre>
-
-<p>This syntax is equivalent to <code>ruby -I"lib:test" test/unit/invitation_test.rb
--n /.*between.*/</code>.</p>
-
-<h2>Possible issues</h2>
-
-<p>When a single unit test is run all the usual database initialization tasks are
-not performed. If your code is relying on newly created migrations you will
-surely have lots of errors. This is happening because the new migrations have
-not been applied to the test database.</p>
-
-<p>In order to fix these errors just execute:</p>
-
-<pre><code>rake db:test:prepare
-</code></pre>
-
-<p>before running your unit test.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -1213,6 +1209,10 @@ not been applied to the test database.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/05/06/building-docker-containers-with-kiwi/">Building docker containers with KIWI</a>
+      </li>
+    
+      <li class="post">
         <a href="/2014/02/13/docker-and-opensuse-getting-closer/">Docker and openSUSE getting closer</a>
       </li>
     
@@ -1226,10 +1226,6 @@ not been applied to the test database.</p>
     
       <li class="post">
         <a href="/2012/11/27/qjson-0-dot-8-1-released/">qjson 0.8.1 released</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/11/21/qjson-0-dot-8-0-released/">QJson 0.8.0 released</a>
       </li>
     
   </ul>

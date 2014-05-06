@@ -9,9 +9,8 @@
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="I&#8217;m really pleased to announce that latest version of QJson on master is
-working on Symbian. You can find the installation instruction
-here. &hellip;">
+  <meta name="description" content="This post explains how to execute a single unit test (or even a single test
+method) instead of running the complete unit test suite. In order to run &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,6 +89,201 @@ here. &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/05/28/rails_execute_single_test/">How to Run a Single Rails Unit Test</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-28T15:57:57+02:00" pubdate data-updated="true">May 28<span>th</span>, 2010</time>
+        
+         | <a href="/2010/05/28/rails_execute_single_test/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post explains how to execute a single unit test (or even a single test
+method) instead of running the complete unit test suite.</p>
+
+<p>In order to run the unit tests of your rails application, basically you have
+these official possibilities:</p>
+
+<ul>
+<li><code>rake test</code>: runs all unit, functional and integration tests.</li>
+<li><code>rake test:units</code>: runs all the unit tests.</li>
+<li><code>rake test:functionals</code>: runs all the functional tests.</li>
+<li><code>rake test:integration</code>: runs all the integration tests.
+Each one of these commands requires some time and they are not the best
+solution while developing a new feature or fixing a bug. In this circumstance
+we just want to have a quick feedback from the unit test of the code we are
+editing.</li>
+</ul>
+
+
+<p>Waiting for all the unit/functional tests to complete decreases our
+productivity, what we need is to execute just a single unit test. Fortunately
+there are different solutions for this problem, let&#8217;s go through them.</p>
+
+<h2>The easy approach: use your favorite IDE</h2>
+
+<p>Most of the IDE supporting ruby allow you to run a single unit test. If you
+are using Netbeans running a single unit test is really easy:</p>
+
+<ul>
+<li>make sure the editor if showing the file you want to test or the file containing its unit tests</li>
+<li>Hit <em>Ctrl+Shift+F6</em> or click on the following menu entry: <em>Debug->Debug Test File</em>
+Two new windows will be opened: one will contain the output produced by your
+unit test, the other one will show the results of the unit test.</li>
+</ul>
+
+
+<p>As you will notice the summary window contains also some useful information
+like the:</p>
+
+<ul>
+<li>hyper links to the exact location of the code that produced the error/failure.</li>
+<li>execution time required by each one of the test methods.
+As you will experience it will be like &#8220;compiling&#8221; your ruby code.</li>
+</ul>
+
+
+<h2>From the console</h2>
+
+<p>If you are not using Netbeans you can always rely on some command line tools.</p>
+
+<h3>No additional tools</h3>
+
+<p>These &#8220;tricks&#8221; don&#8217;t require additional gems, hence they will work out of the
+box.</p>
+
+<p>The first solution is to call this rake task:</p>
+
+<pre><code>rake test TEST=path_to_test_file
+</code></pre>
+
+<p>So the final command should look like</p>
+
+<pre><code>rake test TEST=test/unit/invitation_test.rb
+</code></pre>
+
+<p>Unfortunately on my machine this command repeats the same test three times, I
+hope you won&#8217;t have the same weird behavior also on your systems&#8230;</p>
+
+<p>Alternatively you can use the following command:</p>
+
+<pre><code>ruby -I"lib:test" path_to_test_file"
+</code></pre>
+
+<p>It&#8217;s even possible to <strong>call a specific test method of your testcase</strong>:</p>
+
+<pre><code>ruby -I"lib:test" path_to_test_file -n name_of_the_method"
+</code></pre>
+
+<p>So calling:</p>
+
+<pre><code>ruby -I"lib:test" test/unit/invitation_test.rb - test_should_create_invitation
+</code></pre>
+
+<p>will execute <strong>only</strong> <em>InvitationTest::test_should_create_invitation</em>.</p>
+
+<p>It&#8217;s also possible to <strong>execute only the test methods matching a regular
+expression</strong>. Look at this example:</p>
+
+<pre><code>ruby -I"lib:test" test/unit/invitation_test.rb -n /.*between.*/
+</code></pre>
+
+<p>This command will execute only the test methods matching the <em>/.<em>between.</em>/</em>
+regexp.</p>
+
+<h3>Using the single_test gem</h3>
+
+<p>If you want to avoid the awful syntax showed in the previous paragraph there&#8217;s
+a gem that can help you, it&#8217;s called
+<a href="http://github.com/grosser/single_test">single_test</a>.</p>
+
+<p>The github page contains a nice documentation, but let&#8217;s go through the most
+common use cases.</p>
+
+<p>You can install the gem as a rails plugin:</p>
+
+<pre><code>script/plugin install git://github.com/grosser/single_test.git
+</code></pre>
+
+<p>single_test will add new rake tasks to your rails project, but <strong>won&#8217;t</strong>
+override the original ones.</p>
+
+<p>Suppose we want to execute the unit test of <em>user.rb</em>, just type the following
+command:</p>
+
+<pre><code>rake test:user
+</code></pre>
+
+<p>If you want to execute the functional test of <em>User</em> just call:</p>
+
+<pre><code>rake test:user_c
+</code></pre>
+
+<p>Appending <em>&#8221;</em>c&#8221;_ to the class name will automatically execute its functional
+test (if it exists).</p>
+
+<p>It&#8217;s still possible to <strong>execute a specif test method</strong>:</p>
+
+<pre><code>rake test:user_c:_test_name_
+</code></pre>
+
+<p>So calling:</p>
+
+<pre><code>rake test:user_c:test_update_user
+</code></pre>
+
+<p>Will execute the <em>test_update_user</em> method written inside of
+<em>test/functional/user_controller_test.rb</em>.</p>
+
+<p>It&#8217;s still possible to use regexp:</p>
+
+<pre><code>rake test:invitation:.*between.*
+</code></pre>
+
+<p>This syntax is equivalent to <code>ruby -I"lib:test" test/unit/invitation_test.rb
+-n /.*between.*/</code>.</p>
+
+<h2>Possible issues</h2>
+
+<p>When a single unit test is run all the usual database initialization tasks are
+not performed. If your code is relying on newly created migrations you will
+surely have lots of errors. This is happening because the new migrations have
+not been applied to the test database.</p>
+
+<p>In order to fix these errors just execute:</p>
+
+<pre><code>rake db:test:prepare
+</code></pre>
+
+<p>before running your unit test.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -893,62 +1087,6 @@ attend the <a href="http://www.grancanariadesktopsummit.org/">Gran Canaria Deskt
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/04/07/rockmarble-rock-in-your-town/">Rockmarble: See Who Is Going to Rock in Your Town</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-04-07T17:40:45+02:00" pubdate data-updated="true">Apr 7<span>th</span>, 2009</time>
-        
-         | <a href="/2009/04/07/rockmarble-rock-in-your-town/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>During the last weekend I hacked a bit on rockmarble and I added a new
-feature: retrieve all the events happening in a certain city.</p>
-
-<p>As usual data is provided by last.fm, which should return also the events
-<em>&#8220;near&#8221; </em>the specified city (don&#8217;t ask me to define a value for <em>near</em> :) ).</p>
-
-<p>I have created new openSUSE packages, this time everything should work fine.
-Just make sure to remove all <a href="http://qjson.sourceforge.net/">qjson</a> packages
-before installing this release (in fact all the previous problems were due to
-packaging errors of qjson, now I have created new packages called libqjson0).</p>
-
-<p>Packages are available for openSUSE 11.0, 11.1 and Factory (both for i586 and
-x86_64 architectures).</p>
-
-<p>One last news: rockmarble has also a new
-<a href="http://rockmarble.sourceforge.net">site</a>, something slightly better than
-github wiki ;)</p>
-
-<p><a href="http://cloud.github.com/downloads/flavio%0A/rockmarble/rockmarble.ymp"><img src="/images/rockmarble/rockmarble_1click.png" alt="" /></a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -966,6 +1104,10 @@ github wiki ;)</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/05/06/building-docker-containers-with-kiwi/">Building docker containers with KIWI</a>
+      </li>
+    
+      <li class="post">
         <a href="/2014/02/13/docker-and-opensuse-getting-closer/">Docker and openSUSE getting closer</a>
       </li>
     
@@ -979,10 +1121,6 @@ github wiki ;)</p>
     
       <li class="post">
         <a href="/2012/11/27/qjson-0-dot-8-1-released/">qjson 0.8.1 released</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/11/21/qjson-0-dot-8-0-released/">QJson 0.8.0 released</a>
       </li>
     
   </ul>

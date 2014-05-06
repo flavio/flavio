@@ -9,8 +9,8 @@
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="Maybe someone has already experimented this situation: You&#8217;re hacking on your local working copy and you want to keep it up-to-date
-but, since &hellip;">
+  <meta name="description" content="Last Monday I submitted lot of changes into Strigi&#8217;s trunk. I&#8217;ve heavily
+refactored some classes in order to obtain a more flexible file &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -89,6 +89,58 @@ but, since &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2007/11/26/strigi-gains-fam-support/">Strigi Gains FAM Support</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-11-26T12:33:52+01:00" pubdate data-updated="true">Nov 26<span>th</span>, 2007</time>
+        
+         | <a href="/2007/11/26/strigi-gains-fam-support/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Last Monday I submitted lot of changes into Strigi&#8217;s trunk. I&#8217;ve heavily
+refactored some classes in order to obtain a more flexible file system
+notification infrastructure. Thanks to this work now it will be easier to add
+support for new file system notification facilities.  For example, in order to
+add <em>File Alteration Monitor</em> (aka <em>FAM</em>) support I had to write only 576 loc
+(including license and documentation stuff).</p>
+
+<p>So, by now, Strigi supports the following file system monitoring facilities:</p>
+
+<ul>
+<li>polling: used when nothing else is available</li>
+<li>inotify: available only on linux platform with kernel >= 2.6.13</li>
+<li>FAM: available on most of the *nix systems, I recommend to use Gamin instead of FAM (most linux distributions already use it by default)</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -711,47 +763,6 @@ prevention components, I&#8217;ve disabled anonymous posting.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2007/07/18/new-house-opening/">New House Opening</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-07-18T10:47:46+02:00" pubdate data-updated="true">Jul 18<span>th</span>, 2007</time>
-        
-         | <a href="/2007/07/18/new-house-opening/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Last friday evening I made a party in my new house. We celebrated my birthday
-and also the <em>&#8220;opening&#8221;</em> of the new house.</p>
-
-<p>Many thanks to Roberto for the photos (made with his mobile phone!).</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -769,6 +780,10 @@ and also the <em>&#8220;opening&#8221;</em> of the new house.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/05/06/building-docker-containers-with-kiwi/">Building docker containers with KIWI</a>
+      </li>
+    
+      <li class="post">
         <a href="/2014/02/13/docker-and-opensuse-getting-closer/">Docker and openSUSE getting closer</a>
       </li>
     
@@ -782,10 +797,6 @@ and also the <em>&#8220;opening&#8221;</em> of the new house.</p>
     
       <li class="post">
         <a href="/2012/11/27/qjson-0-dot-8-1-released/">qjson 0.8.1 released</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/11/21/qjson-0-dot-8-0-released/">QJson 0.8.0 released</a>
       </li>
     
   </ul>
