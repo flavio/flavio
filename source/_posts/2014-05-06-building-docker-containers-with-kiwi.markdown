@@ -30,7 +30,7 @@ Docker support has been added to KIWI 5.06.81. You can find this package inside
 of the [Virtualization:Appliances](https://build.opensuse.org/project/show?project=Virtualization%3AAppliances)
 project on OBS.
 
-Install the `kiwi` and the `kiwi-dock` packages on your system. Then go to the
+Install the `kiwi` and the `kiwi-doc` packages on your system. Then go to the
 `/usr/share/doc/packages/kiwi/examples/` directory where you will find a simple
 openSUSE 13.1 template.
 
