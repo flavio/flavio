@@ -4,7 +4,7 @@
   <title><![CDATA[Category: cloud | Flavio Castelli]]></title>
   <link href="http://flavio.castelli.name/blog/categories/cloud/atom.xml" rel="self"/>
   <link href="http://flavio.castelli.name/"/>
-  <updated>2014-05-07T00:08:36+02:00</updated>
+  <updated>2014-05-13T17:40:40+02:00</updated>
   <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
@@ -25,6 +25,10 @@ just made possible to build docker containers with <a href="http://opensuse.gith
 for both physical and virtual machines. It can create openSUSE, SUSE and other types of
 Linux distributions.</p>
 
+<p><strong>Update:</strong> I changed the required version of kiwi and the openSUSE 13.1 template.
+Kiwi just received some improvements which do no longer force the container
+to include the <em>lxc</em> package.</p>
+
 <h2>Why is this important?</h2>
 
 <p>As you might know Docker has already its <a href="http://docs.docker.io/reference/builder/">build system</a>
@@ -37,11 +41,11 @@ going to act as the foundation blocks of other ones.</p>
 
 <h2>Requirements</h2>
 
-<p>Docker support has been added to KIWI 5.06.81. You can find this package inside
+<p>Docker support has been added to KIWI 5.06.87. You can find this package inside
 of the <a href="https://build.opensuse.org/project/show?project=Virtualization%3AAppliances">Virtualization:Appliances</a>
 project on OBS.</p>
 
-<p>Install the <code>kiwi</code> and the <code>kiwi-dock</code> packages on your system. Then go to the
+<p>Install the <code>kiwi</code> and the <code>kiwi-doc</code> packages on your system. Then go to the
 <code>/usr/share/doc/packages/kiwi/examples/</code> directory where you will find a simple
 openSUSE 13.1 template.</p>
 
@@ -98,7 +102,6 @@ directory to another location and make your changes.</p>
   <packages type="image"></p>
 
 <pre><code>&lt;package name="coreutils"/&gt;
-&lt;package name="lxc"/&gt;
 &lt;package name="iputils"/&gt;
 </code></pre>
 
