@@ -13,6 +13,11 @@ For those who never heard about it, KIWI is a tool which creates Linux systems
 for both physical and virtual machines. It can create openSUSE, SUSE and other types of
 Linux distributions.
 
+
+**Update:** I changed the required version of kiwi and the openSUSE 13.1 template.
+Kiwi just received some improvements which do no longer force the container
+to include the *lxc* package.
+
 ## Why is this important?
 
 As you might know Docker has already its [build system](http://docs.docker.io/reference/builder/)
@@ -26,7 +31,7 @@ going to act as the foundation blocks of other ones.
 
 ## Requirements
 
-Docker support has been added to KIWI 5.06.81. You can find this package inside
+Docker support has been added to KIWI 5.06.87. You can find this package inside
 of the [Virtualization:Appliances](https://build.opensuse.org/project/show?project=Virtualization%3AAppliances)
 project on OBS.
 
@@ -74,7 +79,6 @@ The heart of the whole container is the `config.xml` file:
   </repository>
   <packages type="image">
     <package name="coreutils"/>
-    <package name="lxc"/>
     <package name="iputils"/>
   </packages>
   <packages type="bootstrap">
