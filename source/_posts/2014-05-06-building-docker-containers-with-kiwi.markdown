@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "Building docker containers with KIWI"
+title: "Building docker images with KIWI"
 date: 2014-05-06 22:20
 comments: true
 categories: [cloud, openSUSE, SUSE, docker, KIWI]
 ---
 
 I'm pleased to announce [Marcus Schäfer](https://github.com/schaefi) has
-just made possible to build docker containers with [KIWI](http://opensuse.github.io/kiwi/).
+just made possible to build docker images with [KIWI](http://opensuse.github.io/kiwi/).
 
 For those who never heard about it, KIWI is a tool which creates Linux systems
 for both physical and virtual machines. It can create openSUSE, SUSE and other types of
@@ -15,15 +15,15 @@ Linux distributions.
 
 
 **Update:** I changed the required version of kiwi and the openSUSE 13.1 template.
-Kiwi just received some improvements which do no longer force the container
+Kiwi just received some improvements which do no longer force the image
 to include the *lxc* package.
 
 ## Why is this important?
 
 As you might know Docker has already its [build system](http://docs.docker.io/reference/builder/)
-which provides a really easy way to create new containers. However these containers
+which provides a really easy way to create new images. However these images
 must be based on existing ones, which leads to the problem of creating the 1st
-parent container. That's where KIWI comes to the rescue.
+parent image. That's where KIWI comes to the rescue.
 
 Indeed Kiwi can be used to build the openSUSE/SUSE/whatever docker images that are
 going to act as the foundation blocks of other ones.
@@ -44,7 +44,7 @@ openSUSE 13.1 template.
 Just copy the whole `/usr/share/doc/packages/kiwi/examples/suse-13.1/suse-docker-container`
 directory to another location and make your changes.
 
-The heart of the whole container is the `config.xml` file:
+The heart of the whole image is the `config.xml` file:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -53,7 +53,7 @@ The heart of the whole container is the `config.xml` file:
   <description type="system">
     <author>Flavio Castelli</author>
     <contact>fcastelli@suse.com</contact>
-    <specification>openSUSE 13.1 docker container</specification>
+    <specification>openSUSE 13.1 docker image</specification>
   </description>
   <preferences>
     <type image="docker" container="os131">
@@ -92,32 +92,32 @@ The heart of the whole container is the `config.xml` file:
 This is a really minimal image which contains just a bunch of packages.
 
 
-The first step is the creation of the container's root system:
+The first step is the creation of the image's root system:
 
 ```
 kiwi -p /usr/share/doc/packages/kiwi/examples/suse-13.1/suse-docker-container \
-     --root /tmp/mycontainer
+     --root /tmp/myimage
 ```
 
-The next step compresses the file system of the container into a single tarball:
+The next step compresses the file system of the image into a single tarball:
 
 ```
-    kiwi --create /tmp/mycontainer --type docker -d /tmp/mycontainer-result
+    kiwi --create /tmp/myimage --type docker -d /tmp/myimage-result
 ```
 
-The tarball can be found under `/tmp/mycontainer-result`. This can be imported
+The tarball can be found under `/tmp/myimage-result`. This can be imported
 into docker using the following command:
 
 ```
-docker import - myContainer < /path/to/mycontainer.tbz
+docker import - myImage < /path/to/myimage.tbz
 ```
 
-The container named `myContainer` is now ready to be used.
+The image named `myImage` is now ready to be used.
 
 ## What's next
 
 In the next days I'll make another blog post explaining how to build docker
-containers using KIWI and the [Open Build Service](http://openbuildservice.org/).
+images using KIWI and the [Open Build Service](http://openbuildservice.org/).
 This is a powerful combination which allows to achieve continuous delivery.
 
 Stay tuned and have fun!
