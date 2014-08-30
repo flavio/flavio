@@ -24,7 +24,7 @@ been coded by me.
 
 Converting JSON's data to _QVariant_ instance is really simple:
 
-{% codeblock [] [lang:cpp] %}
+{% codeblock [] [lang:cpp ] %}
 // create a JSonDriver instance
 JSonDriver driver;
 bool ok;
@@ -34,14 +34,14 @@ QVariant result = driver.parse (json, &ok);
 
 Suppose you're going to convert this JSON data:
 
-{% codeblock [JSON data] [lang:json] %}
+{% codeblock [JSON data] [lang:json ] %}
 { "encoding" : "UTF-8", "plug-ins" : [ "python", "c++", "ruby" ],
   "indent" : { "length" : 3, "use_space" : true } }
 {% endcodeblock %}
 
 The following code would convert the JSON data and parse it:
 
-{% codeblock [] [lang:cpp] %}
+{% codeblock [] [lang:cpp ] %}
 JSonDriver driver;
 bool ok;
 QVariantMap result = driver.parse (json, &ok).toMap();

@@ -23,7 +23,7 @@ to serialize and deserialize QObject instances to and from JSON.
 Let me show a quick example, suppose the declaration of Person class looks
 like this:
 
-{% codeblock [class definition] [lang:cpp] %}
+{% codeblock [class definition] [lang:cpp ] %}
 class Person : public QObject
 {
   Q_OBJECT
@@ -57,7 +57,7 @@ class Person : public QObject
 
 The following code will serialize an instance of Person to JSON :
 
-{% codeblock [From QObject to JSON] [lang:cpp] %}
+{% codeblock [From QObject to JSON] [lang:cpp ] %}
 Person person;
 person.setName("Flavio");
 person.setPhoneNumber(123456);
@@ -70,7 +70,7 @@ qDebug() << serializer.serialize( variant);
 
 The generated output will be:
 
-{% codeblock [JSON data] [lang:json] %}
+{% codeblock [JSON data] [lang:json ] %}
 { "dob" : "1982-07-12", "gender" : 0, "name" : "Flavio", "phoneNumber" : 123456 }
 {% endcodeblock %}
 
@@ -78,7 +78,7 @@ The generated output will be:
 
 Suppose you have the following JSON data stored into a QString:
 
-{% codeblock [JSON data] [lang:json] %}
+{% codeblock [JSON data] [lang:json ] %}
 { "dob" : "1982-07-12", "gender" : 0, "name" : "Flavio", "phoneNumber" : 123456 }
 {% endcodeblock %}
 
@@ -86,7 +86,7 @@ The following code will initialize an already allocated instance of Person
 using the JSON values:
 
     
-{% codeblock [From JSON to QObject] [lang:cpp] %}
+{% codeblock [From JSON to QObject] [lang:cpp ] %}
 Parser parser;
 QVariant variant = parser.parse(json);  
 Person person;

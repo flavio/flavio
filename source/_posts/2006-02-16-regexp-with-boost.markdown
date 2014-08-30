@@ -15,7 +15,7 @@ Here you're three small examples.
 ## Pattern matching
 In this example you’ll find how you can match a regexp in a string.
 
-{% codeblock [pattern matching] [lang:c++] %}
+{% codeblock [pattern matching] [lang:c++ ] %}
 // Created by Flavio Castelli <flavio.castelli_AT_gmail.com>
 // distrubuted under GPL v2 license
 
@@ -39,7 +39,7 @@ int main()
 ## Substitutions
 In this example you’ll find how you can replace a string matching a pattern.
 
-{% codeblock [substitutions] [lang:c++] %}
+{% codeblock [substitutions] [lang:c++ ] %}
 // Created by Flavio Castelli <flavio.castelli@gmail.com>
 // distrubuted under GPL v2 license
 
@@ -64,7 +64,7 @@ int main()
 ## Split
 In this example you’ll find how you tokenize a string with a pattern.
 
-{% codeblock [split] [lang:c++] %}
+{% codeblock [split] [lang:c++ ] %}
 // Created by Flavio Castelli <flavio.castelli@gmail.com>
 // distrubuted under GPL v2 license
 

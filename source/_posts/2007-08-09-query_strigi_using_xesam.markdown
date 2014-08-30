@@ -37,7 +37,7 @@ This is a really small step-by-step guide:
   * Create a new Strigi index (in this case I'll index all irc logs): `strigicmd create -t clucene -d temp/ logs/`
   * Create a simple file containing your Xesam query. You can find some example query on [Xesam site](http://www.freedesktop.org/wiki/XesamQueryLanguage) or inside strigi tarball (complete path: _strigi/src/streamanalyzer/xesam/testqueries/_). This is a stupid and easy query: 
 
-    {% codeblock [query] [lang:xml] %}
+    {% codeblock [query] [lang:xml ] %}
     <request>
     <query>
     <or>

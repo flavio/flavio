@@ -35,7 +35,7 @@ svn-commit syntax: `svn-commit directory` A simple example: `svn commit `pwd``
 
 ### Code
 
-{% codeblock [svn-commit.py] [lang:python] %}
+{% codeblock [svn-commit.py] [lang:python ] %}
 #! /usr/bin/python
 
 # svn-commit

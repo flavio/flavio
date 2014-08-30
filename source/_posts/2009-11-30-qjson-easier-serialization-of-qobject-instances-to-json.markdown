@@ -16,7 +16,7 @@ This solution relies on the awesome [Qt's property system](http://doc.trolltech.
 
 Suppose the declaration of Person class looks like this:
 
-{% codeblock [class definition] [lang:cpp] %}
+{% codeblock [class definition] [lang:cpp ] %}
 class Person : public QObject
 {
   Q_OBJECT  
@@ -49,7 +49,7 @@ class Person : public QObject
 
 The following code will serialize an instance of Person to JSON:
 
-{% codeblock [Serialize to JSON] [lang:cpp] %}
+{% codeblock [Serialize to JSON] [lang:cpp ] %}
     Person person;
     person.setName("Flavio");
     person.setPhoneNumber(123456);
@@ -60,7 +60,7 @@ The following code will serialize an instance of Person to JSON:
 {% endcodeblock %}
 
 The generated output will be:
-{% codeblock [JSON data] [lang:json] %}
+{% codeblock [JSON data] [lang:json ] %}
     { "dob" : "1982-07-12", "gender" : 0, "name" : "Flavio", "phoneNumber" : 123456 }
 {% endcodeblock %}
 
