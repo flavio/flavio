@@ -5,6 +5,7 @@ layout: post
 slug: qjson-symbian
 status: publish
 title: QJson and Symbian
+redirect_from: /qjson-symbian/
 comments: true
 categories: [qt, qjson]
 ---

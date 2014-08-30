@@ -5,6 +5,7 @@ layout: post
 slug: qtcanvas
 status: publish
 title: QtCanvas
+redirect_from: /qtcanvas/
 comments: true
 categories: [c++, qt]
 ---

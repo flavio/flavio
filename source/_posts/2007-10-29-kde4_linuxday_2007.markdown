@@ -5,6 +5,7 @@ layout: post
 slug: kde4_linuxday_2007
 status: publish
 title: Linux Day 2007
+redirect_from: /kde4_linuxday_2007/
 comments: true
 categories: [bglug, Italy, KDE, Linux Day]
 ---

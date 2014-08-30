@@ -5,6 +5,7 @@ layout: post
 slug: can-dreams-became-true
 status: publish
 title: Can dreams became true?
+redirect_from: /can-dreams-became-true/
 comments: true
 categories: life
 ---

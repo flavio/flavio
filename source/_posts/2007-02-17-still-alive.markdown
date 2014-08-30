@@ -5,6 +5,7 @@ layout: post
 slug: still-alive
 status: publish
 title: Still alive
+redirect_from: /still-alive/
 wordpress_id: '57'
 comments: true
 categories: life

@@ -5,6 +5,7 @@ layout: post
 slug: two-new-entries-in-my-life
 status: publish
 title: Two new entries in my life
+redirect_from: /two-new-entries-in-my-life/
 comments: true
 categories: life
 ---

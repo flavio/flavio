@@ -5,6 +5,7 @@ layout: post
 slug: ruby-downloader-for-jamendo
 status: publish
 title: Ruby downloader for Jamendo
+redirect_from: /ruby-downloader-for-jamendo/
 categories: [ruby, jamendo]
 comments: true
 ---

@@ -5,6 +5,7 @@ layout: post
 slug: svn-cleaner
 status: publish
 title: Svn cleaner
+redirect_from: /svn-cleaner/
 comments: true
 categories: bash
 ---

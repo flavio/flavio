@@ -5,6 +5,7 @@ layout: post
 slug: strigi_irc_meeting_january
 status: publish
 title: Strigi irc meeting
+redirect_from: /strigi_irc_meeting_january/
 comments: true
 categories: [KDE, strigi]
 ---

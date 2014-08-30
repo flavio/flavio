@@ -5,6 +5,7 @@ layout: post
 slug: kde4_preview_gazzaniga
 status: publish
 title: KDE4 preview at Gazzaniga (BG)
+redirect_from: /kde4_preview_gazzaniga/
 comments: true
 categories: [KDE, Italy]
 ---

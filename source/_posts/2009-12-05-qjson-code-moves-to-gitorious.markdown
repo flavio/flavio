@@ -5,6 +5,7 @@ layout: post
 slug: qjson-code-moves-to-gitorious
 status: publish
 title: QJson code moves to gitorious
+redirect_from: /qjson-code-moves-to-gitorious/
 comments: true
 categories: [qt, qjson]
 ---

@@ -5,6 +5,7 @@ layout: post
 slug: klaptopdaemon-improvement
 status: publish
 title: klaptopdaemon improvement
+redirect_from: /klaptopdaemon-improvement/
 categories: KDE
 comments: true
 ---

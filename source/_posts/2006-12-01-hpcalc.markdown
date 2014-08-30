@@ -5,6 +5,7 @@ layout: post
 slug: hpcalc
 status: publish
 title: HpCalc
+redirect_from: /hpcalc/
 comments: true
 categories: [c++, qt]
 ---

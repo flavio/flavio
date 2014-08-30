@@ -5,6 +5,7 @@ layout: post
 slug: linux-and-cryptography
 status: publish
 title: Linux and cryptography
+redirect_from: /linux-and-cryptography/
 wordpress_id: '37'
 categories: Italy
 comments: true

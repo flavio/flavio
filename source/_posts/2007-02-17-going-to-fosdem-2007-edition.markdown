@@ -5,6 +5,7 @@ layout: post
 slug: going-to-fosdem-2007-edition
 status: publish
 title: Going to FOSDEM 2007 edition
+redirect_from: /going-to-fosdem-2007-edition/
 categories: [KDE, strigi, life]
 comments: true
 ---

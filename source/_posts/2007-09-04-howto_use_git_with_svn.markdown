@@ -5,6 +5,7 @@ layout: post
 slug: howto_use_git_with_svn
 status: publish
 title: Howto use Git and svn together
+redirect_from: /howto_use_git_with_svn/
 categories: [howto, KDE, git, svn]
 comments: true
 ---

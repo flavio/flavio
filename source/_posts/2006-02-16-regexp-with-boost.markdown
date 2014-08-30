@@ -5,6 +5,7 @@ layout: post
 slug: regexp-with-boost
 status: publish
 title: Regexp with boost
+redirect_from: /regexp-with-boost/
 comments: true
 categories: c++
 ---

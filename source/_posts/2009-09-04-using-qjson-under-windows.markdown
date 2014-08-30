@@ -5,6 +5,7 @@ layout: post
 slug: using-qjson-under-windows
 status: publish
 title: Using QJson under Windows
+redirect_from: /using-qjson-under-windows/
 comments: true
 categories: [qjson, qt]
 ---

@@ -5,6 +5,7 @@ layout: post
 slug: rails_execute_single_test
 status: publish
 title: How to run a single rails unit test
+redirect_from: /rails_execute_single_test/
 comments: true
 categories: [ruby, ruby on rails, TDD, howto]
 ---

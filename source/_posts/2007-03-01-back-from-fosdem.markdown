@@ -5,6 +5,7 @@ layout: post
 slug: back-from-fosdem
 status: publish
 title: Back from FOSDEM
+redirect_from: /back-from-fosdem/
 comments: true
 categories: [KDE, strigi, life]
 ---

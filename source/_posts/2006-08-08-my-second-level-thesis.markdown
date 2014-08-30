@@ -5,6 +5,7 @@ layout: post
 slug: my-second-level-thesis
 status: publish
 title: My second level thesis
+redirect_from: /my-second-level-thesis/
 comments: true
 categories: [c++, KDE, strigi]
 ---

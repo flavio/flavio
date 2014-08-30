@@ -5,6 +5,7 @@ layout: post
 slug: fast-user-switch-plasmoid-improvements
 status: publish
 title: Fast user switch plasmoid improvements
+redirect_from: /fast-user-switch-plasmoid-improvements/
 comments: true
 categories: [KDE, plasma]
 ---

@@ -5,6 +5,7 @@ layout: post
 slug: desktop-searching
 status: publish
 title: Desktop searching
+redirect_from: /desktop-searching/
 categories: [KDE, Linux Day, strigi, Italy]
 comments: true
 ---

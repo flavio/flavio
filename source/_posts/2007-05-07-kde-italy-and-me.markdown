@@ -5,6 +5,7 @@ layout: post
 slug: kde-italy-and-me
 status: publish
 title: KDE Italy and me
+redirect_from: /kde-italy-and-me/
 wordpress_id: '25'
 comments: true
 categories: [KDE, strigi, life]

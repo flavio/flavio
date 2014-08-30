@@ -5,6 +5,7 @@ layout: post
 slug: strigi_xesam_query_language_support
 status: publish
 title: Strigi gets XesamQueryLanguage queries support
+redirect_from: /strigi_xesam_query_language_support/
 comments: true
 categories: [c++, strigi, KDE, xexam]
 ---

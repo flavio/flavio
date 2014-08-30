@@ -5,6 +5,7 @@ layout: post
 slug: ibook-x-keyboard-mapping
 status: publish
 title: iBook X keyboard mapping
+redirect_from: /ibook-x-keyboard-mapping/
 categories: howto
 comments: true
 ---

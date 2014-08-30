@@ -5,6 +5,7 @@ layout: post
 slug: strigi-desktop-integration
 status: publish
 title: Strigi Desktop integration
+redirect_from: /strigi-desktop-integration/
 categories: [KDE, strigi]
 comments: true
 ---

@@ -5,6 +5,7 @@ layout: post
 slug: remember-to-commit
 status: publish
 title: Remember to commit
+redirect_from: /remember-to-commit/
 comments: true
 categories: [KDE, strigi]
 ---

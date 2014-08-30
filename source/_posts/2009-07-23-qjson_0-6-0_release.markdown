@@ -5,6 +5,7 @@ layout: post
 slug: qjson_0-6-0_release
 status: publish
 title: New QJson release
+redirect_from: /qjson_0-6-0_release/
 comments: true
 categories: [KDE, qt, qjson]
 ---

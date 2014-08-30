@@ -5,6 +5,7 @@ layout: post
 slug: qjson-qobject-serialization-deserialization
 status: publish
 title: 'QJson: from QObject to JSON and vice-versa'
+redirect_from: /qjson-qobject-serialization-deserialization/
 comments: true
 categories: [qt, qjson]
 ---

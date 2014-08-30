@@ -5,6 +5,7 @@ layout: post
 slug: netiquette
 status: publish
 title: Netiquette
+redirect_from: /netiquette/
 comments: true
 categories: [Italy, Linux Day]
 ---

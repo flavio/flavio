@@ -5,6 +5,7 @@ layout: post
 slug: regular-expressions
 status: publish
 title: Regular expressions
+redirect_from: /regular-expressions/
 comments: true
 categories: Italy
 ---

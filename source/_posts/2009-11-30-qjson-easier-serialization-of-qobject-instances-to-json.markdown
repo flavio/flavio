@@ -5,6 +5,7 @@ layout: post
 slug: qjson-easier-serialization-of-qobject-instances-to-json
 status: publish
 title: 'QJson: easier serialization of QObject instances to JSON'
+redirect_from: /qjson-easier-serialization-of-qobject-instances-to-json/
 comments: true
 categories: [qt, qjson]
 ---

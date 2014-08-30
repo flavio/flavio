@@ -5,6 +5,7 @@ layout: post
 slug: create-your-simpson-avatar
 status: publish
 title: Create your Simpson avatar
+redirect_from: /create-your-simpson-avatar/
 comments: true
 ---
 

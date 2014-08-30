@@ -5,6 +5,7 @@ layout: post
 slug: lots-of-improvements-into-strigi-inotify-support
 status: publish
 title: Lots of improvements into Strigi inotify support
+redirect_from: /lots-of-improvements-into-strigi-inotify-support/
 categories: [c++, strigi, KDE]
 comments: true
 ---

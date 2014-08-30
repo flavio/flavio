@@ -5,6 +5,7 @@ layout: post
 slug: strigi-gains-fam-support
 status: publish
 title: Strigi gains FAM support
+redirect_from: /strigi-gains-fam-support/
 comments: true
 categories: [c++, KDE, strigi]
 ---

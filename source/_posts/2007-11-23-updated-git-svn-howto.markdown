@@ -5,6 +5,7 @@ layout: post
 slug: updated-git-svn-howto
 status: publish
 title: Updated git-svn howto
+redirect_from: /updated-git-svn-howto/
 comments: true
 categories: [git, svn, howto, KDE]
 ---

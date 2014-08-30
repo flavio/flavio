@@ -6,6 +6,7 @@ slug: introducing-dister-a-heroku-like-solution-for-suse-studio
 permalin: /:title.html
 status: publish
 title: Introducing dister, a Heroku like solution for SUSE Studio
+redirect_from: /introducing-dister-a-heroku-like-solution-for-suse-studio/
 comments: true
 categories: [ruby, ruby on rails, suse studio]
 ---

@@ -5,6 +5,7 @@ layout: post
 slug: tyding_up_strigi_analyzers
 status: publish
 title: Tyding up Strigi analyzers
+redirect_from: /tyding_up_strigi_analyzers/
 comments: true
 categories: [c++, KDE, strigi]
 ---

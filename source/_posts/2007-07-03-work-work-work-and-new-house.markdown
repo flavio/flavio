@@ -5,6 +5,7 @@ layout: post
 slug: work-work-work-and-new-house
 status: publish
 title: Work, work, work and... new house!
+redirect_from: /work-work-work-and-new-house/
 comments: true
 categories: life
 ---

@@ -5,6 +5,7 @@ layout: post
 slug: rockmarble-rock-in-your-town
 status: publish
 title: 'rockmarble: see who is going to rock in your town'
+redirect_from: /rockmarble-rock-in-your-town/
 comments: true
 categories: [c++, qt, qjson, last.fm, KDE, marble]
 ---

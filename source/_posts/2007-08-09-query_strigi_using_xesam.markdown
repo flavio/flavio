@@ -5,6 +5,7 @@ layout: post
 slug: query_strigi_using_xesam
 status: publish
 title: How to have some fun with Strigi and Xesam queries
+redirect_from: /query_strigi_using_xesam/
 comments: true
 categories: [howto, strigi, xesam, KDE]
 ---

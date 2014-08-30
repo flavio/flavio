@@ -5,6 +5,7 @@ layout: post
 slug: xesam-and-bathroom-hacking
 status: publish
 title: Xesam and bathroom hacking
+redirect_from: /xesam-and-bathroom-hacking/
 comments: true
 categories: [howto, strigi, xesam, KDE, life]
 ---

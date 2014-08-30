@@ -5,6 +5,7 @@ layout: post
 slug: qshapes-a-process-modeling-tool
 status: publish
 title: 'QShapes: a process modeling tool'
+redirect_from: /qshapes-a-process-modeling-tool/
 categories: [c++, qt]
 comments: true
 ---

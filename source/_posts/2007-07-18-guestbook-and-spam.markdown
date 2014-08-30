@@ -5,6 +5,7 @@ layout: post
 slug: guestbook-and-spam
 status: publish
 title: Guestbook and spam
+redirect_from: /guestbook-and-spam/
 ---
 
 In the last days I got an exponential grow of spam messages into the

@@ -5,6 +5,7 @@ layout: post
 slug: still-coding
 status: publish
 title: Still coding
+redirect_from: /still-coding/
 categories: [KDE, qt, strigi]
 comments: true
 ---

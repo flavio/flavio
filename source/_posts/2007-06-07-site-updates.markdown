@@ -5,6 +5,7 @@ layout: post
 slug: site-updates
 status: publish
 title: Site updates
+redirect_from: /site-updates/
 comments: true
 ---
 

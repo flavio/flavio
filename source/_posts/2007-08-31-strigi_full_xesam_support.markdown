@@ -5,6 +5,7 @@ layout: post
 slug: strigi_full_xesam_support
 status: publish
 title: Strigi gains full Xesam queries support
+redirect_from: /strigi_full_xesam_support/
 comments: true
 categories: [c++, KDE, strigi, xesam]
 ---

@@ -5,6 +5,7 @@ layout: post
 slug: ibook-mouse-emulation
 status: publish
 title: iBook mouse emulation
+redirect_from: /ibook-mouse-emulation/
 comments: true
 categories: howto
 ---

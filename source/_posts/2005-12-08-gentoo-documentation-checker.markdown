@@ -5,6 +5,8 @@ layout: post
 slug: gentoo-documentation-checker
 status: publish
 title: Gentoo documentation checker
+redirect_from: /gentoo-documentation-checker/
+redirect_from: /gentoo_doc_checker/
 categories: perl
 comments: true
 ---

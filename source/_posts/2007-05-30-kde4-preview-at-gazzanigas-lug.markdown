@@ -5,6 +5,7 @@ layout: post
 slug: kde4-preview-at-gazzanigas-lug
 status: publish
 title: KDE4 preview at Gazzaniga's Lug
+redirect_from: /kde4-preview-at-gazzanigas-lug/
 wordpress_id: '56'
 ? ''
 : - KDE

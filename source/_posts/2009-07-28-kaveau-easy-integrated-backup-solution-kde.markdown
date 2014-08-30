@@ -5,6 +5,7 @@ layout: post
 slug: kaveau-easy-integrated-backup-solution-kde
 status: publish
 title: 'kaveau: easy and integrated backups solution for KDE'
+redirect_from: /kaveau-easy-integrated-backup-solution-kde/
 categories: [KDE]
 comments: true
 ---

@@ -5,6 +5,7 @@ layout: post
 slug: svn-commit-helper
 status: publish
 title: Svn commit helper
+redirect_from: /svn-commit-helper/
 comments: true
 categories: pyton
 ---

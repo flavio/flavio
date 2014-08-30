@@ -5,6 +5,7 @@ layout: post
 slug: qjson_qt_json_library
 status: publish
 title: 'QJson: a Qt-based library for mapping JSON data to QVariant objects'
+redirect_from: /qjson_qt_json_library/
 wordpress_id: '98'
 categories: [qt, json, qjson]
 comments: true

@@ -5,6 +5,7 @@ layout: post
 slug: kaveau-updates
 status: publish
 title: kaveau updates
+redirect_from: /kaveau-updates/
 comments: true
 categories: KDE
 ---

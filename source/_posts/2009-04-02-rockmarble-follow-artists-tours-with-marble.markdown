@@ -5,6 +5,7 @@ layout: post
 slug: rockmarble-follow-artists-tours-with-marble
 status: publish
 title: 'rockmarble: how to follow your favourite artists tour with Marble'
+redirect_from: /rockmarble-follow-artists-tours-with-marble/
 comments: true
 categories: [c++, qt, qjson, last.fm, KDE, marble]
 ---

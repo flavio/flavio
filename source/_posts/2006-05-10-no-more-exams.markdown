@@ -5,6 +5,7 @@ layout: post
 slug: no-more-exams
 status: publish
 title: No more exams!
+redirect_from: /no-more-exams/
 comments: true
 categories: real life
 ---

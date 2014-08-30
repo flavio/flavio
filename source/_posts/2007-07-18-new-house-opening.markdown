@@ -5,6 +5,7 @@ layout: post
 slug: new-house-opening
 status: publish
 title: New house opening
+redirect_from: /new-house-opening/
 comments: true
 categories: life
 ---

@@ -5,6 +5,7 @@ layout: post
 slug: qjson_desktop_summi
 status: publish
 title: QJson at Gran Canaria Desktop Summit
+redirect_from: /qjson_desktop_summi/
 comments: true
 categories: [KDE, qt, qjson]
 ---

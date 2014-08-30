@@ -5,6 +5,7 @@ layout: post
 slug: linux-on-console
 status: publish
 title: Linux on console
+redirect_from: /linux-on-console/
 comments: true
 categories: [Italy, Linux Day]
 ---

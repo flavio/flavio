@@ -5,6 +5,7 @@ layout: post
 slug: my_current_tasks
 status: publish
 title: My current tasks
+redirect_from: /my_current_tasks/
 comments: true
 categories: [KDE, strigi, xesam]
 ---

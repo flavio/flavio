@@ -5,6 +5,7 @@ layout: post
 slug: howto-edit-multime-id3-tags-from-command-line
 status: publish
 title: Howto edit multime id3 tags from command line
+redirect_from: /howto-edit-multime-id3-tags-from-command-line/
 categories: bash
 comments: true
 ---

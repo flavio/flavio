@@ -5,6 +5,7 @@ layout: post
 slug: dotkdeorg-and-me
 status: publish
 title: dot.kde.org and me
+redirect_from: /dotkdeorg-and-me/
 wordpress_id: '24'
 categories: [KDE, strigi, life]
 comments: true
