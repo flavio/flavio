@@ -4,7 +4,7 @@
   <title><![CDATA[Category: cloud | Flavio Castelli]]></title>
   <link href="http://flavio.castelli.name/blog/categories/cloud/atom.xml" rel="self"/>
   <link href="http://flavio.castelli.name/"/>
-  <updated>2014-08-30T10:16:47+02:00</updated>
+  <updated>2014-08-30T22:16:16+02:00</updated>
   <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
@@ -18,7 +18,7 @@
     <link href="http://flavio.castelli.name/2014/05/06/building-docker-containers-with-kiwi/"/>
     <updated>2014-05-06T22:20:00+02:00</updated>
     <id>http://flavio.castelli.name/2014/05/06/building-docker-containers-with-kiwi</id>
-    <content type="html"><![CDATA[<p>I'm pleased to announce <a href="https://github.com/schaefi">Marcus Schäfer</a> has
+    <content type="html"><![CDATA[<p>I&rsquo;m pleased to announce <a href="https://github.com/schaefi">Marcus Schäfer</a> has
 just made possible to build docker images with <a href="http://opensuse.github.io/kiwi/">KIWI</a>.</p>
 
 <p>For those who never heard about it, KIWI is a tool which creates Linux systems
@@ -34,7 +34,7 @@ to include the <em>lxc</em> package.</p>
 <p>As you might know Docker has already its <a href="http://docs.docker.io/reference/builder/">build system</a>
 which provides a really easy way to create new images. However these images
 must be based on existing ones, which leads to the problem of creating the 1st
-parent image. That's where KIWI comes to the rescue.</p>
+parent image. That&rsquo;s where KIWI comes to the rescue.</p>
 
 <p>Indeed Kiwi can be used to build the openSUSE/SUSE/whatever docker images that are
 going to act as the foundation blocks of other ones.</p>
@@ -56,100 +56,72 @@ directory to another location and make your changes.</p>
 
 <p>The heart of the whole image is the <code>config.xml</code> file:</p>
 
-<p>```xml
-&lt;?xml version="1.0" encoding="utf-8"?></p>
+<pre><code class="xml">&lt;?xml version="1.0" encoding="utf-8"?&gt;
 
-<p><image schemaversion="6.1" name="suse-13.1-docker-guest">
-  <description type="system"></p>
-
-<pre><code>&lt;author&gt;Flavio Castelli&lt;/author&gt;
-&lt;contact&gt;fcastelli@suse.com&lt;/contact&gt;
-&lt;specification&gt;openSUSE 13.1 docker image&lt;/specification&gt;
+&lt;image schemaversion="6.1" name="suse-13.1-docker-guest"&gt;
+  &lt;description type="system"&gt;
+    &lt;author&gt;Flavio Castelli&lt;/author&gt;
+    &lt;contact&gt;fcastelli@suse.com&lt;/contact&gt;
+    &lt;specification&gt;openSUSE 13.1 docker image&lt;/specification&gt;
+  &lt;/description&gt;
+  &lt;preferences&gt;
+    &lt;type image="docker" container="os131"&gt;
+      &lt;machine&gt;
+        &lt;vmdisk/&gt;
+        &lt;vmnic interface="eth0" mode="veth"/&gt;
+      &lt;/machine&gt;
+    &lt;/type&gt;
+    &lt;version&gt;1.0.0&lt;/version&gt;
+    &lt;packagemanager&gt;zypper&lt;/packagemanager&gt;
+    &lt;rpm-check-signatures&gt;false&lt;/rpm-check-signatures&gt;
+    &lt;rpm-force&gt;true&lt;/rpm-force&gt;
+    &lt;locale&gt;en_US&lt;/locale&gt;
+    &lt;keytable&gt;us.map.gz&lt;/keytable&gt;
+    &lt;hwclock&gt;utc&lt;/hwclock&gt;
+    &lt;timezone&gt;US/Eastern&lt;/timezone&gt;
+  &lt;/preferences&gt;
+  &lt;users group="root"&gt;
+    &lt;user password="$1$wYJUgpM5$RXMMeASDc035eX.NbYWFl0" home="/root" name="root"/&gt;
+  &lt;/users&gt;
+  &lt;repository type="yast2"&gt;
+    &lt;source path="opensuse://13.1/repo/oss/"/&gt;
+  &lt;/repository&gt;
+  &lt;packages type="image"&gt;
+    &lt;package name="coreutils"/&gt;
+    &lt;package name="iputils"/&gt;
+  &lt;/packages&gt;
+  &lt;packages type="bootstrap"&gt;
+    &lt;package name="filesystem"/&gt;
+    &lt;package name="glibc-locale"/&gt;
+    &lt;package name="module-init-tools"/&gt;
+  &lt;/packages&gt;
+&lt;/image&gt;
 </code></pre>
-
-<p>  </description>
-  <preferences></p>
-
-<pre><code>&lt;type image="docker" container="os131"&gt;
-  &lt;machine&gt;
-    &lt;vmdisk/&gt;
-    &lt;vmnic interface="eth0" mode="veth"/&gt;
-  &lt;/machine&gt;
-&lt;/type&gt;
-&lt;version&gt;1.0.0&lt;/version&gt;
-&lt;packagemanager&gt;zypper&lt;/packagemanager&gt;
-&lt;rpm-check-signatures&gt;false&lt;/rpm-check-signatures&gt;
-&lt;rpm-force&gt;true&lt;/rpm-force&gt;
-&lt;locale&gt;en_US&lt;/locale&gt;
-&lt;keytable&gt;us.map.gz&lt;/keytable&gt;
-&lt;hwclock&gt;utc&lt;/hwclock&gt;
-&lt;timezone&gt;US/Eastern&lt;/timezone&gt;
-</code></pre>
-
-<p>  </preferences>
-  <users group="root"></p>
-
-<pre><code>&lt;user password="$1$wYJUgpM5$RXMMeASDc035eX.NbYWFl0" home="/root" name="root"/&gt;
-</code></pre>
-
-<p>  </users>
-  <repository type="yast2"></p>
-
-<pre><code>&lt;source path="opensuse://13.1/repo/oss/"/&gt;
-</code></pre>
-
-<p>  </repository>
-  <packages type="image"></p>
-
-<pre><code>&lt;package name="coreutils"/&gt;
-&lt;package name="iputils"/&gt;
-</code></pre>
-
-<p>  </packages>
-  <packages type="bootstrap"></p>
-
-<pre><code>&lt;package name="filesystem"/&gt;
-&lt;package name="glibc-locale"/&gt;
-&lt;package name="module-init-tools"/&gt;
-</code></pre>
-
-<p>  </packages>
-</image>
-```</p>
 
 <p>This is a really minimal image which contains just a bunch of packages.</p>
 
-<p>The first step is the creation of the image's root system:</p>
+<p>The first step is the creation of the image&rsquo;s root system:</p>
 
-<p>```
-kiwi -p /usr/share/doc/packages/kiwi/examples/suse-13.1/suse-docker-container \</p>
-
-<pre><code> --root /tmp/myimage
+<pre><code>kiwi -p /usr/share/doc/packages/kiwi/examples/suse-13.1/suse-docker-container \
+     --root /tmp/myimage
 </code></pre>
-
-<p>```</p>
 
 <p>The next step compresses the file system of the image into a single tarball:</p>
 
-<p>```</p>
-
-<pre><code>kiwi --create /tmp/myimage --type docker -d /tmp/myimage-result
+<pre><code>    kiwi --create /tmp/myimage --type docker -d /tmp/myimage-result
 </code></pre>
-
-<p>```</p>
 
 <p>The tarball can be found under <code>/tmp/myimage-result</code>. This can be imported
 into docker using the following command:</p>
 
-<p><code>
-docker import - myImage &lt; /path/to/myimage.tbz
-</code></p>
+<pre><code>docker import - myImage &lt; /path/to/myimage.tbz
+</code></pre>
 
 <p>The image named <code>myImage</code> is now ready to be used.</p>
 
-<h2>What's next</h2>
+<h2>What&rsquo;s next</h2>
 
-<p>In the next days I'll make another blog post explaining how to build docker
+<p>In the next days I&rsquo;ll make another blog post explaining how to build docker
 images using KIWI and the <a href="http://openbuildservice.org/">Open Build Service</a>.
 This is a powerful combination which allows to achieve continuous delivery.</p>
 
@@ -168,14 +140,14 @@ This is a powerful combination which allows to achieve continuous delivery.</p>
 to the more official <a href="https://build.opensuse.org/package/show?project=Virtualization&amp;package=docker">Virtualization</a>
 one. The next step is to get the Docker package into Factory :)</p>
 
-<p>I'm going to drop the <code>docker</code> package from <code>home:flavio_castelli:docker</code>,
+<p>I&rsquo;m going to drop the <code>docker</code> package from <code>home:flavio_castelli:docker</code>,
 so make sure to subscribe to the <code>Virtualization</code> repository to get latest versions of
 Docker.</p>
 
 <p>I have also submitted some openSUSE related documentation to the official Docker
-project. If you visit the <a href="https://www.docker.io/gettingstarted/#h_installation">"Getting started"</a>
+project. If you visit the <a href="https://www.docker.io/gettingstarted/#h_installation">&ldquo;Getting started&rdquo;</a>
 page you will notice the familiar geeko logo. Click it to be redirected to the
-openSUSE's installation instructions.</p>
+openSUSE&rsquo;s installation instructions.</p>
 ]]></content>
   </entry>
   
@@ -184,14 +156,14 @@ openSUSE's installation instructions.</p>
     <link href="http://flavio.castelli.name/2013/11/28/better-docker-experience-on-opensuse/"/>
     <updated>2013-11-28T17:28:00+01:00</updated>
     <id>http://flavio.castelli.name/2013/11/28/better-docker-experience-on-opensuse</id>
-    <content type="html"><![CDATA[<p>I don't know if you are aware of that, but Docker 0.7.0 has been released a
+    <content type="html"><![CDATA[<p>I don&rsquo;t know if you are aware of that, but Docker 0.7.0 has been released a
 couple of days ago.</p>
 
 <p>You can read the full announcement <a href="http://blog.docker.io/2013/11/docker-0-7-docker-now-runs-on-any-linux-distribution/">here</a>,
 but let me talk about the biggest change introduced by this release: storage drivers!</p>
 
 <p>Docker has always used <a href="http://aufs.sourceforge.net/">AUFS</a>,
-a "<a href="https://en.wikipedia.org/wiki/UnionFS">unionfs-like</a>" file system, to power
+a &ldquo;<a href="https://en.wikipedia.org/wiki/UnionFS">unionfs-like</a>&rdquo; file system, to power
 its containers. Unfortunately AUFS is neither part of the official kernel nor
 of the openSUSE/SLE one.</p>
 
@@ -203,13 +175,13 @@ a real pain both for me and for the end users.</p>
 different. In our case Docker is going to use <a href="https://lwn.net/Articles/465740/">thin provisioning</a>,
 a consolidated technology which is part of the mainstream kernel since quite some time.</p>
 
-<p>Moreover Docker's community is working on experimental drivers for BTRFS, ZFS,
+<p>Moreover Docker&rsquo;s community is working on experimental drivers for BTRFS, ZFS,
 Gluster and Ceph.</p>
 
 <h2>What changes now for openSUSE?</h2>
 
 <p>Running Docker is incredibly simple now: just use the <a href="http://software.opensuse.org/package/docker">1 click install</a>
-and download it from the <em>'home:flavio_castelli:docker'</em> project.</p>
+and download it from the <em>&lsquo;home:flavio_castelli:docker&rsquo;</em> project.</p>
 
 <p>As I said earlier: <strong>no custom kernel is required</strong>. You are going to keep the
 one shipped by the official openSUSE repositories.</p>
@@ -224,12 +196,12 @@ is not found).</p>
 <h3>Support SLE</h3>
 
 <p>Right now Docker works fine on openSUSE 12.3 and 13.1 but not on SLE 11 SP3. During
-the next days I'm going to look into this issue. I want to have a stable and working
+the next days I&rsquo;m going to look into this issue. I want to have a stable and working
 package for SLE.</p>
 
 <h3>Make it more official</h3>
 
-<p>Once the package is proved to be stable enough I'll submit it for inclusion inside
+<p>Once the package is proved to be stable enough I&rsquo;ll submit it for inclusion inside
 of the <a href="https://build.opensuse.org/project/show/Virtualization">Virtualization</a>
 project on OBS.</p>
 
@@ -242,13 +214,13 @@ project on OBS.</p>
     <link href="http://flavio.castelli.name/2013/04/12/docker-and-opensuse/"/>
     <updated>2013-04-12T14:45:00+02:00</updated>
     <id>http://flavio.castelli.name/2013/04/12/docker-and-opensuse</id>
-    <content type="html"><![CDATA[<p><a href="http://hackweek.suse.com/">SUSE's Hackweek #9</a> is over. It has
+    <content type="html"><![CDATA[<p><a href="http://hackweek.suse.com/">SUSE&rsquo;s Hackweek #9</a> is over. It has
 been an awesome week during which I worked hard to make <a href="http://www.docker.io">docker</a>
 a first class citizen on <a href="http://www.opensuse.org/">openSUSE</a>. I also spent
-some time working on an openSUSE container that could be used by docker's users.</p>
+some time working on an openSUSE container that could be used by docker&rsquo;s users.</p>
 
 <p>The project has been tracked on <a href="https://github.com/SUSE/hackweek/wiki/docker.io-and-openSUSE">this</a>
-page of hackweek's wiki, this is a detailed report of what I achieved.</p>
+page of hackweek&rsquo;s wiki, this is a detailed report of what I achieved.</p>
 
 <h2>Installing docker on openSUSE 12.3</h2>
 
@@ -257,22 +229,21 @@ OBS project.</p>
 
 <p>So installing it requires just two commands:</p>
 
-<p><code>
-sudo zypper ar http://download.opensuse.org/repositories/home:/flavio_castelli:/docker/openSUSE_12.3 docker
+<pre><code>sudo zypper ar http://download.opensuse.org/repositories/home:/flavio_castelli:/docker/openSUSE_12.3 docker
 sudo zypper in docker
-</code></p>
+</code></pre>
 
-<p>There's also a <a href="http://software.opensuse.org/ymp/home:flavio_castelli:docker/openSUSE_12.3/docker.ymp?base=openSUSE%3A12.3&amp;query=docker">1 Click Install</a>
+<p>There&rsquo;s also a <a href="http://software.opensuse.org/ymp/home:flavio_castelli:docker/openSUSE_12.3/docker.ymp?base=openSUSE%3A12.3&amp;query=docker">1 Click Install</a>
 for the lazy ones :)</p>
 
 <p>Zypper will install docker and its dependencies which are:</p>
 
 <ul>
-<li><code>lxc</code>: docker's "magic" is built on top of <a href="http://lxc.sourceforge.net/">LXC</a>.</li>
-<li><code>bridge-utils</code>: is used to setup the bridge interface used by docker's
+<li><code>lxc</code>: docker&rsquo;s &ldquo;magic&rdquo; is built on top of <a href="http://lxc.sourceforge.net/">LXC</a>.</li>
+<li><code>bridge-utils</code>: is used to setup the bridge interface used by docker&rsquo;s
 containers.</li>
 <li><code>dnsmasq</code>: is used to start the dhcp server used by the containers.</li>
-<li><code>iptables</code>: is used to get containers' networking work.</li>
+<li><code>iptables</code>: is used to get containers&#8217; networking work.</li>
 <li><code>bsdtar</code>: is used by docker to compress/extract the containers.</li>
 <li><a href="http://aufs.sourceforge.net/">aufs3</a> kernel module: is used by docker to
 track the changes made to the containers.</li>
@@ -289,28 +260,28 @@ are in fact links to the packages created by <a href="https://build.opensuse.org
 inside of his <a href="https://build.opensuse.org/package/show?package=aufs3&amp;project=home%3A-miska-%3Aaufs">aufs project</a>
 on OBS.</p>
 
-<p><strong>Note well:</strong> docker works only on 64bit hosts. That's why there are no 32bit
+<p><strong>Note well:</strong> docker works only on 64bit hosts. That&rsquo;s why there are no 32bit
 packages.</p>
 
 <h2>Docker appliance</h2>
 
-<p>If you don't want to install docker on your system or you are just curious and
-want to jump straight into action there's a <a href="http://susestudio.com">SUSE Studio</a>
+<p>If you don&rsquo;t want to install docker on your system or you are just curious and
+want to jump straight into action there&rsquo;s a <a href="http://susestudio.com">SUSE Studio</a>
 appliance ready for you. You can find it <a href="http://susestudio.com/a/CZ0T0D/docker">here</a>.</p>
 
 <p>If you are not familiar with SUSE Gallery let me tell you two things about it:</p>
 
 <ul>
-<li>you can download the appliance on your computer and play with it or...</li>
-<li>you can clone the appliance on SUSE Studio and customize it even further or...</li>
-<li>you can test the appliance from your browser using SUSE Studio's Testdrive
+<li>you can download the appliance on your computer and play with it or&hellip;</li>
+<li>you can clone the appliance on SUSE Studio and customize it even further or&hellip;</li>
+<li>you can test the appliance from your browser using SUSE Studio&rsquo;s Testdrive
 feature (no SUSE Studio account required!).</li>
 </ul>
 
 
 <p>The latter option is really cool, because it will allow you to play with docker
-immediately. There's just one thing to keep in mind about Testdrive: outgoing
-connections are disabled, so you won't be able to install new stuff (or download
+immediately. There&rsquo;s just one thing to keep in mind about Testdrive: outgoing
+connections are disabled, so you won&rsquo;t be able to install new stuff (or download
 new docker images). Fortunately this appliance comes with the busybox container
 bundled, so you will be able to play a bit with docker.</p>
 
@@ -319,7 +290,7 @@ bundled, so you will be able to play a bit with docker.</p>
 <p>The docker daemon must be running in order to use your containers. The openSUSE
 package comes with a init script which can be used to manage it.</p>
 
-<p>The script is <code>/etc/init.d/docker</code>, but there's also the usual symbolic link
+<p>The script is <code>/etc/init.d/docker</code>, but there&rsquo;s also the usual symbolic link
 called <code>/usr/sbin/rcdocker</code>.</p>
 
 <p>To start the docker daemon just type:
@@ -330,11 +301,11 @@ sudo /usr/sbin/rcdocker start
 <p>This will trigger the following actions:</p>
 
 <ol>
-<li>The <code>docker0</code> bridge interface is created. This interface is bridged
-with <code>eth0</code>.</li>
-<li>A <code>dnsmasq</code> instance listening on the <code>docker0</code> interface is started.</li>
-<li>IP forwarding and IP masquerading are enabled.</li>
-<li>Docker daemon is started.</li>
+<li> The <code>docker0</code> bridge interface is created. This interface is bridged
+ with <code>eth0</code>.</li>
+<li> A <code>dnsmasq</code> instance listening on the <code>docker0</code> interface is started.</li>
+<li> IP forwarding and IP masquerading are enabled.</li>
+<li> Docker daemon is started.</li>
 </ol>
 
 
@@ -350,9 +321,9 @@ with <code>eth0</code>.</li>
 <a href="http://www.dotcloud.com/">dotCloud</a> guys.</p>
 
 <p>You will be able to run the Ubuntu container on your openSUSE host without any
-problem, that's LXC's "magic" ;)</p>
+problem, that&rsquo;s LXC&rsquo;s &ldquo;magic&rdquo; ;)</p>
 
-<p>If you want to use only "green" products just pull the openSUSE 12.3 container
+<p>If you want to use only &ldquo;green&rdquo; products just pull the openSUSE 12.3 container
 I created for you:
 <code>
 docker pull flavio/opensuse-12-3
@@ -364,26 +335,26 @@ to be sure everything works fine before doing that.</p>
 
 <p>Now you can go through the <a href="http://docs.docker.io/en/latest/examples/running_examples/">examples</a>
 reported on the official
-<a href="http://docs.docker.io/en/latest/concepts/containers/">docker's documentation</a>.</p>
+<a href="http://docs.docker.io/en/latest/concepts/containers/">docker&rsquo;s documentation</a>.</p>
 
 <h2>Create your own openSUSE images with SUSE Studio</h2>
 
-<p>I think it would be extremely cool to create docker's images using
+<p>I think it would be extremely cool to create docker&rsquo;s images using
 <a href="http://susestudio.com">SUSE Studio</a>.
-As you might know I'm part of the SUSE Studio team, so I looked a bit into how
+As you might know I&rsquo;m part of the SUSE Studio team, so I looked a bit into how
 to add support to this new format.</p>
 
-<p><strong>-- personal opinion --</strong></p>
+<p><strong>&ndash; personal opinion &ndash;</strong></p>
 
-<p>There are some technical challenges to solve, but I don't think it would be hard
+<p>There are some technical challenges to solve, but I don&rsquo;t think it would be hard
 to address them.</p>
 
-<p><strong>-- personal opinion --</strong></p>
+<p><strong>&ndash; personal opinion &ndash;</strong></p>
 
 <p>If you are interested in adding the docker format to SUSE Studio please create
 a new feature request on <a href="https://features.opensuse.org/">openFATE</a> and vote it!</p>
 
-<p>In the meantime there's another way to create your custom docker images, just
+<p>In the meantime there&rsquo;s another way to create your custom docker images, just
 keep reading.</p>
 
 <h2>Create your own openSUSE images with KIWI</h2>
@@ -410,9 +381,9 @@ cp -r /usr/share/doc/packages/kiwi/examples/suse-11.3/suse-lxc-guest ~/openSUSE_
 KIWI (<code>config.sh</code> and <code>config.xml</code>) plus the <code>root</code> directory.</p>
 
 <p>The contents of this directory are going to be added to the resulting container.
-It's really important to create the <code>/etc/resolv.conf</code> file inside of the
+It&rsquo;s really important to create the <code>/etc/resolv.conf</code> file inside of the
 final image since docker is going to mount the <code>resol.conf</code> file of the host
-system inside of the running guest. If the file is not found docker won't be able
+system inside of the running guest. If the file is not found docker won&rsquo;t be able
 to start our container.</p>
 
 <p>An empty file is enough:
@@ -425,7 +396,7 @@ touch ~/openSUSE_12_3_docker/root/etc/resolv.conf
 sudo /usr/sbin/kiwi --prepare ~/openSUSE_12_3_docker --root /tmp/openSUSE_12_3_docker_rootfs
 </code></p>
 
-<p>We can skip the next step reported on KIWI's documentation, that's not needed
+<p>We can skip the next step reported on KIWI&rsquo;s documentation, that&rsquo;s not needed
 with docker because it will produce an invalid container. Just execute the
 following command:
 <code>
@@ -445,7 +416,7 @@ sudo tar cvjpf openSUSE_12_3_docker.tar.bz2 -C /tmp/openSUSE_12_3_docker_rootfs/
 <p>Importing the image from a web server is really convenient if you ran KIWI
 on a different machine.</p>
 
-<p>Just move the tarball to a directory which is exposed by the web server. If you don't
+<p>Just move the tarball to a directory which is exposed by the web server. If you don&rsquo;t
 have one installed just move to the directory containing the tarball and type the following
 command:
 <code>
@@ -464,10 +435,10 @@ cat ~/openSUSE_12_3_docker.tar.bz2 | docker import - my_openSUSE_image latest
 </code></p>
 
 <p>Docker will download (just in the 1st case) and import the tarball. The resulting
-image will be named <em>'my_openSUSE_image'</em> and it will have a tag named <em>'latest'</em>.</p>
+image will be named <em>&lsquo;my_openSUSE_image&rsquo;</em> and it will have a tag named <em>&lsquo;latest&rsquo;</em>.</p>
 
 <p>The name of the tag is really important since docker tries to run the
-image with the <em>'latest'</em> tag unless you explicitly specify a different value.</p>
+image with the <em>&lsquo;latest&rsquo;</em> tag unless you explicitly specify a different value.</p>
 
 <h2>Conclusion</h2>
 

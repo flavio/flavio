@@ -4,7 +4,7 @@
   <title><![CDATA[Category: kde | Flavio Castelli]]></title>
   <link href="http://flavio.castelli.name/blog/categories/kde/atom.xml" rel="self"/>
   <link href="http://flavio.castelli.name/"/>
-  <updated>2014-08-30T10:16:47+02:00</updated>
+  <updated>2014-08-30T22:16:16+02:00</updated>
   <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
@@ -24,7 +24,7 @@
 
 <h2>Toward QJson 1.0.0</h2>
 
-<p>I'm not entirely happy with some parts of QJson's API. I addressed these issues inside of the <a href="https://github.com/flavio/qjson/tree/1_0_0">1_0_0</a> branch.</p>
+<p>I&rsquo;m not entirely happy with some parts of QJson&rsquo;s API. I addressed these issues inside of the <a href="https://github.com/flavio/qjson/tree/1_0_0">1_0_0</a> branch.</p>
 
 <p>I would appreciate to hear your opinion before merging this branch into master and releasing QJson 1.0.0.</p>
 ]]></content>
@@ -37,7 +37,7 @@
     <id>http://flavio.castelli.name/2012/11/21/qjson-0-dot-8-0-released</id>
     <content type="html"><![CDATA[<p>Almost three years passed since latest release of QJson.
 A lot of stuff happened in my life and QJson definitely paid for that.
-I have to admit I'm a bit ashamed.</p>
+I have to admit I&rsquo;m a bit ashamed.</p>
 
 <p>So here we go, QJson 0.8.0 is out!</p>
 
@@ -47,7 +47,7 @@ I have to admit I'm a bit ashamed.</p>
 issues like <a href="https://bugs.gentoo.org/show_bug.cgi?id=428256">this</a> one and
 <a href="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=687537">this</a> in a nicer way.</p>
 
-<p>QJson's API is still backward compatible, while the ABI changed.</p>
+<p>QJson&rsquo;s API is still backward compatible, while the ABI changed.</p>
 
 <h2>Symbian support</h2>
 
@@ -56,10 +56,10 @@ development happened a long time before <a href="http://www.wired.com/business/2
 
 <p>Currently I do not offer any kind of support for the Symbian platform because
 IMHO Symbian development is a mess and given the current situation in the mobile
-world I don't see any point in investing more efforts on that.</p>
+world I don&rsquo;t see any point in investing more efforts on that.</p>
 
 <p>Obviously Symbian patches and documentation are still accepted, as long as they
-don't cause issues to the other target platforms.</p>
+don&rsquo;t cause issues to the other target platforms.</p>
 
 <h2>QMake support</h2>
 
@@ -74,23 +74,156 @@ have been removed with commit <a href="https://github.com/flavio/qjson/commit/66
 
 <h2>Relocating to Github</h2>
 
-<p>I decided to move QJson's code from Gitorious to <a href="https://github.com/flavio/qjson">Github</a>.
-<a href="https://github.com/flavio/qjson/issues">Github's issue sysyem</a> is going to replace Sourceforge's bug tracking system.</p>
+<p>I decided to move QJson&rsquo;s code from Gitorious to <a href="https://github.com/flavio/qjson">Github</a>.
+<a href="https://github.com/flavio/qjson/issues">Github&rsquo;s issue sysyem</a> is going to replace Sourceforge&rsquo;s bug tracking system.</p>
 
 <p>I currently use Github a lot, both for personal projects and for work, and I simply love it.
-I think it offers the best tools in the market and that's really important to me.</p>
+I think it offers the best tools in the market and that&rsquo;s really important to me.</p>
 
-<p><a href="http://qjson.sourceforge.net">QJson's website</a> and mailing lists are still going to be hosted on Sourceforge.</p>
+<p><a href="http://qjson.sourceforge.net">QJson&rsquo;s website</a> and mailing lists are still going to be hosted on Sourceforge.</p>
 
 <hr>
 
 
-<br>
-
-
-<p>I think that's all from now. If you want more details about the changes introduced
+<p><br>
+I think that&rsquo;s all from now. If you want more details about the changes introduced
 take a look at the <a href="https://github.com/flavio/qjson/blob/master/ChangeLog">changelog</a>
-or checkout <a href="http://qjson.sourceforge.net">QJson's website</a>.</p>
+or checkout <a href="http://qjson.sourceforge.net">QJson&rsquo;s website</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Fast user switch plasmoid improvements]]></title>
+    <link href="http://flavio.castelli.name/2010/07/23/fast-user-switch-plasmoid-improvements/"/>
+    <updated>2010-07-23T23:32:31+02:00</updated>
+    <id>http://flavio.castelli.name/2010/07/23/fast-user-switch-plasmoid-improvements</id>
+    <content type="html"><![CDATA[<p>Just a quick note, I released a new version of the fastuserswitch plasmoid.
+This new release implements all the improvements suggested by the users plus
+some minor fixes.</p>
+
+<p>Code can be downloaded from <a href="http://gitorious.org/fast_user_switch">here</a>.
+openSUSE packages are already available on the <a href="http://software.opensuse.org/search?q=plasmoid-%0Afastuserswitch&amp;baseproject=ALL&amp;lang=en&amp;exclude_debug=true">build
+service</a>.</p>
+
+<p>These are some screenshots illustrating fastuserswitch&rsquo;s new features.</p>
+
+<p><img src="/images/fast_user_switch/fastuserswitch011.png">
+<img src="/images/fast_user_switch/fastuserswitch021.png">
+<img src="/images/fast_user_switch/fastuserswitch03.png"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Fast user switch plasmoid]]></title>
+    <link href="http://flavio.castelli.name/2010/07/15/fast-user-switch-plasmoid/"/>
+    <updated>2010-07-15T07:23:11+02:00</updated>
+    <id>http://flavio.castelli.name/2010/07/15/fast-user-switch-plasmoid</id>
+    <content type="html"><![CDATA[<p>Last week my mother in law started to share her Linux laptop with my wife.
+Suddenly my wife asked me how she could switch from one user session to
+another. She was looking for something similar to <a href="http://bit.ly/auzc56">OS X fast user
+switch</a> feature but she couldn&rsquo;t find it. In fact there
+wasn&rsquo;t a fast and easy way to switch between users&#8217; sessions with KDE,
+until&hellip; now :)</p>
+
+<p>Let me introduce my first plasmoid: the fast user switch plasmoid. It&rsquo;s a
+simple icon in the panel that allows users to swich to another open session or
+to open a new login page. Here you can see the mandatory screenshots.</p>
+
+<p><img src="/images/fast_user_switch/fastuserswitch02.png">
+<img src="/images/fast_user_switch/fastuserswitch01.png"></p>
+
+<p>You can find the source code
+<a href="http://gitorious.org/fast_user_switch#more">here</a>. Binary packages for
+openSUSE are already available on the <a href="http://software.opensuse.org/search?q=plasmoid-%0Afastuserswitch&amp;baseproject=ALL&amp;lang=en&amp;exclude_debug=true">build
+service</a>.</p>
+
+<h2>One last thought about KDM</h2>
+
+<p>I think that KDM should allow to switch back to an already open session in a
+more transparent way. Right now if an user has already one session open, he
+goes back to the login screen and enters his credentials a <strong>new </strong> session is
+started. I think that most users would expect to be switched back to their
+already running session. Starting a new session is just confusing for them.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[kaveau updates]]></title>
+    <link href="http://flavio.castelli.name/2009/09/14/kaveau-updates/"/>
+    <updated>2009-09-14T23:38:54+02:00</updated>
+    <id>http://flavio.castelli.name/2009/09/14/kaveau-updates</id>
+    <content type="html"><![CDATA[<p>Some weeks have passed since the announcement of kaveau. I&rsquo;m really proud and
+happy about this project because I received a lot of positive feedback
+messages and it has been chosen as one of the best Hackweek&rsquo;s projects.</p>
+
+<p>In the meantime I kept working on kaveau, so let me show you what has changed:</p>
+
+<ul>
+<li><a href="http://rdiff-backup.nongnu.org/">rdiff-backup</a> has been replaced by <a href="http://www.samba.org/rsync/">rsync</a>.</li>
+<li>the setup wizard has been improved according to the feedback messages I received.</li>
+<li>old backups are now automatically removed.</li>
+<li>the code has been refactored a lot.</li>
+</ul>
+
+
+<h3>The switch to rsync</h3>
+
+<p>Previously kaveau used rdiff-backup as backup back-end. rdiff-backup is a
+great program but unfortunately it relies on the outdated
+<a href="http://librsync.sourceforge.net/">librsync</a> library. The latest release of
+librsync is dated 2004. It has a couple of serious bugs still open and, while
+rsync has reached version three, this library is still stuck at version one.</p>
+
+<p>These are the reasons of the switch from rdiff-backup to rsync. This choice
+breaks the compatibility with the previous backups but it introduces a lot of
+advantages. One of the most important improvements brought by the adoption of
+rsync is an easier restore procedure: now <strong>all</strong> the backups can be accessed
+using a standard file manager, while previously rdiff-backup was needed to
+access the old backups.</p>
+
+<h4>Backup directory structure</h4>
+
+<p>On the backup device everything is saved under the
+<em>kaveau</em>/<em>hostname</em>/<em>username</em> path.</p>
+
+<p>The directory will have a similar structure:</p>
+
+<pre><code>drwxr-xr-x 3 flavio users 4096 2009-09-12 18:50 2009-09-12T18:50:19
+drwxr-xr-x 3 flavio users 4096 2009-09-14 23:07 2009-09-14T23:07:46
+drwxr-xr-x 3 flavio users 4096 2009-09-14 23:30 2009-09-14T23:30:36
+lrwxrwxrwx 1 flavio users   19 2009-09-14 23:30 current -&gt; 2009-09-14T23:30:36
+</code></pre>
+
+<p>As you can see there&rsquo;s one directory per backup, plus a symlink called
+<em>current</em> pointing to the latest backup.</p>
+
+<h3>Old backup deletion</h3>
+
+<p>Nowadays big external storage devices are pretty cheap, but it&rsquo;s always good
+to save some disk space. Now kaveau keeps:</p>
+
+<ul>
+<li>hourly backups for the past 24 hours.</li>
+<li>daily backups for the past month.</li>
+<li>weekly backups until the external disk is full.
+Thanks to hard links&#8217; magic, old backups can be deleted without causing
+damages to the other ones.</li>
+</ul>
+
+
+<h3>Plans for the future</h3>
+
+<p>Before starting to work on the restore user interface I will spend some time
+figuring out how to add support for network devices.</p>
+
+<p>A lot of users requested this feature, hence I want to make them happy :) .</p>
+
+<p>I&rsquo;m planning to use <a href="http://avahi.org/">avahi</a> to discover network shares
+(nfs, samba) or network machines running ssh and use them as backup devices.
+Honestly, I want to achieve something similar to
+<a href="http://www.apple.com/timecapsule/">Apple&rsquo;s time capsule</a>.</p>
+
+<p>As usual, feedback messages are really appreciated.</p>
 ]]></content>
   </entry>
   

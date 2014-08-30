@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>How to run a single rails unit test - Flavio Castelli</title>
+  <title>How to Run a Single Rails Unit Test - Flavio Castelli</title>
   <meta name="author" content="Flavio Castelli">
 
   
@@ -19,21 +19,22 @@ method) instead of running the complete unit test suite. In order to run &hellip
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://flavio.castelli.name/2010/05/28/rails_execute_single_test/">
+  <link rel="canonical" href="http://flavio.castelli.name/2010/05/28/rails_execute_single_test">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="Flavio Castelli" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
 <!-- openid delegation -->
 <!-- myopenid -->
-<!--<link rel="openid.server" href="http://www.myopenid.com/server" />-->
-<!--<link rel="openid.delegate" href="http://flavio.castelli.myopenid.com/" />-->
+<!--<link rel="openid.server" href="http://www.myopenid.com/server" />&#8211;>
+<!--<link rel="openid.delegate" href="http://flavio.castelli.myopenid.com/" />&#8211;>
 
  <!--claimid -->
 <link rel="openid.server" href="http://openid.claimid.com/server" />
@@ -101,16 +102,10 @@ method) instead of running the complete unit test suite. In order to run &hellip
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2010-05-28T15:57:57+02:00" pubdate data-updated="true">May 28<span>th</span>, 2010</time>
+<time class='entry-date' datetime='2010-05-28T15:57:57+02:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2010</span></span> <span class='time'>3:57 pm</span></time>
         
-         | <a href="#disqus_thread">Comments</a>
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://flavio.castelli.name">Comments</a>
         
       </p>
     
@@ -137,7 +132,7 @@ editing.</li>
 
 <p>Waiting for all the unit/functional tests to complete decreases our
 productivity, what we need is to execute just a single unit test. Fortunately
-there are different solutions for this problem, let&#8217;s go through them.</p>
+there are different solutions for this problem, let&rsquo;s go through them.</p>
 
 <h2>The easy approach: use your favorite IDE</h2>
 
@@ -158,7 +153,7 @@ like the:</p>
 <ul>
 <li>hyper links to the exact location of the code that produced the error/failure.</li>
 <li>execution time required by each one of the test methods.
-As you will experience it will be like &#8220;compiling&#8221; your ruby code.</li>
+As you will experience it will be like &ldquo;compiling&rdquo; your ruby code.</li>
 </ul>
 
 
@@ -168,7 +163,7 @@ As you will experience it will be like &#8220;compiling&#8221; your ruby code.</
 
 <h3>No additional tools</h3>
 
-<p>These &#8220;tricks&#8221; don&#8217;t require additional gems, hence they will work out of the
+<p>These &ldquo;tricks&rdquo; don&rsquo;t require additional gems, hence they will work out of the
 box.</p>
 
 <p>The first solution is to call this rake task:</p>
@@ -182,14 +177,14 @@ box.</p>
 </code></pre>
 
 <p>Unfortunately on my machine this command repeats the same test three times, I
-hope you won&#8217;t have the same weird behavior also on your systems&#8230;</p>
+hope you won&rsquo;t have the same weird behavior also on your systems&hellip;</p>
 
 <p>Alternatively you can use the following command:</p>
 
 <pre><code>ruby -I"lib:test" path_to_test_file"
 </code></pre>
 
-<p>It&#8217;s even possible to <strong>call a specific test method of your testcase</strong>:</p>
+<p>It&rsquo;s even possible to <strong>call a specific test method of your testcase</strong>:</p>
 
 <pre><code>ruby -I"lib:test" path_to_test_file -n name_of_the_method"
 </code></pre>
@@ -201,7 +196,7 @@ hope you won&#8217;t have the same weird behavior also on your systems&#8230;</p
 
 <p>will execute <strong>only</strong> <em>InvitationTest::test_should_create_invitation</em>.</p>
 
-<p>It&#8217;s also possible to <strong>execute only the test methods matching a regular
+<p>It&rsquo;s also possible to <strong>execute only the test methods matching a regular
 expression</strong>. Look at this example:</p>
 
 <pre><code>ruby -I"lib:test" test/unit/invitation_test.rb -n /.*between.*/
@@ -212,11 +207,11 @@ regexp.</p>
 
 <h3>Using the single_test gem</h3>
 
-<p>If you want to avoid the awful syntax showed in the previous paragraph there&#8217;s
-a gem that can help you, it&#8217;s called
+<p>If you want to avoid the awful syntax showed in the previous paragraph there&rsquo;s
+a gem that can help you, it&rsquo;s called
 <a href="http://github.com/grosser/single_test">single_test</a>.</p>
 
-<p>The github page contains a nice documentation, but let&#8217;s go through the most
+<p>The github page contains a nice documentation, but let&rsquo;s go through the most
 common use cases.</p>
 
 <p>You can install the gem as a rails plugin:</p>
@@ -224,7 +219,7 @@ common use cases.</p>
 <pre><code>script/plugin install git://github.com/grosser/single_test.git
 </code></pre>
 
-<p>single_test will add new rake tasks to your rails project, but <strong>won&#8217;t</strong>
+<p>single_test will add new rake tasks to your rails project, but <strong>won&rsquo;t</strong>
 override the original ones.</p>
 
 <p>Suppose we want to execute the unit test of <em>user.rb</em>, just type the following
@@ -238,10 +233,10 @@ command:</p>
 <pre><code>rake test:user_c
 </code></pre>
 
-<p>Appending <em>&#8221;</em>c&#8221;_ to the class name will automatically execute its functional
+<p>Appending <em>&ldquo;</em>c&rdquo;_ to the class name will automatically execute its functional
 test (if it exists).</p>
 
-<p>It&#8217;s still possible to <strong>execute a specif test method</strong>:</p>
+<p>It&rsquo;s still possible to <strong>execute a specif test method</strong>:</p>
 
 <pre><code>rake test:user_c:_test_name_
 </code></pre>
@@ -254,7 +249,7 @@ test (if it exists).</p>
 <p>Will execute the <em>test_update_user</em> method written inside of
 <em>test/functional/user_controller_test.rb</em>.</p>
 
-<p>It&#8217;s still possible to use regexp:</p>
+<p>It&rsquo;s still possible to use regexp:</p>
 
 <pre><code>rake test:invitation:.*between.*
 </code></pre>
@@ -290,19 +285,12 @@ not been applied to the test database.</p>
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2010-05-28T15:57:57+02:00" pubdate data-updated="true">May 28<span>th</span>, 2010</time>
+<time class='entry-date' datetime='2010-05-28T15:57:57+02:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2010</span></span> <span class='time'>3:57 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/tdd/'>TDD</a>, <a class='category' href='/blog/categories/howto/'>howto</a>, <a class='category' href='/blog/categories/ruby/'>ruby</a>, <a class='category' href='/blog/categories/ruby-on-rails/'>ruby on rails</a>
+    <a class='category' href='/blog/categories/howto/'>howto</a>, <a class='category' href='/blog/categories/ruby/'>ruby</a>, <a class='category' href='/blog/categories/ruby-on-rails/'>ruby on rails</a>, <a class='category' href='/blog/categories/tdd/'>tdd</a>
   
 </span>
 
@@ -311,7 +299,7 @@ not been applied to the test database.</p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://flavio.castelli.name/2010/05/28/rails_execute_single_test/" data-via="flavio_castelli" data-counturl="http://flavio.castelli.name/2010/05/28/rails_execute_single_test/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://flavio.castelli.name/2010/05/28/rails_execute_single_test/" data-via="flavio_castelli" data-counturl="http://flavio.castelli.name/2010/05/28/rails_execute_single_test/" >Tweet</a>
   
   
   
@@ -344,23 +332,23 @@ not been applied to the test database.</p>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/2014/05/06/building-docker-containers-with-kiwi/">Building docker images with KIWI</a>
+        <a href="/2014/05/06/building-docker-containers-with-kiwi/">Building Docker Images With KIWI</a>
       </li>
     
       <li class="post">
-        <a href="/2014/02/13/docker-and-opensuse-getting-closer/">Docker and openSUSE getting closer</a>
+        <a href="/2014/02/13/docker-and-opensuse-getting-closer/">Docker and openSUSE Getting Closer</a>
       </li>
     
       <li class="post">
-        <a href="/2013/11/28/better-docker-experience-on-opensuse/">Better Docker experience on openSUSE</a>
+        <a href="/2013/11/28/better-docker-experience-on-opensuse/">Better Docker Experience on openSUSE</a>
       </li>
     
       <li class="post">
-        <a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: a container full of Geekos</a>
+        <a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: A Container Full of Geekos</a>
       </li>
     
       <li class="post">
-        <a href="/2012/11/27/qjson-0-dot-8-1-released/">qjson 0.8.1 released</a>
+        <a href="/2012/11/27/qjson-0-dot-8-1-released/">Qjson 0.8.1 Released</a>
       </li>
     
   </ul>
@@ -369,13 +357,13 @@ not been applied to the test database.</p>
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating...</li>
+    <li class="loading">Status updating&#8230;</li>
   </ul>
   
   <a href="https://github.com/flavio">@flavio</a> on GitHub
   
   <script type="text/javascript">
-    $.domReady(function(){
+    $(document).ready(function(){
         if (!window.jXHR){
             var jxhr = document.createElement('script');
             jxhr.type = 'text/javascript';
@@ -399,7 +387,7 @@ not been applied to the test database.</p>
 <section>
   <h1>Latest Tweets</h1>
   <ul id="tweets">
-    <li class="loading">Status updating...</li>
+    <li class="loading">Status updating&#8230;</li>
   </ul>
   <script type="text/javascript">
     $.domReady(function(){
@@ -411,9 +399,6 @@ not been applied to the test database.</p>
     <a href="http://twitter.com/flavio_castelli" class="twitter-follow-button" data-show-count="false">Follow @flavio_castelli</a>
   
 </section>
-
-
-
 
 
   
@@ -441,7 +426,7 @@ not been applied to the test database.</p>
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -457,7 +442,7 @@ not been applied to the test database.</p>
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

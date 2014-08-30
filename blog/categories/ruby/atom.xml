@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ruby | Flavio Castelli]]></title>
   <link href="http://flavio.castelli.name/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://flavio.castelli.name/"/>
-  <updated>2014-08-30T10:16:47+02:00</updated>
+  <updated>2014-08-30T22:16:16+02:00</updated>
   <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
@@ -51,7 +51,7 @@ Mayer</a> and me during the latest
 <h2>How it works</h2>
 
 <p>We are going to create a SUSE Studio appliance running a rails application
-called <em>"SUSE history"</em>. The app uses <a href="http://gembundler.com/">bundler</a> to
+called <em>&ldquo;SUSE history&rdquo;</em>. The app uses <a href="http://gembundler.com/">bundler</a> to
 handle its dependencies. This is its Gemfile file:</p>
 
 <pre><code>﻿﻿source 'http://rubygems.org'
@@ -86,7 +86,7 @@ already done a couple of things for you:</p>
 <li><em>rubygem-bundler</em>: bundler is required by dister in order to handle the dependencies of your rails application.</li>
 <li><em>rubygem-passenger-apache2</em>: dister uses <a href="http://www.modrails.com/">passenger</a> and apache2 to deploy your rails application.</li>
 <li><em>postgresql-server</em>: dister noticed suse_history uses PostgreSQL as database, hence it automatically installs it.</li>
-<li><em>rubygem-pg</em>: dister noticed suse_history uses PostgreSQL as database, hence it automatically installs the ruby's library forPostgreSQL.</li>
+<li><em>rubygem-pg</em>: dister noticed suse_history uses PostgreSQL as database, hence it automatically installs the ruby&rsquo;s library forPostgreSQL.</li>
 </ul>
 </li>
 <li>uploaded a custom build script which ensures:
@@ -104,7 +104,7 @@ already done a couple of things for you:</p>
 
 <h3>Upload your code</h3>
 
-<p>It's time to upload suse_history code. This is done using the following
+<p>It&rsquo;s time to upload suse_history code. This is done using the following
 command:</p>
 
 <pre><code>dister push
@@ -119,7 +119,7 @@ the configuration files required by Apache and by PostgreSQL setup.</p>
 
 <h3>Build your appliance</h3>
 
-<p>It's build time!</p>
+<p>It&rsquo;s build time!</p>
 
 <pre><code>dister build
 </code></pre>
@@ -131,7 +131,7 @@ using the <em>raw disk</em>. You can use different formats of course.</p>
 <h3>Testdrive</h3>
 
 <p>Testdrive is one of the coolest features of SUSE Studio. Unfortunately dister
-doesn't support it yet. Just visit your appliance page and start testdrive
+doesn&rsquo;t support it yet. Just visit your appliance page and start testdrive
 from your browser. Just enable testdrive networking and connect to your
 appliance:</p>
 
@@ -148,9 +148,9 @@ want.</p>
 <h2>Current status</h2>
 
 <p>As you can see dister handles pretty fine a simple Rails application, but
-there's still room for improvements.</p>
+there&rsquo;s still room for improvements.</p>
 
-<p>Here's a small list of the things on my TODO list:</p>
+<p>Here&rsquo;s a small list of the things on my TODO list:</p>
 
 <ul>
 <li>The dependency management should install gems using rpm packages. This would make the installation of native gems easier, right now the user has to manually add all the development libraries required by the gem. Moreover it would reduce the size of the overlay files uploaded to SUSE Studio.</li>
@@ -178,16 +178,16 @@ code</a>, apply now!</p>
     <link href="http://flavio.castelli.name/2010/08/11/jump/"/>
     <updated>2010-08-11T21:29:29+02:00</updated>
     <id>http://flavio.castelli.name/2010/08/11/jump</id>
-    <content type="html"><![CDATA[<p><a href="http://flavio.castelli.name/wp-content/uploads/2010/08/van-halen-%0Ajump.jpeg"></a>Let me introduce a small project I've been working on with a friend
+    <content type="html"><![CDATA[<p><a href="http://flavio.castelli.name/wp-content/uploads/2010/08/van-halen-%0Ajump.jpeg"></a>Let me introduce a small project I&rsquo;ve been working on with a friend
 of mine, <a href="http://twitter.com/gcapizzi">Giuseppe Capizzi</a>. The project is
 called <strong>jump</strong> and ﻿allows you to quickly change directories in the bash
 shell using bookmarks.</p>
 
-<p>Thanks to Jump, you won't have to type those long paths anymore.</p>
+<p>Thanks to Jump, you won&rsquo;t have to type those long paths anymore.</p>
 
 <p><img src="/images/jump/van-halen-jump.jpeg"></p>
 
-<p>You can find jump's source code, detailed documentation and installation
+<p>You can find jump&rsquo;s source code, detailed documentation and installation
 instructions <a href="http://github.com/flavio/jump">here</a>.</p>
 
 <p>SUSE packages can be found
@@ -220,7 +220,7 @@ editing.</li>
 
 <p>Waiting for all the unit/functional tests to complete decreases our
 productivity, what we need is to execute just a single unit test. Fortunately
-there are different solutions for this problem, let's go through them.</p>
+there are different solutions for this problem, let&rsquo;s go through them.</p>
 
 <h2>The easy approach: use your favorite IDE</h2>
 
@@ -241,7 +241,7 @@ like the:</p>
 <ul>
 <li>hyper links to the exact location of the code that produced the error/failure.</li>
 <li>execution time required by each one of the test methods.
-As you will experience it will be like "compiling" your ruby code.</li>
+As you will experience it will be like &ldquo;compiling&rdquo; your ruby code.</li>
 </ul>
 
 
@@ -251,7 +251,7 @@ As you will experience it will be like "compiling" your ruby code.</li>
 
 <h3>No additional tools</h3>
 
-<p>These "tricks" don't require additional gems, hence they will work out of the
+<p>These &ldquo;tricks&rdquo; don&rsquo;t require additional gems, hence they will work out of the
 box.</p>
 
 <p>The first solution is to call this rake task:</p>
@@ -265,14 +265,14 @@ box.</p>
 </code></pre>
 
 <p>Unfortunately on my machine this command repeats the same test three times, I
-hope you won't have the same weird behavior also on your systems...</p>
+hope you won&rsquo;t have the same weird behavior also on your systems&hellip;</p>
 
 <p>Alternatively you can use the following command:</p>
 
 <pre><code>ruby -I"lib:test" path_to_test_file"
 </code></pre>
 
-<p>It's even possible to <strong>call a specific test method of your testcase</strong>:</p>
+<p>It&rsquo;s even possible to <strong>call a specific test method of your testcase</strong>:</p>
 
 <pre><code>ruby -I"lib:test" path_to_test_file -n name_of_the_method"
 </code></pre>
@@ -284,7 +284,7 @@ hope you won't have the same weird behavior also on your systems...</p>
 
 <p>will execute <strong>only</strong> <em>InvitationTest::test_should_create_invitation</em>.</p>
 
-<p>It's also possible to <strong>execute only the test methods matching a regular
+<p>It&rsquo;s also possible to <strong>execute only the test methods matching a regular
 expression</strong>. Look at this example:</p>
 
 <pre><code>ruby -I"lib:test" test/unit/invitation_test.rb -n /.*between.*/
@@ -295,11 +295,11 @@ regexp.</p>
 
 <h3>Using the single_test gem</h3>
 
-<p>If you want to avoid the awful syntax showed in the previous paragraph there's
-a gem that can help you, it's called
+<p>If you want to avoid the awful syntax showed in the previous paragraph there&rsquo;s
+a gem that can help you, it&rsquo;s called
 <a href="http://github.com/grosser/single_test">single_test</a>.</p>
 
-<p>The github page contains a nice documentation, but let's go through the most
+<p>The github page contains a nice documentation, but let&rsquo;s go through the most
 common use cases.</p>
 
 <p>You can install the gem as a rails plugin:</p>
@@ -307,7 +307,7 @@ common use cases.</p>
 <pre><code>script/plugin install git://github.com/grosser/single_test.git
 </code></pre>
 
-<p>single_test will add new rake tasks to your rails project, but <strong>won't</strong>
+<p>single_test will add new rake tasks to your rails project, but <strong>won&rsquo;t</strong>
 override the original ones.</p>
 
 <p>Suppose we want to execute the unit test of <em>user.rb</em>, just type the following
@@ -321,10 +321,10 @@ command:</p>
 <pre><code>rake test:user_c
 </code></pre>
 
-<p>Appending <em>"</em>c"_ to the class name will automatically execute its functional
+<p>Appending <em>&ldquo;</em>c&rdquo;_ to the class name will automatically execute its functional
 test (if it exists).</p>
 
-<p>It's still possible to <strong>execute a specif test method</strong>:</p>
+<p>It&rsquo;s still possible to <strong>execute a specif test method</strong>:</p>
 
 <pre><code>rake test:user_c:_test_name_
 </code></pre>
@@ -337,7 +337,7 @@ test (if it exists).</p>
 <p>Will execute the <em>test_update_user</em> method written inside of
 <em>test/functional/user_controller_test.rb</em>.</p>
 
-<p>It's still possible to use regexp:</p>
+<p>It&rsquo;s still possible to use regexp:</p>
 
 <pre><code>rake test:invitation:.*between.*
 </code></pre>
@@ -366,13 +366,13 @@ not been applied to the test database.</p>
     <link href="http://flavio.castelli.name/2008/10/03/ruby-downloader-for-jamendo/"/>
     <updated>2008-10-03T11:28:28+02:00</updated>
     <id>http://flavio.castelli.name/2008/10/03/ruby-downloader-for-jamendo</id>
-    <content type="html"><![CDATA[<p>Also this year I'll attend the Linux day (a day dedicated to Gnu/Linux  and
+    <content type="html"><![CDATA[<p>Also this year I&rsquo;ll attend the Linux day (a day dedicated to Gnu/Linux  and
 FLOSS that occurs every year in Italy) organized by my <a href="http://bglug.it">LUG</a>.
-Guess what I'll be talking about... ;)</p>
+Guess what I&rsquo;ll be talking about&hellip; ;)</p>
 
 <p>While organizing the event somebody proposed to setup a local server with some
 music released under CC license. He suggested to download some albums from
-<a href="http://www.jamendo.com">Jamendo</a> (due to network issues we won't be able to
+<a href="http://www.jamendo.com">Jamendo</a> (due to network issues we won&rsquo;t be able to
 provide direct access to the website).</p>
 
 <p>Since nobody wanted to download the albums by hand, last night I wrote a small
@@ -386,7 +386,7 @@ ruby program that does the dirty job.</p>
 
 <p>Help:<a href="http://www.flavio.castelli.name/wp-%0Acontent/uploads/2008/10/jamendo_downloader.rb"></a></p>
 
-<p>   ./jamendo_downloader.rb --help</p>
+<p>   ./jamendo_downloader.rb &ndash;help</p>
 
 <p>Download the top 10 rock albums:</p>
 
@@ -394,7 +394,7 @@ ruby program that does the dirty job.</p>
 
 <h3>Have fun</h3>
 
-<p>I think there's nothing more to say... enjoy it!</p>
+<p>I think there&rsquo;s nothing more to say&hellip; enjoy it!</p>
 
 <p><div><script src='https://gist.github.com/2437530.js?file=jamendo_downloader.rb'></script>
 <noscript><pre><code>#!/usr/bin/ruby

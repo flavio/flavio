@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Howto use Git and svn together - Flavio Castelli</title>
+  <title>Howto Use Git and Svn Together - Flavio Castelli</title>
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="In these days I&#8217;ve heard lot of rumors around Git. After
+  <meta name="description" content="In these days I&rsquo;ve heard lot of rumors around Git. After
 reading some manual/tutorial/guide I discovered that it can be really useful, &hellip;">
   
 
@@ -19,21 +19,22 @@ reading some manual/tutorial/guide I discovered that it can be really useful, &h
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://flavio.castelli.name/2007/09/04/howto_use_git_with_svn/">
+  <link rel="canonical" href="http://flavio.castelli.name/2007/09/04/howto_use_git_with_svn">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="Flavio Castelli" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
 <!-- openid delegation -->
 <!-- myopenid -->
-<!--<link rel="openid.server" href="http://www.myopenid.com/server" />-->
-<!--<link rel="openid.delegate" href="http://flavio.castelli.myopenid.com/" />-->
+<!--<link rel="openid.server" href="http://www.myopenid.com/server" />&#8211;>
+<!--<link rel="openid.delegate" href="http://flavio.castelli.myopenid.com/" />&#8211;>
 
  <!--claimid -->
 <link rel="openid.server" href="http://openid.claimid.com/server" />
@@ -101,50 +102,44 @@ reading some manual/tutorial/guide I discovered that it can be really useful, &h
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2007-09-04T12:22:15+02:00" pubdate data-updated="true">Sep 4<span>th</span>, 2007</time>
+<time class='entry-date' datetime='2007-09-04T12:22:15+02:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2007</span></span> <span class='time'>12:22 pm</span></time>
         
-         | <a href="#disqus_thread">Comments</a>
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://flavio.castelli.name">Comments</a>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>In these days I&#8217;ve heard lot of rumors around <a href="http://git.or.cz/">Git</a>. After
+<div class="entry-content"><p>In these days I&rsquo;ve heard lot of rumors around <a href="http://git.or.cz/">Git</a>. After
 reading some manual/tutorial/guide I discovered that it can be really useful,
-especially if you spend lot of time coding off-line (that&#8217;s my situation).</p>
+especially if you spend lot of time coding off-line (that&rsquo;s my situation).</p>
 
 <p>This is a really small howto that describes how to work on a project versioned
 with svn (maybe taken from KDE repository ;) ) using git.</p>
 
-<h3>What&#8217;re the advantages?</h3>
+<h3>What&rsquo;re the advantages?</h3>
 
 <p>Since Git is a distributed revision control system (while svn is a centralized
-one) you can perform commits, brances, merges,&#8230; on your local working dir
+one) you can perform commits, brances, merges,&hellip; on your local working dir
 without being connected to internet.</p>
 
-<p>Next time you&#8217;ll be online, you will be able to <em>&#8220;push&#8221;</em> your changes back to
+<p>Next time you&rsquo;ll be online, you will be able to <em>&ldquo;push&rdquo;</em> your changes back to
 the central svn server.</p>
 
 <h3>Steps to follow:</h3>
 
-<p>You&#8217;ve to:</p>
+<p>You&rsquo;ve to:</p>
 
 <ol>
-<li>install <em>git</em> and <em>git-svn</em></li>
-<li>create the working dir: <code>mkdir strigi</code></li>
-<li>init your git working dir: <code>cd strigi &amp;&amp; git-svn init https://svn.kde.org/home/kde/trunk/kdesupport/strigi</code> <em>git-svn init</em> command is followed by the address of the svn repository (in this case we point to strigi&#8217;s repository)</li>
-<li>Find a commit regarding the project (you can get it from <a href="http://cia.vc/">cia version control</a>). <strong>Warning:</strong> the command <em>git-log</em> will show project&#8217;s history starting from this revision.</li>
-<li>Perform the command <code>git-svn fetch -rREVISION</code> Where <em>REVISION</em> is the number obtained before.</li>
-<li>Update your working dir: <code>git-svn rebase</code>
-Now you&#8217;ll be able to work on your project using git as revision control
+<li> install <em>git</em> and <em>git-svn</em></li>
+<li> create the working dir: <code>mkdir strigi</code></li>
+<li> init your git working dir: <code>cd strigi &amp;&amp; git-svn init https://svn.kde.org/home/kde/trunk/kdesupport/strigi</code> <em>git-svn init</em> command is followed by the address of the svn repository (in this case we point to strigi&rsquo;s repository)</li>
+<li> Find a commit regarding the project (you can get it from <a href="http://cia.vc/">cia version control</a>). <strong>Warning:</strong> the command <em>git-log</em> will show project&rsquo;s history starting from this revision.</li>
+<li> Perform the command <code>git-svn fetch -rREVISION</code> Where <em>REVISION</em> is the number obtained before.</li>
+<li> Update your working dir: <code>git-svn rebase</code>
+Now you&rsquo;ll be able to work on your project using git as revision control
 system.</li>
 </ol>
 
@@ -157,7 +152,7 @@ system.</li>
 
 <p><code>git-svn dcommit</code></p>
 
-<p>In this way each commit made with git will be <em>&#8220;transformed&#8221;</em> into a svn one.</p>
+<p>In this way each commit made with git will be <em>&ldquo;transformed&rdquo;</em> into a svn one.</p>
 
 <h3>Solve git-svn rebase problems</h3>
 
@@ -166,24 +161,24 @@ problem when synchronizing with the main development tree. In fact you have to
 commit all local modifications (using the <code>git-commit</code> command) before
 invoking <code>git-svn rebase</code>.</p>
 
-<p>Sometimes it isn&#8217;t reasonable since your changes are not yet ready to be
-committed (you haven&#8217;t finished/tested/improved your work). But don&#8217;t worry,
+<p>Sometimes it isn&rsquo;t reasonable since your changes are not yet ready to be
+committed (you haven&rsquo;t finished/tested/improved your work). But don&rsquo;t worry,
 git has a native solution also for this problem, just follow these steps:</p>
 
 <ol>
-<li>put aside your changes using the command: <code>git-stash</code></li>
-<li>update your working copy using: <code>git-svn rebase</code> as usual</li>
-<li>take back your changes typing: <code>git-stash apply</code></li>
-<li>clear <em>&#8220;the stash&#8221;</em> typing: <code>git-stash clear</code>
+<li> put aside your changes using the command: <code>git-stash</code></li>
+<li> update your working copy using: <code>git-svn rebase</code> as usual</li>
+<li> take back your changes typing: <code>git-stash apply</code></li>
+<li> clear <em>&ldquo;the stash&rdquo;</em> typing: <code>git-stash clear</code>
 After the first step all your uncommitted changes will disappear from the
-working copy, so you&#8217;ll be able to perform the rebase command without
+working copy, so you&rsquo;ll be able to perform the rebase command without
 problems.</li>
 </ol>
 
 
 <p>For further informations read <code>git-stash</code> man page.</p>
 
-<p>That&#8217;s all.</p>
+<p>That&rsquo;s all.</p>
 
 <p>A special mention goes to Thiago Macieira for his help.</p>
 </div>
@@ -201,19 +196,12 @@ problems.</li>
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2007-09-04T12:22:15+02:00" pubdate data-updated="true">Sep 4<span>th</span>, 2007</time>
+<time class='entry-date' datetime='2007-09-04T12:22:15+02:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2007</span></span> <span class='time'>12:22 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/kde/'>KDE</a>, <a class='category' href='/blog/categories/git/'>git</a>, <a class='category' href='/blog/categories/howto/'>howto</a>, <a class='category' href='/blog/categories/svn/'>svn</a>
+    <a class='category' href='/blog/categories/git/'>git</a>, <a class='category' href='/blog/categories/howto/'>howto</a>, <a class='category' href='/blog/categories/kde/'>kde</a>, <a class='category' href='/blog/categories/svn/'>svn</a>
   
 </span>
 
@@ -222,7 +210,7 @@ problems.</li>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://flavio.castelli.name/2007/09/04/howto_use_git_with_svn/" data-via="flavio_castelli" data-counturl="http://flavio.castelli.name/2007/09/04/howto_use_git_with_svn/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://flavio.castelli.name/2007/09/04/howto_use_git_with_svn/" data-via="flavio_castelli" data-counturl="http://flavio.castelli.name/2007/09/04/howto_use_git_with_svn/" >Tweet</a>
   
   
   
@@ -255,23 +243,23 @@ problems.</li>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/2014/05/06/building-docker-containers-with-kiwi/">Building docker images with KIWI</a>
+        <a href="/2014/05/06/building-docker-containers-with-kiwi/">Building Docker Images With KIWI</a>
       </li>
     
       <li class="post">
-        <a href="/2014/02/13/docker-and-opensuse-getting-closer/">Docker and openSUSE getting closer</a>
+        <a href="/2014/02/13/docker-and-opensuse-getting-closer/">Docker and openSUSE Getting Closer</a>
       </li>
     
       <li class="post">
-        <a href="/2013/11/28/better-docker-experience-on-opensuse/">Better Docker experience on openSUSE</a>
+        <a href="/2013/11/28/better-docker-experience-on-opensuse/">Better Docker Experience on openSUSE</a>
       </li>
     
       <li class="post">
-        <a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: a container full of Geekos</a>
+        <a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: A Container Full of Geekos</a>
       </li>
     
       <li class="post">
-        <a href="/2012/11/27/qjson-0-dot-8-1-released/">qjson 0.8.1 released</a>
+        <a href="/2012/11/27/qjson-0-dot-8-1-released/">Qjson 0.8.1 Released</a>
       </li>
     
   </ul>
@@ -280,13 +268,13 @@ problems.</li>
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating...</li>
+    <li class="loading">Status updating&#8230;</li>
   </ul>
   
   <a href="https://github.com/flavio">@flavio</a> on GitHub
   
   <script type="text/javascript">
-    $.domReady(function(){
+    $(document).ready(function(){
         if (!window.jXHR){
             var jxhr = document.createElement('script');
             jxhr.type = 'text/javascript';
@@ -310,7 +298,7 @@ problems.</li>
 <section>
   <h1>Latest Tweets</h1>
   <ul id="tweets">
-    <li class="loading">Status updating...</li>
+    <li class="loading">Status updating&#8230;</li>
   </ul>
   <script type="text/javascript">
     $.domReady(function(){
@@ -322,9 +310,6 @@ problems.</li>
     <a href="http://twitter.com/flavio_castelli" class="twitter-follow-button" data-show-count="false">Follow @flavio_castelli</a>
   
 </section>
-
-
-
 
 
   
@@ -352,7 +337,7 @@ problems.</li>
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -368,7 +353,7 @@ problems.</li>
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

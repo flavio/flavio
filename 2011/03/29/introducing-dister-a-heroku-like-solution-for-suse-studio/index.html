@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Introducing dister, a Heroku like solution for SUSE Studio - Flavio Castelli</title>
+  <title>Introducing Dister, a Heroku Like Solution for SUSE Studio - Flavio Castelli</title>
   <meta name="author" content="Flavio Castelli">
 
   
@@ -20,21 +20,22 @@ drive, an usb flash,  a &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://flavio.castelli.name/2011/03/29/introducing-dister-a-heroku-like-solution-for-suse-studio/">
+  <link rel="canonical" href="http://flavio.castelli.name/2011/03/29/introducing-dister-a-heroku-like-solution-for-suse-studio">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="Flavio Castelli" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
 <!-- openid delegation -->
 <!-- myopenid -->
-<!--<link rel="openid.server" href="http://www.myopenid.com/server" />-->
-<!--<link rel="openid.delegate" href="http://flavio.castelli.myopenid.com/" />-->
+<!--<link rel="openid.server" href="http://www.myopenid.com/server" />&#8211;>
+<!--<link rel="openid.delegate" href="http://flavio.castelli.myopenid.com/" />&#8211;>
 
  <!--claimid -->
 <link rel="openid.server" href="http://openid.claimid.com/server" />
@@ -102,16 +103,10 @@ drive, an usb flash,  a &hellip;">
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2011-03-29T15:39:21+02:00" pubdate data-updated="true">Mar 29<span>th</span>, 2011</time>
+<time class='entry-date' datetime='2011-03-29T15:39:21+02:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>3:39 pm</span></time>
         
-         | <a href="#disqus_thread">Comments</a>
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://flavio.castelli.name">Comments</a>
         
       </p>
     
@@ -151,7 +146,7 @@ Mayer</a> and me during the latest
 <h2>How it works</h2>
 
 <p>We are going to create a SUSE Studio appliance running a rails application
-called <em>&#8220;SUSE history&#8221;</em>. The app uses <a href="http://gembundler.com/">bundler</a> to
+called <em>&ldquo;SUSE history&rdquo;</em>. The app uses <a href="http://gembundler.com/">bundler</a> to
 handle its dependencies. This is its Gemfile file:</p>
 
 <pre><code>﻿﻿source 'http://rubygems.org'
@@ -186,7 +181,7 @@ already done a couple of things for you:</p>
 <li><em>rubygem-bundler</em>: bundler is required by dister in order to handle the dependencies of your rails application.</li>
 <li><em>rubygem-passenger-apache2</em>: dister uses <a href="http://www.modrails.com/">passenger</a> and apache2 to deploy your rails application.</li>
 <li><em>postgresql-server</em>: dister noticed suse_history uses PostgreSQL as database, hence it automatically installs it.</li>
-<li><em>rubygem-pg</em>: dister noticed suse_history uses PostgreSQL as database, hence it automatically installs the ruby&#8217;s library forPostgreSQL.</li>
+<li><em>rubygem-pg</em>: dister noticed suse_history uses PostgreSQL as database, hence it automatically installs the ruby&rsquo;s library forPostgreSQL.</li>
 </ul>
 </li>
 <li>uploaded a custom build script which ensures:
@@ -204,7 +199,7 @@ already done a couple of things for you:</p>
 
 <h3>Upload your code</h3>
 
-<p>It&#8217;s time to upload suse_history code. This is done using the following
+<p>It&rsquo;s time to upload suse_history code. This is done using the following
 command:</p>
 
 <pre><code>dister push
@@ -219,7 +214,7 @@ the configuration files required by Apache and by PostgreSQL setup.</p>
 
 <h3>Build your appliance</h3>
 
-<p>It&#8217;s build time!</p>
+<p>It&rsquo;s build time!</p>
 
 <pre><code>dister build
 </code></pre>
@@ -231,7 +226,7 @@ using the <em>raw disk</em>. You can use different formats of course.</p>
 <h3>Testdrive</h3>
 
 <p>Testdrive is one of the coolest features of SUSE Studio. Unfortunately dister
-doesn&#8217;t support it yet. Just visit your appliance page and start testdrive
+doesn&rsquo;t support it yet. Just visit your appliance page and start testdrive
 from your browser. Just enable testdrive networking and connect to your
 appliance:</p>
 
@@ -248,9 +243,9 @@ want.</p>
 <h2>Current status</h2>
 
 <p>As you can see dister handles pretty fine a simple Rails application, but
-there&#8217;s still room for improvements.</p>
+there&rsquo;s still room for improvements.</p>
 
-<p>Here&#8217;s a small list of the things on my TODO list:</p>
+<p>Here&rsquo;s a small list of the things on my TODO list:</p>
 
 <ul>
 <li>The dependency management should install gems using rpm packages. This would make the installation of native gems easier, right now the user has to manually add all the development libraries required by the gem. Moreover it would reduce the size of the overlay files uploaded to SUSE Studio.</li>
@@ -285,14 +280,7 @@ code</a>, apply now!</p>
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2011-03-29T15:39:21+02:00" pubdate data-updated="true">Mar 29<span>th</span>, 2011</time>
+<time class='entry-date' datetime='2011-03-29T15:39:21+02:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>3:39 pm</span></time>
       
 
 <span class="categories">
@@ -306,7 +294,7 @@ code</a>, apply now!</p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://flavio.castelli.name/2011/03/29/introducing-dister-a-heroku-like-solution-for-suse-studio/" data-via="flavio_castelli" data-counturl="http://flavio.castelli.name/2011/03/29/introducing-dister-a-heroku-like-solution-for-suse-studio/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://flavio.castelli.name/2011/03/29/introducing-dister-a-heroku-like-solution-for-suse-studio/" data-via="flavio_castelli" data-counturl="http://flavio.castelli.name/2011/03/29/introducing-dister-a-heroku-like-solution-for-suse-studio/" >Tweet</a>
   
   
   
@@ -339,23 +327,23 @@ code</a>, apply now!</p>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/2014/05/06/building-docker-containers-with-kiwi/">Building docker images with KIWI</a>
+        <a href="/2014/05/06/building-docker-containers-with-kiwi/">Building Docker Images With KIWI</a>
       </li>
     
       <li class="post">
-        <a href="/2014/02/13/docker-and-opensuse-getting-closer/">Docker and openSUSE getting closer</a>
+        <a href="/2014/02/13/docker-and-opensuse-getting-closer/">Docker and openSUSE Getting Closer</a>
       </li>
     
       <li class="post">
-        <a href="/2013/11/28/better-docker-experience-on-opensuse/">Better Docker experience on openSUSE</a>
+        <a href="/2013/11/28/better-docker-experience-on-opensuse/">Better Docker Experience on openSUSE</a>
       </li>
     
       <li class="post">
-        <a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: a container full of Geekos</a>
+        <a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: A Container Full of Geekos</a>
       </li>
     
       <li class="post">
-        <a href="/2012/11/27/qjson-0-dot-8-1-released/">qjson 0.8.1 released</a>
+        <a href="/2012/11/27/qjson-0-dot-8-1-released/">Qjson 0.8.1 Released</a>
       </li>
     
   </ul>
@@ -364,13 +352,13 @@ code</a>, apply now!</p>
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating...</li>
+    <li class="loading">Status updating&#8230;</li>
   </ul>
   
   <a href="https://github.com/flavio">@flavio</a> on GitHub
   
   <script type="text/javascript">
-    $.domReady(function(){
+    $(document).ready(function(){
         if (!window.jXHR){
             var jxhr = document.createElement('script');
             jxhr.type = 'text/javascript';
@@ -394,7 +382,7 @@ code</a>, apply now!</p>
 <section>
   <h1>Latest Tweets</h1>
   <ul id="tweets">
-    <li class="loading">Status updating...</li>
+    <li class="loading">Status updating&#8230;</li>
   </ul>
   <script type="text/javascript">
     $.domReady(function(){
@@ -406,9 +394,6 @@ code</a>, apply now!</p>
     <a href="http://twitter.com/flavio_castelli" class="twitter-follow-button" data-show-count="false">Follow @flavio_castelli</a>
   
 </section>
-
-
-
 
 
   
@@ -436,7 +421,7 @@ code</a>, apply now!</p>
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -452,7 +437,7 @@ code</a>, apply now!</p>
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

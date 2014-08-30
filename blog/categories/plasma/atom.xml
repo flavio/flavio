@@ -4,7 +4,7 @@
   <title><![CDATA[Category: plasma | Flavio Castelli]]></title>
   <link href="http://flavio.castelli.name/blog/categories/plasma/atom.xml" rel="self"/>
   <link href="http://flavio.castelli.name/"/>
-  <updated>2014-08-30T10:16:47+02:00</updated>
+  <updated>2014-08-30T22:16:16+02:00</updated>
   <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
@@ -26,7 +26,7 @@ some minor fixes.</p>
 openSUSE packages are already available on the <a href="http://software.opensuse.org/search?q=plasmoid-%0Afastuserswitch&amp;baseproject=ALL&amp;lang=en&amp;exclude_debug=true">build
 service</a>.</p>
 
-<p>These are some screenshots illustrating fastuserswitch's new features.</p>
+<p>These are some screenshots illustrating fastuserswitch&rsquo;s new features.</p>
 
 <p><img src="/images/fast_user_switch/fastuserswitch011.png">
 <img src="/images/fast_user_switch/fastuserswitch021.png">
@@ -42,11 +42,11 @@ service</a>.</p>
     <content type="html"><![CDATA[<p>Last week my mother in law started to share her Linux laptop with my wife.
 Suddenly my wife asked me how she could switch from one user session to
 another. She was looking for something similar to <a href="http://bit.ly/auzc56">OS X fast user
-switch</a> feature but she couldn't find it. In fact there
-wasn't a fast and easy way to switch between users' sessions with KDE,
-until... now :)</p>
+switch</a> feature but she couldn&rsquo;t find it. In fact there
+wasn&rsquo;t a fast and easy way to switch between users&#8217; sessions with KDE,
+until&hellip; now :)</p>
 
-<p>Let me introduce my first plasmoid: the fast user switch plasmoid. It's a
+<p>Let me introduce my first plasmoid: the fast user switch plasmoid. It&rsquo;s a
 simple icon in the panel that allows users to swich to another open session or
 to open a new login page. Here you can see the mandatory screenshots.</p>
 

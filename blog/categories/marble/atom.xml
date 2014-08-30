@@ -4,7 +4,7 @@
   <title><![CDATA[Category: marble | Flavio Castelli]]></title>
   <link href="http://flavio.castelli.name/blog/categories/marble/atom.xml" rel="self"/>
   <link href="http://flavio.castelli.name/"/>
-  <updated>2014-08-30T10:16:47+02:00</updated>
+  <updated>2014-08-30T22:16:16+02:00</updated>
   <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
@@ -22,7 +22,7 @@
 feature: retrieve all the events happening in a certain city.</p>
 
 <p>As usual data is provided by last.fm, which should return also the events
-<em>"near" </em>the specified city (don't ask me to define a value for <em>near</em> :) ).</p>
+<em>&ldquo;near&rdquo; </em>the specified city (don&rsquo;t ask me to define a value for <em>near</em> :) ).</p>
 
 <p>I have created new openSUSE packages, this time everything should work fine.
 Just make sure to remove all <a href="http://qjson.sourceforge.net/">qjson</a> packages
@@ -32,7 +32,7 @@ packaging errors of qjson, now I have created new packages called libqjson0).</p
 <p>Packages are available for openSUSE 11.0, 11.1 and Factory (both for i586 and
 x86_64 architectures).</p>
 
-<p>One last news: rockmarble has also a new
+<p>One last <a href="news:">news:</a> rockmarble has also a new
 <a href="http://rockmarble.sourceforge.net">site</a>, something slightly better than
 github wiki ;)</p>
 
@@ -50,7 +50,7 @@ github wiki ;)</p>
 from <a href="http://www.last.fm/home">last.fm</a> the tour dates of my favourite artists
 and display the locations using <a href="http://edu.kde.org/marble/">Marble</a>.</p>
 
-<p>After some hacking I created this small application: <em>rockmarble</em>...</p>
+<p>After some hacking I created this small application: <em>rockmarble</em>&hellip;</p>
 
 <p><img src="/images/rockmarble/flow.png"></p>
 
@@ -99,7 +99,7 @@ some artist with a blank name. I’m going to fix this issue asap.</p>
 
 <h2>Future</h2>
 
-<p>Who wants to integrate it into amarok's context view? ;)</p>
+<p>Who wants to integrate it into amarok&rsquo;s context view? ;)</p>
 ]]></content>
   </entry>
   

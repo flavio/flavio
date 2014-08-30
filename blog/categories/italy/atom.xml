@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Italy | Flavio Castelli]]></title>
+  <title><![CDATA[Category: italy | Flavio Castelli]]></title>
   <link href="http://flavio.castelli.name/blog/categories/italy/atom.xml" rel="self"/>
   <link href="http://flavio.castelli.name/"/>
-  <updated>2014-08-30T10:16:47+02:00</updated>
+  <updated>2014-08-30T22:16:16+02:00</updated>
   <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
@@ -29,7 +29,7 @@ speeches, installation parties and more.</p>
 <em>Linux day</em> organized by my LUG (<a href="http://www.bglug.it">BGLug</a>).</p>
 
 <p>The presentation covers the main changes and features introduced by KDE 4. I
-took inspiration from Troy's <em>"Road to KDE 4"</em> articles (I like them really
+took inspiration from Troy&rsquo;s <em>&ldquo;Road to KDE 4&rdquo;</em> articles (I like them really
 much).</p>
 
 <p>People liked the speech and, most important of all, showed great interest for
@@ -50,9 +50,9 @@ KDE 4.</p>
 <p>This speech illustrates:</p>
 
 <ul>
-<li>what's desktop searching</li>
-<li>what're the benefits of desktop searching technology</li>
-<li>what're the programs availables under linux</li>
+<li>what&rsquo;s desktop searching</li>
+<li>what&rsquo;re the benefits of desktop searching technology</li>
+<li>what&rsquo;re the programs availables under linux</li>
 <li>overview of Beagle</li>
 <li>overview of Strigi</li>
 </ul>
@@ -69,7 +69,7 @@ KDE 4.</p>
     <updated>2007-05-29T12:38:37+02:00</updated>
     <id>http://flavio.castelli.name/2007/05/29/kde4_preview_gazzaniga</id>
     <content type="html"><![CDATA[<p>A KDE 4 small overview This speech illustrates some of the major KDE4
-features. Slides are shorts since has been made for a <em>"wiki-night"</em> :)</p>
+features. Slides are shorts since has been made for a <em>&ldquo;wiki-night&rdquo;</em> :)</p>
 
 <div style="width:425px" id="__ss_12640108"><strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/fcastelli/kde4-preview" title="Kde4 preview">Kde4 preview</a></strong><object id="__sse12640108" width="425" height="355"><param name="movie" value="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=kde4-preview-120422101452-phpapp02&stripped_title=kde4-preview&userName=fcastelli" /><param name="allowFullScreen" value="true"/><param name="allowScriptAccess" value="always"/><param name="wmode" value="transparent"/><embed name="__sse12640108" src="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=kde4-preview-120422101452-phpapp02&stripped_title=kde4-preview&userName=fcastelli" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="transparent" width="425" height="355"></embed></object><div style="padding:5px 0 12px">View more <a href="http://www.slideshare.net/">presentations</a> from <a href="http://www.slideshare.net/fcastelli">Flavio Castelli</a>.</div></div>
 
@@ -88,11 +88,11 @@ features. Slides are shorts since has been made for a <em>"wiki-night"</em> :)</
 <p>This speech illustrates:</p>
 
 <ul>
-<li>what's a mailing list and how does it works</li>
-<li>what's a newsgroup</li>
-<li>what's netiquette</li>
+<li>what&rsquo;s a mailing list and how does it works</li>
+<li>what&rsquo;s a newsgroup</li>
+<li>what&rsquo;s netiquette</li>
 <li>how to quote</li>
-<li>how to don't break mailing lists threads</li>
+<li>how to don&rsquo;t break mailing lists threads</li>
 </ul>
 
 

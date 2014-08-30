@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: c++ | Flavio Castelli]]></title>
+  <link href="http://flavio.castelli.name/blog/categories/c-plus-plus/atom.xml" rel="self"/>
+  <link href="http://flavio.castelli.name/"/>
+  <updated>2014-08-30T22:16:16+02:00</updated>
+  <id>http://flavio.castelli.name/</id>
+  <author>
+    <name><![CDATA[Flavio Castelli]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[rockmarble: see who is going to rock in your town]]></title>
+    <link href="http://flavio.castelli.name/2009/04/07/rockmarble-rock-in-your-town/"/>
+    <updated>2009-04-07T17:40:45+02:00</updated>
+    <id>http://flavio.castelli.name/2009/04/07/rockmarble-rock-in-your-town</id>
+    <content type="html"><![CDATA[<p>During the last weekend I hacked a bit on rockmarble and I added a new
+feature: retrieve all the events happening in a certain city.</p>
+
+<p>As usual data is provided by last.fm, which should return also the events
+<em>&ldquo;near&rdquo; </em>the specified city (don&rsquo;t ask me to define a value for <em>near</em> :) ).</p>
+
+<p>I have created new openSUSE packages, this time everything should work fine.
+Just make sure to remove all <a href="http://qjson.sourceforge.net/">qjson</a> packages
+before installing this release (in fact all the previous problems were due to
+packaging errors of qjson, now I have created new packages called libqjson0).</p>
+
+<p>Packages are available for openSUSE 11.0, 11.1 and Factory (both for i586 and
+x86_64 architectures).</p>
+
+<p>One last <a href="news:">news:</a> rockmarble has also a new
+<a href="http://rockmarble.sourceforge.net">site</a>, something slightly better than
+github wiki ;)</p>
+
+<p><a href="http://cloud.github.com/downloads/flavio%0A/rockmarble/rockmarble.ymp"><img src="/images/rockmarble/rockmarble_1click.png" alt="" /></a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[rockmarble: how to follow your favourite artists tour with Marble]]></title>
+    <link href="http://flavio.castelli.name/2009/04/02/rockmarble-follow-artists-tours-with-marble/"/>
+    <updated>2009-04-02T08:51:43+02:00</updated>
+    <id>http://flavio.castelli.name/2009/04/02/rockmarble-follow-artists-tours-with-marble</id>
+    <content type="html"><![CDATA[<p>During the last weekend I wanted to have some fun with
+<a href="http://qjson.sourceforge.net/">QJson</a>. So I came out with this idea: retrieve
+from <a href="http://www.last.fm/home">last.fm</a> the tour dates of my favourite artists
+and display the locations using <a href="http://edu.kde.org/marble/">Marble</a>.</p>
+
+<p>After some hacking I created this small application: <em>rockmarble</em>&hellip;</p>
+
+<p><img src="/images/rockmarble/flow.png"></p>
+
+<p>If you have a last.fm account rockmarble will import your favourite artist
+list. Otherwise you can add one artists at a time.</p>
+
+<p>The tour location will be displayed inside Marble, using
+<a href="http://www.openstreetmap.org/">openstreetmap</a>.</p>
+
+<h2>Requirements</h2>
+
+<p>In order to build/run it you will need:</p>
+
+<ul>
+<li><a href="http://www.qtsoftware.com/downloads">Qt4</a></li>
+<li><a href="http://edu.kde.org/marble/">marble</a></li>
+<li><a href="http://qjson.sourceforge.net/">QJson</a></li>
+</ul>
+
+
+<h2>Installation</h2>
+
+<p>You can grab the source code of rockmarble
+<a href="http://github.com/flavio/rockmarble/tree/master">here</a>.</p>
+
+<p>If you are an openSUSE user you can use 1click install:</p>
+
+<p><a href="http://cloud.github.com/downloads/flavio%0A/rockmarble/rockmarble.ymp"><img src="/images/rockmarble/rockmarble_1click.png" alt="" /></a></p>
+
+<h2>Issues</h2>
+
+<h3>Geolocalization</h3>
+
+<p>The geolocalization data are given by last.fm, so if you discover that
+Metallica are going to give a concert in the middle of the Pacific Ocean
+please don’t bother me :)</p>
+
+<h3>Special names</h3>
+
+<p>It seems that QJson doesn’t handle properly special characters. Maybe you will
+some artist with a blank name. I’m going to fix this issue asap.</p>
+
+<h2>More details</h2>
+
+<p>Visit <a href="http://rockmarble.sourceforge.net">rockmarble website</a></p>
+
+<h2>Future</h2>
+
+<p>Who wants to integrate it into amarok&rsquo;s context view? ;)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Tyding up Strigi analyzers]]></title>
+    <link href="http://flavio.castelli.name/2008/01/10/tyding_up_strigi_analyzers/"/>
+    <updated>2008-01-10T15:49:17+01:00</updated>
+    <id>http://flavio.castelli.name/2008/01/10/tyding_up_strigi_analyzers</id>
+    <content type="html"><![CDATA[<p>As you may know, KDE4 will use Strigi for meta information extraction instead
+of the old <a href="http://api.kde.org/3.5-api/kdelibs-%0Aapidocs/kio/kio/html/classKFilePlugin.html">KFilePlugin</a> classes.</p>
+
+<p>Since Strigi&rsquo;s analyzer work in a different way, lot of code has to be ported.
+Unfortunately, after a good start, some relevant analyzers were still missing.</p>
+
+<p>But in the last weeks Strigi gained support of:</p>
+
+<ul>
+<li>wave file</li>
+<li>avi files</li>
+<li>txt files</li>
+<li>dds files</li>
+<li>rgb files</li>
+<li>sid files</li>
+<li>ico files</li>
+</ul>
+
+
+<p>I&rsquo;ve also updated <a href="http://wiki.kde.org/tiki-index.php?page=Porting+KFilePlugin+Progress">this</a> summary page. As you can see
+there&rsquo;s still some work to do, but don&rsquo;t worry&hellip; I&rsquo;ll try to do the best ;)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Strigi gains FAM support]]></title>
+    <link href="http://flavio.castelli.name/2007/11/26/strigi-gains-fam-support/"/>
+    <updated>2007-11-26T12:33:52+01:00</updated>
+    <id>http://flavio.castelli.name/2007/11/26/strigi-gains-fam-support</id>
+    <content type="html"><![CDATA[<p>Last Monday I submitted lot of changes into Strigi&rsquo;s trunk. I&rsquo;ve heavily
+refactored some classes in order to obtain a more flexible file system
+notification infrastructure. Thanks to this work now it will be easier to add
+support for new file system notification facilities.  For example, in order to
+add <em>File Alteration Monitor</em> (aka <em>FAM</em>) support I had to write only 576 loc
+(including license and documentation stuff).</p>
+
+<p>So, by now, Strigi supports the following file system monitoring facilities:</p>
+
+<ul>
+<li>polling: used when nothing else is available</li>
+<li>inotify: available only on linux platform with kernel >= 2.6.13</li>
+<li>FAM: available on most of the *nix systems, I recommend to use Gamin instead of FAM (most linux distributions already use it by default)</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Strigi gains full Xesam queries support]]></title>
+    <link href="http://flavio.castelli.name/2007/08/31/strigi_full_xesam_support/"/>
+    <updated>2007-08-31T17:30:52+02:00</updated>
+    <id>http://flavio.castelli.name/2007/08/31/strigi_full_xesam_support</id>
+    <content type="html"><![CDATA[<p>As I said in
+<a href="http://www.flavio.castelli.name/strigi_xesam_query_language_support">this</a>
+previous post, Strigi&rsquo;s Xesam support was half-done since <a href="http://wiki.freedesktop.org/wiki/XesamUserSearchLanguage">XesamUserSearchLanguage</a> wasn’t yet
+handled. Well, this is no longer true&hellip; ;) In these weeks I’ve been working
+on <em>XesamUserSearchLanguage</em> support. Ehm&hellip; to be honest, I’ve been
+<em><strong>fighting</strong></em> with <a href="http://www.gnu.org/software/bison/">Bison</a>.</p>
+
+<p>But in the end I tamed the beast and now
+<a href="http://wiki.freedesktop.org/wiki/XesamAbout">Xesam</a> support in Strigi is
+full.</p>
+
+<p>IMHO <em>XesamUserSearchLanguage</em> can be considered more important than
+<a href="http://wiki.freedesktop.org/wiki/XesamQueryLanguage">XesamQueryLanguage</a>
+since common users will write queries in this way.</p>
+
+<p>As reported on the project page:
+<blockquote><p>It is <em>[XesamUserSearchLanguage]</em> designed as an extended synthesis of<br/>Apple&rsquo;s spotlight and Google&rsquo;s search languages.</p></blockquote></p>
+
+<p>These are some possible queries (examples taken from freedesktop site):</p>
+
+<ul>
+<li><code>_type:music hendrix_</code> will return all music items related to hendrix</li>
+<li><code>_type:image size&gt;=1mb tag:flower africa_</code> will return all pictures displaying a flower greater than 1 Mb and related with africa</li>
+</ul>
+
+
+<h3>Technical aspects</h3>
+
+<p>The Xesam&rsquo;s UserSearchLanguage query &ndash;> Strigi::Query object conversion is
+made using a hand-written scanner and a C++ parser created by Bison.</p>
+
+<p>You don&rsquo;t have to worry if you don&rsquo;t have Bison installed on your system since
+all parser generated code is already put into svn. In these days, as soon as
+I&rsquo;ll have some spare time (when?!), I&rsquo;ll write another post about open-source
+scanner and parser generators.</p>
+
+<p>By now I would like to thank <a href="http://apaku.wordpress.com">Andreas Pakulat</a>
+(developer of <a href="http://www.kdevelop.org/">KDevelop</a>) for his help with parser
+generators.</p>
+]]></content>
+  </entry>
+  
+</feed>

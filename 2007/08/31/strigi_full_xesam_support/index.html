@@ -5,13 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Strigi gains full Xesam queries support - Flavio Castelli</title>
+  <title>Strigi Gains Full Xesam Queries Support - Flavio Castelli</title>
   <meta name="author" content="Flavio Castelli">
 
   
   <meta name="description" content="As I said in
 this
-previous post, Strigi&#8217;s Xesam support was half-done since XesamUserSearchLanguage wasn’t yet
+previous post, Strigi&rsquo;s Xesam support was half-done since XesamUserSearchLanguage wasn’t yet
 handled. Well, this is no longer &hellip;">
   
 
@@ -21,21 +21,22 @@ handled. Well, this is no longer &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://flavio.castelli.name/2007/08/31/strigi_full_xesam_support/">
+  <link rel="canonical" href="http://flavio.castelli.name/2007/08/31/strigi_full_xesam_support">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="Flavio Castelli" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
 <!-- openid delegation -->
 <!-- myopenid -->
-<!--<link rel="openid.server" href="http://www.myopenid.com/server" />-->
-<!--<link rel="openid.delegate" href="http://flavio.castelli.myopenid.com/" />-->
+<!--<link rel="openid.server" href="http://www.myopenid.com/server" />&#8211;>
+<!--<link rel="openid.delegate" href="http://flavio.castelli.myopenid.com/" />&#8211;>
 
  <!--claimid -->
 <link rel="openid.server" href="http://openid.claimid.com/server" />
@@ -103,16 +104,10 @@ handled. Well, this is no longer &hellip;">
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2007-08-31T17:30:52+02:00" pubdate data-updated="true">Aug 31<span>st</span>, 2007</time>
+<time class='entry-date' datetime='2007-08-31T17:30:52+02:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2007</span></span> <span class='time'>5:30 pm</span></time>
         
-         | <a href="#disqus_thread">Comments</a>
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://flavio.castelli.name">Comments</a>
         
       </p>
     
@@ -121,9 +116,9 @@ handled. Well, this is no longer &hellip;">
 
 <div class="entry-content"><p>As I said in
 <a href="http://www.flavio.castelli.name/strigi_xesam_query_language_support">this</a>
-previous post, Strigi&#8217;s Xesam support was half-done since <a href="http://wiki.freedesktop.org/wiki/XesamUserSearchLanguage">XesamUserSearchLanguage</a> wasn’t yet
-handled. Well, this is no longer true&#8230; ;) In these weeks I’ve been working
-on <em>XesamUserSearchLanguage</em> support. Ehm&#8230; to be honest, I’ve been
+previous post, Strigi&rsquo;s Xesam support was half-done since <a href="http://wiki.freedesktop.org/wiki/XesamUserSearchLanguage">XesamUserSearchLanguage</a> wasn’t yet
+handled. Well, this is no longer true&hellip; ;) In these weeks I’ve been working
+on <em>XesamUserSearchLanguage</em> support. Ehm&hellip; to be honest, I’ve been
 <em><strong>fighting</strong></em> with <a href="http://www.gnu.org/software/bison/">Bison</a>.</p>
 
 <p>But in the end I tamed the beast and now
@@ -149,12 +144,12 @@ since common users will write queries in this way.</p>
 
 <h3>Technical aspects</h3>
 
-<p>The Xesam&#8217;s UserSearchLanguage query &#8211;> Strigi::Query object conversion is
+<p>The Xesam&rsquo;s UserSearchLanguage query &ndash;> Strigi::Query object conversion is
 made using a hand-written scanner and a C++ parser created by Bison.</p>
 
-<p>You don&#8217;t have to worry if you don&#8217;t have Bison installed on your system since
+<p>You don&rsquo;t have to worry if you don&rsquo;t have Bison installed on your system since
 all parser generated code is already put into svn. In these days, as soon as
-I&#8217;ll have some spare time (when?!), I&#8217;ll write another post about open-source
+I&rsquo;ll have some spare time (when?!), I&rsquo;ll write another post about open-source
 scanner and parser generators.</p>
 
 <p>By now I would like to thank <a href="http://apaku.wordpress.com">Andreas Pakulat</a>
@@ -175,19 +170,12 @@ generators.</p>
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2007-08-31T17:30:52+02:00" pubdate data-updated="true">Aug 31<span>st</span>, 2007</time>
+<time class='entry-date' datetime='2007-08-31T17:30:52+02:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2007</span></span> <span class='time'>5:30 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/kde/'>KDE</a>, <a class='category' href='/blog/categories/c-/'>c++</a>, <a class='category' href='/blog/categories/strigi/'>strigi</a>, <a class='category' href='/blog/categories/xesam/'>xesam</a>
+    <a class='category' href='/blog/categories/c-plus-plus/'>c++</a>, <a class='category' href='/blog/categories/kde/'>kde</a>, <a class='category' href='/blog/categories/strigi/'>strigi</a>, <a class='category' href='/blog/categories/xesam/'>xesam</a>
   
 </span>
 
@@ -196,7 +184,7 @@ generators.</p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://flavio.castelli.name/2007/08/31/strigi_full_xesam_support/" data-via="flavio_castelli" data-counturl="http://flavio.castelli.name/2007/08/31/strigi_full_xesam_support/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://flavio.castelli.name/2007/08/31/strigi_full_xesam_support/" data-via="flavio_castelli" data-counturl="http://flavio.castelli.name/2007/08/31/strigi_full_xesam_support/" >Tweet</a>
   
   
   
@@ -229,23 +217,23 @@ generators.</p>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/2014/05/06/building-docker-containers-with-kiwi/">Building docker images with KIWI</a>
+        <a href="/2014/05/06/building-docker-containers-with-kiwi/">Building Docker Images With KIWI</a>
       </li>
     
       <li class="post">
-        <a href="/2014/02/13/docker-and-opensuse-getting-closer/">Docker and openSUSE getting closer</a>
+        <a href="/2014/02/13/docker-and-opensuse-getting-closer/">Docker and openSUSE Getting Closer</a>
       </li>
     
       <li class="post">
-        <a href="/2013/11/28/better-docker-experience-on-opensuse/">Better Docker experience on openSUSE</a>
+        <a href="/2013/11/28/better-docker-experience-on-opensuse/">Better Docker Experience on openSUSE</a>
       </li>
     
       <li class="post">
-        <a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: a container full of Geekos</a>
+        <a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: A Container Full of Geekos</a>
       </li>
     
       <li class="post">
-        <a href="/2012/11/27/qjson-0-dot-8-1-released/">qjson 0.8.1 released</a>
+        <a href="/2012/11/27/qjson-0-dot-8-1-released/">Qjson 0.8.1 Released</a>
       </li>
     
   </ul>
@@ -254,13 +242,13 @@ generators.</p>
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating...</li>
+    <li class="loading">Status updating&#8230;</li>
   </ul>
   
   <a href="https://github.com/flavio">@flavio</a> on GitHub
   
   <script type="text/javascript">
-    $.domReady(function(){
+    $(document).ready(function(){
         if (!window.jXHR){
             var jxhr = document.createElement('script');
             jxhr.type = 'text/javascript';
@@ -284,7 +272,7 @@ generators.</p>
 <section>
   <h1>Latest Tweets</h1>
   <ul id="tweets">
-    <li class="loading">Status updating...</li>
+    <li class="loading">Status updating&#8230;</li>
   </ul>
   <script type="text/javascript">
     $.domReady(function(){
@@ -296,9 +284,6 @@ generators.</p>
     <a href="http://twitter.com/flavio_castelli" class="twitter-follow-button" data-show-count="false">Follow @flavio_castelli</a>
   
 </section>
-
-
-
 
 
   
@@ -326,7 +311,7 @@ generators.</p>
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -342,7 +327,7 @@ generators.</p>
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

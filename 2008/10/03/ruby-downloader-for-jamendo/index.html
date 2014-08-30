@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Ruby downloader for Jamendo - Flavio Castelli</title>
+  <title>Ruby Downloader for Jamendo - Flavio Castelli</title>
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="Also this year I&#8217;ll attend the Linux day (a day dedicated to Gnu/Linux  and
+  <meta name="description" content="Also this year I&rsquo;ll attend the Linux day (a day dedicated to Gnu/Linux  and
 FLOSS that occurs every year in Italy) organized by my LUG.
 Guess &hellip;">
   
@@ -20,21 +20,22 @@ Guess &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://flavio.castelli.name/2008/10/03/ruby-downloader-for-jamendo/">
+  <link rel="canonical" href="http://flavio.castelli.name/2008/10/03/ruby-downloader-for-jamendo">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="Flavio Castelli" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
 <!-- openid delegation -->
 <!-- myopenid -->
-<!--<link rel="openid.server" href="http://www.myopenid.com/server" />-->
-<!--<link rel="openid.delegate" href="http://flavio.castelli.myopenid.com/" />-->
+<!--<link rel="openid.server" href="http://www.myopenid.com/server" />&#8211;>
+<!--<link rel="openid.delegate" href="http://flavio.castelli.myopenid.com/" />&#8211;>
 
  <!--claimid -->
 <link rel="openid.server" href="http://openid.claimid.com/server" />
@@ -102,29 +103,23 @@ Guess &hellip;">
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2008-10-03T11:28:28+02:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2008</time>
+<time class='entry-date' datetime='2008-10-03T11:28:28+02:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2008</span></span> <span class='time'>11:28 am</span></time>
         
-         | <a href="#disqus_thread">Comments</a>
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://flavio.castelli.name">Comments</a>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Also this year I&#8217;ll attend the Linux day (a day dedicated to Gnu/Linux  and
+<div class="entry-content"><p>Also this year I&rsquo;ll attend the Linux day (a day dedicated to Gnu/Linux  and
 FLOSS that occurs every year in Italy) organized by my <a href="http://bglug.it">LUG</a>.
-Guess what I&#8217;ll be talking about&#8230; ;)</p>
+Guess what I&rsquo;ll be talking about&hellip; ;)</p>
 
 <p>While organizing the event somebody proposed to setup a local server with some
 music released under CC license. He suggested to download some albums from
-<a href="http://www.jamendo.com">Jamendo</a> (due to network issues we won&#8217;t be able to
+<a href="http://www.jamendo.com">Jamendo</a> (due to network issues we won&rsquo;t be able to
 provide direct access to the website).</p>
 
 <p>Since nobody wanted to download the albums by hand, last night I wrote a small
@@ -138,7 +133,7 @@ ruby program that does the dirty job.</p>
 
 <p>Help:<a href="http://www.flavio.castelli.name/wp-%0Acontent/uploads/2008/10/jamendo_downloader.rb"></a></p>
 
-<p>   ./jamendo_downloader.rb &#8211;help</p>
+<p>   ./jamendo_downloader.rb &ndash;help</p>
 
 <p>Download the top 10 rock albums:</p>
 
@@ -146,7 +141,7 @@ ruby program that does the dirty job.</p>
 
 <h3>Have fun</h3>
 
-<p>I think there&#8217;s nothing more to say&#8230; enjoy it!</p>
+<p>I think there&rsquo;s nothing more to say&hellip; enjoy it!</p>
 
 <div><script src='https://gist.github.com/2437530.js?file=jamendo_downloader.rb'></script>
 <noscript><pre><code>#!/usr/bin/ruby
@@ -315,14 +310,7 @@ open(&#39;downloaded.json&#39;,&#39;w&#39;) { |f| f &lt;&lt; @downloaded.to_json
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2008-10-03T11:28:28+02:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2008</time>
+<time class='entry-date' datetime='2008-10-03T11:28:28+02:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2008</span></span> <span class='time'>11:28 am</span></time>
       
 
 <span class="categories">
@@ -336,7 +324,7 @@ open(&#39;downloaded.json&#39;,&#39;w&#39;) { |f| f &lt;&lt; @downloaded.to_json
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://flavio.castelli.name/2008/10/03/ruby-downloader-for-jamendo/" data-via="flavio_castelli" data-counturl="http://flavio.castelli.name/2008/10/03/ruby-downloader-for-jamendo/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://flavio.castelli.name/2008/10/03/ruby-downloader-for-jamendo/" data-via="flavio_castelli" data-counturl="http://flavio.castelli.name/2008/10/03/ruby-downloader-for-jamendo/" >Tweet</a>
   
   
   
@@ -369,23 +357,23 @@ open(&#39;downloaded.json&#39;,&#39;w&#39;) { |f| f &lt;&lt; @downloaded.to_json
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/2014/05/06/building-docker-containers-with-kiwi/">Building docker images with KIWI</a>
+        <a href="/2014/05/06/building-docker-containers-with-kiwi/">Building Docker Images With KIWI</a>
       </li>
     
       <li class="post">
-        <a href="/2014/02/13/docker-and-opensuse-getting-closer/">Docker and openSUSE getting closer</a>
+        <a href="/2014/02/13/docker-and-opensuse-getting-closer/">Docker and openSUSE Getting Closer</a>
       </li>
     
       <li class="post">
-        <a href="/2013/11/28/better-docker-experience-on-opensuse/">Better Docker experience on openSUSE</a>
+        <a href="/2013/11/28/better-docker-experience-on-opensuse/">Better Docker Experience on openSUSE</a>
       </li>
     
       <li class="post">
-        <a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: a container full of Geekos</a>
+        <a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: A Container Full of Geekos</a>
       </li>
     
       <li class="post">
-        <a href="/2012/11/27/qjson-0-dot-8-1-released/">qjson 0.8.1 released</a>
+        <a href="/2012/11/27/qjson-0-dot-8-1-released/">Qjson 0.8.1 Released</a>
       </li>
     
   </ul>
@@ -394,13 +382,13 @@ open(&#39;downloaded.json&#39;,&#39;w&#39;) { |f| f &lt;&lt; @downloaded.to_json
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating...</li>
+    <li class="loading">Status updating&#8230;</li>
   </ul>
   
   <a href="https://github.com/flavio">@flavio</a> on GitHub
   
   <script type="text/javascript">
-    $.domReady(function(){
+    $(document).ready(function(){
         if (!window.jXHR){
             var jxhr = document.createElement('script');
             jxhr.type = 'text/javascript';
@@ -424,7 +412,7 @@ open(&#39;downloaded.json&#39;,&#39;w&#39;) { |f| f &lt;&lt; @downloaded.to_json
 <section>
   <h1>Latest Tweets</h1>
   <ul id="tweets">
-    <li class="loading">Status updating...</li>
+    <li class="loading">Status updating&#8230;</li>
   </ul>
   <script type="text/javascript">
     $.domReady(function(){
@@ -436,9 +424,6 @@ open(&#39;downloaded.json&#39;,&#39;w&#39;) { |f| f &lt;&lt; @downloaded.to_json
     <a href="http://twitter.com/flavio_castelli" class="twitter-follow-button" data-show-count="false">Follow @flavio_castelli</a>
   
 </section>
-
-
-
 
 
   
@@ -466,7 +451,7 @@ open(&#39;downloaded.json&#39;,&#39;w&#39;) { |f| f &lt;&lt; @downloaded.to_json
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -482,7 +467,7 @@ open(&#39;downloaded.json&#39;,&#39;w&#39;) { |f| f &lt;&lt; @downloaded.to_json
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

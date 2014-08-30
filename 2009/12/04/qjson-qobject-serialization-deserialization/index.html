@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>QJson: from QObject to JSON and vice-versa - Flavio Castelli</title>
+  <title>QJson: From QObject to JSON and Vice-versa - Flavio Castelli</title>
   <meta name="author" content="Flavio Castelli">
 
   
   <meta name="description" content="Some days ago I introduced the possibility to serialize a QObject instance to
-JSON. Today I&#8217;m going to show you the opposite operation: &hellip;">
+JSON. Today I&rsquo;m going to show you the opposite operation: &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,21 +19,22 @@ JSON. Today I&#8217;m going to show you the opposite operation: &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://flavio.castelli.name/2009/12/04/qjson-qobject-serialization-deserialization/">
+  <link rel="canonical" href="http://flavio.castelli.name/2009/12/04/qjson-qobject-serialization-deserialization">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="Flavio Castelli" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
 <!-- openid delegation -->
 <!-- myopenid -->
-<!--<link rel="openid.server" href="http://www.myopenid.com/server" />-->
-<!--<link rel="openid.delegate" href="http://flavio.castelli.myopenid.com/" />-->
+<!--<link rel="openid.server" href="http://www.myopenid.com/server" />&#8211;>
+<!--<link rel="openid.delegate" href="http://flavio.castelli.myopenid.com/" />&#8211;>
 
  <!--claimid -->
 <link rel="openid.server" href="http://openid.claimid.com/server" />
@@ -101,16 +102,10 @@ JSON. Today I&#8217;m going to show you the opposite operation: &hellip;">
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2009-12-04T01:07:48+01:00" pubdate data-updated="true">Dec 4<span>th</span>, 2009</time>
+<time class='entry-date' datetime='2009-12-04T01:07:48+01:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>1:07 am</span></time>
         
-         | <a href="#disqus_thread">Comments</a>
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://flavio.castelli.name">Comments</a>
         
       </p>
     
@@ -118,7 +113,7 @@ JSON. Today I&#8217;m going to show you the opposite operation: &hellip;">
 
 
 <div class="entry-content"><p>Some days ago I introduced the possibility to serialize a QObject instance to
-JSON. Today I&#8217;m going to show you the opposite operation: initializing a
+JSON. Today I&rsquo;m going to show you the opposite operation: initializing a
 QObject using a JSON object.</p>
 
 <p>I refactored a bit my latest changes: I created a new class called
@@ -131,8 +126,8 @@ to serialize and deserialize QObject instances to and from JSON.</p>
 <p>Let me show a quick example, suppose the declaration of Person class looks
 like this:</p>
 
-<figure class='code'><figcaption><span>[class definition] [] </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>[class definition] [ ] </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -193,8 +188,8 @@ like this:</p>
 
 <p>The following code will serialize an instance of Person to JSON :</p>
 
-<figure class='code'><figcaption><span>[From QObject to JSON] [] </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>[From QObject to JSON] [ ] </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -215,8 +210,8 @@ like this:</p>
 
 <p>The generated output will be:</p>
 
-<figure class='code'><figcaption><span>[JSON data] [] </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>[JSON data] [ ] </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span> <span class="nt">&quot;dob&quot;</span> <span class="p">:</span> <span class="s2">&quot;1982-07-12&quot;</span><span class="p">,</span> <span class="nt">&quot;gender&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;Flavio&quot;</span><span class="p">,</span> <span class="nt">&quot;phoneNumber&quot;</span> <span class="p">:</span> <span class="mi">123456</span> <span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -225,8 +220,8 @@ like this:</p>
 
 <p>Suppose you have the following JSON data stored into a QString:</p>
 
-<figure class='code'><figcaption><span>[JSON data] [] </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>[JSON data] [ ] </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span> <span class="nt">&quot;dob&quot;</span> <span class="p">:</span> <span class="s2">&quot;1982-07-12&quot;</span><span class="p">,</span> <span class="nt">&quot;gender&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;Flavio&quot;</span><span class="p">,</span> <span class="nt">&quot;phoneNumber&quot;</span> <span class="p">:</span> <span class="mi">123456</span> <span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -234,8 +229,8 @@ like this:</p>
 <p>The following code will initialize an already allocated instance of Person
 using the JSON values:</p>
 
-<figure class='code'><figcaption><span>[From JSON to QObject] [] </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>[From JSON to QObject] [ ] </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -266,14 +261,7 @@ using the JSON values:</p>
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2009-12-04T01:07:48+01:00" pubdate data-updated="true">Dec 4<span>th</span>, 2009</time>
+<time class='entry-date' datetime='2009-12-04T01:07:48+01:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>1:07 am</span></time>
       
 
 <span class="categories">
@@ -287,7 +275,7 @@ using the JSON values:</p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://flavio.castelli.name/2009/12/04/qjson-qobject-serialization-deserialization/" data-via="flavio_castelli" data-counturl="http://flavio.castelli.name/2009/12/04/qjson-qobject-serialization-deserialization/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://flavio.castelli.name/2009/12/04/qjson-qobject-serialization-deserialization/" data-via="flavio_castelli" data-counturl="http://flavio.castelli.name/2009/12/04/qjson-qobject-serialization-deserialization/" >Tweet</a>
   
   
   
@@ -320,23 +308,23 @@ using the JSON values:</p>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/2014/05/06/building-docker-containers-with-kiwi/">Building docker images with KIWI</a>
+        <a href="/2014/05/06/building-docker-containers-with-kiwi/">Building Docker Images With KIWI</a>
       </li>
     
       <li class="post">
-        <a href="/2014/02/13/docker-and-opensuse-getting-closer/">Docker and openSUSE getting closer</a>
+        <a href="/2014/02/13/docker-and-opensuse-getting-closer/">Docker and openSUSE Getting Closer</a>
       </li>
     
       <li class="post">
-        <a href="/2013/11/28/better-docker-experience-on-opensuse/">Better Docker experience on openSUSE</a>
+        <a href="/2013/11/28/better-docker-experience-on-opensuse/">Better Docker Experience on openSUSE</a>
       </li>
     
       <li class="post">
-        <a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: a container full of Geekos</a>
+        <a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: A Container Full of Geekos</a>
       </li>
     
       <li class="post">
-        <a href="/2012/11/27/qjson-0-dot-8-1-released/">qjson 0.8.1 released</a>
+        <a href="/2012/11/27/qjson-0-dot-8-1-released/">Qjson 0.8.1 Released</a>
       </li>
     
   </ul>
@@ -345,13 +333,13 @@ using the JSON values:</p>
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating...</li>
+    <li class="loading">Status updating&#8230;</li>
   </ul>
   
   <a href="https://github.com/flavio">@flavio</a> on GitHub
   
   <script type="text/javascript">
-    $.domReady(function(){
+    $(document).ready(function(){
         if (!window.jXHR){
             var jxhr = document.createElement('script');
             jxhr.type = 'text/javascript';
@@ -375,7 +363,7 @@ using the JSON values:</p>
 <section>
   <h1>Latest Tweets</h1>
   <ul id="tweets">
-    <li class="loading">Status updating...</li>
+    <li class="loading">Status updating&#8230;</li>
   </ul>
   <script type="text/javascript">
     $.domReady(function(){
@@ -387,9 +375,6 @@ using the JSON values:</p>
     <a href="http://twitter.com/flavio_castelli" class="twitter-follow-button" data-show-count="false">Follow @flavio_castelli</a>
   
 </section>
-
-
-
 
 
   
@@ -417,7 +402,7 @@ using the JSON values:</p>
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -433,7 +418,7 @@ using the JSON values:</p>
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

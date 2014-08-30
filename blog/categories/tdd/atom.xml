@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: TDD | Flavio Castelli]]></title>
+  <title><![CDATA[Category: tdd | Flavio Castelli]]></title>
   <link href="http://flavio.castelli.name/blog/categories/tdd/atom.xml" rel="self"/>
   <link href="http://flavio.castelli.name/"/>
-  <updated>2014-08-30T10:16:47+02:00</updated>
+  <updated>2014-08-30T22:16:16+02:00</updated>
   <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
@@ -38,7 +38,7 @@ editing.</li>
 
 <p>Waiting for all the unit/functional tests to complete decreases our
 productivity, what we need is to execute just a single unit test. Fortunately
-there are different solutions for this problem, let's go through them.</p>
+there are different solutions for this problem, let&rsquo;s go through them.</p>
 
 <h2>The easy approach: use your favorite IDE</h2>
 
@@ -59,7 +59,7 @@ like the:</p>
 <ul>
 <li>hyper links to the exact location of the code that produced the error/failure.</li>
 <li>execution time required by each one of the test methods.
-As you will experience it will be like "compiling" your ruby code.</li>
+As you will experience it will be like &ldquo;compiling&rdquo; your ruby code.</li>
 </ul>
 
 
@@ -69,7 +69,7 @@ As you will experience it will be like "compiling" your ruby code.</li>
 
 <h3>No additional tools</h3>
 
-<p>These "tricks" don't require additional gems, hence they will work out of the
+<p>These &ldquo;tricks&rdquo; don&rsquo;t require additional gems, hence they will work out of the
 box.</p>
 
 <p>The first solution is to call this rake task:</p>
@@ -83,14 +83,14 @@ box.</p>
 </code></pre>
 
 <p>Unfortunately on my machine this command repeats the same test three times, I
-hope you won't have the same weird behavior also on your systems...</p>
+hope you won&rsquo;t have the same weird behavior also on your systems&hellip;</p>
 
 <p>Alternatively you can use the following command:</p>
 
 <pre><code>ruby -I"lib:test" path_to_test_file"
 </code></pre>
 
-<p>It's even possible to <strong>call a specific test method of your testcase</strong>:</p>
+<p>It&rsquo;s even possible to <strong>call a specific test method of your testcase</strong>:</p>
 
 <pre><code>ruby -I"lib:test" path_to_test_file -n name_of_the_method"
 </code></pre>
@@ -102,7 +102,7 @@ hope you won't have the same weird behavior also on your systems...</p>
 
 <p>will execute <strong>only</strong> <em>InvitationTest::test_should_create_invitation</em>.</p>
 
-<p>It's also possible to <strong>execute only the test methods matching a regular
+<p>It&rsquo;s also possible to <strong>execute only the test methods matching a regular
 expression</strong>. Look at this example:</p>
 
 <pre><code>ruby -I"lib:test" test/unit/invitation_test.rb -n /.*between.*/
@@ -113,11 +113,11 @@ regexp.</p>
 
 <h3>Using the single_test gem</h3>
 
-<p>If you want to avoid the awful syntax showed in the previous paragraph there's
-a gem that can help you, it's called
+<p>If you want to avoid the awful syntax showed in the previous paragraph there&rsquo;s
+a gem that can help you, it&rsquo;s called
 <a href="http://github.com/grosser/single_test">single_test</a>.</p>
 
-<p>The github page contains a nice documentation, but let's go through the most
+<p>The github page contains a nice documentation, but let&rsquo;s go through the most
 common use cases.</p>
 
 <p>You can install the gem as a rails plugin:</p>
@@ -125,7 +125,7 @@ common use cases.</p>
 <pre><code>script/plugin install git://github.com/grosser/single_test.git
 </code></pre>
 
-<p>single_test will add new rake tasks to your rails project, but <strong>won't</strong>
+<p>single_test will add new rake tasks to your rails project, but <strong>won&rsquo;t</strong>
 override the original ones.</p>
 
 <p>Suppose we want to execute the unit test of <em>user.rb</em>, just type the following
@@ -139,10 +139,10 @@ command:</p>
 <pre><code>rake test:user_c
 </code></pre>
 
-<p>Appending <em>"</em>c"_ to the class name will automatically execute its functional
+<p>Appending <em>&ldquo;</em>c&rdquo;_ to the class name will automatically execute its functional
 test (if it exists).</p>
 
-<p>It's still possible to <strong>execute a specif test method</strong>:</p>
+<p>It&rsquo;s still possible to <strong>execute a specif test method</strong>:</p>
 
 <pre><code>rake test:user_c:_test_name_
 </code></pre>
@@ -155,7 +155,7 @@ test (if it exists).</p>
 <p>Will execute the <em>test_update_user</em> method written inside of
 <em>test/functional/user_controller_test.rb</em>.</p>
 
-<p>It's still possible to use regexp:</p>
+<p>It&rsquo;s still possible to use regexp:</p>
 
 <pre><code>rake test:invitation:.*between.*
 </code></pre>

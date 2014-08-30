@@ -4,7 +4,7 @@
   <title><![CDATA[Flavio Castelli]]></title>
   <link href="http://flavio.castelli.name/atom.xml" rel="self"/>
   <link href="http://flavio.castelli.name/"/>
-  <updated>2014-08-30T10:16:47+02:00</updated>
+  <updated>2014-08-30T22:16:16+02:00</updated>
   <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
@@ -14,11 +14,11 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Building docker images with KIWI]]></title>
+    <title type="html"><![CDATA[Building Docker Images With KIWI]]></title>
     <link href="http://flavio.castelli.name/2014/05/06/building-docker-containers-with-kiwi/"/>
     <updated>2014-05-06T22:20:00+02:00</updated>
     <id>http://flavio.castelli.name/2014/05/06/building-docker-containers-with-kiwi</id>
-    <content type="html"><![CDATA[<p>I&#8217;m pleased to announce <a href="https://github.com/schaefi">Marcus Schäfer</a> has
+    <content type="html"><![CDATA[<p>I&rsquo;m pleased to announce <a href="https://github.com/schaefi">Marcus Schäfer</a> has
 just made possible to build docker images with <a href="http://opensuse.github.io/kiwi/">KIWI</a>.</p>
 
 <p>For those who never heard about it, KIWI is a tool which creates Linux systems
@@ -34,7 +34,7 @@ to include the <em>lxc</em> package.</p>
 <p>As you might know Docker has already its <a href="http://docs.docker.io/reference/builder/">build system</a>
 which provides a really easy way to create new images. However these images
 must be based on existing ones, which leads to the problem of creating the 1st
-parent image. That&#8217;s where KIWI comes to the rescue.</p>
+parent image. That&rsquo;s where KIWI comes to the rescue.</p>
 
 <p>Indeed Kiwi can be used to build the openSUSE/SUSE/whatever docker images that are
 going to act as the foundation blocks of other ones.</p>
@@ -141,7 +141,7 @@ directory to another location and make your changes.</p>
 
 <p>This is a really minimal image which contains just a bunch of packages.</p>
 
-<p>The first step is the creation of the image&#8217;s root system:</p>
+<p>The first step is the creation of the image&rsquo;s root system:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -167,9 +167,9 @@ into docker using the following command:</p>
 
 <p>The image named <code>myImage</code> is now ready to be used.</p>
 
-<h2>What&#8217;s next</h2>
+<h2>What&rsquo;s next</h2>
 
-<p>In the next days I&#8217;ll make another blog post explaining how to build docker
+<p>In the next days I&rsquo;ll make another blog post explaining how to build docker
 images using KIWI and the <a href="http://openbuildservice.org/">Open Build Service</a>.
 This is a powerful combination which allows to achieve continuous delivery.</p>
 
@@ -178,7 +178,7 @@ This is a powerful combination which allows to achieve continuous delivery.</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Docker and openSUSE getting closer]]></title>
+    <title type="html"><![CDATA[Docker and openSUSE Getting Closer]]></title>
     <link href="http://flavio.castelli.name/2014/02/13/docker-and-opensuse-getting-closer/"/>
     <updated>2014-02-13T10:46:00+01:00</updated>
     <id>http://flavio.castelli.name/2014/02/13/docker-and-opensuse-getting-closer</id>
@@ -188,30 +188,30 @@ This is a powerful combination which allows to achieve continuous delivery.</p>
 to the more official <a href="https://build.opensuse.org/package/show?project=Virtualization&amp;package=docker">Virtualization</a>
 one. The next step is to get the Docker package into Factory :)</p>
 
-<p>I&#8217;m going to drop the <code>docker</code> package from <code>home:flavio_castelli:docker</code>,
+<p>I&rsquo;m going to drop the <code>docker</code> package from <code>home:flavio_castelli:docker</code>,
 so make sure to subscribe to the <code>Virtualization</code> repository to get latest versions of
 Docker.</p>
 
 <p>I have also submitted some openSUSE related documentation to the official Docker
-project. If you visit the <a href="https://www.docker.io/gettingstarted/#h_installation">&#8220;Getting started&#8221;</a>
+project. If you visit the <a href="https://www.docker.io/gettingstarted/#h_installation">&ldquo;Getting started&rdquo;</a>
 page you will notice the familiar geeko logo. Click it to be redirected to the
-openSUSE&#8217;s installation instructions.</p>
+openSUSE&rsquo;s installation instructions.</p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Better Docker experience on openSUSE]]></title>
+    <title type="html"><![CDATA[Better Docker Experience on openSUSE]]></title>
     <link href="http://flavio.castelli.name/2013/11/28/better-docker-experience-on-opensuse/"/>
     <updated>2013-11-28T17:28:00+01:00</updated>
     <id>http://flavio.castelli.name/2013/11/28/better-docker-experience-on-opensuse</id>
-    <content type="html"><![CDATA[<p>I don&#8217;t know if you are aware of that, but Docker 0.7.0 has been released a
+    <content type="html"><![CDATA[<p>I don&rsquo;t know if you are aware of that, but Docker 0.7.0 has been released a
 couple of days ago.</p>
 
 <p>You can read the full announcement <a href="http://blog.docker.io/2013/11/docker-0-7-docker-now-runs-on-any-linux-distribution/">here</a>,
 but let me talk about the biggest change introduced by this release: storage drivers!</p>
 
 <p>Docker has always used <a href="http://aufs.sourceforge.net/">AUFS</a>,
-a &#8221;<a href="https://en.wikipedia.org/wiki/UnionFS">unionfs-like</a>&#8221; file system, to power
+a &ldquo;<a href="https://en.wikipedia.org/wiki/UnionFS">unionfs-like</a>&rdquo; file system, to power
 its containers. Unfortunately AUFS is neither part of the official kernel nor
 of the openSUSE/SLE one.</p>
 
@@ -223,13 +223,13 @@ a real pain both for me and for the end users.</p>
 different. In our case Docker is going to use <a href="https://lwn.net/Articles/465740/">thin provisioning</a>,
 a consolidated technology which is part of the mainstream kernel since quite some time.</p>
 
-<p>Moreover Docker&#8217;s community is working on experimental drivers for BTRFS, ZFS,
+<p>Moreover Docker&rsquo;s community is working on experimental drivers for BTRFS, ZFS,
 Gluster and Ceph.</p>
 
 <h2>What changes now for openSUSE?</h2>
 
 <p>Running Docker is incredibly simple now: just use the <a href="http://software.opensuse.org/package/docker">1 click install</a>
-and download it from the <em>&#8216;home:flavio_castelli:docker&#8217;</em> project.</p>
+and download it from the <em>&lsquo;home:flavio_castelli:docker&rsquo;</em> project.</p>
 
 <p>As I said earlier: <strong>no custom kernel is required</strong>. You are going to keep the
 one shipped by the official openSUSE repositories.</p>
@@ -244,12 +244,12 @@ is not found).</p>
 <h3>Support SLE</h3>
 
 <p>Right now Docker works fine on openSUSE 12.3 and 13.1 but not on SLE 11 SP3. During
-the next days I&#8217;m going to look into this issue. I want to have a stable and working
+the next days I&rsquo;m going to look into this issue. I want to have a stable and working
 package for SLE.</p>
 
 <h3>Make it more official</h3>
 
-<p>Once the package is proved to be stable enough I&#8217;ll submit it for inclusion inside
+<p>Once the package is proved to be stable enough I&rsquo;ll submit it for inclusion inside
 of the <a href="https://build.opensuse.org/project/show/Virtualization">Virtualization</a>
 project on OBS.</p>
 
@@ -258,17 +258,17 @@ project on OBS.</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Docker and openSUSE: a container full of Geekos]]></title>
+    <title type="html"><![CDATA[Docker and openSUSE: A Container Full of Geekos]]></title>
     <link href="http://flavio.castelli.name/2013/04/12/docker-and-opensuse/"/>
     <updated>2013-04-12T14:45:00+02:00</updated>
     <id>http://flavio.castelli.name/2013/04/12/docker-and-opensuse</id>
-    <content type="html"><![CDATA[<p><a href="http://hackweek.suse.com/">SUSE&#8217;s Hackweek #9</a> is over. It has
+    <content type="html"><![CDATA[<p><a href="http://hackweek.suse.com/">SUSE&rsquo;s Hackweek #9</a> is over. It has
 been an awesome week during which I worked hard to make <a href="http://www.docker.io">docker</a>
 a first class citizen on <a href="http://www.opensuse.org/">openSUSE</a>. I also spent
-some time working on an openSUSE container that could be used by docker&#8217;s users.</p>
+some time working on an openSUSE container that could be used by docker&rsquo;s users.</p>
 
 <p>The project has been tracked on <a href="https://github.com/SUSE/hackweek/wiki/docker.io-and-openSUSE">this</a>
-page of hackweek&#8217;s wiki, this is a detailed report of what I achieved.</p>
+page of hackweek&rsquo;s wiki, this is a detailed report of what I achieved.</p>
 
 <h2>Installing docker on openSUSE 12.3</h2>
 
@@ -283,14 +283,14 @@ OBS project.</p>
 </span><span class='line'>sudo zypper in docker</span></code></pre></td></tr></table></div></figure>
 
 
-<p>There&#8217;s also a <a href="http://software.opensuse.org/ymp/home:flavio_castelli:docker/openSUSE_12.3/docker.ymp?base=openSUSE%3A12.3&amp;query=docker">1 Click Install</a>
+<p>There&rsquo;s also a <a href="http://software.opensuse.org/ymp/home:flavio_castelli:docker/openSUSE_12.3/docker.ymp?base=openSUSE%3A12.3&amp;query=docker">1 Click Install</a>
 for the lazy ones :)</p>
 
 <p>Zypper will install docker and its dependencies which are:</p>
 
 <ul>
-<li><code>lxc</code>: docker&#8217;s &#8220;magic&#8221; is built on top of <a href="http://lxc.sourceforge.net/">LXC</a>.</li>
-<li><code>bridge-utils</code>: is used to setup the bridge interface used by docker&#8217;s
+<li><code>lxc</code>: docker&rsquo;s &ldquo;magic&rdquo; is built on top of <a href="http://lxc.sourceforge.net/">LXC</a>.</li>
+<li><code>bridge-utils</code>: is used to setup the bridge interface used by docker&rsquo;s
 containers.</li>
 <li><code>dnsmasq</code>: is used to start the dhcp server used by the containers.</li>
 <li><code>iptables</code>: is used to get containers&#8217; networking work.</li>
@@ -310,28 +310,28 @@ are in fact links to the packages created by <a href="https://build.opensuse.org
 inside of his <a href="https://build.opensuse.org/package/show?package=aufs3&amp;project=home%3A-miska-%3Aaufs">aufs project</a>
 on OBS.</p>
 
-<p><strong>Note well:</strong> docker works only on 64bit hosts. That&#8217;s why there are no 32bit
+<p><strong>Note well:</strong> docker works only on 64bit hosts. That&rsquo;s why there are no 32bit
 packages.</p>
 
 <h2>Docker appliance</h2>
 
-<p>If you don&#8217;t want to install docker on your system or you are just curious and
-want to jump straight into action there&#8217;s a <a href="http://susestudio.com">SUSE Studio</a>
+<p>If you don&rsquo;t want to install docker on your system or you are just curious and
+want to jump straight into action there&rsquo;s a <a href="http://susestudio.com">SUSE Studio</a>
 appliance ready for you. You can find it <a href="http://susestudio.com/a/CZ0T0D/docker">here</a>.</p>
 
 <p>If you are not familiar with SUSE Gallery let me tell you two things about it:</p>
 
 <ul>
-<li>you can download the appliance on your computer and play with it or&#8230;</li>
-<li>you can clone the appliance on SUSE Studio and customize it even further or&#8230;</li>
-<li>you can test the appliance from your browser using SUSE Studio&#8217;s Testdrive
+<li>you can download the appliance on your computer and play with it or&hellip;</li>
+<li>you can clone the appliance on SUSE Studio and customize it even further or&hellip;</li>
+<li>you can test the appliance from your browser using SUSE Studio&rsquo;s Testdrive
 feature (no SUSE Studio account required!).</li>
 </ul>
 
 
 <p>The latter option is really cool, because it will allow you to play with docker
-immediately. There&#8217;s just one thing to keep in mind about Testdrive: outgoing
-connections are disabled, so you won&#8217;t be able to install new stuff (or download
+immediately. There&rsquo;s just one thing to keep in mind about Testdrive: outgoing
+connections are disabled, so you won&rsquo;t be able to install new stuff (or download
 new docker images). Fortunately this appliance comes with the busybox container
 bundled, so you will be able to play a bit with docker.</p>
 
@@ -340,7 +340,7 @@ bundled, so you will be able to play a bit with docker.</p>
 <p>The docker daemon must be running in order to use your containers. The openSUSE
 package comes with a init script which can be used to manage it.</p>
 
-<p>The script is <code>/etc/init.d/docker</code>, but there&#8217;s also the usual symbolic link
+<p>The script is <code>/etc/init.d/docker</code>, but there&rsquo;s also the usual symbolic link
 called <code>/usr/sbin/rcdocker</code>.</p>
 
 <p>To start the docker daemon just type:</p>
@@ -352,11 +352,11 @@ called <code>/usr/sbin/rcdocker</code>.</p>
 <p>This will trigger the following actions:</p>
 
 <ol>
-<li>The <code>docker0</code> bridge interface is created. This interface is bridged
-with <code>eth0</code>.</li>
-<li>A <code>dnsmasq</code> instance listening on the <code>docker0</code> interface is started.</li>
-<li>IP forwarding and IP masquerading are enabled.</li>
-<li>Docker daemon is started.</li>
+<li> The <code>docker0</code> bridge interface is created. This interface is bridged
+ with <code>eth0</code>.</li>
+<li> A <code>dnsmasq</code> instance listening on the <code>docker0</code> interface is started.</li>
+<li> IP forwarding and IP masquerading are enabled.</li>
+<li> Docker daemon is started.</li>
 </ol>
 
 
@@ -372,9 +372,9 @@ with <code>eth0</code>.</li>
 <a href="http://www.dotcloud.com/">dotCloud</a> guys.</p>
 
 <p>You will be able to run the Ubuntu container on your openSUSE host without any
-problem, that&#8217;s LXC&#8217;s &#8220;magic&#8221; ;)</p>
+problem, that&rsquo;s LXC&rsquo;s &ldquo;magic&rdquo; ;)</p>
 
-<p>If you want to use only &#8220;green&#8221; products just pull the openSUSE 12.3 container
+<p>If you want to use only &ldquo;green&rdquo; products just pull the openSUSE 12.3 container
 I created for you:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -387,26 +387,26 @@ to be sure everything works fine before doing that.</p>
 
 <p>Now you can go through the <a href="http://docs.docker.io/en/latest/examples/running_examples/">examples</a>
 reported on the official
-<a href="http://docs.docker.io/en/latest/concepts/containers/">docker&#8217;s documentation</a>.</p>
+<a href="http://docs.docker.io/en/latest/concepts/containers/">docker&rsquo;s documentation</a>.</p>
 
 <h2>Create your own openSUSE images with SUSE Studio</h2>
 
-<p>I think it would be extremely cool to create docker&#8217;s images using
+<p>I think it would be extremely cool to create docker&rsquo;s images using
 <a href="http://susestudio.com">SUSE Studio</a>.
-As you might know I&#8217;m part of the SUSE Studio team, so I looked a bit into how
+As you might know I&rsquo;m part of the SUSE Studio team, so I looked a bit into how
 to add support to this new format.</p>
 
-<p><strong>&#8211; personal opinion &#8211;</strong></p>
+<p><strong>&ndash; personal opinion &ndash;</strong></p>
 
-<p>There are some technical challenges to solve, but I don&#8217;t think it would be hard
+<p>There are some technical challenges to solve, but I don&rsquo;t think it would be hard
 to address them.</p>
 
-<p><strong>&#8211; personal opinion &#8211;</strong></p>
+<p><strong>&ndash; personal opinion &ndash;</strong></p>
 
 <p>If you are interested in adding the docker format to SUSE Studio please create
 a new feature request on <a href="https://features.opensuse.org/">openFATE</a> and vote it!</p>
 
-<p>In the meantime there&#8217;s another way to create your custom docker images, just
+<p>In the meantime there&rsquo;s another way to create your custom docker images, just
 keep reading.</p>
 
 <h2>Create your own openSUSE images with KIWI</h2>
@@ -436,9 +436,9 @@ the <code>kiwi-doc</code> package:</p>
 KIWI (<code>config.sh</code> and <code>config.xml</code>) plus the <code>root</code> directory.</p>
 
 <p>The contents of this directory are going to be added to the resulting container.
-It&#8217;s really important to create the <code>/etc/resolv.conf</code> file inside of the
+It&rsquo;s really important to create the <code>/etc/resolv.conf</code> file inside of the
 final image since docker is going to mount the <code>resol.conf</code> file of the host
-system inside of the running guest. If the file is not found docker won&#8217;t be able
+system inside of the running guest. If the file is not found docker won&rsquo;t be able
 to start our container.</p>
 
 <p>An empty file is enough:</p>
@@ -453,7 +453,7 @@ to start our container.</p>
 </pre></td><td class='code'><pre><code class=''><span class='line'>sudo /usr/sbin/kiwi --prepare ~/openSUSE_12_3_docker --root /tmp/openSUSE_12_3_docker_rootfs</span></code></pre></td></tr></table></div></figure>
 
 
-<p>We can skip the next step reported on KIWI&#8217;s documentation, that&#8217;s not needed
+<p>We can skip the next step reported on KIWI&rsquo;s documentation, that&rsquo;s not needed
 with docker because it will produce an invalid container. Just execute the
 following command:</p>
 
@@ -474,7 +474,7 @@ following command:</p>
 <p>Importing the image from a web server is really convenient if you ran KIWI
 on a different machine.</p>
 
-<p>Just move the tarball to a directory which is exposed by the web server. If you don&#8217;t
+<p>Just move the tarball to a directory which is exposed by the web server. If you don&rsquo;t
 have one installed just move to the directory containing the tarball and type the following
 command:</p>
 
@@ -497,10 +497,10 @@ command:</p>
 
 
 <p>Docker will download (just in the 1st case) and import the tarball. The resulting
-image will be named <em>&#8216;my_openSUSE_image&#8217;</em> and it will have a tag named <em>&#8216;latest&#8217;</em>.</p>
+image will be named <em>&lsquo;my_openSUSE_image&rsquo;</em> and it will have a tag named <em>&lsquo;latest&rsquo;</em>.</p>
 
 <p>The name of the tag is really important since docker tries to run the
-image with the <em>&#8216;latest&#8217;</em> tag unless you explicitly specify a different value.</p>
+image with the <em>&lsquo;latest&rsquo;</em> tag unless you explicitly specify a different value.</p>
 
 <h2>Conclusion</h2>
 
@@ -512,7 +512,7 @@ too using docker on openSUSE.</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[qjson 0.8.1 released]]></title>
+    <title type="html"><![CDATA[Qjson 0.8.1 Released]]></title>
     <link href="http://flavio.castelli.name/2012/11/27/qjson-0-dot-8-1-released/"/>
     <updated>2012-11-27T11:24:00+01:00</updated>
     <id>http://flavio.castelli.name/2012/11/27/qjson-0-dot-8-1-released</id>
@@ -522,20 +522,20 @@ too using docker on openSUSE.</p>
 
 <h2>Toward QJson 1.0.0</h2>
 
-<p>I&#8217;m not entirely happy with some parts of QJson&#8217;s API. I addressed these issues inside of the <a href="https://github.com/flavio/qjson/tree/1_0_0">1_0_0</a> branch.</p>
+<p>I&rsquo;m not entirely happy with some parts of QJson&rsquo;s API. I addressed these issues inside of the <a href="https://github.com/flavio/qjson/tree/1_0_0">1_0_0</a> branch.</p>
 
 <p>I would appreciate to hear your opinion before merging this branch into master and releasing QJson 1.0.0.</p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[QJson 0.8.0 released]]></title>
+    <title type="html"><![CDATA[QJson 0.8.0 Released]]></title>
     <link href="http://flavio.castelli.name/2012/11/21/qjson-0-dot-8-0-released/"/>
     <updated>2012-11-21T22:03:00+01:00</updated>
     <id>http://flavio.castelli.name/2012/11/21/qjson-0-dot-8-0-released</id>
     <content type="html"><![CDATA[<p>Almost three years passed since latest release of QJson.
 A lot of stuff happened in my life and QJson definitely paid for that.
-I have to admit I&#8217;m a bit ashamed.</p>
+I have to admit I&rsquo;m a bit ashamed.</p>
 
 <p>So here we go, QJson 0.8.0 is out!</p>
 
@@ -545,7 +545,7 @@ I have to admit I&#8217;m a bit ashamed.</p>
 issues like <a href="https://bugs.gentoo.org/show_bug.cgi?id=428256">this</a> one and
 <a href="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=687537">this</a> in a nicer way.</p>
 
-<p>QJson&#8217;s API is still backward compatible, while the ABI changed.</p>
+<p>QJson&rsquo;s API is still backward compatible, while the ABI changed.</p>
 
 <h2>Symbian support</h2>
 
@@ -554,10 +554,10 @@ development happened a long time before <a href="http://www.wired.com/business/2
 
 <p>Currently I do not offer any kind of support for the Symbian platform because
 IMHO Symbian development is a mess and given the current situation in the mobile
-world I don&#8217;t see any point in investing more efforts on that.</p>
+world I don&rsquo;t see any point in investing more efforts on that.</p>
 
 <p>Obviously Symbian patches and documentation are still accepted, as long as they
-don&#8217;t cause issues to the other target platforms.</p>
+don&rsquo;t cause issues to the other target platforms.</p>
 
 <h2>QMake support</h2>
 
@@ -572,28 +572,26 @@ have been removed with commit <a href="https://github.com/flavio/qjson/commit/66
 
 <h2>Relocating to Github</h2>
 
-<p>I decided to move QJson&#8217;s code from Gitorious to <a href="https://github.com/flavio/qjson">Github</a>.
-<a href="https://github.com/flavio/qjson/issues">Github&#8217;s issue sysyem</a> is going to replace Sourceforge&#8217;s bug tracking system.</p>
+<p>I decided to move QJson&rsquo;s code from Gitorious to <a href="https://github.com/flavio/qjson">Github</a>.
+<a href="https://github.com/flavio/qjson/issues">Github&rsquo;s issue sysyem</a> is going to replace Sourceforge&rsquo;s bug tracking system.</p>
 
 <p>I currently use Github a lot, both for personal projects and for work, and I simply love it.
-I think it offers the best tools in the market and that&#8217;s really important to me.</p>
+I think it offers the best tools in the market and that&rsquo;s really important to me.</p>
 
-<p><a href="http://qjson.sourceforge.net">QJson&#8217;s website</a> and mailing lists are still going to be hosted on Sourceforge.</p>
+<p><a href="http://qjson.sourceforge.net">QJson&rsquo;s website</a> and mailing lists are still going to be hosted on Sourceforge.</p>
 
 <hr>
 
 
-<br>
-
-
-<p>I think that&#8217;s all from now. If you want more details about the changes introduced
+<p><br>
+I think that&rsquo;s all from now. If you want more details about the changes introduced
 take a look at the <a href="https://github.com/flavio/qjson/blob/master/ChangeLog">changelog</a>
-or checkout <a href="http://qjson.sourceforge.net">QJson&#8217;s website</a>.</p>
+or checkout <a href="http://qjson.sourceforge.net">QJson&rsquo;s website</a>.</p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Introducing dister, a Heroku like solution for SUSE Studio]]></title>
+    <title type="html"><![CDATA[Introducing Dister, a Heroku Like Solution for SUSE Studio]]></title>
     <link href="http://flavio.castelli.name/2011/03/29/introducing-dister-a-heroku-like-solution-for-suse-studio/"/>
     <updated>2011-03-29T15:39:21+02:00</updated>
     <id>http://flavio.castelli.name/2011/03/29/introducing-dister-a-heroku-like-solution-for-suse-studio</id>
@@ -630,7 +628,7 @@ Mayer</a> and me during the latest
 <h2>How it works</h2>
 
 <p>We are going to create a SUSE Studio appliance running a rails application
-called <em>&#8220;SUSE history&#8221;</em>. The app uses <a href="http://gembundler.com/">bundler</a> to
+called <em>&ldquo;SUSE history&rdquo;</em>. The app uses <a href="http://gembundler.com/">bundler</a> to
 handle its dependencies. This is its Gemfile file:</p>
 
 <pre><code>﻿﻿source 'http://rubygems.org'
@@ -665,7 +663,7 @@ already done a couple of things for you:</p>
 <li><em>rubygem-bundler</em>: bundler is required by dister in order to handle the dependencies of your rails application.</li>
 <li><em>rubygem-passenger-apache2</em>: dister uses <a href="http://www.modrails.com/">passenger</a> and apache2 to deploy your rails application.</li>
 <li><em>postgresql-server</em>: dister noticed suse_history uses PostgreSQL as database, hence it automatically installs it.</li>
-<li><em>rubygem-pg</em>: dister noticed suse_history uses PostgreSQL as database, hence it automatically installs the ruby&#8217;s library forPostgreSQL.</li>
+<li><em>rubygem-pg</em>: dister noticed suse_history uses PostgreSQL as database, hence it automatically installs the ruby&rsquo;s library forPostgreSQL.</li>
 </ul>
 </li>
 <li>uploaded a custom build script which ensures:
@@ -683,7 +681,7 @@ already done a couple of things for you:</p>
 
 <h3>Upload your code</h3>
 
-<p>It&#8217;s time to upload suse_history code. This is done using the following
+<p>It&rsquo;s time to upload suse_history code. This is done using the following
 command:</p>
 
 <pre><code>dister push
@@ -698,7 +696,7 @@ the configuration files required by Apache and by PostgreSQL setup.</p>
 
 <h3>Build your appliance</h3>
 
-<p>It&#8217;s build time!</p>
+<p>It&rsquo;s build time!</p>
 
 <pre><code>dister build
 </code></pre>
@@ -710,7 +708,7 @@ using the <em>raw disk</em>. You can use different formats of course.</p>
 <h3>Testdrive</h3>
 
 <p>Testdrive is one of the coolest features of SUSE Studio. Unfortunately dister
-doesn&#8217;t support it yet. Just visit your appliance page and start testdrive
+doesn&rsquo;t support it yet. Just visit your appliance page and start testdrive
 from your browser. Just enable testdrive networking and connect to your
 appliance:</p>
 
@@ -727,9 +725,9 @@ want.</p>
 <h2>Current status</h2>
 
 <p>As you can see dister handles pretty fine a simple Rails application, but
-there&#8217;s still room for improvements.</p>
+there&rsquo;s still room for improvements.</p>
 
-<p>Here&#8217;s a small list of the things on my TODO list:</p>
+<p>Here&rsquo;s a small list of the things on my TODO list:</p>
 
 <ul>
 <li>The dependency management should install gems using rpm packages. This would make the installation of native gems easier, right now the user has to manually add all the development libraries required by the gem. Moreover it would reduce the size of the overlay files uploaded to SUSE Studio.</li>
@@ -753,20 +751,20 @@ code</a>, apply now!</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Jump: a bookmarking system for the bash shell]]></title>
+    <title type="html"><![CDATA[Jump: A Bookmarking System for the Bash Shell]]></title>
     <link href="http://flavio.castelli.name/2010/08/11/jump/"/>
     <updated>2010-08-11T21:29:29+02:00</updated>
     <id>http://flavio.castelli.name/2010/08/11/jump</id>
-    <content type="html"><![CDATA[<p><a href="http://flavio.castelli.name/wp-content/uploads/2010/08/van-halen-%0Ajump.jpeg"></a>Let me introduce a small project I&#8217;ve been working on with a friend
+    <content type="html"><![CDATA[<p><a href="http://flavio.castelli.name/wp-content/uploads/2010/08/van-halen-%0Ajump.jpeg"></a>Let me introduce a small project I&rsquo;ve been working on with a friend
 of mine, <a href="http://twitter.com/gcapizzi">Giuseppe Capizzi</a>. The project is
 called <strong>jump</strong> and ﻿allows you to quickly change directories in the bash
 shell using bookmarks.</p>
 
-<p>Thanks to Jump, you won&#8217;t have to type those long paths anymore.</p>
+<p>Thanks to Jump, you won&rsquo;t have to type those long paths anymore.</p>
 
 <p><img src="http://flavio.castelli.name/images/jump/van-halen-jump.jpeg"></p>
 
-<p>You can find jump&#8217;s source code, detailed documentation and installation
+<p>You can find jump&rsquo;s source code, detailed documentation and installation
 instructions <a href="http://github.com/flavio/jump">here</a>.</p>
 
 <p>SUSE packages can be found
@@ -775,7 +773,7 @@ instructions <a href="http://github.com/flavio/jump">here</a>.</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Fast user switch plasmoid improvements]]></title>
+    <title type="html"><![CDATA[Fast User Switch Plasmoid Improvements]]></title>
     <link href="http://flavio.castelli.name/2010/07/23/fast-user-switch-plasmoid-improvements/"/>
     <updated>2010-07-23T23:32:31+02:00</updated>
     <id>http://flavio.castelli.name/2010/07/23/fast-user-switch-plasmoid-improvements</id>
@@ -787,7 +785,7 @@ some minor fixes.</p>
 openSUSE packages are already available on the <a href="http://software.opensuse.org/search?q=plasmoid-%0Afastuserswitch&amp;baseproject=ALL&amp;lang=en&amp;exclude_debug=true">build
 service</a>.</p>
 
-<p>These are some screenshots illustrating fastuserswitch&#8217;s new features.</p>
+<p>These are some screenshots illustrating fastuserswitch&rsquo;s new features.</p>
 
 <p><img src="http://flavio.castelli.name/images/fast_user_switch/fastuserswitch011.png">
 <img src="http://flavio.castelli.name/images/fast_user_switch/fastuserswitch021.png">
@@ -796,18 +794,18 @@ service</a>.</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Fast user switch plasmoid]]></title>
+    <title type="html"><![CDATA[Fast User Switch Plasmoid]]></title>
     <link href="http://flavio.castelli.name/2010/07/15/fast-user-switch-plasmoid/"/>
     <updated>2010-07-15T07:23:11+02:00</updated>
     <id>http://flavio.castelli.name/2010/07/15/fast-user-switch-plasmoid</id>
     <content type="html"><![CDATA[<p>Last week my mother in law started to share her Linux laptop with my wife.
 Suddenly my wife asked me how she could switch from one user session to
 another. She was looking for something similar to <a href="http://bit.ly/auzc56">OS X fast user
-switch</a> feature but she couldn&#8217;t find it. In fact there
-wasn&#8217;t a fast and easy way to switch between users&#8217; sessions with KDE,
-until&#8230; now :)</p>
+switch</a> feature but she couldn&rsquo;t find it. In fact there
+wasn&rsquo;t a fast and easy way to switch between users&#8217; sessions with KDE,
+until&hellip; now :)</p>
 
-<p>Let me introduce my first plasmoid: the fast user switch plasmoid. It&#8217;s a
+<p>Let me introduce my first plasmoid: the fast user switch plasmoid. It&rsquo;s a
 simple icon in the panel that allows users to swich to another open session or
 to open a new login page. Here you can see the mandatory screenshots.</p>
 
@@ -830,7 +828,7 @@ already running session. Starting a new session is just confusing for them.</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[How to run a single rails unit test]]></title>
+    <title type="html"><![CDATA[How to Run a Single Rails Unit Test]]></title>
     <link href="http://flavio.castelli.name/2010/05/28/rails_execute_single_test/"/>
     <updated>2010-05-28T15:57:57+02:00</updated>
     <id>http://flavio.castelli.name/2010/05/28/rails_execute_single_test</id>
@@ -854,7 +852,7 @@ editing.</li>
 
 <p>Waiting for all the unit/functional tests to complete decreases our
 productivity, what we need is to execute just a single unit test. Fortunately
-there are different solutions for this problem, let&#8217;s go through them.</p>
+there are different solutions for this problem, let&rsquo;s go through them.</p>
 
 <h2>The easy approach: use your favorite IDE</h2>
 
@@ -875,7 +873,7 @@ like the:</p>
 <ul>
 <li>hyper links to the exact location of the code that produced the error/failure.</li>
 <li>execution time required by each one of the test methods.
-As you will experience it will be like &#8220;compiling&#8221; your ruby code.</li>
+As you will experience it will be like &ldquo;compiling&rdquo; your ruby code.</li>
 </ul>
 
 
@@ -885,7 +883,7 @@ As you will experience it will be like &#8220;compiling&#8221; your ruby code.</
 
 <h3>No additional tools</h3>
 
-<p>These &#8220;tricks&#8221; don&#8217;t require additional gems, hence they will work out of the
+<p>These &ldquo;tricks&rdquo; don&rsquo;t require additional gems, hence they will work out of the
 box.</p>
 
 <p>The first solution is to call this rake task:</p>
@@ -899,14 +897,14 @@ box.</p>
 </code></pre>
 
 <p>Unfortunately on my machine this command repeats the same test three times, I
-hope you won&#8217;t have the same weird behavior also on your systems&#8230;</p>
+hope you won&rsquo;t have the same weird behavior also on your systems&hellip;</p>
 
 <p>Alternatively you can use the following command:</p>
 
 <pre><code>ruby -I"lib:test" path_to_test_file"
 </code></pre>
 
-<p>It&#8217;s even possible to <strong>call a specific test method of your testcase</strong>:</p>
+<p>It&rsquo;s even possible to <strong>call a specific test method of your testcase</strong>:</p>
 
 <pre><code>ruby -I"lib:test" path_to_test_file -n name_of_the_method"
 </code></pre>
@@ -918,7 +916,7 @@ hope you won&#8217;t have the same weird behavior also on your systems&#8230;</p
 
 <p>will execute <strong>only</strong> <em>InvitationTest::test_should_create_invitation</em>.</p>
 
-<p>It&#8217;s also possible to <strong>execute only the test methods matching a regular
+<p>It&rsquo;s also possible to <strong>execute only the test methods matching a regular
 expression</strong>. Look at this example:</p>
 
 <pre><code>ruby -I"lib:test" test/unit/invitation_test.rb -n /.*between.*/
@@ -929,11 +927,11 @@ regexp.</p>
 
 <h3>Using the single_test gem</h3>
 
-<p>If you want to avoid the awful syntax showed in the previous paragraph there&#8217;s
-a gem that can help you, it&#8217;s called
+<p>If you want to avoid the awful syntax showed in the previous paragraph there&rsquo;s
+a gem that can help you, it&rsquo;s called
 <a href="http://github.com/grosser/single_test">single_test</a>.</p>
 
-<p>The github page contains a nice documentation, but let&#8217;s go through the most
+<p>The github page contains a nice documentation, but let&rsquo;s go through the most
 common use cases.</p>
 
 <p>You can install the gem as a rails plugin:</p>
@@ -941,7 +939,7 @@ common use cases.</p>
 <pre><code>script/plugin install git://github.com/grosser/single_test.git
 </code></pre>
 
-<p>single_test will add new rake tasks to your rails project, but <strong>won&#8217;t</strong>
+<p>single_test will add new rake tasks to your rails project, but <strong>won&rsquo;t</strong>
 override the original ones.</p>
 
 <p>Suppose we want to execute the unit test of <em>user.rb</em>, just type the following
@@ -955,10 +953,10 @@ command:</p>
 <pre><code>rake test:user_c
 </code></pre>
 
-<p>Appending <em>&#8221;</em>c&#8221;_ to the class name will automatically execute its functional
+<p>Appending <em>&ldquo;</em>c&rdquo;_ to the class name will automatically execute its functional
 test (if it exists).</p>
 
-<p>It&#8217;s still possible to <strong>execute a specif test method</strong>:</p>
+<p>It&rsquo;s still possible to <strong>execute a specif test method</strong>:</p>
 
 <pre><code>rake test:user_c:_test_name_
 </code></pre>
@@ -971,7 +969,7 @@ test (if it exists).</p>
 <p>Will execute the <em>test_update_user</em> method written inside of
 <em>test/functional/user_controller_test.rb</em>.</p>
 
-<p>It&#8217;s still possible to use regexp:</p>
+<p>It&rsquo;s still possible to use regexp:</p>
 
 <pre><code>rake test:invitation:.*between.*
 </code></pre>
@@ -1000,11 +998,11 @@ not been applied to the test database.</p>
     <link href="http://flavio.castelli.name/2010/03/14/qjson-symbian/"/>
     <updated>2010-03-14T00:55:51+01:00</updated>
     <id>http://flavio.castelli.name/2010/03/14/qjson-symbian</id>
-    <content type="html"><![CDATA[<p>I&#8217;m really pleased to announce that latest version of QJson on master is
+    <content type="html"><![CDATA[<p>I&rsquo;m really pleased to announce that latest version of QJson on master is
 working on Symbian. You can find the installation instruction
 <a href="http://qjson.sourceforge.net/get_it/symbian.html">here</a>.</p>
 
-<p>Since I&#8217;m not a Symbian developer it has been a little hard for me to achieve
+<p>Since I&rsquo;m not a Symbian developer it has been a little hard for me to achieve
 that. I would like to thank <a href="http://gitorious.org/~anluoma">Antti Luoma</a> for
 his help.</p>
 
@@ -1017,24 +1015,24 @@ page</a>.</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[QJson code moves to gitorious]]></title>
+    <title type="html"><![CDATA[QJson Code Moves to Gitorious]]></title>
     <link href="http://flavio.castelli.name/2009/12/05/qjson-code-moves-to-gitorious/"/>
     <updated>2009-12-05T16:48:25+01:00</updated>
     <id>http://flavio.castelli.name/2009/12/05/qjson-code-moves-to-gitorious</id>
     <content type="html"><![CDATA[<p>Just a quick note: I have just moved QJson source code to
 <a href="http://gitorious.org/qjson">this</a> git repository hosted by gitorious.</p>
 
-<p>I&#8217;ll keep the code on KDE&#8217;s svn synchronized with the git repository.</p>
+<p>I&rsquo;ll keep the code on KDE&rsquo;s svn synchronized with the git repository.</p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[QJson: from QObject to JSON and vice-versa]]></title>
+    <title type="html"><![CDATA[QJson: From QObject to JSON and Vice-versa]]></title>
     <link href="http://flavio.castelli.name/2009/12/04/qjson-qobject-serialization-deserialization/"/>
     <updated>2009-12-04T01:07:48+01:00</updated>
     <id>http://flavio.castelli.name/2009/12/04/qjson-qobject-serialization-deserialization</id>
     <content type="html"><![CDATA[<p>Some days ago I introduced the possibility to serialize a QObject instance to
-JSON. Today I&#8217;m going to show you the opposite operation: initializing a
+JSON. Today I&rsquo;m going to show you the opposite operation: initializing a
 QObject using a JSON object.</p>
 
 <p>I refactored a bit my latest changes: I created a new class called
@@ -1047,8 +1045,8 @@ to serialize and deserialize QObject instances to and from JSON.</p>
 <p>Let me show a quick example, suppose the declaration of Person class looks
 like this:</p>
 
-<figure class='code'><figcaption><span>[class definition] [] </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>[class definition] [ ] </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1109,8 +1107,8 @@ like this:</p>
 
 <p>The following code will serialize an instance of Person to JSON :</p>
 
-<figure class='code'><figcaption><span>[From QObject to JSON] [] </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>[From QObject to JSON] [ ] </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1131,8 +1129,8 @@ like this:</p>
 
 <p>The generated output will be:</p>
 
-<figure class='code'><figcaption><span>[JSON data] [] </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>[JSON data] [ ] </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span> <span class="nt">&quot;dob&quot;</span> <span class="p">:</span> <span class="s2">&quot;1982-07-12&quot;</span><span class="p">,</span> <span class="nt">&quot;gender&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;Flavio&quot;</span><span class="p">,</span> <span class="nt">&quot;phoneNumber&quot;</span> <span class="p">:</span> <span class="mi">123456</span> <span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -1141,8 +1139,8 @@ like this:</p>
 
 <p>Suppose you have the following JSON data stored into a QString:</p>
 
-<figure class='code'><figcaption><span>[JSON data] [] </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>[JSON data] [ ] </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span> <span class="nt">&quot;dob&quot;</span> <span class="p">:</span> <span class="s2">&quot;1982-07-12&quot;</span><span class="p">,</span> <span class="nt">&quot;gender&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;Flavio&quot;</span><span class="p">,</span> <span class="nt">&quot;phoneNumber&quot;</span> <span class="p">:</span> <span class="mi">123456</span> <span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -1150,8 +1148,8 @@ like this:</p>
 <p>The following code will initialize an already allocated instance of Person
 using the JSON values:</p>
 
-<figure class='code'><figcaption><span>[From JSON to QObject] [] </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>[From JSON to QObject] [ ] </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1171,19 +1169,19 @@ using the JSON values:</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[QJson: easier serialization of QObject instances to JSON]]></title>
+    <title type="html"><![CDATA[QJson: Easier Serialization of QObject Instances to JSON]]></title>
     <link href="http://flavio.castelli.name/2009/11/30/qjson-easier-serialization-of-qobject-instances-to-json/"/>
     <updated>2009-11-30T20:20:58+01:00</updated>
     <id>http://flavio.castelli.name/2009/11/30/qjson-easier-serialization-of-qobject-instances-to-json</id>
     <content type="html"><![CDATA[<p>I have just committed into trunk a couple of changes that make easier to
 serialize a QObject instance to JSON.</p>
 
-<p>This solution relies on the awesome <a href="http://doc.trolltech.com/latest/properties.html">Qt&#8217;s property system</a>.</p>
+<p>This solution relies on the awesome <a href="http://doc.trolltech.com/latest/properties.html">Qt&rsquo;s property system</a>.</p>
 
 <p>Suppose the declaration of Person class looks like this:</p>
 
-<figure class='code'><figcaption><span>[class definition] [] </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>[class definition] [ ] </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1240,8 +1238,8 @@ serialize a QObject instance to JSON.</p>
 
 <p>The following code will serialize an instance of Person to JSON:</p>
 
-<figure class='code'><figcaption><span>[Serialize to JSON] [] </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>[Serialize to JSON] [ ] </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1260,13 +1258,13 @@ serialize a QObject instance to JSON.</p>
 
 <p>The generated output will be:</p>
 
-<figure class='code'><figcaption><span>[JSON data] [] </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>[JSON data] [ ] </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='json'><span class='line'>    <span class="p">{</span> <span class="nt">&quot;dob&quot;</span> <span class="p">:</span> <span class="s2">&quot;1982-07-12&quot;</span><span class="p">,</span> <span class="nt">&quot;gender&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;Flavio&quot;</span><span class="p">,</span> <span class="nt">&quot;phoneNumber&quot;</span> <span class="p">:</span> <span class="mi">123456</span> <span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>I hope you will find this new feature useful. I&#8217;m also considering to create a
+<p>I hope you will find this new feature useful. I&rsquo;m also considering to create a
 similar method inside the Parser class.</p>
 
 <p>As usual suggestions are welcome.</p>
@@ -1274,13 +1272,13 @@ similar method inside the Parser class.</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[kaveau updates]]></title>
+    <title type="html"><![CDATA[Kaveau Updates]]></title>
     <link href="http://flavio.castelli.name/2009/09/14/kaveau-updates/"/>
     <updated>2009-09-14T23:38:54+02:00</updated>
     <id>http://flavio.castelli.name/2009/09/14/kaveau-updates</id>
-    <content type="html"><![CDATA[<p>Some weeks have passed since the announcement of kaveau. I&#8217;m really proud and
+    <content type="html"><![CDATA[<p>Some weeks have passed since the announcement of kaveau. I&rsquo;m really proud and
 happy about this project because I received a lot of positive feedback
-messages and it has been chosen as one of the best Hackweek&#8217;s projects.</p>
+messages and it has been chosen as one of the best Hackweek&rsquo;s projects.</p>
 
 <p>In the meantime I kept working on kaveau, so let me show you what has changed:</p>
 
@@ -1320,12 +1318,12 @@ drwxr-xr-x 3 flavio users 4096 2009-09-14 23:30 2009-09-14T23:30:36
 lrwxrwxrwx 1 flavio users   19 2009-09-14 23:30 current -&gt; 2009-09-14T23:30:36
 </code></pre>
 
-<p>As you can see there&#8217;s one directory per backup, plus a symlink called
+<p>As you can see there&rsquo;s one directory per backup, plus a symlink called
 <em>current</em> pointing to the latest backup.</p>
 
 <h3>Old backup deletion</h3>
 
-<p>Nowadays big external storage devices are pretty cheap, but it&#8217;s always good
+<p>Nowadays big external storage devices are pretty cheap, but it&rsquo;s always good
 to save some disk space. Now kaveau keeps:</p>
 
 <ul>
@@ -1344,17 +1342,17 @@ figuring out how to add support for network devices.</p>
 
 <p>A lot of users requested this feature, hence I want to make them happy :) .</p>
 
-<p>I&#8217;m planning to use <a href="http://avahi.org/">avahi</a> to discover network shares
+<p>I&rsquo;m planning to use <a href="http://avahi.org/">avahi</a> to discover network shares
 (nfs, samba) or network machines running ssh and use them as backup devices.
 Honestly, I want to achieve something similar to
-<a href="http://www.apple.com/timecapsule/">Apple&#8217;s time capsule</a>.</p>
+<a href="http://www.apple.com/timecapsule/">Apple&rsquo;s time capsule</a>.</p>
 
 <p>As usual, feedback messages are really appreciated.</p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Using QJson under Windows]]></title>
+    <title type="html"><![CDATA[Using QJson Under Windows]]></title>
     <link href="http://flavio.castelli.name/2009/09/04/using-qjson-under-windows/"/>
     <updated>2009-09-04T13:44:42+02:00</updated>
     <id>http://flavio.castelli.name/2009/09/04/using-qjson-under-windows</id>
@@ -1376,24 +1374,24 @@ you proof ;)</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[kaveau: easy and integrated backups solution for KDE]]></title>
+    <title type="html"><![CDATA[Kaveau: Easy and Integrated Backups Solution for KDE]]></title>
     <link href="http://flavio.castelli.name/2009/07/28/kaveau-easy-integrated-backup-solution-kde/"/>
     <updated>2009-07-28T09:47:05+02:00</updated>
     <id>http://flavio.castelli.name/2009/07/28/kaveau-easy-integrated-backup-solution-kde</id>
     <content type="html"><![CDATA[<p>During the last week I had the possibility to work on anything I wanted,
-Novell&#8217;s hackweek is so cool :)</p>
+Novell&rsquo;s hackweek is so cool :)</p>
 
 <p>I decided to dedicate myself to an idea that has been obsessing me since a
 long time. Last December my brand new hard disk suddenly died, making
 impossible to recover anything. Fortunately I had just synchronized the most
-important documents between my workstation and my laptop, so I didn&#8217;t lose
+important documents between my workstation and my laptop, so I didn&rsquo;t lose
 anything important. This incident make me realize that I should perform
 backups regularly and I immediately started looking for a good solution.</p>
 
 <p>Personally I think that doing backups is pretty boring so I wanted something
 damned easy to setup and use. Something that once configured runs in the
-background and does the dirty job without bothering you. Let&#8217;s face the truth:
-I wanted Apple&#8217;s Time Machine for KDE.</p>
+background and does the dirty job without bothering you. Let&rsquo;s face the truth:
+I wanted Apple&rsquo;s Time Machine for KDE.</p>
 
 <p>After some searches I realized that nothing was fitting my requirements and I
 decided to create something new: <em>kaveau</em>.</p>
@@ -1403,28 +1401,28 @@ decided to create something new: <em>kaveau</em>.</p>
 <p>Kaveau is a backup program that makes backup easy for the average user.</p>
 
 <p>As you will see while coding/planning kaveau I made some assumptions and so
-only few things are configurable. I really think that sometimes <a href="http://en.wikipedia.org/wiki/Minimalism"><em>&#8220;less is
-more&#8221;</em></a>.</p>
+only few things are configurable. I really think that sometimes <a href="http://en.wikipedia.org/wiki/Minimalism"><em>&ldquo;less is
+more&rdquo;</em></a>.</p>
 
 <h3>What does kaveau?</h3>
 
 <p>Current features:</p>
 
 <ul>
-<li>it performs backups to an external storage device: I don&#8217;t think it will ever store backup data on a remote host. If you want to do that just use some good project like <a href="http://backuppc.sourceforge.net/">Backup pc</a>.</li>
-<li>it backs up the complete home directory of the user: storage is cheap and average users (like me) keep everything inside their home directory ( but it&#8217;s possible to exclude some directories from the backup).</li>
+<li>it performs backups to an external storage device: I don&rsquo;t think it will ever store backup data on a remote host. If you want to do that just use some good project like <a href="http://backuppc.sourceforge.net/">Backup pc</a>.</li>
+<li>it backs up the complete home directory of the user: storage is cheap and average users (like me) keep everything inside their home directory ( but it&rsquo;s possible to exclude some directories from the backup).</li>
 <li>it performs incremental backups.</li>
 <li>the backup data are neither compressed nor stored in fancy formats: in this way you can plug your external disk into another machine and access your data without additional work.</li>
 <li>backups are performed automatically every hour (of course only if your external disk is plugged).</li>
 <li>notification messages are shown if your backup is older that a week.
-More enhancements are coming&#8230;</li>
+More enhancements are coming&hellip;</li>
 </ul>
 
 
 <h3>What technologies does it use?</h3>
 
 <p>Backups are performed using <a href="http://rdiff-backup.nongnu.org/">rdiff-backup</a>
-because it&#8217;s damned easy to use, well tested (it&#8217;s used also in production
+because it&rsquo;s damned easy to use, well tested (it&rsquo;s used also in production
 environments) and packaged by all distributions.</p>
 
 <p>The awesome <a href="http://solid.kde.org/">solid</a> library is used for interacting
@@ -1432,7 +1430,7 @@ with the external disks is super easy.</p>
 
 <h3>Status of kaveau</h3>
 
-<p>I have been working on kaveau just for five days, so <strong>there&#8217;s still a lot of
+<p>I have been working on kaveau just for five days, so <strong>there&rsquo;s still a lot of
 work to do</strong>.</p>
 
 <p>A screenshot tour will give you the right idea of its status.</p>
@@ -1462,7 +1460,7 @@ work to do</strong>.</p>
 <p><img src="http://flavio.castelli.name/images/kaveau/sf7.png"></p>
 
 <p>Right now the code is available on
-<a href="http://github.com/flavio/kaveau/tree/master">this</a> git repository but I don&#8217;t
+<a href="http://github.com/flavio/kaveau/tree/master">this</a> git repository but I don&rsquo;t
 recommend you to try it (unless you want to find and fix bugs ;) ).</p>
 
 <p>I would really appreciate:</p>
@@ -1470,14 +1468,14 @@ recommend you to try it (unless you want to find and fix bugs ;) ).</p>
 <ul>
 <li>feedback about the user interface (right now it looks too much like Time Machine).</li>
 <li>icons: it would be great to have a desktop icon and some system tray icons (contact me for more details).</li>
-<li>new code, bug fixes, code reviews, hints,&#8230;</li>
+<li>new code, bug fixes, code reviews, hints,&hellip;</li>
 </ul>
 
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[New QJson release]]></title>
+    <title type="html"><![CDATA[New QJson Release]]></title>
     <link href="http://flavio.castelli.name/2009/07/23/qjson_0-6-0_release/"/>
     <updated>2009-07-23T11:51:30+02:00</updated>
     <id>http://flavio.castelli.name/2009/07/23/qjson_0-6-0_release</id>
@@ -1490,14 +1488,14 @@ them.</p>
 <ul>
 <li>the API has been cleaned, now it can be considered stable</li>
 <li>unicode support has been completely rewritten</li>
-<li>it&#8217;s now possible to convert QVariant objects into JSON ones</li>
+<li>it&rsquo;s now possible to convert QVariant objects into JSON ones</li>
 </ul>
 
 
-<p>So it&#8217;s with a great pleasure that I announce the release of QJson 0.6.0.</p>
+<p>So it&rsquo;s with a great pleasure that I announce the release of QJson 0.6.0.</p>
 
 <p>Beware, since the API has been changed your application will probably break.
-I&#8217;m really sorry about that, but I guarantee it won&#8217;t happen in the future (as
+I&rsquo;m really sorry about that, but I guarantee it won&rsquo;t happen in the future (as
 I said both API and ABI interfaces can now be considered stable).</p>
 
 <p><a href="http://qjson.sourceforge.net">QJson web site</a> has been updated, reflecting
@@ -1515,10 +1513,10 @@ qjson-devel mailing list. You can subscribe
     <link href="http://flavio.castelli.name/2009/06/30/qjson_desktop_summi/"/>
     <updated>2009-06-30T19:46:38+02:00</updated>
     <id>http://flavio.castelli.name/2009/06/30/qjson_desktop_summi</id>
-    <content type="html"><![CDATA[<p>Now that I have booked both the flights and the hotel it&#8217;s official: I&#8217;ll
+    <content type="html"><![CDATA[<p>Now that I have booked both the flights and the hotel it&rsquo;s official: I&rsquo;ll
 attend the <a href="http://www.grancanariadesktopsummit.org/">Gran Canaria Desktop Summit</a>.</p>
 
-<p>On Thursday 9th July I&#8217;ll give a BoF about
+<p>On Thursday 9th July I&rsquo;ll give a BoF about
 <a href="http://qjson.sourceforge.net">QJson</a>.</p>
 
 <p>During the talk I will show:</p>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: qt | Flavio Castelli]]></title>
   <link href="http://flavio.castelli.name/blog/categories/qt/atom.xml" rel="self"/>
   <link href="http://flavio.castelli.name/"/>
-  <updated>2014-08-30T10:16:47+02:00</updated>
+  <updated>2014-08-30T22:16:16+02:00</updated>
   <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
@@ -24,7 +24,7 @@
 
 <h2>Toward QJson 1.0.0</h2>
 
-<p>I'm not entirely happy with some parts of QJson's API. I addressed these issues inside of the <a href="https://github.com/flavio/qjson/tree/1_0_0">1_0_0</a> branch.</p>
+<p>I&rsquo;m not entirely happy with some parts of QJson&rsquo;s API. I addressed these issues inside of the <a href="https://github.com/flavio/qjson/tree/1_0_0">1_0_0</a> branch.</p>
 
 <p>I would appreciate to hear your opinion before merging this branch into master and releasing QJson 1.0.0.</p>
 ]]></content>
@@ -37,7 +37,7 @@
     <id>http://flavio.castelli.name/2012/11/21/qjson-0-dot-8-0-released</id>
     <content type="html"><![CDATA[<p>Almost three years passed since latest release of QJson.
 A lot of stuff happened in my life and QJson definitely paid for that.
-I have to admit I'm a bit ashamed.</p>
+I have to admit I&rsquo;m a bit ashamed.</p>
 
 <p>So here we go, QJson 0.8.0 is out!</p>
 
@@ -47,7 +47,7 @@ I have to admit I'm a bit ashamed.</p>
 issues like <a href="https://bugs.gentoo.org/show_bug.cgi?id=428256">this</a> one and
 <a href="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=687537">this</a> in a nicer way.</p>
 
-<p>QJson's API is still backward compatible, while the ABI changed.</p>
+<p>QJson&rsquo;s API is still backward compatible, while the ABI changed.</p>
 
 <h2>Symbian support</h2>
 
@@ -56,10 +56,10 @@ development happened a long time before <a href="http://www.wired.com/business/2
 
 <p>Currently I do not offer any kind of support for the Symbian platform because
 IMHO Symbian development is a mess and given the current situation in the mobile
-world I don't see any point in investing more efforts on that.</p>
+world I don&rsquo;t see any point in investing more efforts on that.</p>
 
 <p>Obviously Symbian patches and documentation are still accepted, as long as they
-don't cause issues to the other target platforms.</p>
+don&rsquo;t cause issues to the other target platforms.</p>
 
 <h2>QMake support</h2>
 
@@ -74,23 +74,21 @@ have been removed with commit <a href="https://github.com/flavio/qjson/commit/66
 
 <h2>Relocating to Github</h2>
 
-<p>I decided to move QJson's code from Gitorious to <a href="https://github.com/flavio/qjson">Github</a>.
-<a href="https://github.com/flavio/qjson/issues">Github's issue sysyem</a> is going to replace Sourceforge's bug tracking system.</p>
+<p>I decided to move QJson&rsquo;s code from Gitorious to <a href="https://github.com/flavio/qjson">Github</a>.
+<a href="https://github.com/flavio/qjson/issues">Github&rsquo;s issue sysyem</a> is going to replace Sourceforge&rsquo;s bug tracking system.</p>
 
 <p>I currently use Github a lot, both for personal projects and for work, and I simply love it.
-I think it offers the best tools in the market and that's really important to me.</p>
+I think it offers the best tools in the market and that&rsquo;s really important to me.</p>
 
-<p><a href="http://qjson.sourceforge.net">QJson's website</a> and mailing lists are still going to be hosted on Sourceforge.</p>
+<p><a href="http://qjson.sourceforge.net">QJson&rsquo;s website</a> and mailing lists are still going to be hosted on Sourceforge.</p>
 
 <hr>
 
 
-<br>
-
-
-<p>I think that's all from now. If you want more details about the changes introduced
+<p><br>
+I think that&rsquo;s all from now. If you want more details about the changes introduced
 take a look at the <a href="https://github.com/flavio/qjson/blob/master/ChangeLog">changelog</a>
-or checkout <a href="http://qjson.sourceforge.net">QJson's website</a>.</p>
+or checkout <a href="http://qjson.sourceforge.net">QJson&rsquo;s website</a>.</p>
 ]]></content>
   </entry>
   
@@ -99,11 +97,11 @@ or checkout <a href="http://qjson.sourceforge.net">QJson's website</a>.</p>
     <link href="http://flavio.castelli.name/2010/03/14/qjson-symbian/"/>
     <updated>2010-03-14T00:55:51+01:00</updated>
     <id>http://flavio.castelli.name/2010/03/14/qjson-symbian</id>
-    <content type="html"><![CDATA[<p>I'm really pleased to announce that latest version of QJson on master is
+    <content type="html"><![CDATA[<p>I&rsquo;m really pleased to announce that latest version of QJson on master is
 working on Symbian. You can find the installation instruction
 <a href="http://qjson.sourceforge.net/get_it/symbian.html">here</a>.</p>
 
-<p>Since I'm not a Symbian developer it has been a little hard for me to achieve
+<p>Since I&rsquo;m not a Symbian developer it has been a little hard for me to achieve
 that. I would like to thank <a href="http://gitorious.org/~anluoma">Antti Luoma</a> for
 his help.</p>
 
@@ -123,7 +121,7 @@ page</a>.</p>
     <content type="html"><![CDATA[<p>Just a quick note: I have just moved QJson source code to
 <a href="http://gitorious.org/qjson">this</a> git repository hosted by gitorious.</p>
 
-<p>I'll keep the code on KDE's svn synchronized with the git repository.</p>
+<p>I&rsquo;ll keep the code on KDE&rsquo;s svn synchronized with the git repository.</p>
 ]]></content>
   </entry>
   
@@ -133,7 +131,7 @@ page</a>.</p>
     <updated>2009-12-04T01:07:48+01:00</updated>
     <id>http://flavio.castelli.name/2009/12/04/qjson-qobject-serialization-deserialization</id>
     <content type="html"><![CDATA[<p>Some days ago I introduced the possibility to serialize a QObject instance to
-JSON. Today I'm going to show you the opposite operation: initializing a
+JSON. Today I&rsquo;m going to show you the opposite operation: initializing a
 QObject using a JSON object.</p>
 
 <p>I refactored a bit my latest changes: I created a new class called
@@ -146,8 +144,8 @@ to serialize and deserialize QObject instances to and from JSON.</p>
 <p>Let me show a quick example, suppose the declaration of Person class looks
 like this:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>[class definition] [] </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>[class definition] [ ] </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -174,12 +172,6 @@ like this:</p>
 <span class='line-number'>25</span>
 <span class='line-number'>26</span>
 <span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
 </pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">class</span> <span class="nc">Person</span> <span class="o">:</span> <span class="k">public</span> <span class="n">QObject</span>
 </span><span class='line'><span class="p">{</span>
 </span><span class='line'>  <span class="n">Q_OBJECT</span>
@@ -189,38 +181,32 @@ like this:</p>
 </span><span class='line'>  <span class="n">Q_PROPERTY</span><span class="p">(</span><span class="n">QDate</span> <span class="n">dob</span> <span class="n">READ</span> <span class="n">dob</span> <span class="n">WRITE</span> <span class="n">setDob</span><span class="p">)</span>
 </span><span class='line'>  <span class="n">Q_ENUMS</span><span class="p">(</span><span class="n">Gender</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>  <span class="k">public</span><span class="o">:&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">Person</span><span class="p">(</span><span class="n">QObject</span><span class="o">*</span> <span class="n">parent</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
-</span><span class='line'><span class="o">~</span><span class="n">Person</span><span class="p">();</span>
-</span><span class='line'><span class="n">QString</span> <span class="n">name</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
-</span><span class='line'><span class="kt">void</span> <span class="n">setName</span><span class="p">(</span><span class="k">const</span> <span class="n">QString</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">name</span><span class="p">);</span>
-</span><span class='line'><span class="kt">int</span> <span class="n">phoneNumber</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
-</span><span class='line'><span class="kt">void</span> <span class="n">setPhoneNumber</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span>  <span class="n">phoneNumber</span><span class="p">);</span>
-</span><span class='line'><span class="k">enum</span> <span class="n">Gender</span> <span class="p">{</span><span class="n">Male</span><span class="p">,</span> <span class="n">Female</span><span class="p">};</span>
-</span><span class='line'><span class="kt">void</span> <span class="n">setGender</span><span class="p">(</span><span class="n">Gender</span> <span class="n">gender</span><span class="p">);</span>
-</span><span class='line'><span class="n">Gender</span> <span class="n">gender</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
-</span><span class='line'><span class="n">QDate</span> <span class="n">dob</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
-</span><span class='line'><span class="kt">void</span> <span class="n">setDob</span><span class="p">(</span><span class="k">const</span> <span class="n">QDate</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">dob</span><span class="p">);</span>
-</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>  <span class="k">private</span><span class="o">:&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">QString</span> <span class="n">m_name</span><span class="p">;</span>
-</span><span class='line'><span class="kt">int</span> <span class="n">m_phoneNumber</span><span class="p">;</span>
-</span><span class='line'><span class="n">Gender</span> <span class="n">m_gender</span><span class="p">;</span>
-</span><span class='line'><span class="n">QDate</span> <span class="n">m_dob</span><span class="p">;</span>
-</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>  <span class="k">public</span><span class="o">:</span>
+</span><span class='line'>    <span class="n">Person</span><span class="p">(</span><span class="n">QObject</span><span class="o">*</span> <span class="n">parent</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+</span><span class='line'>    <span class="o">~</span><span class="n">Person</span><span class="p">();</span>
+</span><span class='line'>    <span class="n">QString</span> <span class="n">name</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span><span class='line'>    <span class="kt">void</span> <span class="n">setName</span><span class="p">(</span><span class="k">const</span> <span class="n">QString</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">name</span><span class="p">);</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">phoneNumber</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">setPhoneNumber</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span>  <span class="n">phoneNumber</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">enum</span> <span class="n">Gender</span> <span class="p">{</span><span class="n">Male</span><span class="p">,</span> <span class="n">Female</span><span class="p">};</span>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">setGender</span><span class="p">(</span><span class="n">Gender</span> <span class="n">gender</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">Gender</span> <span class="n">gender</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">QDate</span> <span class="n">dob</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span><span class='line'>    <span class="kt">void</span> <span class="n">setDob</span><span class="p">(</span><span class="k">const</span> <span class="n">QDate</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">dob</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">private</span><span class="o">:</span>
+</span><span class='line'>    <span class="n">QString</span> <span class="n">m_name</span><span class="p">;</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">m_phoneNumber</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">Gender</span> <span class="n">m_gender</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">QDate</span> <span class="n">m_dob</span><span class="p">;</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h3>From QObject to JSON</h3>
 
 <p>The following code will serialize an instance of Person to JSON :</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>[From QObject to JSON] [] </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>[From QObject to JSON] [ ] </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -229,36 +215,36 @@ like this:</p>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 </pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="n">Person</span> <span class="n">person</span><span class="p">;</span>
-</span><span class='line'><span class="n">person</span><span class="p">.</span><span class="n">setName</span><span class="p">(</span><span class="s">&quot;Flavio&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="n">person</span><span class="p">.</span><span class="n">setName</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">Flavio</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;);</span>
 </span><span class='line'><span class="n">person</span><span class="p">.</span><span class="n">setPhoneNumber</span><span class="p">(</span><span class="mi">123456</span><span class="p">);</span>
 </span><span class='line'><span class="n">person</span><span class="p">.</span><span class="n">setGender</span><span class="p">(</span><span class="n">Person</span><span class="o">::</span><span class="n">Male</span><span class="p">);</span>
 </span><span class='line'><span class="n">person</span><span class="p">.</span><span class="n">setDob</span><span class="p">(</span><span class="n">QDate</span><span class="p">(</span><span class="mi">1982</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">));</span>
 </span><span class='line'><span class="n">QVariantMap</span> <span class="n">variant</span> <span class="o">=</span> <span class="n">QObjectHelper</span><span class="o">::</span><span class="n">qobject2qvariant</span><span class="p">(</span><span class="o">&amp;</span><span class="n">person</span><span class="p">;);</span>
 </span><span class='line'><span class="n">Serializer</span> <span class="n">serializer</span><span class="p">;</span>
 </span><span class='line'><span class="n">qDebug</span><span class="p">()</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="n">serializer</span><span class="p">.</span><span class="n">serialize</span><span class="p">(</span> <span class="n">variant</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>The generated output will be:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>[JSON data] [] </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span> <span class="nt">&quot;dob&quot;</span> <span class="p">:</span> <span class="s2">&quot;1982-07-12&quot;</span><span class="p">,</span> <span class="nt">&quot;gender&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;Flavio&quot;</span><span class="p">,</span> <span class="nt">&quot;phoneNumber&quot;</span> <span class="p">:</span> <span class="mi">123456</span> <span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p><figure class='code'><figcaption><span>[JSON data] [ ] </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span> <span class="err">&amp;ldquo;dob&amp;rdquo;</span> <span class="err">:</span> <span class="err">&amp;ldquo;1982-07-12&amp;rdquo;,</span> <span class="err">&amp;ldquo;gender&amp;rdquo;</span> <span class="err">:</span> <span class="err">0,</span> <span class="err">&amp;ldquo;name&amp;rdquo;</span> <span class="err">:</span> <span class="err">&amp;ldquo;Flavio&amp;rdquo;,</span> <span class="err">&amp;ldquo;phoneNumber&amp;rdquo;</span> <span class="err">:</span> <span class="err">123456</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h3>From JSON to QObject</h3>
 
 <p>Suppose you have the following JSON data stored into a QString:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>[JSON data] [] </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span> <span class="nt">&quot;dob&quot;</span> <span class="p">:</span> <span class="s2">&quot;1982-07-12&quot;</span><span class="p">,</span> <span class="nt">&quot;gender&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nt">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;Flavio&quot;</span><span class="p">,</span> <span class="nt">&quot;phoneNumber&quot;</span> <span class="p">:</span> <span class="mi">123456</span> <span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p><figure class='code'><figcaption><span>[JSON data] [ ] </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span> <span class="err">&amp;ldquo;dob&amp;rdquo;</span> <span class="err">:</span> <span class="err">&amp;ldquo;1982-07-12&amp;rdquo;,</span> <span class="err">&amp;ldquo;gender&amp;rdquo;</span> <span class="err">:</span> <span class="err">0,</span> <span class="err">&amp;ldquo;name&amp;rdquo;</span> <span class="err">:</span> <span class="err">&amp;ldquo;Flavio&amp;rdquo;,</span> <span class="err">&amp;ldquo;phoneNumber&amp;rdquo;</span> <span class="err">:</span> <span class="err">123456</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>The following code will initialize an already allocated instance of Person
 using the JSON values:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>[From JSON to QObject] [] </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>[From JSON to QObject] [ ] </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -266,7 +252,7 @@ using the JSON values:</p>
 </span><span class='line'><span class="n">QVariant</span> <span class="n">variant</span> <span class="o">=</span> <span class="n">parser</span><span class="p">.</span><span class="n">parse</span><span class="p">(</span><span class="n">json</span><span class="p">);</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
 </span><span class='line'><span class="n">Person</span> <span class="n">person</span><span class="p">;</span>
 </span><span class='line'><span class="n">QObjectHelper</span><span class="o">::</span><span class="n">qvariant2qobject</span><span class="p">(</span><span class="n">variant</span><span class="p">.</span><span class="n">toMap</span><span class="p">(),</span> <span class="o">&amp;</span><span class="n">person</span><span class="p">;);</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h3>A new release</h3>
 

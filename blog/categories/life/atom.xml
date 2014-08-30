@@ -4,7 +4,7 @@
   <title><![CDATA[Category: life | Flavio Castelli]]></title>
   <link href="http://flavio.castelli.name/blog/categories/life/atom.xml" rel="self"/>
   <link href="http://flavio.castelli.name/"/>
-  <updated>2014-08-30T10:16:47+02:00</updated>
+  <updated>2014-08-30T22:16:16+02:00</updated>
   <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
@@ -20,33 +20,33 @@
     <id>http://flavio.castelli.name/2008/07/16/can-dreams-became-true</id>
     <content type="html"><![CDATA[<p>During the last years of university I spent some time wondering about my
 future job. After the degree I received  lot of offers (fortunately also good
-ones), but none of them matched with my <em>"dream job"</em> . There was always
+ones), but none of them matched with my <em>&ldquo;dream job&rdquo;</em> . There was always
 something missing/different. I was just trying to convince myself that the
-<em>"perfect job"</em> can exist only in our dreams when my feed reader pointed me
+<em>&ldquo;perfect job&rdquo;</em> can exist only in our dreams when my feed reader pointed me
 <a href="http://www.kdedevelopers.org/node/3484">here</a>.</p>
 
 <p>After reading these lines:</p>
 
-<blockquote><p>" We are exploring new technologies, creating prototypes of future systems,
+<blockquote><p>&ldquo; We are exploring new technologies, creating prototypes of future systems,
 and trying to find and shape some of the features that will be part of
-upcoming SUSE products and the ecosystem around that. It's a fascinating job,
+upcoming SUSE products and the ecosystem around that. It&rsquo;s a fascinating job,
 challenging, fun, and always exciting. For somebody like me who loves to
 create new things and enjoys working with an awesome team of innovative people
-this is a dream job."</p></blockquote>
+this is a dream job.&rdquo;</p></blockquote>
 
 <p>I realized the description matched with all my wishes!</p>
 
-<p>I immediately applied for the position and now, after more than a month, I'm
+<p>I immediately applied for the position and now, after more than a month, I&rsquo;m
 looking at a signed proposal.</p>
 
-<p>I've waited a long time before spreading my joy to the rest of the world...
-but now I just want to say that starting from 1st August I'll be part of
-Suse's Incubation team! :D</p>
+<p>I&rsquo;ve waited a long time before spreading my joy to the rest of the world&hellip;
+but now I just want to say that starting from 1st August I&rsquo;ll be part of
+Suse&rsquo;s Incubation team! :D</p>
 
-<p>I'm really happy, excited and honoured for this awesome opportunity.</p>
+<p>I&rsquo;m really happy, excited and honoured for this awesome opportunity.</p>
 
-<p><strong>I wish you'll be able to realize your dreams too!</strong><br/>
-Just a funny note... While Cornelius was writing about the job offer on his
+<p><strong>I wish you&rsquo;ll be able to realize your dreams too!</strong><br/>
+Just a funny note&hellip; While Cornelius was writing about the job offer on his
 blog, I was having a dinner with another Novell employee:
 <a href="http://primates.ximian.com/~massi/blog/">Massimiliano Mantione</a>. I was
 listening to his personal story, wishing to find a dream job like his one.
@@ -60,19 +60,19 @@ I have to admit I was a bit jealous :)</p>
     <updated>2008-03-26T21:05:25+01:00</updated>
     <id>http://flavio.castelli.name/2008/03/26/two-new-entries-in-my-life</id>
     <content type="html"><![CDATA[<p>Last week two new entries entered my life.A shiny brand-new <em>Macbook pro
-</em>arrived on Thursday. I've always dreamed of one of this wonderful laptops
-(I've been an happy iBook user for a long time). Two weeks ago I finally
-surrendered (I've always been scared of the high price) and I've ordered this
-new <em>toy</em>. Now, after one week of usage I'm really happy about it.</p>
+</em>arrived on Thursday. I&rsquo;ve always dreamed of one of this wonderful laptops
+(I&rsquo;ve been an happy iBook user for a long time). Two weeks ago I finally
+surrendered (I&rsquo;ve always been scared of the high price) and I&rsquo;ve ordered this
+new <em>toy</em>. Now, after one week of usage I&rsquo;m really happy about it.</p>
 
-<p>Currently I'm using Linux as primary Os, but I'll give a try also to KDE4 on
+<p>Currently I&rsquo;m using Linux as primary Os, but I&rsquo;ll give a try also to KDE4 on
 Mac ;)</p>
 
-<p>The other new entry is <em>Baguette</em>, a three-months old dachshund. She's really
-lovely, running around the house eating random things like shoes (I think it's
-a must for all pets) and usb cables (she's already a geek-dog).</p>
+<p>The other new entry is <em>Baguette</em>, a three-months old dachshund. She&rsquo;s really
+lovely, running around the house eating random things like shoes (I think it&rsquo;s
+a must for all pets) and usb cables (she&rsquo;s already a geek-dog).</p>
 
-<p>I think I'll have to keep an eye on Baguette, otherwise I'll find another bite
+<p>I think I&rsquo;ll have to keep an eye on Baguette, otherwise I&rsquo;ll find another bite
 on my Macbook pro apple ;)</p>
 ]]></content>
   </entry>
@@ -84,7 +84,7 @@ on my Macbook pro apple ;)</p>
     <id>http://flavio.castelli.name/2007/08/10/xesam-and-bathroom-hacking</id>
     <content type="html"><![CDATA[<p>Yesterday morning I was quite arrived at work when Laura (my gf) called me.
 Something went wrong in our bathroom and water was everywhere. She closed the
-main water tap and I took the first train for home (yes, since I'm an outlier
+main water tap and I took the first train for home (yes, since I&rsquo;m an outlier
 I take the train two times per day). Once arrived at home I performed some
 hacking on the guilty washing machine, checked some pipes and than took the
 next train for office.</p>
@@ -95,13 +95,13 @@ travels I:</p>
 
 <ul>
 <li>refreshed my memories about <a href="http://www.gnu.org/software/flex/">Flex</a>, <a href="http://www.gnu.org/software/bison/">Bison</a> and language parsers in general</li>
-<li>wrote XesamUserLanguage's <a href="http://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form">BNF grammar</a></li>
+<li>wrote XesamUserLanguage&rsquo;s <a href="http://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form">BNF grammar</a></li>
 <li>wrote Flex scanner</li>
 <li>started Bison parser</li>
 </ul>
 
 
-<p>Now, after fixing some build errors, I'll start writing Bison's grammar rules.
+<p>Now, after fixing some build errors, I&rsquo;ll start writing Bison&rsquo;s grammar rules.
 These rules will translate Xesam user language queries into Strigi::Query
 objects.</p>
 
@@ -115,7 +115,7 @@ objects.</p>
     <updated>2007-07-18T10:47:46+02:00</updated>
     <id>http://flavio.castelli.name/2007/07/18/new-house-opening</id>
     <content type="html"><![CDATA[<p>Last friday evening I made a party in my new house. We celebrated my birthday
-and also the <em>"opening"</em> of the new house.</p>
+and also the <em>&ldquo;opening&rdquo;</em> of the new house.</p>
 
 <p>Many thanks to Roberto for the photos (made with his mobile phone!).</p>
 ]]></content>
@@ -128,8 +128,8 @@ and also the <em>"opening"</em> of the new house.</p>
     <id>http://flavio.castelli.name/2007/07/03/work-work-work-and-new-house</id>
     <content type="html"><![CDATA[<p>In my last message I promised to write some more contents on this site, in
 order to keep it more updated. As usual I disappointed this promise :)  So,
-what I have been doing in these day? Just a simple answer: I've worked a lot.
-"Work" can be divided in the following categories:</p>
+what I have been doing in these day? Just a simple answer: I&rsquo;ve worked a lot.
+&ldquo;Work&rdquo; can be divided in the following categories:</p>
 
 <ul>
 <li>office work</li>
@@ -138,15 +138,15 @@ what I have been doing in these day? Just a simple answer: I've worked a lot.
 </ul>
 
 
-<p>The most important of all is the last one. I've spent all my week-ends working
-in my <strong>new house</strong>. I've been fixing and improving it (wow... it seems I'm
-talking about a piece of software ;) ) and now it's quite finished.</p>
+<p>The most important of all is the last one. I&rsquo;ve spent all my week-ends working
+in my <strong>new house</strong>. I&rsquo;ve been fixing and improving it (wow&hellip; it seems I&rsquo;m
+talking about a piece of software ;) ) and now it&rsquo;s quite finished.</p>
 
-<p>I've to say a great <em>"thank you"</em> to my dad. He's able to do everything (he's
+<p>I&rsquo;ve to say a great <em>&ldquo;thank you&rdquo;</em> to my dad. He&rsquo;s able to do everything (he&rsquo;s
 something better than <a href="http://en.wikipedia.org/wiki/MacGyver">Mac Gyver</a>) and
 helped me a lot (in fact he has done all the dirty jobs).</p>
 
-<p>Prepare yourself, I'll put some photos of the house really soon...</p>
+<p>Prepare yourself, I&rsquo;ll put some photos of the house really soon&hellip;</p>
 ]]></content>
   </entry>
   

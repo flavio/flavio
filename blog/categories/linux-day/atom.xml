@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Linux Day | Flavio Castelli]]></title>
+  <title><![CDATA[Category: linux day | Flavio Castelli]]></title>
   <link href="http://flavio.castelli.name/blog/categories/linux-day/atom.xml" rel="self"/>
   <link href="http://flavio.castelli.name/"/>
-  <updated>2014-08-30T10:16:47+02:00</updated>
+  <updated>2014-08-30T22:16:16+02:00</updated>
   <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
@@ -29,7 +29,7 @@ speeches, installation parties and more.</p>
 <em>Linux day</em> organized by my LUG (<a href="http://www.bglug.it">BGLug</a>).</p>
 
 <p>The presentation covers the main changes and features introduced by KDE 4. I
-took inspiration from Troy's <em>"Road to KDE 4"</em> articles (I like them really
+took inspiration from Troy&rsquo;s <em>&ldquo;Road to KDE 4&rdquo;</em> articles (I like them really
 much).</p>
 
 <p>People liked the speech and, most important of all, showed great interest for
@@ -50,9 +50,9 @@ KDE 4.</p>
 <p>This speech illustrates:</p>
 
 <ul>
-<li>what's desktop searching</li>
-<li>what're the benefits of desktop searching technology</li>
-<li>what're the programs availables under linux</li>
+<li>what&rsquo;s desktop searching</li>
+<li>what&rsquo;re the benefits of desktop searching technology</li>
+<li>what&rsquo;re the programs availables under linux</li>
 <li>overview of Beagle</li>
 <li>overview of Strigi</li>
 </ul>
@@ -73,11 +73,11 @@ KDE 4.</p>
 <p>This speech illustrates:</p>
 
 <ul>
-<li>what's a mailing list and how does it works</li>
-<li>what's a newsgroup</li>
-<li>what's netiquette</li>
+<li>what&rsquo;s a mailing list and how does it works</li>
+<li>what&rsquo;s a newsgroup</li>
+<li>what&rsquo;s netiquette</li>
 <li>how to quote</li>
-<li>how to don't break mailing lists threads</li>
+<li>how to don&rsquo;t break mailing lists threads</li>
 </ul>
 
 

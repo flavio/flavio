@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: SUSE | Flavio Castelli]]></title>
+  <title><![CDATA[Category: suse | Flavio Castelli]]></title>
   <link href="http://flavio.castelli.name/blog/categories/suse/atom.xml" rel="self"/>
   <link href="http://flavio.castelli.name/"/>
-  <updated>2014-08-30T10:16:47+02:00</updated>
+  <updated>2014-08-30T22:16:16+02:00</updated>
   <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
@@ -18,7 +18,7 @@
     <link href="http://flavio.castelli.name/2014/05/06/building-docker-containers-with-kiwi/"/>
     <updated>2014-05-06T22:20:00+02:00</updated>
     <id>http://flavio.castelli.name/2014/05/06/building-docker-containers-with-kiwi</id>
-    <content type="html"><![CDATA[<p>I'm pleased to announce <a href="https://github.com/schaefi">Marcus Schäfer</a> has
+    <content type="html"><![CDATA[<p>I&rsquo;m pleased to announce <a href="https://github.com/schaefi">Marcus Schäfer</a> has
 just made possible to build docker images with <a href="http://opensuse.github.io/kiwi/">KIWI</a>.</p>
 
 <p>For those who never heard about it, KIWI is a tool which creates Linux systems
@@ -34,7 +34,7 @@ to include the <em>lxc</em> package.</p>
 <p>As you might know Docker has already its <a href="http://docs.docker.io/reference/builder/">build system</a>
 which provides a really easy way to create new images. However these images
 must be based on existing ones, which leads to the problem of creating the 1st
-parent image. That's where KIWI comes to the rescue.</p>
+parent image. That&rsquo;s where KIWI comes to the rescue.</p>
 
 <p>Indeed Kiwi can be used to build the openSUSE/SUSE/whatever docker images that are
 going to act as the foundation blocks of other ones.</p>
@@ -56,100 +56,72 @@ directory to another location and make your changes.</p>
 
 <p>The heart of the whole image is the <code>config.xml</code> file:</p>
 
-<p>```xml
-&lt;?xml version="1.0" encoding="utf-8"?></p>
+<pre><code class="xml">&lt;?xml version="1.0" encoding="utf-8"?&gt;
 
-<p><image schemaversion="6.1" name="suse-13.1-docker-guest">
-  <description type="system"></p>
-
-<pre><code>&lt;author&gt;Flavio Castelli&lt;/author&gt;
-&lt;contact&gt;fcastelli@suse.com&lt;/contact&gt;
-&lt;specification&gt;openSUSE 13.1 docker image&lt;/specification&gt;
+&lt;image schemaversion="6.1" name="suse-13.1-docker-guest"&gt;
+  &lt;description type="system"&gt;
+    &lt;author&gt;Flavio Castelli&lt;/author&gt;
+    &lt;contact&gt;fcastelli@suse.com&lt;/contact&gt;
+    &lt;specification&gt;openSUSE 13.1 docker image&lt;/specification&gt;
+  &lt;/description&gt;
+  &lt;preferences&gt;
+    &lt;type image="docker" container="os131"&gt;
+      &lt;machine&gt;
+        &lt;vmdisk/&gt;
+        &lt;vmnic interface="eth0" mode="veth"/&gt;
+      &lt;/machine&gt;
+    &lt;/type&gt;
+    &lt;version&gt;1.0.0&lt;/version&gt;
+    &lt;packagemanager&gt;zypper&lt;/packagemanager&gt;
+    &lt;rpm-check-signatures&gt;false&lt;/rpm-check-signatures&gt;
+    &lt;rpm-force&gt;true&lt;/rpm-force&gt;
+    &lt;locale&gt;en_US&lt;/locale&gt;
+    &lt;keytable&gt;us.map.gz&lt;/keytable&gt;
+    &lt;hwclock&gt;utc&lt;/hwclock&gt;
+    &lt;timezone&gt;US/Eastern&lt;/timezone&gt;
+  &lt;/preferences&gt;
+  &lt;users group="root"&gt;
+    &lt;user password="$1$wYJUgpM5$RXMMeASDc035eX.NbYWFl0" home="/root" name="root"/&gt;
+  &lt;/users&gt;
+  &lt;repository type="yast2"&gt;
+    &lt;source path="opensuse://13.1/repo/oss/"/&gt;
+  &lt;/repository&gt;
+  &lt;packages type="image"&gt;
+    &lt;package name="coreutils"/&gt;
+    &lt;package name="iputils"/&gt;
+  &lt;/packages&gt;
+  &lt;packages type="bootstrap"&gt;
+    &lt;package name="filesystem"/&gt;
+    &lt;package name="glibc-locale"/&gt;
+    &lt;package name="module-init-tools"/&gt;
+  &lt;/packages&gt;
+&lt;/image&gt;
 </code></pre>
-
-<p>  </description>
-  <preferences></p>
-
-<pre><code>&lt;type image="docker" container="os131"&gt;
-  &lt;machine&gt;
-    &lt;vmdisk/&gt;
-    &lt;vmnic interface="eth0" mode="veth"/&gt;
-  &lt;/machine&gt;
-&lt;/type&gt;
-&lt;version&gt;1.0.0&lt;/version&gt;
-&lt;packagemanager&gt;zypper&lt;/packagemanager&gt;
-&lt;rpm-check-signatures&gt;false&lt;/rpm-check-signatures&gt;
-&lt;rpm-force&gt;true&lt;/rpm-force&gt;
-&lt;locale&gt;en_US&lt;/locale&gt;
-&lt;keytable&gt;us.map.gz&lt;/keytable&gt;
-&lt;hwclock&gt;utc&lt;/hwclock&gt;
-&lt;timezone&gt;US/Eastern&lt;/timezone&gt;
-</code></pre>
-
-<p>  </preferences>
-  <users group="root"></p>
-
-<pre><code>&lt;user password="$1$wYJUgpM5$RXMMeASDc035eX.NbYWFl0" home="/root" name="root"/&gt;
-</code></pre>
-
-<p>  </users>
-  <repository type="yast2"></p>
-
-<pre><code>&lt;source path="opensuse://13.1/repo/oss/"/&gt;
-</code></pre>
-
-<p>  </repository>
-  <packages type="image"></p>
-
-<pre><code>&lt;package name="coreutils"/&gt;
-&lt;package name="iputils"/&gt;
-</code></pre>
-
-<p>  </packages>
-  <packages type="bootstrap"></p>
-
-<pre><code>&lt;package name="filesystem"/&gt;
-&lt;package name="glibc-locale"/&gt;
-&lt;package name="module-init-tools"/&gt;
-</code></pre>
-
-<p>  </packages>
-</image>
-```</p>
 
 <p>This is a really minimal image which contains just a bunch of packages.</p>
 
-<p>The first step is the creation of the image's root system:</p>
+<p>The first step is the creation of the image&rsquo;s root system:</p>
 
-<p>```
-kiwi -p /usr/share/doc/packages/kiwi/examples/suse-13.1/suse-docker-container \</p>
-
-<pre><code> --root /tmp/myimage
+<pre><code>kiwi -p /usr/share/doc/packages/kiwi/examples/suse-13.1/suse-docker-container \
+     --root /tmp/myimage
 </code></pre>
-
-<p>```</p>
 
 <p>The next step compresses the file system of the image into a single tarball:</p>
 
-<p>```</p>
-
-<pre><code>kiwi --create /tmp/myimage --type docker -d /tmp/myimage-result
+<pre><code>    kiwi --create /tmp/myimage --type docker -d /tmp/myimage-result
 </code></pre>
-
-<p>```</p>
 
 <p>The tarball can be found under <code>/tmp/myimage-result</code>. This can be imported
 into docker using the following command:</p>
 
-<p><code>
-docker import - myImage &lt; /path/to/myimage.tbz
-</code></p>
+<pre><code>docker import - myImage &lt; /path/to/myimage.tbz
+</code></pre>
 
 <p>The image named <code>myImage</code> is now ready to be used.</p>
 
-<h2>What's next</h2>
+<h2>What&rsquo;s next</h2>
 
-<p>In the next days I'll make another blog post explaining how to build docker
+<p>In the next days I&rsquo;ll make another blog post explaining how to build docker
 images using KIWI and the <a href="http://openbuildservice.org/">Open Build Service</a>.
 This is a powerful combination which allows to achieve continuous delivery.</p>
 

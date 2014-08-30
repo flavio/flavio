@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>kaveau: easy and integrated backups solution for KDE - Flavio Castelli</title>
+  <title>Kaveau: Easy and Integrated Backups Solution for KDE - Flavio Castelli</title>
   <meta name="author" content="Flavio Castelli">
 
   
   <meta name="description" content="During the last week I had the possibility to work on anything I wanted,
-Novell&#8217;s hackweek is so cool :) I decided to dedicate myself to an &hellip;">
+Novell&rsquo;s hackweek is so cool :) I decided to dedicate myself to an &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,21 +19,22 @@ Novell&#8217;s hackweek is so cool :) I decided to dedicate myself to an &hellip
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://flavio.castelli.name/2009/07/28/kaveau-easy-integrated-backup-solution-kde/">
+  <link rel="canonical" href="http://flavio.castelli.name/2009/07/28/kaveau-easy-integrated-backup-solution-kde">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="Flavio Castelli" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
 <!-- openid delegation -->
 <!-- myopenid -->
-<!--<link rel="openid.server" href="http://www.myopenid.com/server" />-->
-<!--<link rel="openid.delegate" href="http://flavio.castelli.myopenid.com/" />-->
+<!--<link rel="openid.server" href="http://www.myopenid.com/server" />&#8211;>
+<!--<link rel="openid.delegate" href="http://flavio.castelli.myopenid.com/" />&#8211;>
 
  <!--claimid -->
 <link rel="openid.server" href="http://openid.claimid.com/server" />
@@ -101,16 +102,10 @@ Novell&#8217;s hackweek is so cool :) I decided to dedicate myself to an &hellip
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2009-07-28T09:47:05+02:00" pubdate data-updated="true">Jul 28<span>th</span>, 2009</time>
+<time class='entry-date' datetime='2009-07-28T09:47:05+02:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>9:47 am</span></time>
         
-         | <a href="#disqus_thread">Comments</a>
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://flavio.castelli.name">Comments</a>
         
       </p>
     
@@ -118,19 +113,19 @@ Novell&#8217;s hackweek is so cool :) I decided to dedicate myself to an &hellip
 
 
 <div class="entry-content"><p>During the last week I had the possibility to work on anything I wanted,
-Novell&#8217;s hackweek is so cool :)</p>
+Novell&rsquo;s hackweek is so cool :)</p>
 
 <p>I decided to dedicate myself to an idea that has been obsessing me since a
 long time. Last December my brand new hard disk suddenly died, making
 impossible to recover anything. Fortunately I had just synchronized the most
-important documents between my workstation and my laptop, so I didn&#8217;t lose
+important documents between my workstation and my laptop, so I didn&rsquo;t lose
 anything important. This incident make me realize that I should perform
 backups regularly and I immediately started looking for a good solution.</p>
 
 <p>Personally I think that doing backups is pretty boring so I wanted something
 damned easy to setup and use. Something that once configured runs in the
-background and does the dirty job without bothering you. Let&#8217;s face the truth:
-I wanted Apple&#8217;s Time Machine for KDE.</p>
+background and does the dirty job without bothering you. Let&rsquo;s face the truth:
+I wanted Apple&rsquo;s Time Machine for KDE.</p>
 
 <p>After some searches I realized that nothing was fitting my requirements and I
 decided to create something new: <em>kaveau</em>.</p>
@@ -140,28 +135,28 @@ decided to create something new: <em>kaveau</em>.</p>
 <p>Kaveau is a backup program that makes backup easy for the average user.</p>
 
 <p>As you will see while coding/planning kaveau I made some assumptions and so
-only few things are configurable. I really think that sometimes <a href="http://en.wikipedia.org/wiki/Minimalism"><em>&#8220;less is
-more&#8221;</em></a>.</p>
+only few things are configurable. I really think that sometimes <a href="http://en.wikipedia.org/wiki/Minimalism"><em>&ldquo;less is
+more&rdquo;</em></a>.</p>
 
 <h3>What does kaveau?</h3>
 
 <p>Current features:</p>
 
 <ul>
-<li>it performs backups to an external storage device: I don&#8217;t think it will ever store backup data on a remote host. If you want to do that just use some good project like <a href="http://backuppc.sourceforge.net/">Backup pc</a>.</li>
-<li>it backs up the complete home directory of the user: storage is cheap and average users (like me) keep everything inside their home directory ( but it&#8217;s possible to exclude some directories from the backup).</li>
+<li>it performs backups to an external storage device: I don&rsquo;t think it will ever store backup data on a remote host. If you want to do that just use some good project like <a href="http://backuppc.sourceforge.net/">Backup pc</a>.</li>
+<li>it backs up the complete home directory of the user: storage is cheap and average users (like me) keep everything inside their home directory ( but it&rsquo;s possible to exclude some directories from the backup).</li>
 <li>it performs incremental backups.</li>
 <li>the backup data are neither compressed nor stored in fancy formats: in this way you can plug your external disk into another machine and access your data without additional work.</li>
 <li>backups are performed automatically every hour (of course only if your external disk is plugged).</li>
 <li>notification messages are shown if your backup is older that a week.
-More enhancements are coming&#8230;</li>
+More enhancements are coming&hellip;</li>
 </ul>
 
 
 <h3>What technologies does it use?</h3>
 
 <p>Backups are performed using <a href="http://rdiff-backup.nongnu.org/">rdiff-backup</a>
-because it&#8217;s damned easy to use, well tested (it&#8217;s used also in production
+because it&rsquo;s damned easy to use, well tested (it&rsquo;s used also in production
 environments) and packaged by all distributions.</p>
 
 <p>The awesome <a href="http://solid.kde.org/">solid</a> library is used for interacting
@@ -169,7 +164,7 @@ with the external disks is super easy.</p>
 
 <h3>Status of kaveau</h3>
 
-<p>I have been working on kaveau just for five days, so <strong>there&#8217;s still a lot of
+<p>I have been working on kaveau just for five days, so <strong>there&rsquo;s still a lot of
 work to do</strong>.</p>
 
 <p>A screenshot tour will give you the right idea of its status.</p>
@@ -199,7 +194,7 @@ work to do</strong>.</p>
 <p><img src="/images/kaveau/sf7.png"></p>
 
 <p>Right now the code is available on
-<a href="http://github.com/flavio/kaveau/tree/master">this</a> git repository but I don&#8217;t
+<a href="http://github.com/flavio/kaveau/tree/master">this</a> git repository but I don&rsquo;t
 recommend you to try it (unless you want to find and fix bugs ;) ).</p>
 
 <p>I would really appreciate:</p>
@@ -207,7 +202,7 @@ recommend you to try it (unless you want to find and fix bugs ;) ).</p>
 <ul>
 <li>feedback about the user interface (right now it looks too much like Time Machine).</li>
 <li>icons: it would be great to have a desktop icon and some system tray icons (contact me for more details).</li>
-<li>new code, bug fixes, code reviews, hints,&#8230;</li>
+<li>new code, bug fixes, code reviews, hints,&hellip;</li>
 </ul>
 
 </div>
@@ -225,19 +220,12 @@ recommend you to try it (unless you want to find and fix bugs ;) ).</p>
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2009-07-28T09:47:05+02:00" pubdate data-updated="true">Jul 28<span>th</span>, 2009</time>
+<time class='entry-date' datetime='2009-07-28T09:47:05+02:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>9:47 am</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/kde/'>KDE</a>
+    <a class='category' href='/blog/categories/kde/'>kde</a>
   
 </span>
 
@@ -246,7 +234,7 @@ recommend you to try it (unless you want to find and fix bugs ;) ).</p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://flavio.castelli.name/2009/07/28/kaveau-easy-integrated-backup-solution-kde/" data-via="flavio_castelli" data-counturl="http://flavio.castelli.name/2009/07/28/kaveau-easy-integrated-backup-solution-kde/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://flavio.castelli.name/2009/07/28/kaveau-easy-integrated-backup-solution-kde/" data-via="flavio_castelli" data-counturl="http://flavio.castelli.name/2009/07/28/kaveau-easy-integrated-backup-solution-kde/" >Tweet</a>
   
   
   
@@ -279,23 +267,23 @@ recommend you to try it (unless you want to find and fix bugs ;) ).</p>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/2014/05/06/building-docker-containers-with-kiwi/">Building docker images with KIWI</a>
+        <a href="/2014/05/06/building-docker-containers-with-kiwi/">Building Docker Images With KIWI</a>
       </li>
     
       <li class="post">
-        <a href="/2014/02/13/docker-and-opensuse-getting-closer/">Docker and openSUSE getting closer</a>
+        <a href="/2014/02/13/docker-and-opensuse-getting-closer/">Docker and openSUSE Getting Closer</a>
       </li>
     
       <li class="post">
-        <a href="/2013/11/28/better-docker-experience-on-opensuse/">Better Docker experience on openSUSE</a>
+        <a href="/2013/11/28/better-docker-experience-on-opensuse/">Better Docker Experience on openSUSE</a>
       </li>
     
       <li class="post">
-        <a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: a container full of Geekos</a>
+        <a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: A Container Full of Geekos</a>
       </li>
     
       <li class="post">
-        <a href="/2012/11/27/qjson-0-dot-8-1-released/">qjson 0.8.1 released</a>
+        <a href="/2012/11/27/qjson-0-dot-8-1-released/">Qjson 0.8.1 Released</a>
       </li>
     
   </ul>
@@ -304,13 +292,13 @@ recommend you to try it (unless you want to find and fix bugs ;) ).</p>
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating...</li>
+    <li class="loading">Status updating&#8230;</li>
   </ul>
   
   <a href="https://github.com/flavio">@flavio</a> on GitHub
   
   <script type="text/javascript">
-    $.domReady(function(){
+    $(document).ready(function(){
         if (!window.jXHR){
             var jxhr = document.createElement('script');
             jxhr.type = 'text/javascript';
@@ -334,7 +322,7 @@ recommend you to try it (unless you want to find and fix bugs ;) ).</p>
 <section>
   <h1>Latest Tweets</h1>
   <ul id="tweets">
-    <li class="loading">Status updating...</li>
+    <li class="loading">Status updating&#8230;</li>
   </ul>
   <script type="text/javascript">
     $.domReady(function(){
@@ -346,9 +334,6 @@ recommend you to try it (unless you want to find and fix bugs ;) ).</p>
     <a href="http://twitter.com/flavio_castelli" class="twitter-follow-button" data-show-count="false">Follow @flavio_castelli</a>
   
 </section>
-
-
-
 
 
   
@@ -376,7 +361,7 @@ recommend you to try it (unless you want to find and fix bugs ;) ).</p>
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -392,7 +377,7 @@ recommend you to try it (unless you want to find and fix bugs ;) ).</p>
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

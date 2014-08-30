@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Docker and openSUSE: a container full of Geekos - Flavio Castelli</title>
+  <title>Docker and openSUSE: A Container Full of Geekos - Flavio Castelli</title>
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="SUSE&#8217;s Hackweek #9 is over. It has
+  <meta name="description" content="SUSE&rsquo;s Hackweek #9 is over. It has
 been an awesome week during which I worked hard to make docker
 a first class citizen on openSUSE. I also &hellip;">
   
@@ -20,21 +20,22 @@ a first class citizen on openSUSE. I also &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://flavio.castelli.name/2013/04/12/docker-and-opensuse/">
+  <link rel="canonical" href="http://flavio.castelli.name/2013/04/12/docker-and-opensuse">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="Flavio Castelli" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
 <!-- openid delegation -->
 <!-- myopenid -->
-<!--<link rel="openid.server" href="http://www.myopenid.com/server" />-->
-<!--<link rel="openid.delegate" href="http://flavio.castelli.myopenid.com/" />-->
+<!--<link rel="openid.server" href="http://www.myopenid.com/server" />&#8211;>
+<!--<link rel="openid.delegate" href="http://flavio.castelli.myopenid.com/" />&#8211;>
 
  <!--claimid -->
 <link rel="openid.server" href="http://openid.claimid.com/server" />
@@ -102,29 +103,23 @@ a first class citizen on openSUSE. I also &hellip;">
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2013-04-12T14:45:00+02:00" pubdate data-updated="true">Apr 12<span>th</span>, 2013</time>
+<time class='entry-date' datetime='2013-04-12T14:45:00+02:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>2:45 pm</span></time>
         
-         | <a href="#disqus_thread">Comments</a>
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://flavio.castelli.name">Comments</a>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p><a href="http://hackweek.suse.com/">SUSE&#8217;s Hackweek #9</a> is over. It has
+<div class="entry-content"><p><a href="http://hackweek.suse.com/">SUSE&rsquo;s Hackweek #9</a> is over. It has
 been an awesome week during which I worked hard to make <a href="http://www.docker.io">docker</a>
 a first class citizen on <a href="http://www.opensuse.org/">openSUSE</a>. I also spent
-some time working on an openSUSE container that could be used by docker&#8217;s users.</p>
+some time working on an openSUSE container that could be used by docker&rsquo;s users.</p>
 
 <p>The project has been tracked on <a href="https://github.com/SUSE/hackweek/wiki/docker.io-and-openSUSE">this</a>
-page of hackweek&#8217;s wiki, this is a detailed report of what I achieved.</p>
+page of hackweek&rsquo;s wiki, this is a detailed report of what I achieved.</p>
 
 <h2>Installing docker on openSUSE 12.3</h2>
 
@@ -139,14 +134,14 @@ OBS project.</p>
 </span><span class='line'>sudo zypper in docker</span></code></pre></td></tr></table></div></figure>
 
 
-<p>There&#8217;s also a <a href="http://software.opensuse.org/ymp/home:flavio_castelli:docker/openSUSE_12.3/docker.ymp?base=openSUSE%3A12.3&amp;query=docker">1 Click Install</a>
+<p>There&rsquo;s also a <a href="http://software.opensuse.org/ymp/home:flavio_castelli:docker/openSUSE_12.3/docker.ymp?base=openSUSE%3A12.3&amp;query=docker">1 Click Install</a>
 for the lazy ones :)</p>
 
 <p>Zypper will install docker and its dependencies which are:</p>
 
 <ul>
-<li><code>lxc</code>: docker&#8217;s &#8220;magic&#8221; is built on top of <a href="http://lxc.sourceforge.net/">LXC</a>.</li>
-<li><code>bridge-utils</code>: is used to setup the bridge interface used by docker&#8217;s
+<li><code>lxc</code>: docker&rsquo;s &ldquo;magic&rdquo; is built on top of <a href="http://lxc.sourceforge.net/">LXC</a>.</li>
+<li><code>bridge-utils</code>: is used to setup the bridge interface used by docker&rsquo;s
 containers.</li>
 <li><code>dnsmasq</code>: is used to start the dhcp server used by the containers.</li>
 <li><code>iptables</code>: is used to get containers&#8217; networking work.</li>
@@ -166,28 +161,28 @@ are in fact links to the packages created by <a href="https://build.opensuse.org
 inside of his <a href="https://build.opensuse.org/package/show?package=aufs3&amp;project=home%3A-miska-%3Aaufs">aufs project</a>
 on OBS.</p>
 
-<p><strong>Note well:</strong> docker works only on 64bit hosts. That&#8217;s why there are no 32bit
+<p><strong>Note well:</strong> docker works only on 64bit hosts. That&rsquo;s why there are no 32bit
 packages.</p>
 
 <h2>Docker appliance</h2>
 
-<p>If you don&#8217;t want to install docker on your system or you are just curious and
-want to jump straight into action there&#8217;s a <a href="http://susestudio.com">SUSE Studio</a>
+<p>If you don&rsquo;t want to install docker on your system or you are just curious and
+want to jump straight into action there&rsquo;s a <a href="http://susestudio.com">SUSE Studio</a>
 appliance ready for you. You can find it <a href="http://susestudio.com/a/CZ0T0D/docker">here</a>.</p>
 
 <p>If you are not familiar with SUSE Gallery let me tell you two things about it:</p>
 
 <ul>
-<li>you can download the appliance on your computer and play with it or&#8230;</li>
-<li>you can clone the appliance on SUSE Studio and customize it even further or&#8230;</li>
-<li>you can test the appliance from your browser using SUSE Studio&#8217;s Testdrive
+<li>you can download the appliance on your computer and play with it or&hellip;</li>
+<li>you can clone the appliance on SUSE Studio and customize it even further or&hellip;</li>
+<li>you can test the appliance from your browser using SUSE Studio&rsquo;s Testdrive
 feature (no SUSE Studio account required!).</li>
 </ul>
 
 
 <p>The latter option is really cool, because it will allow you to play with docker
-immediately. There&#8217;s just one thing to keep in mind about Testdrive: outgoing
-connections are disabled, so you won&#8217;t be able to install new stuff (or download
+immediately. There&rsquo;s just one thing to keep in mind about Testdrive: outgoing
+connections are disabled, so you won&rsquo;t be able to install new stuff (or download
 new docker images). Fortunately this appliance comes with the busybox container
 bundled, so you will be able to play a bit with docker.</p>
 
@@ -196,7 +191,7 @@ bundled, so you will be able to play a bit with docker.</p>
 <p>The docker daemon must be running in order to use your containers. The openSUSE
 package comes with a init script which can be used to manage it.</p>
 
-<p>The script is <code>/etc/init.d/docker</code>, but there&#8217;s also the usual symbolic link
+<p>The script is <code>/etc/init.d/docker</code>, but there&rsquo;s also the usual symbolic link
 called <code>/usr/sbin/rcdocker</code>.</p>
 
 <p>To start the docker daemon just type:</p>
@@ -208,11 +203,11 @@ called <code>/usr/sbin/rcdocker</code>.</p>
 <p>This will trigger the following actions:</p>
 
 <ol>
-<li>The <code>docker0</code> bridge interface is created. This interface is bridged
-with <code>eth0</code>.</li>
-<li>A <code>dnsmasq</code> instance listening on the <code>docker0</code> interface is started.</li>
-<li>IP forwarding and IP masquerading are enabled.</li>
-<li>Docker daemon is started.</li>
+<li> The <code>docker0</code> bridge interface is created. This interface is bridged
+ with <code>eth0</code>.</li>
+<li> A <code>dnsmasq</code> instance listening on the <code>docker0</code> interface is started.</li>
+<li> IP forwarding and IP masquerading are enabled.</li>
+<li> Docker daemon is started.</li>
 </ol>
 
 
@@ -228,9 +223,9 @@ with <code>eth0</code>.</li>
 <a href="http://www.dotcloud.com/">dotCloud</a> guys.</p>
 
 <p>You will be able to run the Ubuntu container on your openSUSE host without any
-problem, that&#8217;s LXC&#8217;s &#8220;magic&#8221; ;)</p>
+problem, that&rsquo;s LXC&rsquo;s &ldquo;magic&rdquo; ;)</p>
 
-<p>If you want to use only &#8220;green&#8221; products just pull the openSUSE 12.3 container
+<p>If you want to use only &ldquo;green&rdquo; products just pull the openSUSE 12.3 container
 I created for you:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -243,26 +238,26 @@ to be sure everything works fine before doing that.</p>
 
 <p>Now you can go through the <a href="http://docs.docker.io/en/latest/examples/running_examples/">examples</a>
 reported on the official
-<a href="http://docs.docker.io/en/latest/concepts/containers/">docker&#8217;s documentation</a>.</p>
+<a href="http://docs.docker.io/en/latest/concepts/containers/">docker&rsquo;s documentation</a>.</p>
 
 <h2>Create your own openSUSE images with SUSE Studio</h2>
 
-<p>I think it would be extremely cool to create docker&#8217;s images using
+<p>I think it would be extremely cool to create docker&rsquo;s images using
 <a href="http://susestudio.com">SUSE Studio</a>.
-As you might know I&#8217;m part of the SUSE Studio team, so I looked a bit into how
+As you might know I&rsquo;m part of the SUSE Studio team, so I looked a bit into how
 to add support to this new format.</p>
 
-<p><strong>&#8211; personal opinion &#8211;</strong></p>
+<p><strong>&ndash; personal opinion &ndash;</strong></p>
 
-<p>There are some technical challenges to solve, but I don&#8217;t think it would be hard
+<p>There are some technical challenges to solve, but I don&rsquo;t think it would be hard
 to address them.</p>
 
-<p><strong>&#8211; personal opinion &#8211;</strong></p>
+<p><strong>&ndash; personal opinion &ndash;</strong></p>
 
 <p>If you are interested in adding the docker format to SUSE Studio please create
 a new feature request on <a href="https://features.opensuse.org/">openFATE</a> and vote it!</p>
 
-<p>In the meantime there&#8217;s another way to create your custom docker images, just
+<p>In the meantime there&rsquo;s another way to create your custom docker images, just
 keep reading.</p>
 
 <h2>Create your own openSUSE images with KIWI</h2>
@@ -292,9 +287,9 @@ the <code>kiwi-doc</code> package:</p>
 KIWI (<code>config.sh</code> and <code>config.xml</code>) plus the <code>root</code> directory.</p>
 
 <p>The contents of this directory are going to be added to the resulting container.
-It&#8217;s really important to create the <code>/etc/resolv.conf</code> file inside of the
+It&rsquo;s really important to create the <code>/etc/resolv.conf</code> file inside of the
 final image since docker is going to mount the <code>resol.conf</code> file of the host
-system inside of the running guest. If the file is not found docker won&#8217;t be able
+system inside of the running guest. If the file is not found docker won&rsquo;t be able
 to start our container.</p>
 
 <p>An empty file is enough:</p>
@@ -309,7 +304,7 @@ to start our container.</p>
 </pre></td><td class='code'><pre><code class=''><span class='line'>sudo /usr/sbin/kiwi --prepare ~/openSUSE_12_3_docker --root /tmp/openSUSE_12_3_docker_rootfs</span></code></pre></td></tr></table></div></figure>
 
 
-<p>We can skip the next step reported on KIWI&#8217;s documentation, that&#8217;s not needed
+<p>We can skip the next step reported on KIWI&rsquo;s documentation, that&rsquo;s not needed
 with docker because it will produce an invalid container. Just execute the
 following command:</p>
 
@@ -330,7 +325,7 @@ following command:</p>
 <p>Importing the image from a web server is really convenient if you ran KIWI
 on a different machine.</p>
 
-<p>Just move the tarball to a directory which is exposed by the web server. If you don&#8217;t
+<p>Just move the tarball to a directory which is exposed by the web server. If you don&rsquo;t
 have one installed just move to the directory containing the tarball and type the following
 command:</p>
 
@@ -353,10 +348,10 @@ command:</p>
 
 
 <p>Docker will download (just in the 1st case) and import the tarball. The resulting
-image will be named <em>&#8216;my_openSUSE_image&#8217;</em> and it will have a tag named <em>&#8216;latest&#8217;</em>.</p>
+image will be named <em>&lsquo;my_openSUSE_image&rsquo;</em> and it will have a tag named <em>&lsquo;latest&rsquo;</em>.</p>
 
 <p>The name of the tag is really important since docker tries to run the
-image with the <em>&#8216;latest&#8217;</em> tag unless you explicitly specify a different value.</p>
+image with the <em>&lsquo;latest&rsquo;</em> tag unless you explicitly specify a different value.</p>
 
 <h2>Conclusion</h2>
 
@@ -379,19 +374,12 @@ too using docker on openSUSE.</p>
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2013-04-12T14:45:00+02:00" pubdate data-updated="true">Apr 12<span>th</span>, 2013</time>
+<time class='entry-date' datetime='2013-04-12T14:45:00+02:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>2:45 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/cloud/'>cloud</a>, <a class='category' href='/blog/categories/hackweek/'>hackweek</a>, <a class='category' href='/blog/categories/opensuse/'>openSUSE</a>, <a class='category' href='/blog/categories/paas/'>paas</a>
+    <a class='category' href='/blog/categories/cloud/'>cloud</a>, <a class='category' href='/blog/categories/hackweek/'>hackweek</a>, <a class='category' href='/blog/categories/opensuse/'>opensuse</a>, <a class='category' href='/blog/categories/paas/'>paas</a>
   
 </span>
 
@@ -400,7 +388,7 @@ too using docker on openSUSE.</p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://flavio.castelli.name/2013/04/12/docker-and-opensuse/" data-via="flavio_castelli" data-counturl="http://flavio.castelli.name/2013/04/12/docker-and-opensuse/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://flavio.castelli.name/2013/04/12/docker-and-opensuse/" data-via="flavio_castelli" data-counturl="http://flavio.castelli.name/2013/04/12/docker-and-opensuse/" >Tweet</a>
   
   
   
@@ -433,23 +421,23 @@ too using docker on openSUSE.</p>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/2014/05/06/building-docker-containers-with-kiwi/">Building docker images with KIWI</a>
+        <a href="/2014/05/06/building-docker-containers-with-kiwi/">Building Docker Images With KIWI</a>
       </li>
     
       <li class="post">
-        <a href="/2014/02/13/docker-and-opensuse-getting-closer/">Docker and openSUSE getting closer</a>
+        <a href="/2014/02/13/docker-and-opensuse-getting-closer/">Docker and openSUSE Getting Closer</a>
       </li>
     
       <li class="post">
-        <a href="/2013/11/28/better-docker-experience-on-opensuse/">Better Docker experience on openSUSE</a>
+        <a href="/2013/11/28/better-docker-experience-on-opensuse/">Better Docker Experience on openSUSE</a>
       </li>
     
       <li class="post">
-        <a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: a container full of Geekos</a>
+        <a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: A Container Full of Geekos</a>
       </li>
     
       <li class="post">
-        <a href="/2012/11/27/qjson-0-dot-8-1-released/">qjson 0.8.1 released</a>
+        <a href="/2012/11/27/qjson-0-dot-8-1-released/">Qjson 0.8.1 Released</a>
       </li>
     
   </ul>
@@ -458,13 +446,13 @@ too using docker on openSUSE.</p>
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating...</li>
+    <li class="loading">Status updating&#8230;</li>
   </ul>
   
   <a href="https://github.com/flavio">@flavio</a> on GitHub
   
   <script type="text/javascript">
-    $.domReady(function(){
+    $(document).ready(function(){
         if (!window.jXHR){
             var jxhr = document.createElement('script');
             jxhr.type = 'text/javascript';
@@ -488,7 +476,7 @@ too using docker on openSUSE.</p>
 <section>
   <h1>Latest Tweets</h1>
   <ul id="tweets">
-    <li class="loading">Status updating...</li>
+    <li class="loading">Status updating&#8230;</li>
   </ul>
   <script type="text/javascript">
     $.domReady(function(){
@@ -500,9 +488,6 @@ too using docker on openSUSE.</p>
     <a href="http://twitter.com/flavio_castelli" class="twitter-follow-button" data-show-count="false">Follow @flavio_castelli</a>
   
 </section>
-
-
-
 
 
   
@@ -530,7 +515,7 @@ too using docker on openSUSE.</p>
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -546,7 +531,7 @@ too using docker on openSUSE.</p>
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

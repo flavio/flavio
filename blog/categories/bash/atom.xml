@@ -4,7 +4,7 @@
   <title><![CDATA[Category: bash | Flavio Castelli]]></title>
   <link href="http://flavio.castelli.name/blog/categories/bash/atom.xml" rel="self"/>
   <link href="http://flavio.castelli.name/"/>
-  <updated>2014-08-30T10:16:47+02:00</updated>
+  <updated>2014-08-30T22:16:16+02:00</updated>
   <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
@@ -18,16 +18,16 @@
     <link href="http://flavio.castelli.name/2010/08/11/jump/"/>
     <updated>2010-08-11T21:29:29+02:00</updated>
     <id>http://flavio.castelli.name/2010/08/11/jump</id>
-    <content type="html"><![CDATA[<p><a href="http://flavio.castelli.name/wp-content/uploads/2010/08/van-halen-%0Ajump.jpeg"></a>Let me introduce a small project I've been working on with a friend
+    <content type="html"><![CDATA[<p><a href="http://flavio.castelli.name/wp-content/uploads/2010/08/van-halen-%0Ajump.jpeg"></a>Let me introduce a small project I&rsquo;ve been working on with a friend
 of mine, <a href="http://twitter.com/gcapizzi">Giuseppe Capizzi</a>. The project is
 called <strong>jump</strong> and ﻿allows you to quickly change directories in the bash
 shell using bookmarks.</p>
 
-<p>Thanks to Jump, you won't have to type those long paths anymore.</p>
+<p>Thanks to Jump, you won&rsquo;t have to type those long paths anymore.</p>
 
 <p><img src="/images/jump/van-halen-jump.jpeg"></p>
 
-<p>You can find jump's source code, detailed documentation and installation
+<p>You can find jump&rsquo;s source code, detailed documentation and installation
 instructions <a href="http://github.com/flavio/jump">here</a>.</p>
 
 <p>SUSE packages can be found
@@ -45,7 +45,7 @@ instructions <a href="http://github.com/flavio/jump">here</a>.</p>
 <p><strong>Requirements:</strong> In order to run <em>remove-svn</em> requires python.</p>
 
 <p><strong>Synopsis:</strong> <em>remove-svn</em> syntax is: <code>remove-svn dir</code> in this way remove-svn will recursively remove all <em>.svn</em> directories found under dir.<br/>
-An example: <code>remove-svn</code>pwd``</p>
+An example: <code>remove-svn</code>pwd&#8220;</p>
 
 <p><strong>UPDATE</strong> A faster way for removing <em>.svn</em> file through this simple bash command: <code>find ./ -name *svn* | xargs rm -rf</code></p>
 
@@ -66,8 +66,8 @@ directory.</p>
 <h3>Requirements:</h3>
 
 <p>id3medit relies on id3v2, a command-line tool for editing id3v2 tags file
-names must be in format: <em>'## - trackname.ext'</em>. Where <em>##</em> is track's number,
-and <em>ext</em> is file's extension (mp3 or ogg in case insensitive format)</p>
+names must be in format: <em>&lsquo;## - trackname.ext&rsquo;</em>. Where <em>##</em> is track&rsquo;s number,
+and <em>ext</em> is file&rsquo;s extension (mp3 or ogg in case insensitive format)</p>
 
 <h3>Synopsis:</h3>
 

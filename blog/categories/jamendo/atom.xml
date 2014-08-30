@@ -4,7 +4,7 @@
   <title><![CDATA[Category: jamendo | Flavio Castelli]]></title>
   <link href="http://flavio.castelli.name/blog/categories/jamendo/atom.xml" rel="self"/>
   <link href="http://flavio.castelli.name/"/>
-  <updated>2014-08-30T10:16:47+02:00</updated>
+  <updated>2014-08-30T22:16:16+02:00</updated>
   <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
@@ -18,13 +18,13 @@
     <link href="http://flavio.castelli.name/2008/10/03/ruby-downloader-for-jamendo/"/>
     <updated>2008-10-03T11:28:28+02:00</updated>
     <id>http://flavio.castelli.name/2008/10/03/ruby-downloader-for-jamendo</id>
-    <content type="html"><![CDATA[<p>Also this year I'll attend the Linux day (a day dedicated to Gnu/Linux  and
+    <content type="html"><![CDATA[<p>Also this year I&rsquo;ll attend the Linux day (a day dedicated to Gnu/Linux  and
 FLOSS that occurs every year in Italy) organized by my <a href="http://bglug.it">LUG</a>.
-Guess what I'll be talking about... ;)</p>
+Guess what I&rsquo;ll be talking about&hellip; ;)</p>
 
 <p>While organizing the event somebody proposed to setup a local server with some
 music released under CC license. He suggested to download some albums from
-<a href="http://www.jamendo.com">Jamendo</a> (due to network issues we won't be able to
+<a href="http://www.jamendo.com">Jamendo</a> (due to network issues we won&rsquo;t be able to
 provide direct access to the website).</p>
 
 <p>Since nobody wanted to download the albums by hand, last night I wrote a small
@@ -38,7 +38,7 @@ ruby program that does the dirty job.</p>
 
 <p>Help:<a href="http://www.flavio.castelli.name/wp-%0Acontent/uploads/2008/10/jamendo_downloader.rb"></a></p>
 
-<p>   ./jamendo_downloader.rb --help</p>
+<p>   ./jamendo_downloader.rb &ndash;help</p>
 
 <p>Download the top 10 rock albums:</p>
 
@@ -46,7 +46,7 @@ ruby program that does the dirty job.</p>
 
 <h3>Have fun</h3>
 
-<p>I think there's nothing more to say... enjoy it!</p>
+<p>I think there&rsquo;s nothing more to say&hellip; enjoy it!</p>
 
 <p><div><script src='https://gist.github.com/2437530.js?file=jamendo_downloader.rb'></script>
 <noscript><pre><code>#!/usr/bin/ruby

@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Better Docker experience on openSUSE - Flavio Castelli</title>
+  <title>Better Docker Experience on openSUSE - Flavio Castelli</title>
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="I don&#8217;t know if you are aware of that, but Docker 0.7.0 has been released a
+  <meta name="description" content="I don&rsquo;t know if you are aware of that, but Docker 0.7.0 has been released a
 couple of days ago. You can read the full announcement here,
 but &hellip;">
   
@@ -20,21 +20,22 @@ but &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://flavio.castelli.name/2013/11/28/better-docker-experience-on-opensuse/">
+  <link rel="canonical" href="http://flavio.castelli.name/2013/11/28/better-docker-experience-on-opensuse">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="Flavio Castelli" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
 <!-- openid delegation -->
 <!-- myopenid -->
-<!--<link rel="openid.server" href="http://www.myopenid.com/server" />-->
-<!--<link rel="openid.delegate" href="http://flavio.castelli.myopenid.com/" />-->
+<!--<link rel="openid.server" href="http://www.myopenid.com/server" />&#8211;>
+<!--<link rel="openid.delegate" href="http://flavio.castelli.myopenid.com/" />&#8211;>
 
  <!--claimid -->
 <link rel="openid.server" href="http://openid.claimid.com/server" />
@@ -102,30 +103,24 @@ but &hellip;">
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2013-11-28T17:28:00+01:00" pubdate data-updated="true">Nov 28<span>th</span>, 2013</time>
+<time class='entry-date' datetime='2013-11-28T17:28:00+01:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>5:28 pm</span></time>
         
-         | <a href="#disqus_thread">Comments</a>
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://flavio.castelli.name">Comments</a>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>I don&#8217;t know if you are aware of that, but Docker 0.7.0 has been released a
+<div class="entry-content"><p>I don&rsquo;t know if you are aware of that, but Docker 0.7.0 has been released a
 couple of days ago.</p>
 
 <p>You can read the full announcement <a href="http://blog.docker.io/2013/11/docker-0-7-docker-now-runs-on-any-linux-distribution/">here</a>,
 but let me talk about the biggest change introduced by this release: storage drivers!</p>
 
 <p>Docker has always used <a href="http://aufs.sourceforge.net/">AUFS</a>,
-a &#8221;<a href="https://en.wikipedia.org/wiki/UnionFS">unionfs-like</a>&#8221; file system, to power
+a &ldquo;<a href="https://en.wikipedia.org/wiki/UnionFS">unionfs-like</a>&rdquo; file system, to power
 its containers. Unfortunately AUFS is neither part of the official kernel nor
 of the openSUSE/SLE one.</p>
 
@@ -137,13 +132,13 @@ a real pain both for me and for the end users.</p>
 different. In our case Docker is going to use <a href="https://lwn.net/Articles/465740/">thin provisioning</a>,
 a consolidated technology which is part of the mainstream kernel since quite some time.</p>
 
-<p>Moreover Docker&#8217;s community is working on experimental drivers for BTRFS, ZFS,
+<p>Moreover Docker&rsquo;s community is working on experimental drivers for BTRFS, ZFS,
 Gluster and Ceph.</p>
 
 <h2>What changes now for openSUSE?</h2>
 
 <p>Running Docker is incredibly simple now: just use the <a href="http://software.opensuse.org/package/docker">1 click install</a>
-and download it from the <em>&#8216;home:flavio_castelli:docker&#8217;</em> project.</p>
+and download it from the <em>&lsquo;home:flavio_castelli:docker&rsquo;</em> project.</p>
 
 <p>As I said earlier: <strong>no custom kernel is required</strong>. You are going to keep the
 one shipped by the official openSUSE repositories.</p>
@@ -158,12 +153,12 @@ is not found).</p>
 <h3>Support SLE</h3>
 
 <p>Right now Docker works fine on openSUSE 12.3 and 13.1 but not on SLE 11 SP3. During
-the next days I&#8217;m going to look into this issue. I want to have a stable and working
+the next days I&rsquo;m going to look into this issue. I want to have a stable and working
 package for SLE.</p>
 
 <h3>Make it more official</h3>
 
-<p>Once the package is proved to be stable enough I&#8217;ll submit it for inclusion inside
+<p>Once the package is proved to be stable enough I&rsquo;ll submit it for inclusion inside
 of the <a href="https://build.opensuse.org/project/show/Virtualization">Virtualization</a>
 project on OBS.</p>
 
@@ -183,19 +178,12 @@ project on OBS.</p>
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2013-11-28T17:28:00+01:00" pubdate data-updated="true">Nov 28<span>th</span>, 2013</time>
+<time class='entry-date' datetime='2013-11-28T17:28:00+01:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>5:28 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/cloud/'>cloud</a>, <a class='category' href='/blog/categories/opensuse/'>openSUSE</a>, <a class='category' href='/blog/categories/paas/'>paas</a>
+    <a class='category' href='/blog/categories/cloud/'>cloud</a>, <a class='category' href='/blog/categories/opensuse/'>opensuse</a>, <a class='category' href='/blog/categories/paas/'>paas</a>
   
 </span>
 
@@ -204,7 +192,7 @@ project on OBS.</p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://flavio.castelli.name/2013/11/28/better-docker-experience-on-opensuse/" data-via="flavio_castelli" data-counturl="http://flavio.castelli.name/2013/11/28/better-docker-experience-on-opensuse/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://flavio.castelli.name/2013/11/28/better-docker-experience-on-opensuse/" data-via="flavio_castelli" data-counturl="http://flavio.castelli.name/2013/11/28/better-docker-experience-on-opensuse/" >Tweet</a>
   
   
   
@@ -237,23 +225,23 @@ project on OBS.</p>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/2014/05/06/building-docker-containers-with-kiwi/">Building docker images with KIWI</a>
+        <a href="/2014/05/06/building-docker-containers-with-kiwi/">Building Docker Images With KIWI</a>
       </li>
     
       <li class="post">
-        <a href="/2014/02/13/docker-and-opensuse-getting-closer/">Docker and openSUSE getting closer</a>
+        <a href="/2014/02/13/docker-and-opensuse-getting-closer/">Docker and openSUSE Getting Closer</a>
       </li>
     
       <li class="post">
-        <a href="/2013/11/28/better-docker-experience-on-opensuse/">Better Docker experience on openSUSE</a>
+        <a href="/2013/11/28/better-docker-experience-on-opensuse/">Better Docker Experience on openSUSE</a>
       </li>
     
       <li class="post">
-        <a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: a container full of Geekos</a>
+        <a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: A Container Full of Geekos</a>
       </li>
     
       <li class="post">
-        <a href="/2012/11/27/qjson-0-dot-8-1-released/">qjson 0.8.1 released</a>
+        <a href="/2012/11/27/qjson-0-dot-8-1-released/">Qjson 0.8.1 Released</a>
       </li>
     
   </ul>
@@ -262,13 +250,13 @@ project on OBS.</p>
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating...</li>
+    <li class="loading">Status updating&#8230;</li>
   </ul>
   
   <a href="https://github.com/flavio">@flavio</a> on GitHub
   
   <script type="text/javascript">
-    $.domReady(function(){
+    $(document).ready(function(){
         if (!window.jXHR){
             var jxhr = document.createElement('script');
             jxhr.type = 'text/javascript';
@@ -292,7 +280,7 @@ project on OBS.</p>
 <section>
   <h1>Latest Tweets</h1>
   <ul id="tweets">
-    <li class="loading">Status updating...</li>
+    <li class="loading">Status updating&#8230;</li>
   </ul>
   <script type="text/javascript">
     $.domReady(function(){
@@ -304,9 +292,6 @@ project on OBS.</p>
     <a href="http://twitter.com/flavio_castelli" class="twitter-follow-button" data-show-count="false">Follow @flavio_castelli</a>
   
 </section>
-
-
-
 
 
   
@@ -334,7 +319,7 @@ project on OBS.</p>
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -350,7 +335,7 @@ project on OBS.</p>
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

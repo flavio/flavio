@@ -4,7 +4,7 @@
   <title><![CDATA[Category: perl | Flavio Castelli]]></title>
   <link href="http://flavio.castelli.name/blog/categories/perl/atom.xml" rel="self"/>
   <link href="http://flavio.castelli.name/"/>
-  <updated>2014-08-30T10:16:47+02:00</updated>
+  <updated>2014-08-30T22:16:16+02:00</updated>
   <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
@@ -27,7 +27,7 @@ translations updated.</p>
 <h3>Features:</h3>
 
 <ul>
-<li>mail notification support (straight to guide's translator or to a specified address)</li>
+<li>mail notification support (straight to guide&rsquo;s translator or to a specified address)</li>
 <li>filter guides using regular expressions</li>
 </ul>
 
@@ -75,12 +75,12 @@ smtpdebug = 0
 
 <p>You can automate gen-docheck adding it to cron.</p>
 
-<p>Here's an example:</p>
+<p>Here&rsquo;s an example:</p>
 
 <pre><code>0 10 * * 0 /home/micron/gen\-docheck/gen\-docheck.pl --config /home/micron/gen\-docheck/gen\-docheck.conff
 </code></pre>
 
-<p>In this way you'll run gen-docheck every sunday at 10:00 AM</p>
+<p>In this way you&rsquo;ll run gen-docheck every sunday at 10:00 AM</p>
 
 <h3>Download</h3>
 

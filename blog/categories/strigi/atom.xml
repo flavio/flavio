@@ -4,7 +4,7 @@
   <title><![CDATA[Category: strigi | Flavio Castelli]]></title>
   <link href="http://flavio.castelli.name/blog/categories/strigi/atom.xml" rel="self"/>
   <link href="http://flavio.castelli.name/"/>
-  <updated>2014-08-30T10:16:47+02:00</updated>
+  <updated>2014-08-30T22:16:16+02:00</updated>
   <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
@@ -18,17 +18,17 @@
     <link href="http://flavio.castelli.name/2008/05/27/still-coding/"/>
     <updated>2008-05-27T21:36:29+02:00</updated>
     <id>http://flavio.castelli.name/2008/05/27/still-coding</id>
-    <content type="html"><![CDATA[<p>Yes, long time has passed since my last post (really strange, isn't it :D ).
-It has been a busy period, full of work, dog training and... coding
+    <content type="html"><![CDATA[<p>Yes, long time has passed since my last post (really strange, isn&rsquo;t it :D ).
+It has been a busy period, full of work, dog training and&hellip; coding
 (fortunately!).</p>
 
-<p>During this time I've been working on XesamQLib creation. This is a Qt based
+<p>During this time I&rsquo;ve been working on XesamQLib creation. This is a Qt based
 library for accessing <a href="http://www.xesam.org/main">Xesam</a> services. Its API is
 going to be similar to <a href="http://xesam.org/people/kamstrup/xesam-%0Aglib/">Xesam-glib</a> one and it will make life easier for developers who want to interact
 with programs exposing Xesam service (who talked about <em>Strigi</em>? :D )</p>
 
-<p>Right now I'm finishing to clean the code, in order to publish a first version
-of XesamQLib on KDE repository. I'll keep you updated.</p>
+<p>Right now I&rsquo;m finishing to clean the code, in order to publish a first version
+of XesamQLib on KDE repository. I&rsquo;ll keep you updated.</p>
 ]]></content>
   </entry>
   
@@ -39,8 +39,8 @@ of XesamQLib on KDE repository. I'll keep you updated.</p>
     <id>http://flavio.castelli.name/2008/01/18/my_current_tasks</id>
     <content type="html"><![CDATA[<p>Usually I write blog posts announcing <strong>what I have done</strong>, but this time
 <a href="http://pollycoke.net/2008/01/14/strigi-ha-un-piano-di-sviluppo-%0Afinalmente/">it</a> <a href="http://www.kdedevelopers.org/node/3204">is</a>
-<a href="http://strigi.sourceforge.net/?q=strigi_metting_summary">useless</a>. So I'm
-going to blog about <strong>what I'm going to do</strong>.  After latest Strigi irc
+<a href="http://strigi.sourceforge.net/?q=strigi_metting_summary">useless</a>. So I&rsquo;m
+going to blog about <strong>what I&rsquo;m going to do</strong>.  After latest Strigi irc
 meeting, I came out with this task:</p>
 
 <blockquote><p>KDE integration: Flavio will coordinate the definition of interfaces over
@@ -59,13 +59,13 @@ for indexing for more than just files)</p></li>
 <p>Once this interface will be ready, it will be easy to integrate Strigi
 functionalities inside KDE programs. This mean (just reporting the most
 relevant cases) that it will be possible to create a Strigi krunner, have
-metadata extraction inside Dolphin and Konqueror, interact with Akonadi...</p>
+metadata extraction inside Dolphin and Konqueror, interact with Akonadi&hellip;</p>
 
 <p>Talking about Xesam, right in these days I got a mail from <a href="http://developer.berlios.de/blog/authors/6825-Fabrice-Colin">Fabrice Colin</a>, author of
 <a href="http://pinot.berlios.de/">Pinot</a>. Recently Fabrice made some improvements on
-Pinot's <em>XesamQueryLanguage</em> parser (which is also <a href="http://www.flavio.castelli.name/strigi_xesam_query_language_support">used by Strigi</a>).
-We're now figuring out how to share our code in a more convenient way. Maybe
-we'll use <a href="http://svnbook.red-bean.com/nightly/en/svn.advanced.externals.html">svn external</a>...</p>
+Pinot&rsquo;s <em>XesamQueryLanguage</em> parser (which is also <a href="http://www.flavio.castelli.name/strigi_xesam_query_language_support">used by Strigi</a>).
+We&rsquo;re now figuring out how to share our code in a more convenient way. Maybe
+we&rsquo;ll use <a href="http://svnbook.red-bean.com/nightly/en/svn.advanced.externals.html">svn external</a>&hellip;</p>
 ]]></content>
   </entry>
   
@@ -76,11 +76,11 @@ we'll use <a href="http://svnbook.red-bean.com/nightly/en/svn.advanced.externals
     <id>http://flavio.castelli.name/2008/01/11/strigi_irc_meeting_january</id>
     <content type="html"><![CDATA[<p>Just giving more voice to <a href="http://strigi.sourceforge.net/?q=january_2008_strigi_irc_meeting">original announce</a>:
 Tomorrow, Saturday 12 January, at 17 UTC an irc meeting will take place on
-<em>#strigi</em> channel (it's on freenode if you don't know).</p>
+<em>#strigi</em> channel (it&rsquo;s on freenode if you don&rsquo;t know).</p>
 
 <p>During the meeting Strigi developers will discuss about the future developments of Strigi.</p>
 
-<p>Special guest: Aaron Aseigo. You're all welcome.</p>
+<p>Special guest: Aaron Aseigo. You&rsquo;re all welcome.</p>
 ]]></content>
   </entry>
   
@@ -92,7 +92,7 @@ Tomorrow, Saturday 12 January, at 17 UTC an irc meeting will take place on
     <content type="html"><![CDATA[<p>As you may know, KDE4 will use Strigi for meta information extraction instead
 of the old <a href="http://api.kde.org/3.5-api/kdelibs-%0Aapidocs/kio/kio/html/classKFilePlugin.html">KFilePlugin</a> classes.</p>
 
-<p>Since Strigi's analyzer work in a different way, lot of code has to be ported.
+<p>Since Strigi&rsquo;s analyzer work in a different way, lot of code has to be ported.
 Unfortunately, after a good start, some relevant analyzers were still missing.</p>
 
 <p>But in the last weeks Strigi gained support of:</p>
@@ -108,8 +108,8 @@ Unfortunately, after a good start, some relevant analyzers were still missing.</
 </ul>
 
 
-<p>I've also updated <a href="http://wiki.kde.org/tiki-index.php?page=Porting+KFilePlugin+Progress">this</a> summary page. As you can see
-there's still some work to do, but don't worry... I'll try to do the best ;)</p>
+<p>I&rsquo;ve also updated <a href="http://wiki.kde.org/tiki-index.php?page=Porting+KFilePlugin+Progress">this</a> summary page. As you can see
+there&rsquo;s still some work to do, but don&rsquo;t worry&hellip; I&rsquo;ll try to do the best ;)</p>
 ]]></content>
   </entry>
   
@@ -118,7 +118,7 @@ there's still some work to do, but don't worry... I'll try to do the best ;)</p>
     <link href="http://flavio.castelli.name/2007/11/26/strigi-gains-fam-support/"/>
     <updated>2007-11-26T12:33:52+01:00</updated>
     <id>http://flavio.castelli.name/2007/11/26/strigi-gains-fam-support</id>
-    <content type="html"><![CDATA[<p>Last Monday I submitted lot of changes into Strigi's trunk. I've heavily
+    <content type="html"><![CDATA[<p>Last Monday I submitted lot of changes into Strigi&rsquo;s trunk. I&rsquo;ve heavily
 refactored some classes in order to obtain a more flexible file system
 notification infrastructure. Thanks to this work now it will be easier to add
 support for new file system notification facilities.  For example, in order to

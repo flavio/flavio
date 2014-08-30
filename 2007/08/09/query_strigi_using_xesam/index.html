@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>How to have some fun with Strigi and Xesam queries - Flavio Castelli</title>
+  <title>How to Have Some Fun With Strigi and Xesam Queries - Flavio Castelli</title>
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="Last day just after I hit the &#8220;submit&#8221; button a doubt came into my mind:
-&#8220;did I say everything ?&#8221; Well, the answer is &#8220; &hellip;">
+  <meta name="description" content="Last day just after I hit the &ldquo;submit&rdquo; button a doubt came into my mind:
+&ldquo;did I say everything ?&rdquo; Well, the answer is &ldquo; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,21 +19,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://flavio.castelli.name/2007/08/09/query_strigi_using_xesam/">
+  <link rel="canonical" href="http://flavio.castelli.name/2007/08/09/query_strigi_using_xesam">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="Flavio Castelli" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
 <!-- openid delegation -->
 <!-- myopenid -->
-<!--<link rel="openid.server" href="http://www.myopenid.com/server" />-->
-<!--<link rel="openid.delegate" href="http://flavio.castelli.myopenid.com/" />-->
+<!--<link rel="openid.server" href="http://www.myopenid.com/server" />&#8211;>
+<!--<link rel="openid.delegate" href="http://flavio.castelli.myopenid.com/" />&#8211;>
 
  <!--claimid -->
 <link rel="openid.server" href="http://openid.claimid.com/server" />
@@ -101,24 +102,18 @@
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2007-08-09T13:10:30+02:00" pubdate data-updated="true">Aug 9<span>th</span>, 2007</time>
+<time class='entry-date' datetime='2007-08-09T13:10:30+02:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2007</span></span> <span class='time'>1:10 pm</span></time>
         
-         | <a href="#disqus_thread">Comments</a>
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://flavio.castelli.name">Comments</a>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Last day just after I hit the <em>&#8220;submit&#8221;</em> button a doubt came into my mind:
-&#8220;did I say everything ?&#8221; Well, the answer is <strong>&#8220;No!&#8221;</strong> In fact I forgot to
+<div class="entry-content"><p>Last day just after I hit the <em>&ldquo;submit&rdquo;</em> button a doubt came into my mind:
+&ldquo;did I say everything ?&rdquo; Well, the answer is <strong>&ldquo;No!&rdquo;</strong> In fact I forgot to
 tell you one of the most important things: <em>how to have some fun with Strigi
 and Xesam!</em> Actually the only way to perform <em>XesamQueryLanguage</em> queries with
 Strigi is through the <em>strigicmd</em> program.</p>
@@ -137,22 +132,23 @@ different actions like:</p>
 </ul>
 
 
-<p>So, if you want to try the new Xesam support you&#8217;ve just to use <em>strigicmd</em>
+<p>So, if you want to try the new Xesam support you&rsquo;ve just to use <em>strigicmd</em>
 with the <em>xesamquery</em> option. The command syntax is: <code>strigicmd xesamquery -t
 backend -d indexdir [-u xesam_user_language_file] [-q
-xesam_query_language_file]</code> As you can expect you&#8217;ve to save your Xesam query
+xesam_query_language_file]</code> As you can expect you&rsquo;ve to save your Xesam query
 to file and point <em>strigicmd</em> to it.</p>
 
 <p>This is a really small step-by-step guide:</p>
 
 <ul>
-<li>Create a new Strigi index (in this case I&#8217;ll index all irc logs): <code>strigicmd create -t clucene -d temp/ logs/</code></li>
-<li>Create a simple file containing your Xesam query. You can find some example query on <a href="http://www.freedesktop.org/wiki/XesamQueryLanguage">Xesam site</a> or inside strigi tarball (complete path: <em>strigi/src/streamanalyzer/xesam/testqueries/</em>). This is a stupid and easy query:</li>
+<li>Create a new Strigi index (in this case I&rsquo;ll index all irc logs): <code>strigicmd create -t clucene -d temp/ logs/</code></li>
+<li><p>Create a simple file containing your Xesam query. You can find some example query on <a href="http://www.freedesktop.org/wiki/XesamQueryLanguage">Xesam site</a> or inside strigi tarball (complete path: <em>strigi/src/streamanalyzer/xesam/testqueries/</em>). This is a stupid and easy query:</p>
+
+<p><figure class='code'><figcaption><span>[query] [ ] </span></figcaption></p></li>
 </ul>
 
 
-<figure class='code'><figcaption><span>[query] [] </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -178,8 +174,10 @@ to file and point <em>strigicmd</em> to it.</p>
 </span><span class='line'>    <span class="nt">&lt;/query&gt;</span>
 </span><span class='line'>    <span class="nt">&lt;/request&gt;</span>
 </span><span class='line'>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table></div>
 
+
+<p></figure></p>
 
 <ul>
 <li><p>Perform the search, just type:</p>
@@ -189,7 +187,7 @@ to file and point <em>strigicmd</em> to it.</p>
 </ul>
 
 
-<p>Remember that <em>XesamUserLanguage</em> query language isn&#8217;t yet supported.</p>
+<p>Remember that <em>XesamUserLanguage</em> query language isn&rsquo;t yet supported.</p>
 </div>
 
 
@@ -205,19 +203,12 @@ to file and point <em>strigicmd</em> to it.</p>
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2007-08-09T13:10:30+02:00" pubdate data-updated="true">Aug 9<span>th</span>, 2007</time>
+<time class='entry-date' datetime='2007-08-09T13:10:30+02:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2007</span></span> <span class='time'>1:10 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/kde/'>KDE</a>, <a class='category' href='/blog/categories/howto/'>howto</a>, <a class='category' href='/blog/categories/strigi/'>strigi</a>, <a class='category' href='/blog/categories/xesam/'>xesam</a>
+    <a class='category' href='/blog/categories/howto/'>howto</a>, <a class='category' href='/blog/categories/kde/'>kde</a>, <a class='category' href='/blog/categories/strigi/'>strigi</a>, <a class='category' href='/blog/categories/xesam/'>xesam</a>
   
 </span>
 
@@ -226,7 +217,7 @@ to file and point <em>strigicmd</em> to it.</p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://flavio.castelli.name/2007/08/09/query_strigi_using_xesam/" data-via="flavio_castelli" data-counturl="http://flavio.castelli.name/2007/08/09/query_strigi_using_xesam/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://flavio.castelli.name/2007/08/09/query_strigi_using_xesam/" data-via="flavio_castelli" data-counturl="http://flavio.castelli.name/2007/08/09/query_strigi_using_xesam/" >Tweet</a>
   
   
   
@@ -259,23 +250,23 @@ to file and point <em>strigicmd</em> to it.</p>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/2014/05/06/building-docker-containers-with-kiwi/">Building docker images with KIWI</a>
+        <a href="/2014/05/06/building-docker-containers-with-kiwi/">Building Docker Images With KIWI</a>
       </li>
     
       <li class="post">
-        <a href="/2014/02/13/docker-and-opensuse-getting-closer/">Docker and openSUSE getting closer</a>
+        <a href="/2014/02/13/docker-and-opensuse-getting-closer/">Docker and openSUSE Getting Closer</a>
       </li>
     
       <li class="post">
-        <a href="/2013/11/28/better-docker-experience-on-opensuse/">Better Docker experience on openSUSE</a>
+        <a href="/2013/11/28/better-docker-experience-on-opensuse/">Better Docker Experience on openSUSE</a>
       </li>
     
       <li class="post">
-        <a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: a container full of Geekos</a>
+        <a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: A Container Full of Geekos</a>
       </li>
     
       <li class="post">
-        <a href="/2012/11/27/qjson-0-dot-8-1-released/">qjson 0.8.1 released</a>
+        <a href="/2012/11/27/qjson-0-dot-8-1-released/">Qjson 0.8.1 Released</a>
       </li>
     
   </ul>
@@ -284,13 +275,13 @@ to file and point <em>strigicmd</em> to it.</p>
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating...</li>
+    <li class="loading">Status updating&#8230;</li>
   </ul>
   
   <a href="https://github.com/flavio">@flavio</a> on GitHub
   
   <script type="text/javascript">
-    $.domReady(function(){
+    $(document).ready(function(){
         if (!window.jXHR){
             var jxhr = document.createElement('script');
             jxhr.type = 'text/javascript';
@@ -314,7 +305,7 @@ to file and point <em>strigicmd</em> to it.</p>
 <section>
   <h1>Latest Tweets</h1>
   <ul id="tweets">
-    <li class="loading">Status updating...</li>
+    <li class="loading">Status updating&#8230;</li>
   </ul>
   <script type="text/javascript">
     $.domReady(function(){
@@ -326,9 +317,6 @@ to file and point <em>strigicmd</em> to it.</p>
     <a href="http://twitter.com/flavio_castelli" class="twitter-follow-button" data-show-count="false">Follow @flavio_castelli</a>
   
 </section>
-
-
-
 
 
   
@@ -356,7 +344,7 @@ to file and point <em>strigicmd</em> to it.</p>
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -372,7 +360,7 @@ to file and point <em>strigicmd</em> to it.</p>
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>
