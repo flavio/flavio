@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Building docker containers with KIWI - Flavio Castelli</title>
+  <title>Building docker images with KIWI - Flavio Castelli</title>
   <meta name="author" content="Flavio Castelli">
 
   
   <meta name="description" content="I&#8217;m pleased to announce Marcus Schäfer has
-just made possible to build docker containers with KIWI. For those who never heard about it, KIWI is &hellip;">
+just made possible to build docker images with KIWI. For those who never heard about it, KIWI is a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,7 +92,7 @@ just made possible to build docker containers with KIWI. For those who never hea
   
   <header>
     
-      <h1 class="entry-title">Building Docker Containers With KIWI</h1>
+      <h1 class="entry-title">Building Docker Images With KIWI</h1>
     
     
       <p class="meta">
@@ -118,22 +118,22 @@ just made possible to build docker containers with KIWI. For those who never hea
 
 
 <div class="entry-content"><p>I&#8217;m pleased to announce <a href="https://github.com/schaefi">Marcus Schäfer</a> has
-just made possible to build docker containers with <a href="http://opensuse.github.io/kiwi/">KIWI</a>.</p>
+just made possible to build docker images with <a href="http://opensuse.github.io/kiwi/">KIWI</a>.</p>
 
 <p>For those who never heard about it, KIWI is a tool which creates Linux systems
 for both physical and virtual machines. It can create openSUSE, SUSE and other types of
 Linux distributions.</p>
 
 <p><strong>Update:</strong> I changed the required version of kiwi and the openSUSE 13.1 template.
-Kiwi just received some improvements which do no longer force the container
+Kiwi just received some improvements which do no longer force the image
 to include the <em>lxc</em> package.</p>
 
 <h2>Why is this important?</h2>
 
 <p>As you might know Docker has already its <a href="http://docs.docker.io/reference/builder/">build system</a>
-which provides a really easy way to create new containers. However these containers
+which provides a really easy way to create new images. However these images
 must be based on existing ones, which leads to the problem of creating the 1st
-parent container. That&#8217;s where KIWI comes to the rescue.</p>
+parent image. That&#8217;s where KIWI comes to the rescue.</p>
 
 <p>Indeed Kiwi can be used to build the openSUSE/SUSE/whatever docker images that are
 going to act as the foundation blocks of other ones.</p>
@@ -153,7 +153,7 @@ openSUSE 13.1 template.</p>
 <p>Just copy the whole <code>/usr/share/doc/packages/kiwi/examples/suse-13.1/suse-docker-container</code>
 directory to another location and make your changes.</p>
 
-<p>The heart of the whole container is the <code>config.xml</code> file:</p>
+<p>The heart of the whole image is the <code>config.xml</code> file:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -201,7 +201,7 @@ directory to another location and make your changes.</p>
 </span><span class='line'>  <span class="nt">&lt;description</span> <span class="na">type=</span><span class="s">&quot;system&quot;</span><span class="nt">&gt;</span>
 </span><span class='line'>    <span class="nt">&lt;author&gt;</span>Flavio Castelli<span class="nt">&lt;/author&gt;</span>
 </span><span class='line'>    <span class="nt">&lt;contact&gt;</span>fcastelli@suse.com<span class="nt">&lt;/contact&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;specification&gt;</span>openSUSE 13.1 docker container<span class="nt">&lt;/specification&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;specification&gt;</span>openSUSE 13.1 docker image<span class="nt">&lt;/specification&gt;</span>
 </span><span class='line'>  <span class="nt">&lt;/description&gt;</span>
 </span><span class='line'>  <span class="nt">&lt;preferences&gt;</span>
 </span><span class='line'>    <span class="nt">&lt;type</span> <span class="na">image=</span><span class="s">&quot;docker&quot;</span> <span class="na">container=</span><span class="s">&quot;os131&quot;</span><span class="nt">&gt;</span>
@@ -240,36 +240,36 @@ directory to another location and make your changes.</p>
 
 <p>This is a really minimal image which contains just a bunch of packages.</p>
 
-<p>The first step is the creation of the container&#8217;s root system:</p>
+<p>The first step is the creation of the image&#8217;s root system:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='xml'><span class='line'>kiwi -p /usr/share/doc/packages/kiwi/examples/suse-13.1/suse-docker-container \
-</span><span class='line'>     --root /tmp/mycontainer
+</span><span class='line'>     --root /tmp/myimage
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>The next step compresses the file system of the container into a single tarball:</p>
+<p>The next step compresses the file system of the image into a single tarball:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'>kiwi --create /tmp/mycontainer --type docker -d /tmp/mycontainer-result
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>kiwi --create /tmp/myimage --type docker -d /tmp/myimage-result
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>The tarball can be found under <code>/tmp/mycontainer-result</code>. This can be imported
+<p>The tarball can be found under <code>/tmp/myimage-result</code>. This can be imported
 into docker using the following command:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'>docker import - myContainer <span class="err">&lt;</span> /path/to/mycontainer.tbz
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>docker import - myImage <span class="err">&lt;</span> /path/to/myimage.tbz
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>The container named <code>myContainer</code> is now ready to be used.</p>
+<p>The image named <code>myImage</code> is now ready to be used.</p>
 
 <h2>What&#8217;s next</h2>
 
 <p>In the next days I&#8217;ll make another blog post explaining how to build docker
-containers using KIWI and the <a href="http://openbuildservice.org/">Open Build Service</a>.
+images using KIWI and the <a href="http://openbuildservice.org/">Open Build Service</a>.
 This is a powerful combination which allows to achieve continuous delivery.</p>
 
 <p>Stay tuned and have fun!</p>
@@ -340,7 +340,7 @@ This is a powerful combination which allows to achieve continuous delivery.</p>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/2014/05/06/building-docker-containers-with-kiwi/">Building docker containers with KIWI</a>
+        <a href="/2014/05/06/building-docker-containers-with-kiwi/">Building docker images with KIWI</a>
       </li>
     
       <li class="post">

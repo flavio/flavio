@@ -4,7 +4,7 @@
   <title><![CDATA[Category: openSUSE | Flavio Castelli]]></title>
   <link href="http://flavio.castelli.name/blog/categories/opensuse/atom.xml" rel="self"/>
   <link href="http://flavio.castelli.name/"/>
-  <updated>2014-05-13T17:40:40+02:00</updated>
+  <updated>2014-08-30T10:16:47+02:00</updated>
   <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
@@ -14,27 +14,27 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Building docker containers with KIWI]]></title>
+    <title type="html"><![CDATA[Building docker images with KIWI]]></title>
     <link href="http://flavio.castelli.name/2014/05/06/building-docker-containers-with-kiwi/"/>
     <updated>2014-05-06T22:20:00+02:00</updated>
     <id>http://flavio.castelli.name/2014/05/06/building-docker-containers-with-kiwi</id>
     <content type="html"><![CDATA[<p>I'm pleased to announce <a href="https://github.com/schaefi">Marcus Schäfer</a> has
-just made possible to build docker containers with <a href="http://opensuse.github.io/kiwi/">KIWI</a>.</p>
+just made possible to build docker images with <a href="http://opensuse.github.io/kiwi/">KIWI</a>.</p>
 
 <p>For those who never heard about it, KIWI is a tool which creates Linux systems
 for both physical and virtual machines. It can create openSUSE, SUSE and other types of
 Linux distributions.</p>
 
 <p><strong>Update:</strong> I changed the required version of kiwi and the openSUSE 13.1 template.
-Kiwi just received some improvements which do no longer force the container
+Kiwi just received some improvements which do no longer force the image
 to include the <em>lxc</em> package.</p>
 
 <h2>Why is this important?</h2>
 
 <p>As you might know Docker has already its <a href="http://docs.docker.io/reference/builder/">build system</a>
-which provides a really easy way to create new containers. However these containers
+which provides a really easy way to create new images. However these images
 must be based on existing ones, which leads to the problem of creating the 1st
-parent container. That's where KIWI comes to the rescue.</p>
+parent image. That's where KIWI comes to the rescue.</p>
 
 <p>Indeed Kiwi can be used to build the openSUSE/SUSE/whatever docker images that are
 going to act as the foundation blocks of other ones.</p>
@@ -54,7 +54,7 @@ openSUSE 13.1 template.</p>
 <p>Just copy the whole <code>/usr/share/doc/packages/kiwi/examples/suse-13.1/suse-docker-container</code>
 directory to another location and make your changes.</p>
 
-<p>The heart of the whole container is the <code>config.xml</code> file:</p>
+<p>The heart of the whole image is the <code>config.xml</code> file:</p>
 
 <p>```xml
 &lt;?xml version="1.0" encoding="utf-8"?></p>
@@ -64,7 +64,7 @@ directory to another location and make your changes.</p>
 
 <pre><code>&lt;author&gt;Flavio Castelli&lt;/author&gt;
 &lt;contact&gt;fcastelli@suse.com&lt;/contact&gt;
-&lt;specification&gt;openSUSE 13.1 docker container&lt;/specification&gt;
+&lt;specification&gt;openSUSE 13.1 docker image&lt;/specification&gt;
 </code></pre>
 
 <p>  </description>
@@ -119,38 +119,38 @@ directory to another location and make your changes.</p>
 
 <p>This is a really minimal image which contains just a bunch of packages.</p>
 
-<p>The first step is the creation of the container's root system:</p>
+<p>The first step is the creation of the image's root system:</p>
 
 <p>```
 kiwi -p /usr/share/doc/packages/kiwi/examples/suse-13.1/suse-docker-container \</p>
 
-<pre><code> --root /tmp/mycontainer
+<pre><code> --root /tmp/myimage
 </code></pre>
 
 <p>```</p>
 
-<p>The next step compresses the file system of the container into a single tarball:</p>
+<p>The next step compresses the file system of the image into a single tarball:</p>
 
 <p>```</p>
 
-<pre><code>kiwi --create /tmp/mycontainer --type docker -d /tmp/mycontainer-result
+<pre><code>kiwi --create /tmp/myimage --type docker -d /tmp/myimage-result
 </code></pre>
 
 <p>```</p>
 
-<p>The tarball can be found under <code>/tmp/mycontainer-result</code>. This can be imported
+<p>The tarball can be found under <code>/tmp/myimage-result</code>. This can be imported
 into docker using the following command:</p>
 
 <p><code>
-docker import - myContainer &lt; /path/to/mycontainer.tbz
+docker import - myImage &lt; /path/to/myimage.tbz
 </code></p>
 
-<p>The container named <code>myContainer</code> is now ready to be used.</p>
+<p>The image named <code>myImage</code> is now ready to be used.</p>
 
 <h2>What's next</h2>
 
 <p>In the next days I'll make another blog post explaining how to build docker
-containers using KIWI and the <a href="http://openbuildservice.org/">Open Build Service</a>.
+images using KIWI and the <a href="http://openbuildservice.org/">Open Build Service</a>.
 This is a powerful combination which allows to achieve continuous delivery.</p>
 
 <p>Stay tuned and have fun!</p>
