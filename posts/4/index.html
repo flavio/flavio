@@ -9,8 +9,8 @@
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="Last Monday I submitted lot of changes into Strigi&rsquo;s trunk. I&rsquo;ve heavily
-refactored some classes in order to obtain a more flexible file &hellip;">
+  <meta name="description" content="As you may know, KDE4 will use Strigi for meta information extraction instead
+of the old KFilePlugin classes. Since Strigi&rsquo;s analyzer work in a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,6 +90,58 @@ refactored some classes in order to obtain a more flexible file &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2008/01/10/tyding_up_strigi_analyzers/">Tyding Up Strigi Analyzers</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2008-01-10T15:49:17+01:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>3:49 pm</span></time>
+        
+           | <a href="/2008/01/10/tyding_up_strigi_analyzers/#disqus_thread"
+             data-disqus-identifier="http://flavio.castelli.name/2008/01/10/tyding_up_strigi_analyzers/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>As you may know, KDE4 will use Strigi for meta information extraction instead
+of the old <a href="http://api.kde.org/3.5-api/kdelibs-%0Aapidocs/kio/kio/html/classKFilePlugin.html">KFilePlugin</a> classes.</p>
+
+<p>Since Strigi&rsquo;s analyzer work in a different way, lot of code has to be ported.
+Unfortunately, after a good start, some relevant analyzers were still missing.</p>
+
+<p>But in the last weeks Strigi gained support of:</p>
+
+<ul>
+<li>wave file</li>
+<li>avi files</li>
+<li>txt files</li>
+<li>dds files</li>
+<li>rgb files</li>
+<li>sid files</li>
+<li>ico files</li>
+</ul>
+
+
+<p>I&rsquo;ve also updated <a href="http://wiki.kde.org/tiki-index.php?page=Porting+KFilePlugin+Progress">this</a> summary page. As you can see
+there&rsquo;s still some work to do, but don&rsquo;t worry&hellip; I&rsquo;ll try to do the best ;)</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -669,44 +721,6 @@ One of the coolest things of it is the possibility to create your own Simpson av
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2007/07/18/guestbook-and-spam/">Guestbook and Spam</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2007-07-18T13:49:02+02:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2007</span></span> <span class='time'>1:49 pm</span></time>
-        
-           | <a href="/2007/07/18/guestbook-and-spam/#disqus_thread"
-             data-disqus-identifier="http://flavio.castelli.name/2007/07/18/guestbook-and-spam/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In the last days I got an exponential grow of spam messages into the
-guestbook. Since drupal&rsquo;s guestbook module has some problems with spam-
-prevention components, I&rsquo;ve disabled anonymous posting.</p>
-
-<p>I&rsquo;ll enable it again as soon as possible.</p>
-
-<p>BTW: I don&rsquo;t know who will care about this limitation ;)</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/5">&larr; Older</a>
@@ -724,6 +738,10 @@ prevention components, I&rsquo;ve disabled anonymous posting.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/11/03/orchestrating-docker-containers-on-opensuse/">Orchestrating Docker Containers on openSUSE</a>
+      </li>
+    
+      <li class="post">
         <a href="/2014/05/06/building-docker-containers-with-kiwi/">Building Docker Images With KIWI</a>
       </li>
     
@@ -737,10 +755,6 @@ prevention components, I&rsquo;ve disabled anonymous posting.</p>
     
       <li class="post">
         <a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: A Container Full of Geekos</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/11/27/qjson-0-dot-8-1-released/">Qjson 0.8.1 Released</a>
       </li>
     
   </ul>

@@ -9,8 +9,8 @@
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="This post explains how to execute a single unit test (or even a single test
-method) instead of running the complete unit test suite. In order to run &hellip;">
+  <meta name="description" content="Last week my mother in law started to share her Linux laptop with my wife.
+Suddenly my wife asked me how she could switch from one user session to &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,6 +90,63 @@ method) instead of running the complete unit test suite. In order to run &hellip
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/07/15/fast-user-switch-plasmoid/">Fast User Switch Plasmoid</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2010-07-15T07:23:11+02:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2010</span></span> <span class='time'>7:23 am</span></time>
+        
+           | <a href="/2010/07/15/fast-user-switch-plasmoid/#disqus_thread"
+             data-disqus-identifier="http://flavio.castelli.name/2010/07/15/fast-user-switch-plasmoid/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Last week my mother in law started to share her Linux laptop with my wife.
+Suddenly my wife asked me how she could switch from one user session to
+another. She was looking for something similar to <a href="http://bit.ly/auzc56">OS X fast user
+switch</a> feature but she couldn&rsquo;t find it. In fact there
+wasn&rsquo;t a fast and easy way to switch between users&#8217; sessions with KDE,
+until&hellip; now :)</p>
+
+<p>Let me introduce my first plasmoid: the fast user switch plasmoid. It&rsquo;s a
+simple icon in the panel that allows users to swich to another open session or
+to open a new login page. Here you can see the mandatory screenshots.</p>
+
+<p><img src="/images/fast_user_switch/fastuserswitch02.png">
+<img src="/images/fast_user_switch/fastuserswitch01.png"></p>
+
+<p>You can find the source code
+<a href="http://gitorious.org/fast_user_switch#more">here</a>. Binary packages for
+openSUSE are already available on the <a href="http://software.opensuse.org/search?q=plasmoid-%0Afastuserswitch&amp;baseproject=ALL&amp;lang=en&amp;exclude_debug=true">build
+service</a>.</p>
+
+<h2>One last thought about KDM</h2>
+
+<p>I think that KDM should allow to switch back to an already open session in a
+more transparent way. Right now if an user has already one session open, he
+goes back to the login screen and enters his credentials a <strong>new </strong> session is
+started. I think that most users would expect to be switched back to their
+already running session. Starting a new session is just confusing for them.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -979,55 +1036,6 @@ qjson-devel mailing list. You can subscribe
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/06/30/qjson_desktop_summi/">QJson at Gran Canaria Desktop Summit</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2009-06-30T19:46:38+02:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>7:46 pm</span></time>
-        
-           | <a href="/2009/06/30/qjson_desktop_summi/#disqus_thread"
-             data-disqus-identifier="http://flavio.castelli.name/2009/06/30/qjson_desktop_summi/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Now that I have booked both the flights and the hotel it&rsquo;s official: I&rsquo;ll
-attend the <a href="http://www.grancanariadesktopsummit.org/">Gran Canaria Desktop Summit</a>.</p>
-
-<p>On Thursday 9th July I&rsquo;ll give a BoF about
-<a href="http://qjson.sourceforge.net">QJson</a>.</p>
-
-<p>During the talk I will show:</p>
-
-<ul>
-<li>the advantages brought by QJson.</li>
-<li>the usage of QJson.</li>
-<li>some real programs using QJson.</li>
-</ul>
-
-
-<p>See you soon!</p>
-
-<p><img src="/images/gran_canaria_desktop_summit/badge.png"></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/3">&larr; Older</a>
@@ -1045,6 +1053,10 @@ attend the <a href="http://www.grancanariadesktopsummit.org/">Gran Canaria Deskt
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/11/03/orchestrating-docker-containers-on-opensuse/">Orchestrating Docker Containers on openSUSE</a>
+      </li>
+    
+      <li class="post">
         <a href="/2014/05/06/building-docker-containers-with-kiwi/">Building Docker Images With KIWI</a>
       </li>
     
@@ -1058,10 +1070,6 @@ attend the <a href="http://www.grancanariadesktopsummit.org/">Gran Canaria Deskt
     
       <li class="post">
         <a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: A Container Full of Geekos</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/11/27/qjson-0-dot-8-1-released/">Qjson 0.8.1 Released</a>
       </li>
     
   </ul>

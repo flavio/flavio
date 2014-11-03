@@ -9,8 +9,8 @@
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="Goal id3medit is a simple script for tagging all mp3/ogg files present in a
-directory. Requirements: id3medit relies on id3v2, a command-line tool &hellip;">
+  <meta name="description" content="gen-docheck is a useful tool for the gentoo italian translation team.
+gen-dockeck compares the version number of english document and italian &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,6 +90,104 @@ directory. Requirements: id3medit relies on id3v2, a command-line tool &hellip;"
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2005/12/08/gentoo-documentation-checker/">Gentoo Documentation Checker</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2005-12-08T18:52:16+01:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2005</span></span> <span class='time'>6:52 pm</span></time>
+        
+           | <a href="/2005/12/08/gentoo-documentation-checker/#disqus_thread"
+             data-disqus-identifier="http://flavio.castelli.name/2005/12/08/gentoo-documentation-checker/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>gen-docheck is a useful tool for the <a href="http://www.gentoo.org/doc/it/index.xml">gentoo italian translation team</a>.
+gen-dockeck compares the version number of english document and italian translation.</p>
+
+<p>In this way you can watch the status of one or more guides, keeping the
+translations updated.</p>
+
+<h3>Features:</h3>
+
+<ul>
+<li>mail notification support (straight to guide&rsquo;s translator or to a specified address)</li>
+<li>filter guides using regular expressions</li>
+</ul>
+
+
+<h3>Requirements:</h3>
+
+<p>gen-dockeck requires:</p>
+
+<ul>
+<li>perl</li>
+<li>perl module <a href="http://search.cpan.org/dist/libwww-perl/lib/LWP/Simple.pm">LWP::Simple</a> (under debian is provided by <a href="http://packages.debian.org/cgi-bin/search_packages.pl?searchon=names&amp;subword=1&amp;version=all&amp;release=all&amp;keywords=libwww-perl&amp;sourceid=mozilla-search">libwww-perl</a>)</li>
+<li>perl module <a href="http://search.cpan.org/~gbarr/libnet/Net/SMTP.pm">Net::SMTP</a></li>
+<li>perl module <a href="http://search.cpan.org/~jv/Getopt-Long-2.35/lib/Getopt/Long.pm">Getopt::Long</a> (usually available by default with all perl installation)</li>
+<li>perl module <a href="http://search.cpan.org/~marekr/Pod-Parser-1.34/lib/Pod/Usage.pm">Pod::Usage</a> (usually available by default with all perl installation)</li>
+</ul>
+
+
+<h3>Synopsis:</h3>
+
+<p>gen-docheck syntax: <code>gen-docheck [--help] [--man] [--config configuration
+file]</code> for more informations read the man page: <code>gen-docheck --manan</code></p>
+
+<h3>Configuration file:</h3>
+
+<p>gen-docheck support also configuration files.</p>
+
+<p>This is an example:</p>
+
+<pre><code>#mail sender
+sender = gentoo_doccheck@gentoo.orgThis email address is being protected from spam bots, you need Javascript enabled to view it  
+#check only guides mathing these names (use "." to match all, "," to separate names)
+checkonly = diskless,macos
+#checkonly = .  
+#send mail notify to translator
+mailnotify = 0  
+#send all mail notify to this address
+force_mail_destination = flavio.castelli@gmail.com  
+# smtp server
+smtp = smtp.tiscali.it  
+# debug smtp commands
+smtpdebug = 0
+</code></pre>
+
+<h3>Usage:</h3>
+
+<p>You can automate gen-docheck adding it to cron.</p>
+
+<p>Here&rsquo;s an example:</p>
+
+<pre><code>0 10 * * 0 /home/micron/gen\-docheck/gen\-docheck.pl --config /home/micron/gen\-docheck/gen\-docheck.conff
+</code></pre>
+
+<p>In this way you&rsquo;ll run gen-docheck every sunday at 10:00 AM</p>
+
+<h3>Download</h3>
+
+<p>The code can be found inside of <a href="https://github.com/flavio/gentoo_doc_checker">this</a> git repository.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -277,6 +375,10 @@ echo &quot;See you... ;-D&quot;</code></pre></noscript></div>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/11/03/orchestrating-docker-containers-on-opensuse/">Orchestrating Docker Containers on openSUSE</a>
+      </li>
+    
+      <li class="post">
         <a href="/2014/05/06/building-docker-containers-with-kiwi/">Building Docker Images With KIWI</a>
       </li>
     
@@ -290,10 +392,6 @@ echo &quot;See you... ;-D&quot;</code></pre></noscript></div>
     
       <li class="post">
         <a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: A Container Full of Geekos</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/11/27/qjson-0-dot-8-1-released/">Qjson 0.8.1 Released</a>
       </li>
     
   </ul>

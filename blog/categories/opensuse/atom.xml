@@ -4,7 +4,7 @@
   <title><![CDATA[Category: opensuse | Flavio Castelli]]></title>
   <link href="http://flavio.castelli.name/blog/categories/opensuse/atom.xml" rel="self"/>
   <link href="http://flavio.castelli.name/"/>
-  <updated>2014-08-30T22:16:16+02:00</updated>
+  <updated>2014-11-03T15:07:59+01:00</updated>
   <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
@@ -12,6 +12,43 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Orchestrating Docker containers on openSUSE]]></title>
+    <link href="http://flavio.castelli.name/2014/11/03/orchestrating-docker-containers-on-opensuse/"/>
+    <updated>2014-11-03T14:51:42+01:00</updated>
+    <id>http://flavio.castelli.name/2014/11/03/orchestrating-docker-containers-on-opensuse</id>
+    <content type="html"><![CDATA[<p>A couple of weeks ago the 11th edition of SUSE&rsquo;s <a href="https://hackweek.suse.com/">hackweek</a>
+took place. This year I decided to spend this time to look into the different
+orchestration and service discovery tools build around Docke.</p>
+
+<p>In the beginning I looked into the <a href="https://github.com/GoogleCloudPlatform/kubernetes">kubernetes</a>
+project. I found it really promising but AFAIK not yet ready to be used. It&rsquo;s
+still in its early days and it&rsquo;s in constant evolution. I will surely keep
+looking into it.</p>
+
+<p>I also looked into other projects like <a href="https://consul.io/">consul</a> and
+<a href="http://openshift.github.io/geard/">geard</a> but then I focused on using
+<a href="https://github.com/coreos/etcd">etcd</a> and
+<a href="https://github.com/coreos/fleet">fleet</a>, two of the tools part of
+<a href="https://coreos.com/">CoreOS</a>.</p>
+
+<p>I ended up creating a small testing environment that is capable of running a
+simple guestbook web application talking with a MongoDB database. Both the web
+application and the database are shipped as Docker images running on a small
+cluster.</p>
+
+<p>The whole environment is created by <a href="https://www.vagrantup.com/">Vagrant</a>. That
+project proved to be also a nice excuse to play with this tool. I found Vagrant
+to be really useful.</p>
+
+<p>You can find all the files and instructions required to reproduce my experiments
+inside of <a href="https://github.com/flavio/docker-orchestration-demo">this</a> repository
+on GitHub.</p>
+
+<p>Happy hacking!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Building docker images with KIWI]]></title>

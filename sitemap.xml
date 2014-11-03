@@ -3,6 +3,12 @@
   
   
   <url>
+    <loc>http://flavio.castelli.name/2014/11/03/orchestrating-docker-containers-on-opensuse/</loc>
+    <lastmod>2014-11-03T14:51:42+01:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>http://flavio.castelli.name/2014/05/06/building-docker-containers-with-kiwi/</loc>
     <lastmod>2014-05-06T22:20:00+02:00</lastmod>
     <priority>0.8</priority>
@@ -437,49 +443,49 @@
   
   <url>
     <loc>http://flavio.castelli.name/404.html</loc>
-    <lastmod>2014-08-30T22:16:16+02:00</lastmod>
+    <lastmod>2014-11-03T15:07:59+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://flavio.castelli.name/</loc>
-    <lastmod>2014-08-30T22:16:16+02:00</lastmod>
+    <lastmod>2014-11-03T15:07:59+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
     <loc>http://flavio.castelli.name/blog/archives/</loc>
-    <lastmod>2014-08-30T22:16:16+02:00</lastmod>
+    <lastmod>2014-11-03T15:07:59+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://flavio.castelli.name/cv/</loc>
-    <lastmod>2014-08-30T22:16:16+02:00</lastmod>
+    <lastmod>2014-11-03T15:07:59+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://flavio.castelli.name/about/</loc>
-    <lastmod>2014-08-30T22:16:16+02:00</lastmod>
+    <lastmod>2014-11-03T15:07:59+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://flavio.castelli.name/contacts/</loc>
-    <lastmod>2014-08-30T22:16:16+02:00</lastmod>
+    <lastmod>2014-11-03T15:07:59+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://flavio.castelli.name/photos.html</loc>
-    <lastmod>2014-08-30T22:16:16+02:00</lastmod>
+    <lastmod>2014-11-03T15:07:59+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -487,7 +493,7 @@
   
   <url>
     <loc>http://flavio.castelli.name/google03f2e7552d5bf01f.html</loc>
-    <lastmod>2014-08-30T22:15:56Z</lastmod>
+    <lastmod>2014-08-30T22:21:38Z</lastmod>
     <priority>0.6</priority>
   </url>
   

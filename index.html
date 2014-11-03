@@ -9,8 +9,8 @@
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="I&rsquo;m pleased to announce Marcus Schäfer has
-just made possible to build docker images with KIWI. For those who never heard about it, KIWI is a &hellip;">
+  <meta name="description" content="A couple of weeks ago the 11th edition of SUSE&rsquo;s hackweek
+took place. This year I decided to spend this time to look into the different &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,6 +90,66 @@ just made possible to build docker images with KIWI. For those who never heard a
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2014/11/03/orchestrating-docker-containers-on-opensuse/">Orchestrating Docker Containers on openSUSE</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-11-03T14:51:42+01:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>2:51 pm</span></time>
+        
+           | <a href="/2014/11/03/orchestrating-docker-containers-on-opensuse/#disqus_thread"
+             data-disqus-identifier="http://flavio.castelli.name/2014/11/03/orchestrating-docker-containers-on-opensuse/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A couple of weeks ago the 11th edition of SUSE&rsquo;s <a href="https://hackweek.suse.com/">hackweek</a>
+took place. This year I decided to spend this time to look into the different
+orchestration and service discovery tools build around Docke.</p>
+
+<p>In the beginning I looked into the <a href="https://github.com/GoogleCloudPlatform/kubernetes">kubernetes</a>
+project. I found it really promising but AFAIK not yet ready to be used. It&rsquo;s
+still in its early days and it&rsquo;s in constant evolution. I will surely keep
+looking into it.</p>
+
+<p>I also looked into other projects like <a href="https://consul.io/">consul</a> and
+<a href="http://openshift.github.io/geard/">geard</a> but then I focused on using
+<a href="https://github.com/coreos/etcd">etcd</a> and
+<a href="https://github.com/coreos/fleet">fleet</a>, two of the tools part of
+<a href="https://coreos.com/">CoreOS</a>.</p>
+
+<p>I ended up creating a small testing environment that is capable of running a
+simple guestbook web application talking with a MongoDB database. Both the web
+application and the database are shipped as Docker images running on a small
+cluster.</p>
+
+<p>The whole environment is created by <a href="https://www.vagrantup.com/">Vagrant</a>. That
+project proved to be also a nice excuse to play with this tool. I found Vagrant
+to be really useful.</p>
+
+<p>You can find all the files and instructions required to reproduce my experiments
+inside of <a href="https://github.com/flavio/docker-orchestration-demo">this</a> repository
+on GitHub.</p>
+
+<p>Happy hacking!</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1078,63 +1138,6 @@ service</a>.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2010/07/15/fast-user-switch-plasmoid/">Fast User Switch Plasmoid</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2010-07-15T07:23:11+02:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2010</span></span> <span class='time'>7:23 am</span></time>
-        
-           | <a href="/2010/07/15/fast-user-switch-plasmoid/#disqus_thread"
-             data-disqus-identifier="http://flavio.castelli.name/2010/07/15/fast-user-switch-plasmoid/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Last week my mother in law started to share her Linux laptop with my wife.
-Suddenly my wife asked me how she could switch from one user session to
-another. She was looking for something similar to <a href="http://bit.ly/auzc56">OS X fast user
-switch</a> feature but she couldn&rsquo;t find it. In fact there
-wasn&rsquo;t a fast and easy way to switch between users&#8217; sessions with KDE,
-until&hellip; now :)</p>
-
-<p>Let me introduce my first plasmoid: the fast user switch plasmoid. It&rsquo;s a
-simple icon in the panel that allows users to swich to another open session or
-to open a new login page. Here you can see the mandatory screenshots.</p>
-
-<p><img src="/images/fast_user_switch/fastuserswitch02.png">
-<img src="/images/fast_user_switch/fastuserswitch01.png"></p>
-
-<p>You can find the source code
-<a href="http://gitorious.org/fast_user_switch#more">here</a>. Binary packages for
-openSUSE are already available on the <a href="http://software.opensuse.org/search?q=plasmoid-%0Afastuserswitch&amp;baseproject=ALL&amp;lang=en&amp;exclude_debug=true">build
-service</a>.</p>
-
-<h2>One last thought about KDM</h2>
-
-<p>I think that KDM should allow to switch back to an already open session in a
-more transparent way. Right now if an user has already one session open, he
-goes back to the login screen and enters his credentials a <strong>new </strong> session is
-started. I think that most users would expect to be switched back to their
-already running session. Starting a new session is just confusing for them.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -1150,6 +1153,10 @@ already running session. Starting a new session is just confusing for them.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/11/03/orchestrating-docker-containers-on-opensuse/">Orchestrating Docker Containers on openSUSE</a>
+      </li>
+    
+      <li class="post">
         <a href="/2014/05/06/building-docker-containers-with-kiwi/">Building Docker Images With KIWI</a>
       </li>
     
@@ -1163,10 +1170,6 @@ already running session. Starting a new session is just confusing for them.</p>
     
       <li class="post">
         <a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: A Container Full of Geekos</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/11/27/qjson-0-dot-8-1-released/">Qjson 0.8.1 Released</a>
       </li>
     
   </ul>
