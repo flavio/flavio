@@ -8,7 +8,7 @@ categories: docker openSUSE orchestration
 
 A couple of weeks ago the 11th edition of SUSE's [hackweek](https://hackweek.suse.com/)
 took place. This year I decided to spend this time to look into the different
-orchestration and service discovery tools build around Docke.
+orchestration and service discovery tools build around Docker.
 
 In the beginning I looked into the [kubernetes](https://github.com/GoogleCloudPlatform/kubernetes)
 project. I found it really promising but AFAIK not yet ready to be used. It's
