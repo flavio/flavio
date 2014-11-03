@@ -495,14 +495,14 @@ like this:</p>
 </span><span class='line'>    <span class="n">Person</span><span class="p">(</span><span class="n">QObject</span><span class="o">*</span> <span class="n">parent</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
 </span><span class='line'>    <span class="o">~</span><span class="n">Person</span><span class="p">();</span>
 </span><span class='line'>    <span class="n">QString</span> <span class="n">name</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
-</span><span class='line'>    <span class="kt">void</span> <span class="n">setName</span><span class="p">(</span><span class="k">const</span> <span class="n">QString</span><span class="o">&amp;</span> <span class="n">name</span><span class="p">);</span>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">setName</span><span class="p">(</span><span class="k">const</span> <span class="n">QString</span><span class="o">&amp;</span> <span class="n">name</span><span class="p">);</span>
 </span><span class='line'>    <span class="kt">int</span> <span class="n">phoneNumber</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
-</span><span class='line'>    <span class="kt">void</span> <span class="n">setPhoneNumber</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span>  <span class="n">phoneNumber</span><span class="p">);</span>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">setPhoneNumber</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span>  <span class="n">phoneNumber</span><span class="p">);</span>
 </span><span class='line'>    <span class="k">enum</span> <span class="n">Gender</span> <span class="p">{</span><span class="n">Male</span><span class="p">,</span> <span class="n">Female</span><span class="p">};</span>
-</span><span class='line'>    <span class="kt">void</span> <span class="n">setGender</span><span class="p">(</span><span class="n">Gender</span> <span class="n">gender</span><span class="p">);</span>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">setGender</span><span class="p">(</span><span class="n">Gender</span> <span class="n">gender</span><span class="p">);</span>
 </span><span class='line'>    <span class="n">Gender</span> <span class="n">gender</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
 </span><span class='line'>    <span class="n">QDate</span> <span class="n">dob</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
-</span><span class='line'>    <span class="kt">void</span> <span class="n">setDob</span><span class="p">(</span><span class="k">const</span> <span class="n">QDate</span><span class="o">&amp;</span> <span class="n">dob</span><span class="p">);</span>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">setDob</span><span class="p">(</span><span class="k">const</span> <span class="n">QDate</span><span class="o">&amp;</span> <span class="n">dob</span><span class="p">);</span>
 </span><span class='line'>  <span class="k">private</span><span class="o">:</span>
 </span><span class='line'>    <span class="n">QString</span> <span class="n">m_name</span><span class="p">;</span>
 </span><span class='line'>    <span class="kt">int</span> <span class="n">m_phoneNumber</span><span class="p">;</span>
@@ -651,14 +651,14 @@ serialize a QObject instance to JSON.</p>
 </span><span class='line'>    <span class="n">Person</span><span class="p">(</span><span class="n">QObject</span><span class="o">*</span> <span class="n">parent</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
 </span><span class='line'>    <span class="o">~</span><span class="n">Person</span><span class="p">();</span>
 </span><span class='line'>    <span class="n">QString</span> <span class="n">name</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
-</span><span class='line'>    <span class="kt">void</span> <span class="n">setName</span><span class="p">(</span><span class="k">const</span> <span class="n">QString</span><span class="o">&amp;</span> <span class="n">name</span><span class="p">);</span>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">setName</span><span class="p">(</span><span class="k">const</span> <span class="n">QString</span><span class="o">&amp;</span> <span class="n">name</span><span class="p">);</span>
 </span><span class='line'>    <span class="kt">int</span> <span class="n">phoneNumber</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
-</span><span class='line'>    <span class="kt">void</span> <span class="n">setPhoneNumber</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span>  <span class="n">phoneNumber</span><span class="p">);</span>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">setPhoneNumber</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span>  <span class="n">phoneNumber</span><span class="p">);</span>
 </span><span class='line'>    <span class="k">enum</span> <span class="n">Gender</span> <span class="p">{</span><span class="n">Male</span><span class="p">,</span> <span class="n">Female</span><span class="p">};</span>
-</span><span class='line'>    <span class="kt">void</span> <span class="n">setGender</span><span class="p">(</span><span class="n">Gender</span> <span class="n">gender</span><span class="p">);</span>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">setGender</span><span class="p">(</span><span class="n">Gender</span> <span class="n">gender</span><span class="p">);</span>
 </span><span class='line'>    <span class="n">Gender</span> <span class="n">gender</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
 </span><span class='line'>    <span class="n">QDate</span> <span class="n">dob</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
-</span><span class='line'>    <span class="kt">void</span> <span class="n">setDob</span><span class="p">(</span><span class="k">const</span> <span class="n">QDate</span><span class="o">&amp;</span> <span class="n">dob</span><span class="p">);</span>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">setDob</span><span class="p">(</span><span class="k">const</span> <span class="n">QDate</span><span class="o">&amp;</span> <span class="n">dob</span><span class="p">);</span>
 </span><span class='line'>  <span class="k">private</span><span class="o">:</span>
 </span><span class='line'>    <span class="n">QString</span> <span class="n">m_name</span><span class="p">;</span>
 </span><span class='line'>    <span class="kt">int</span> <span class="n">m_phoneNumber</span><span class="p">;</span>
