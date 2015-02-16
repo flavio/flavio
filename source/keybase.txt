@@ -1,0 +1,66 @@
+==================================================================
+https://keybase.io/flavio
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://flavio.castelli.name
+  * I am flavio (https://keybase.io/flavio) on keybase.
+  * I have a public key with fingerprint AD5B 286B FC09 361A F047  7FA0 B017 C183 7D5F 0D40
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "fingerprint": "ad5b286bfc09361af0477fa0b017c1837d5f0d40",
+            "host": "keybase.io",
+            "key_id": "b017c1837d5f0d40",
+            "kid": "01011c9ee4aa1ae14cc1205892dccf24232813b3a28961584cc9a756c92954818f6e0a",
+            "uid": "99cb2f9b05f6f0c2056bb18cf8230f19",
+            "username": "flavio"
+        },
+        "service": {
+            "hostname": "flavio.castelli.name",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1424084996,
+    "expire_in": 157680000,
+    "prev": "d25c8a78193a261a00573ae012a22d38fcc44e9bdc31926f46671b4b549be5a2",
+    "seqno": 4,
+    "tag": "signature"
+}
+
+which yields the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v2
+
+owFtkltIVEEYx1fLNSVLi+yhmxxSIsRm5txmloQeQkpQuhGF0DYzZ2Y9uZ3ddtdb
+sfXQBS0KC4LEiqLLQxBlF6wHo6RQ6iUtDUMqLZCCwm4QlNAcqYegeRnm//2/33zf
+N9OWNy2QmXF9/oP96XDeqown71lg0+jTGXs0FnOatdAerU5MbdL1IiIRT7heSgtp
+1DEZwhaTHBDdglQCw7YlBQxAm0Os244pgWMArVSrjSX9DIVhNCnK3JjS1CHsOkr9
+j79uKgAggJATIQxKIRXQ4BwiYGKCHM4lMpCOMNSZThEmFjSxihNqmxYniJgGhlha
+AlCFq5/CEcIZkoQBU1oScEWyGIOYS4x0ICHxjUmR8OhOodwyShtUnelSTWkNLhf+
+APw+/omXcZpMiWjULZuSS7V4IpaK8VhUOWpTqXjIB6Sa435Go2DhP6wwcz1HDVMl
+NIhE0o15WggqJ0+5PhwayADYIMQq1URT3E2IsOs7TNvCQC3/GtGgkA4yOaY2hkQN
+QT0BAKatUwEgogg5OpacG4YgzOE6JMiShmXZkBnMNAgTJkWa390uL6aFDFUmjShk
+0o14NDtVnxBaOrc1Y+H0QEZmIJiV6X+IQG5O/t9f0upmTy7ee69w1sveI9971t9p
+2b2jW6s/3FkRrBuNlhT2X4vUdi0/+UNWvT+7T89O/3y17FJHX8XAxfbd5+e8fny6
+SB82y9nqvbNHnOi8/IFg50Jv86/JIbliTV7VusmJ7JYfdw+EtnjjY8WLCi68DfZf
+Hlt+c6D83cSr8aEjLyrDK3u+1TQ+ymF93c/mahVt5c0L3u2sXopnlvdY53cktpZ8
+G57/9XD73bx7Y/2rbgwsyin+MHzCik9W4zODxQV9G481fa4+fj+/sqazMo17DyZP
+L+nOmtWeiybiHXAkdGXb9rWXzh3ddqHo54aHt08Fq74Wfnl96KD4+Gb/vucR9Knq
+6mDXrcvjxZt+Aw==
+=0u1p
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/flavio
+
+==================================================================
