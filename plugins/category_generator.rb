@@ -153,19 +153,7 @@ ERR
     # Returns string
     #
     def category_links(categories)
-      dir = @context.registers[:site].config['category_dir']
-      categories = categories.sort!.map do |item|
-        "<a class='category' href='/#{dir}/#{item.to_url}/'>#{item}</a>"
-      end
-
-      case categories.length
-      when 0
-        ""
-      when 1
-        categories[0].to_s
-      else
-        "#{categories[0...-1].join(', ')}, #{categories[-1]}"
-      end
+      categories.sort.map { |c| category_link c }.join(', ')
     end
 
     # Outputs a single category as an <a> link.
@@ -176,7 +164,7 @@ ERR
     #
     def category_link(category)
       dir = @context.registers[:site].config['category_dir']
-      "<a class='category' href='/#{dir}/#{category.gsub(/_|\P{Word}/, '-').gsub(/-{2,}/, '-').downcase}/'>#{category}</a>"
+      "<a class='category' href='/#{dir}/#{category.to_url}/'>#{category}</a>"
     end
 
     # Outputs the post.date as formatted html, with hooks for CSS styling.
@@ -186,8 +174,8 @@ ERR
     # Returns string
     def date_to_html_string(date)
       result = '<span class="month">' + date.strftime('%b').upcase + '</span> '
-      result += date.strftime('<span class="day">%d</span> ')
-      result += date.strftime('<span class="year">%Y</span> ')
+      result << date.strftime('<span class="day">%d</span> ')
+      result << date.strftime('<span class="year">%Y</span> ')
       result
     end
 
