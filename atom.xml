@@ -4,7 +4,7 @@
   <title><![CDATA[Flavio Castelli]]></title>
   <link href="http://flavio.castelli.name/atom.xml" rel="self"/>
   <link href="http://flavio.castelli.name/"/>
-  <updated>2014-11-03T16:12:23+01:00</updated>
+  <updated>2015-04-24T18:04:40+02:00</updated>
   <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
@@ -12,6 +12,86 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Introducing Portus: An Authorization Service and Front-end for Docker Registry]]></title>
+    <link href="http://flavio.castelli.name/2015/04/23/introducing-portus-a-user-interface-for-docker-registry/"/>
+    <updated>2015-04-23T21:43:09+02:00</updated>
+    <id>http://flavio.castelli.name/2015/04/23/introducing-portus-a-user-interface-for-docker-registry</id>
+    <content type="html"><![CDATA[<p>One of the perks of working at SUSE is hackweek, an entire week you can dedicate
+working on whatever project you want. Last week the 12th edition of hackweek
+took place. So I decided to spend it working on solving one of the problems many
+users have when running an on-premise instance of a Docker registry.</p>
+
+<p>The Docker registry works like a charm, but it&rsquo;s hard to have full
+control over the images you push to it. Also there&rsquo;s no web interface
+that can provide a quick overview of registry&rsquo;s contents.</p>
+
+<p>So <a href="https://twitter.com/skullzeek">Artem</a>, <a href="https://twitter.com/eotchi">Federica</a>
+and I created the <a href="https://github.com/SUSE/Portus">Portus project</a> (BTW
+<em>&ldquo;portus&rdquo;</em> is the Latin name for harbour).</p>
+
+<h2>Portus as an authorization service</h2>
+
+<p>The first goal of Portus is to allow users to have a better control over the
+contents of their private registries. It makes possible to write policies
+like:</p>
+
+<ul>
+<li>everybody can push and pull images to a certain namespace,</li>
+<li>everybody can pull images from a certain namespace but only certain users can
+push images to it,</li>
+<li>only certain users can pull and push to a certain namespace; making all the
+images inside of it invisible to unauthorzied users.</li>
+</ul>
+
+
+<p>This is done implementing the
+<a href="https://github.com/docker/distribution/blob/master/docs/spec/auth/token.md">token based authentication system</a>
+supported by the <a href="https://github.com/docker/distribution">latest version</a> of the
+Docker registry.</p>
+
+<h3>Docker login and Portus authentication in action</h3>
+
+<script type="text/javascript" src="https://asciinema.org/a/19171.js" id="asciicast-19171" async></script>
+
+
+<h2>Portus as a front-end for Docker registry</h2>
+
+<p>Portus listens to the <a href="https://github.com/docker/distribution/blob/master/docs/notifications.md">notifications</a>
+sent by the Docker registry and uses them to populate its own database.</p>
+
+<p>Using this data Portus can be used to navigate through all the namespaces and
+the repositories that have been pushed to the registry.</p>
+
+<p><a href="http://flavio.castelli.name/images/portus/repositories.png"><img src="http://flavio.castelli.name/images/portus/repositories.png" alt="repositories view" /></a></p>
+
+<p>We also worked on a client library that can be used to fetch extra
+information from the registry (i.e. repositories&#8217; manifests) to extend Portus&#8217;
+knowledge.</p>
+
+<h2>The current status of development</h2>
+
+<p>Right now Portus has just the concept of users. When you sign up into Portus a
+private namespace with your username will be created. You are the only one with
+push and pull rights over it; nobody else will be able to mess with it.
+Also pushing and pulling to the &ldquo;global&rdquo; namespace is currently not allowed.</p>
+
+<p>The user interface is still a work in progress. Right now you can browse all
+the namespaces and the repositories available on your registry. However user&rsquo;s
+permissions are not taken into account while doing that.</p>
+
+<p>If you want to play with Portus you can use the development environment managed
+by Vagrant. In the near future we are going to publish a Portus appliance and
+obviously a Docker image.</p>
+
+<p>Please keep in mind that Portus is just the result of one week of work. A lot of
+things are missing but the foundations are solid.</p>
+
+<p>Portus can be found on <a href="https://github.com/SUSE/Portus">this repository</a> on
+GitHub. Contributions (not only code, also proposals, bugs,&hellip;) are welcome!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Orchestrating Docker Containers on openSUSE]]></title>
@@ -389,11 +469,11 @@ called <code>/usr/sbin/rcdocker</code>.</p>
 <p>This will trigger the following actions:</p>
 
 <ol>
-<li> The <code>docker0</code> bridge interface is created. This interface is bridged
+<li>The <code>docker0</code> bridge interface is created. This interface is bridged
  with <code>eth0</code>.</li>
-<li> A <code>dnsmasq</code> instance listening on the <code>docker0</code> interface is started.</li>
-<li> IP forwarding and IP masquerading are enabled.</li>
-<li> Docker daemon is started.</li>
+<li>A <code>dnsmasq</code> instance listening on the <code>docker0</code> interface is started.</li>
+<li>IP forwarding and IP masquerading are enabled.</li>
+<li>Docker daemon is started.</li>
 </ol>
 
 
@@ -1508,40 +1588,6 @@ recommend you to try it (unless you want to find and fix bugs ;) ).</p>
 <li>new code, bug fixes, code reviews, hints,&hellip;</li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[New QJson Release]]></title>
-    <link href="http://flavio.castelli.name/2009/07/23/qjson_0-6-0_release/"/>
-    <updated>2009-07-23T11:51:30+02:00</updated>
-    <id>http://flavio.castelli.name/2009/07/23/qjson_0-6-0_release</id>
-    <content type="html"><![CDATA[<p>Gran Canaria Desktop Summit has been great and really productive. I had the
-pleasure to meet people interested in QJson, chat with them but also hack with
-them.</p>
-
-<p>In fact we hacked a lot, doing lots of changes to QJson:</p>
-
-<ul>
-<li>the API has been cleaned, now it can be considered stable</li>
-<li>unicode support has been completely rewritten</li>
-<li>it&rsquo;s now possible to convert QVariant objects into JSON ones</li>
-</ul>
-
-
-<p>So it&rsquo;s with a great pleasure that I announce the release of QJson 0.6.0.</p>
-
-<p>Beware, since the API has been changed your application will probably break.
-I&rsquo;m really sorry about that, but I guarantee it won&rsquo;t happen in the future (as
-I said both API and ABI interfaces can now be considered stable).</p>
-
-<p><a href="http://qjson.sourceforge.net">QJson web site</a> has been updated, reflecting
-all the changes made to the library. openSUSE packages has been moved from my
-home repo to <a href="http://download.opensuse.org/repositories/KDE:/Qt/">KDE:Qt</a> one.</p>
-
-<p>One last note, if you have problems with QJson please contact me using the
-qjson-devel mailing list. You can subscribe
-<a href="https://sourceforge.net/mailarchive/forum.php?forum_name=qjson-devel">here</a>.</p>
 ]]></content>
   </entry>
   

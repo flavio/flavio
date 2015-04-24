@@ -133,12 +133,12 @@ the central svn server.</p>
 <p>You&rsquo;ve to:</p>
 
 <ol>
-<li> install <em>git</em> and <em>git-svn</em></li>
-<li> create the working dir: <code>mkdir strigi</code></li>
-<li> init your git working dir: <code>cd strigi &amp;&amp; git-svn init https://svn.kde.org/home/kde/trunk/kdesupport/strigi</code> <em>git-svn init</em> command is followed by the address of the svn repository (in this case we point to strigi&rsquo;s repository)</li>
-<li> Find a commit regarding the project (you can get it from <a href="http://cia.vc/">cia version control</a>). <strong>Warning:</strong> the command <em>git-log</em> will show project&rsquo;s history starting from this revision.</li>
-<li> Perform the command <code>git-svn fetch -rREVISION</code> Where <em>REVISION</em> is the number obtained before.</li>
-<li> Update your working dir: <code>git-svn rebase</code>
+<li>install <em>git</em> and <em>git-svn</em></li>
+<li>create the working dir: <code>mkdir strigi</code></li>
+<li>init your git working dir: <code>cd strigi &amp;&amp; git-svn init https://svn.kde.org/home/kde/trunk/kdesupport/strigi</code> <em>git-svn init</em> command is followed by the address of the svn repository (in this case we point to strigi&rsquo;s repository)</li>
+<li>Find a commit regarding the project (you can get it from <a href="http://cia.vc/">cia version control</a>). <strong>Warning:</strong> the command <em>git-log</em> will show project&rsquo;s history starting from this revision.</li>
+<li>Perform the command <code>git-svn fetch -rREVISION</code> Where <em>REVISION</em> is the number obtained before.</li>
+<li>Update your working dir: <code>git-svn rebase</code>
 Now you&rsquo;ll be able to work on your project using git as revision control
 system.</li>
 </ol>
@@ -166,10 +166,10 @@ committed (you haven&rsquo;t finished/tested/improved your work). But don&rsquo;
 git has a native solution also for this problem, just follow these steps:</p>
 
 <ol>
-<li> put aside your changes using the command: <code>git-stash</code></li>
-<li> update your working copy using: <code>git-svn rebase</code> as usual</li>
-<li> take back your changes typing: <code>git-stash apply</code></li>
-<li> clear <em>&ldquo;the stash&rdquo;</em> typing: <code>git-stash clear</code>
+<li>put aside your changes using the command: <code>git-stash</code></li>
+<li>update your working copy using: <code>git-svn rebase</code> as usual</li>
+<li>take back your changes typing: <code>git-stash apply</code></li>
+<li>clear <em>&ldquo;the stash&rdquo;</em> typing: <code>git-stash clear</code>
 After the first step all your uncommitted changes will disappear from the
 working copy, so you&rsquo;ll be able to perform the rebase command without
 problems.</li>
@@ -243,6 +243,10 @@ problems.</li>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2015/04/23/introducing-portus-a-user-interface-for-docker-registry/">Introducing Portus: An Authorization Service and Front-end for Docker Registry</a>
+      </li>
+    
+      <li class="post">
         <a href="/2014/11/03/orchestrating-docker-containers-on-opensuse/">Orchestrating Docker Containers on openSUSE</a>
       </li>
     
@@ -256,10 +260,6 @@ problems.</li>
     
       <li class="post">
         <a href="/2013/11/28/better-docker-experience-on-opensuse/">Better Docker Experience on openSUSE</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/04/12/docker-and-opensuse/">Docker and openSUSE: A Container Full of Geekos</a>
       </li>
     
   </ul>
@@ -319,7 +319,7 @@ problems.</li>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Flavio Castelli -
+  Copyright &copy; 2015 - Flavio Castelli -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
