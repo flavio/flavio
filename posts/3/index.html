@@ -9,8 +9,8 @@
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="Gran Canaria Desktop Summit has been great and really productive. I had the
-pleasure to meet people interested in QJson, chat with them but also hack &hellip;">
+  <meta name="description" content="During the last week I had the possibility to work on anything I wanted,
+Novell&rsquo;s hackweek is so cool :) I decided to dedicate myself to an &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,6 +90,130 @@ pleasure to meet people interested in QJson, chat with them but also hack &helli
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/07/28/kaveau-easy-integrated-backup-solution-kde/">Kaveau: Easy and Integrated Backups Solution for KDE</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2009-07-28T09:47:05+02:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>9:47 am</span></time>
+        
+           | <a href="/2009/07/28/kaveau-easy-integrated-backup-solution-kde/#disqus_thread"
+             data-disqus-identifier="http://flavio.castelli.name/2009/07/28/kaveau-easy-integrated-backup-solution-kde/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>During the last week I had the possibility to work on anything I wanted,
+Novell&rsquo;s hackweek is so cool :)</p>
+
+<p>I decided to dedicate myself to an idea that has been obsessing me since a
+long time. Last December my brand new hard disk suddenly died, making
+impossible to recover anything. Fortunately I had just synchronized the most
+important documents between my workstation and my laptop, so I didn&rsquo;t lose
+anything important. This incident make me realize that I should perform
+backups regularly and I immediately started looking for a good solution.</p>
+
+<p>Personally I think that doing backups is pretty boring so I wanted something
+damned easy to setup and use. Something that once configured runs in the
+background and does the dirty job without bothering you. Let&rsquo;s face the truth:
+I wanted Apple&rsquo;s Time Machine for KDE.</p>
+
+<p>After some searches I realized that nothing was fitting my requirements and I
+decided to create something new: <em>kaveau</em>.</p>
+
+<h3>What is kaveau?</h3>
+
+<p>Kaveau is a backup program that makes backup easy for the average user.</p>
+
+<p>As you will see while coding/planning kaveau I made some assumptions and so
+only few things are configurable. I really think that sometimes <a href="http://en.wikipedia.org/wiki/Minimalism"><em>&ldquo;less is
+more&rdquo;</em></a>.</p>
+
+<h3>What does kaveau?</h3>
+
+<p>Current features:</p>
+
+<ul>
+<li>it performs backups to an external storage device: I don&rsquo;t think it will ever store backup data on a remote host. If you want to do that just use some good project like <a href="http://backuppc.sourceforge.net/">Backup pc</a>.</li>
+<li>it backs up the complete home directory of the user: storage is cheap and average users (like me) keep everything inside their home directory ( but it&rsquo;s possible to exclude some directories from the backup).</li>
+<li>it performs incremental backups.</li>
+<li>the backup data are neither compressed nor stored in fancy formats: in this way you can plug your external disk into another machine and access your data without additional work.</li>
+<li>backups are performed automatically every hour (of course only if your external disk is plugged).</li>
+<li>notification messages are shown if your backup is older that a week.
+More enhancements are coming&hellip;</li>
+</ul>
+
+
+<h3>What technologies does it use?</h3>
+
+<p>Backups are performed using <a href="http://rdiff-backup.nongnu.org/">rdiff-backup</a>
+because it&rsquo;s damned easy to use, well tested (it&rsquo;s used also in production
+environments) and packaged by all distributions.</p>
+
+<p>The awesome <a href="http://solid.kde.org/">solid</a> library is used for interacting
+with the external disks is super easy.</p>
+
+<h3>Status of kaveau</h3>
+
+<p>I have been working on kaveau just for five days, so <strong>there&rsquo;s still a lot of
+work to do</strong>.</p>
+
+<p>A screenshot tour will give you the right idea of its status.</p>
+
+<h4>First run - external storage device attached</h4>
+
+<p><img src="/images/kaveau/sf1.png"></p>
+
+<h4>Backup wizard - page 1</h4>
+
+<p><img src="/images/kaveau/sf3.png"></p>
+
+<h4>Backup wizard - page 2</h4>
+
+<p><img src="/images/kaveau/sf4.png"></p>
+
+<h4>Backup wizard - final page</h4>
+
+<p><img src="/images/kaveau/sf5.png"></p>
+
+<h4>Backup operation in progress</h4>
+
+<p><img src="/images/kaveau/sf6.png"></p>
+
+<h4>Backup completed</h4>
+
+<p><img src="/images/kaveau/sf7.png"></p>
+
+<p>Right now the code is available on
+<a href="http://github.com/flavio/kaveau/tree/master">this</a> git repository but I don&rsquo;t
+recommend you to try it (unless you want to find and fix bugs ;) ).</p>
+
+<p>I would really appreciate:</p>
+
+<ul>
+<li>feedback about the user interface (right now it looks too much like Time Machine).</li>
+<li>icons: it would be great to have a desktop icon and some system tray icons (contact me for more details).</li>
+<li>new code, bug fixes, code reviews, hints,&hellip;</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -826,66 +950,6 @@ on my Macbook pro apple ;)</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2008/01/18/my_current_tasks/">My Current Tasks</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2008-01-18T15:31:23+01:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>3:31 pm</span></time>
-        
-           | <a href="/2008/01/18/my_current_tasks/#disqus_thread"
-             data-disqus-identifier="http://flavio.castelli.name/2008/01/18/my_current_tasks/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Usually I write blog posts announcing <strong>what I have done</strong>, but this time
-<a href="http://pollycoke.net/2008/01/14/strigi-ha-un-piano-di-sviluppo-%0Afinalmente/">it</a> <a href="http://www.kdedevelopers.org/node/3204">is</a>
-<a href="http://strigi.sourceforge.net/?q=strigi_metting_summary">useless</a>. So I&rsquo;m
-going to blog about <strong>what I&rsquo;m going to do</strong>.  After latest Strigi irc
-meeting, I came out with this task:</p>
-
-<blockquote><p>KDE integration: Flavio will coordinate the definition of interfaces over
-which KDE will handle searching and metadata. He can ask Aaron, Evgeny and Jos
-for help with the interface design. The interface will cover:</p>
-
-<ul>
-<li><p>Querying via Xesam</p></li>
-<li><p>Configuration of the Strigi daemon</p></li>
-<li><p>Indexing and deindexing of data by passing it to the daemon (allowing
-for indexing for more than just files)</p></li>
-<li><p>Controlling the daemon (starting, stopping, pausing)</p></li>
-</ul>
-</blockquote>
-
-<p>Once this interface will be ready, it will be easy to integrate Strigi
-functionalities inside KDE programs. This mean (just reporting the most
-relevant cases) that it will be possible to create a Strigi krunner, have
-metadata extraction inside Dolphin and Konqueror, interact with Akonadi&hellip;</p>
-
-<p>Talking about Xesam, right in these days I got a mail from <a href="http://developer.berlios.de/blog/authors/6825-Fabrice-Colin">Fabrice Colin</a>, author of
-<a href="http://pinot.berlios.de/">Pinot</a>. Recently Fabrice made some improvements on
-Pinot&rsquo;s <em>XesamQueryLanguage</em> parser (which is also <a href="http://www.flavio.castelli.name/strigi_xesam_query_language_support">used by Strigi</a>).
-We&rsquo;re now figuring out how to share our code in a more convenient way. Maybe
-we&rsquo;ll use <a href="http://svnbook.red-bean.com/nightly/en/svn.advanced.externals.html">svn external</a>&hellip;</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/4">&larr; Older</a>
@@ -903,6 +967,10 @@ we&rsquo;ll use <a href="http://svnbook.red-bean.com/nightly/en/svn.advanced.ext
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2015/07/24/putting-opensuse-docker-images-on-a-diet/">Putting openSUSE Docker Images on a Diet</a>
+      </li>
+    
+      <li class="post">
         <a href="/2015/04/23/introducing-portus-a-user-interface-for-docker-registry/">Introducing Portus: An Authorization Service and Front-end for Docker Registry</a>
       </li>
     
@@ -916,10 +984,6 @@ we&rsquo;ll use <a href="http://svnbook.red-bean.com/nightly/en/svn.advanced.ext
     
       <li class="post">
         <a href="/2014/02/13/docker-and-opensuse-getting-closer/">Docker and openSUSE Getting Closer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/11/28/better-docker-experience-on-opensuse/">Better Docker Experience on openSUSE</a>
       </li>
     
   </ul>

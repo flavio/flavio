@@ -9,9 +9,10 @@
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="Just giving more voice to original announce:
-Tomorrow, Saturday 12 January, at 17 UTC an irc meeting will take place on
-#strigi channel (it&rsquo;s &hellip;">
+  <meta name="description" content="Usually I write blog posts announcing what I have done, but this time
+it is
+useless. So I&rsquo;m
+going to blog about what I&rsquo;m going to do. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -91,6 +92,66 @@ Tomorrow, Saturday 12 January, at 17 UTC an irc meeting will take place on
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2008/01/18/my_current_tasks/">My Current Tasks</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2008-01-18T15:31:23+01:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>3:31 pm</span></time>
+        
+           | <a href="/2008/01/18/my_current_tasks/#disqus_thread"
+             data-disqus-identifier="http://flavio.castelli.name/2008/01/18/my_current_tasks/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Usually I write blog posts announcing <strong>what I have done</strong>, but this time
+<a href="http://pollycoke.net/2008/01/14/strigi-ha-un-piano-di-sviluppo-%0Afinalmente/">it</a> <a href="http://www.kdedevelopers.org/node/3204">is</a>
+<a href="http://strigi.sourceforge.net/?q=strigi_metting_summary">useless</a>. So I&rsquo;m
+going to blog about <strong>what I&rsquo;m going to do</strong>.  After latest Strigi irc
+meeting, I came out with this task:</p>
+
+<blockquote><p>KDE integration: Flavio will coordinate the definition of interfaces over
+which KDE will handle searching and metadata. He can ask Aaron, Evgeny and Jos
+for help with the interface design. The interface will cover:</p>
+
+<ul>
+<li><p>Querying via Xesam</p></li>
+<li><p>Configuration of the Strigi daemon</p></li>
+<li><p>Indexing and deindexing of data by passing it to the daemon (allowing
+for indexing for more than just files)</p></li>
+<li><p>Controlling the daemon (starting, stopping, pausing)</p></li>
+</ul>
+</blockquote>
+
+<p>Once this interface will be ready, it will be easy to integrate Strigi
+functionalities inside KDE programs. This mean (just reporting the most
+relevant cases) that it will be possible to create a Strigi krunner, have
+metadata extraction inside Dolphin and Konqueror, interact with Akonadi&hellip;</p>
+
+<p>Talking about Xesam, right in these days I got a mail from <a href="http://developer.berlios.de/blog/authors/6825-Fabrice-Colin">Fabrice Colin</a>, author of
+<a href="http://pinot.berlios.de/">Pinot</a>. Recently Fabrice made some improvements on
+Pinot&rsquo;s <em>XesamQueryLanguage</em> parser (which is also <a href="http://www.flavio.castelli.name/strigi_xesam_query_language_support">used by Strigi</a>).
+We&rsquo;re now figuring out how to share our code in a more convenient way. Maybe
+we&rsquo;ll use <a href="http://svnbook.red-bean.com/nightly/en/svn.advanced.externals.html">svn external</a>&hellip;</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -655,70 +716,6 @@ to file and point <em>strigicmd</em> to it.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2007/08/07/strigi_xesam_query_language_support/">Strigi Gets XesamQueryLanguage Queries Support</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2007-08-07T14:43:27+02:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2007</span></span> <span class='time'>2:43 pm</span></time>
-        
-           | <a href="/2007/08/07/strigi_xesam_query_language_support/#disqus_thread"
-             data-disqus-identifier="http://flavio.castelli.name/2007/08/07/strigi_xesam_query_language_support/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Since last Thursday Strigi gained <em>XesamQueryLanguage</em> support. This means
-that now is possible to process queries formulated using this syntax.</p>
-
-<p>But why is this important?  If you aren&rsquo;t able to answer the previous question
-probably you don&rsquo;t know what is Xesam. Here&rsquo;s a short definition taken from
-the <a href="http://www.freedesktop.org/wiki/XesamAbout">official site</a>:  Xesam is an
-umbrella project with the purpose of providing unified apis and specs for
-desktop search- and metadata services.  Thanks to dbus and Xesam it will be
-possible to access the informations indexed by Strigi (and all the desktop
-searching programs supporting these technologies) in a standard and easier
-way. Isn&rsquo;t it cool?</p>
-
-<h3>Credits</h3>
-
-<p>I&rsquo;ve to say a big <em><strong>&ldquo;thank you&rdquo;</strong></em> to <a href="http://developer.berlios.de/blog/authors/6825-Fabrice-Colin">Fabrice Colin</a> (author of
-<a href="http://pinot.berlios.de/">pinot</a>) because my Xesam code relies upon his work.</p>
-
-<h3>Future tasks</h3>
-
-<p>My work isn&rsquo;t yet finished. Xesam defines two kind of queries:</p>
-
-<ul>
-<li>Xesam user language queries</li>
-<li>Xesam query language queries
-Fabrice&rsquo;s code for <em>XesamUserLanguage</em> queries uses <a href="http://spirit.sourceforge.net/">Spirit library</a>. Since we don&rsquo;t want to depend
-against the boost library, I&rsquo;ll write a new parser for this language.</li>
-</ul>
-
-
-<p>By now I&rsquo;m thinking to accomplish this task using flex, but I&rsquo;m just in a
-preliminary state. Suggestions are welcome!</p>
-
-<p><strong>P.S.</strong> I&rsquo;m really happy because this is my first post published on <a href="http://www.planetkde.org">PlanetKDE</a>. Hello to everybody!</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/5">&larr; Older</a>
@@ -736,6 +733,10 @@ preliminary state. Suggestions are welcome!</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2015/07/24/putting-opensuse-docker-images-on-a-diet/">Putting openSUSE Docker Images on a Diet</a>
+      </li>
+    
+      <li class="post">
         <a href="/2015/04/23/introducing-portus-a-user-interface-for-docker-registry/">Introducing Portus: An Authorization Service and Front-end for Docker Registry</a>
       </li>
     
@@ -749,10 +750,6 @@ preliminary state. Suggestions are welcome!</p>
     
       <li class="post">
         <a href="/2014/02/13/docker-and-opensuse-getting-closer/">Docker and openSUSE Getting Closer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/11/28/better-docker-experience-on-opensuse/">Better Docker Experience on openSUSE</a>
       </li>
     
   </ul>

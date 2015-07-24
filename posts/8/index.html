@@ -9,7 +9,7 @@
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="Finally qtcanvas classes are available for Qt 4 series This isn&rsquo;t the final version of qtcanvas, it&rsquo;s only a backport of the original &hellip;">
+  <meta name="description" content="This simple program removes recursively all .svn directories. Requirements: In order to run remove-svn requires python. Synopsis: remove-svn syntax &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -89,6 +89,47 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2006/02/15/svn-cleaner/">Svn Cleaner</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2006-02-15T00:17:23+01:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2006</span></span> <span class='time'>12:17 am</span></time>
+        
+           | <a href="/2006/02/15/svn-cleaner/#disqus_thread"
+             data-disqus-identifier="http://flavio.castelli.name/2006/02/15/svn-cleaner/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This simple program removes recursively all .svn directories.</p>
+
+<p><strong>Requirements:</strong> In order to run <em>remove-svn</em> requires python.</p>
+
+<p><strong>Synopsis:</strong> <em>remove-svn</em> syntax is: <code>remove-svn dir</code> in this way remove-svn will recursively remove all <em>.svn</em> directories found under dir.<br/>
+An example: <code>remove-svn</code>pwd&#8220;</p>
+
+<p><strong>UPDATE</strong> A faster way for removing <em>.svn</em> file through this simple bash command: <code>find ./ -name *svn* | xargs rm -rf</code></p>
+
+<p>The old script has been removed.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -419,6 +460,10 @@ echo &quot;See you... ;-D&quot;</code></pre></noscript></div>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2015/07/24/putting-opensuse-docker-images-on-a-diet/">Putting openSUSE Docker Images on a Diet</a>
+      </li>
+    
+      <li class="post">
         <a href="/2015/04/23/introducing-portus-a-user-interface-for-docker-registry/">Introducing Portus: An Authorization Service and Front-end for Docker Registry</a>
       </li>
     
@@ -432,10 +477,6 @@ echo &quot;See you... ;-D&quot;</code></pre></noscript></div>
     
       <li class="post">
         <a href="/2014/02/13/docker-and-opensuse-getting-closer/">Docker and openSUSE Getting Closer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/11/28/better-docker-experience-on-opensuse/">Better Docker Experience on openSUSE</a>
       </li>
     
   </ul>

@@ -5,14 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>dot.kde.org and Me - Flavio Castelli</title>
+  <title>Putting openSUSE Docker Images on a Diet - Flavio Castelli</title>
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="I&rsquo;m really honored to report that dot.kde.org has
-published the english translation of my interview for kde-it. You can find it
-here.
-">
+  <meta name="description" content="In case you missed the openSUSE images for Docker got suddenly smaller. During the last week I worked together with Marcus Schäfer
+(the author of &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,7 +19,7 @@ here.
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://flavio.castelli.name/2007/05/10/dotkdeorg-and-me">
+  <link rel="canonical" href="http://flavio.castelli.name/2015/07/24/putting-opensuse-docker-images-on-a-diet">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Flavio Castelli" type="application/atom+xml">
@@ -95,7 +93,7 @@ here.
   
   <header>
     
-      <h1 class="entry-title">dot.kde.org and Me</h1>
+      <h1 class="entry-title">Putting openSUSE Docker Images on a Diet</h1>
     
     
       <p class="meta">
@@ -104,7 +102,7 @@ here.
 
 
 
-<time class='entry-date' datetime='2007-05-10T19:35:41+02:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2007</span></span> <span class='time'>7:35 pm</span></time>
+<time class='entry-date' datetime='2015-07-24T14:21:34+02:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>2:21 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://flavio.castelli.name">Comments</a>
@@ -114,9 +112,29 @@ here.
   </header>
 
 
-<div class="entry-content"><p>I&rsquo;m really honored to report that <a href="http://dot.kde.org/">dot.kde.org</a> has
-published the english translation of my interview for kde-it. You can find it
-<a href="http://dot.kde.org/1178648432/">here</a>.</p>
+<div class="entry-content"><p>In case you missed the openSUSE images for Docker got suddenly smaller.</p>
+
+<p>During the last week I worked together with <a href="https://plus.google.com/118327827420943568236/about">Marcus Schäfer</a>
+(the author of KIWI) to reduce their size.</p>
+
+<p>We fixed some obvious mistakes (like avoiding to install man pages and
+documentation), but we also removed some useless packages.</p>
+
+<p>These are the results of our work:</p>
+
+<ul>
+<li>openSUSE 13.2 image: from 254M down to 82M</li>
+<li>openSUSE Tumbleweed image: from 267M down to 87M</li>
+</ul>
+
+
+<p>Just to make some comparisons, the Ubuntu image is around 188M while the
+Fedora one is about 186M. We cannot obviously compete with images like busybox or
+Alpine, but the situation definitely improved!</p>
+
+<p>Needless to say, the new images are already on the DockerHub.</p>
+
+<p>Have fun!</p>
 </div>
 
 
@@ -125,19 +143,19 @@ published the english translation of my interview for kde-it. You can find it
       
   
 
-<span class="byline author vcard">Posted by <span class="fn">Flavio</span></span>
+<span class="byline author vcard">Posted by <span class="fn">Flavio Castelli</span></span>
 
       
 
 
 
 
-<time class='entry-date' datetime='2007-05-10T19:35:41+02:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2007</span></span> <span class='time'>7:35 pm</span></time>
+<time class='entry-date' datetime='2015-07-24T14:21:34+02:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>2:21 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/kde/'>kde</a>, <a class='category' href='/blog/categories/life/'>life</a>, <a class='category' href='/blog/categories/strigi/'>strigi</a>
+    <a class='category' href='/blog/categories/docker/'>docker</a>, <a class='category' href='/blog/categories/opensuse/'>opensuse</a>
   
 </span>
 
@@ -146,7 +164,7 @@ published the english translation of my interview for kde-it. You can find it
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://flavio.castelli.name/2007/05/10/dotkdeorg-and-me/" data-via="flavio_castelli" data-counturl="http://flavio.castelli.name/2007/05/10/dotkdeorg-and-me/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://flavio.castelli.name/2015/07/24/putting-opensuse-docker-images-on-a-diet/" data-via="flavio_castelli" data-counturl="http://flavio.castelli.name/2015/07/24/putting-opensuse-docker-images-on-a-diet/" >Tweet</a>
   
   
   
@@ -155,10 +173,8 @@ published the english translation of my interview for kde-it. You can find it
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/2007/05/07/kde-italy-and-me/" title="Previous Post: KDE Italy and me">&laquo; KDE Italy and me</a>
+        <a class="basic-alignment left" href="/2015/04/23/introducing-portus-a-user-interface-for-docker-registry/" title="Previous Post: Introducing Portus: an authorization service and front-end for Docker registry">&laquo; Introducing Portus: an authorization service and front-end for Docker registry</a>
       
-      
-        <a class="basic-alignment right" href="/2007/05/29/kde4_preview_gazzaniga/" title="Next Post: KDE4 preview at Gazzaniga (BG)">KDE4 preview at Gazzaniga (BG) &raquo;</a>
       
     </p>
   </footer>
@@ -267,8 +283,8 @@ published the english translation of my interview for kde-it. You can find it
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://flavio.castelli.name/2007/05/10/dotkdeorg-and-me/';
-        var disqus_url = 'http://flavio.castelli.name/2007/05/10/dotkdeorg-and-me/';
+        var disqus_identifier = 'http://flavio.castelli.name/2015/07/24/putting-opensuse-docker-images-on-a-diet/';
+        var disqus_url = 'http://flavio.castelli.name/2015/07/24/putting-opensuse-docker-images-on-a-diet/';
         var disqus_script = 'embed.js';
       
     (function () {

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://flavio.castelli.name/2015/07/24/putting-opensuse-docker-images-on-a-diet/</loc>
+    <lastmod>2015-07-24T14:21:34+02:00</lastmod>
+  </url>
+  <url>
     <loc>http://flavio.castelli.name/2015/04/23/introducing-portus-a-user-interface-for-docker-registry/</loc>
     <lastmod>2015-04-23T21:43:09+02:00</lastmod>
   </url>
@@ -628,6 +632,6 @@
   </url>
   <url>
     <loc>http://flavio.castelli.name/google03f2e7552d5bf01f.html</loc>
-    <lastmod>2015-04-24T18:02:36+02:00</lastmod>
+    <lastmod>2015-04-24T18:06:40+02:00</lastmod>
   </url>
 </urlset>

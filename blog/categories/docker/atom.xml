@@ -4,7 +4,7 @@
   <title><![CDATA[Category: docker | Flavio Castelli]]></title>
   <link href="http://flavio.castelli.name/blog/categories/docker/atom.xml" rel="self"/>
   <link href="http://flavio.castelli.name/"/>
-  <updated>2015-04-24T18:04:40+02:00</updated>
+  <updated>2015-07-24T14:39:44+02:00</updated>
   <id>http://flavio.castelli.name/</id>
   <author>
     <name><![CDATA[Flavio Castelli]]></name>
@@ -12,6 +12,37 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Putting openSUSE Docker images on a diet]]></title>
+    <link href="http://flavio.castelli.name/2015/07/24/putting-opensuse-docker-images-on-a-diet/"/>
+    <updated>2015-07-24T14:21:34+02:00</updated>
+    <id>http://flavio.castelli.name/2015/07/24/putting-opensuse-docker-images-on-a-diet</id>
+    <content type="html"><![CDATA[<p>In case you missed the openSUSE images for Docker got suddenly smaller.</p>
+
+<p>During the last week I worked together with <a href="https://plus.google.com/118327827420943568236/about">Marcus Schäfer</a>
+(the author of KIWI) to reduce their size.</p>
+
+<p>We fixed some obvious mistakes (like avoiding to install man pages and
+documentation), but we also removed some useless packages.</p>
+
+<p>These are the results of our work:</p>
+
+<ul>
+<li>openSUSE 13.2 image: from 254M down to 82M</li>
+<li>openSUSE Tumbleweed image: from 267M down to 87M</li>
+</ul>
+
+
+<p>Just to make some comparisons, the Ubuntu image is around 188M while the
+Fedora one is about 186M. We cannot obviously compete with images like busybox or
+Alpine, but the situation definitely improved!</p>
+
+<p>Needless to say, the new images are already on the DockerHub.</p>
+
+<p>Have fun!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Introducing Portus: an authorization service and front-end for Docker registry]]></title>

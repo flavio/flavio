@@ -9,8 +9,9 @@
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="Just a quick note, I released a new version of the fastuserswitch plasmoid.
-This new release implements all the improvements suggested by the users &hellip;">
+  <meta name="description" content="Let me introduce a small project I&rsquo;ve been working on with a friend
+of mine, Giuseppe Capizzi. The project is
+called jump and ﻿allows you to &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,6 +91,51 @@ This new release implements all the improvements suggested by the users &hellip;
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/08/11/jump/">Jump: A Bookmarking System for the Bash Shell</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2010-08-11T21:29:29+02:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2010</span></span> <span class='time'>9:29 pm</span></time>
+        
+           | <a href="/2010/08/11/jump/#disqus_thread"
+             data-disqus-identifier="http://flavio.castelli.name/2010/08/11/jump/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://flavio.castelli.name/wp-content/uploads/2010/08/van-halen-%0Ajump.jpeg"></a>Let me introduce a small project I&rsquo;ve been working on with a friend
+of mine, <a href="http://twitter.com/gcapizzi">Giuseppe Capizzi</a>. The project is
+called <strong>jump</strong> and ﻿allows you to quickly change directories in the bash
+shell using bookmarks.</p>
+
+<p>Thanks to Jump, you won&rsquo;t have to type those long paths anymore.</p>
+
+<p><img src="/images/jump/van-halen-jump.jpeg"></p>
+
+<p>You can find jump&rsquo;s source code, detailed documentation and installation
+instructions <a href="http://github.com/flavio/jump">here</a>.</p>
+
+<p>SUSE packages can be found
+<a href="http://software.opensuse.org/search?baseproject=ALL&amp;p=1&amp;q=rubygem-%0Ajump">here</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -899,130 +945,6 @@ you proof ;)</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/07/28/kaveau-easy-integrated-backup-solution-kde/">Kaveau: Easy and Integrated Backups Solution for KDE</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2009-07-28T09:47:05+02:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>9:47 am</span></time>
-        
-           | <a href="/2009/07/28/kaveau-easy-integrated-backup-solution-kde/#disqus_thread"
-             data-disqus-identifier="http://flavio.castelli.name/2009/07/28/kaveau-easy-integrated-backup-solution-kde/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>During the last week I had the possibility to work on anything I wanted,
-Novell&rsquo;s hackweek is so cool :)</p>
-
-<p>I decided to dedicate myself to an idea that has been obsessing me since a
-long time. Last December my brand new hard disk suddenly died, making
-impossible to recover anything. Fortunately I had just synchronized the most
-important documents between my workstation and my laptop, so I didn&rsquo;t lose
-anything important. This incident make me realize that I should perform
-backups regularly and I immediately started looking for a good solution.</p>
-
-<p>Personally I think that doing backups is pretty boring so I wanted something
-damned easy to setup and use. Something that once configured runs in the
-background and does the dirty job without bothering you. Let&rsquo;s face the truth:
-I wanted Apple&rsquo;s Time Machine for KDE.</p>
-
-<p>After some searches I realized that nothing was fitting my requirements and I
-decided to create something new: <em>kaveau</em>.</p>
-
-<h3>What is kaveau?</h3>
-
-<p>Kaveau is a backup program that makes backup easy for the average user.</p>
-
-<p>As you will see while coding/planning kaveau I made some assumptions and so
-only few things are configurable. I really think that sometimes <a href="http://en.wikipedia.org/wiki/Minimalism"><em>&ldquo;less is
-more&rdquo;</em></a>.</p>
-
-<h3>What does kaveau?</h3>
-
-<p>Current features:</p>
-
-<ul>
-<li>it performs backups to an external storage device: I don&rsquo;t think it will ever store backup data on a remote host. If you want to do that just use some good project like <a href="http://backuppc.sourceforge.net/">Backup pc</a>.</li>
-<li>it backs up the complete home directory of the user: storage is cheap and average users (like me) keep everything inside their home directory ( but it&rsquo;s possible to exclude some directories from the backup).</li>
-<li>it performs incremental backups.</li>
-<li>the backup data are neither compressed nor stored in fancy formats: in this way you can plug your external disk into another machine and access your data without additional work.</li>
-<li>backups are performed automatically every hour (of course only if your external disk is plugged).</li>
-<li>notification messages are shown if your backup is older that a week.
-More enhancements are coming&hellip;</li>
-</ul>
-
-
-<h3>What technologies does it use?</h3>
-
-<p>Backups are performed using <a href="http://rdiff-backup.nongnu.org/">rdiff-backup</a>
-because it&rsquo;s damned easy to use, well tested (it&rsquo;s used also in production
-environments) and packaged by all distributions.</p>
-
-<p>The awesome <a href="http://solid.kde.org/">solid</a> library is used for interacting
-with the external disks is super easy.</p>
-
-<h3>Status of kaveau</h3>
-
-<p>I have been working on kaveau just for five days, so <strong>there&rsquo;s still a lot of
-work to do</strong>.</p>
-
-<p>A screenshot tour will give you the right idea of its status.</p>
-
-<h4>First run - external storage device attached</h4>
-
-<p><img src="/images/kaveau/sf1.png"></p>
-
-<h4>Backup wizard - page 1</h4>
-
-<p><img src="/images/kaveau/sf3.png"></p>
-
-<h4>Backup wizard - page 2</h4>
-
-<p><img src="/images/kaveau/sf4.png"></p>
-
-<h4>Backup wizard - final page</h4>
-
-<p><img src="/images/kaveau/sf5.png"></p>
-
-<h4>Backup operation in progress</h4>
-
-<p><img src="/images/kaveau/sf6.png"></p>
-
-<h4>Backup completed</h4>
-
-<p><img src="/images/kaveau/sf7.png"></p>
-
-<p>Right now the code is available on
-<a href="http://github.com/flavio/kaveau/tree/master">this</a> git repository but I don&rsquo;t
-recommend you to try it (unless you want to find and fix bugs ;) ).</p>
-
-<p>I would really appreciate:</p>
-
-<ul>
-<li>feedback about the user interface (right now it looks too much like Time Machine).</li>
-<li>icons: it would be great to have a desktop icon and some system tray icons (contact me for more details).</li>
-<li>new code, bug fixes, code reviews, hints,&hellip;</li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/3">&larr; Older</a>
@@ -1040,6 +962,10 @@ recommend you to try it (unless you want to find and fix bugs ;) ).</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2015/07/24/putting-opensuse-docker-images-on-a-diet/">Putting openSUSE Docker Images on a Diet</a>
+      </li>
+    
+      <li class="post">
         <a href="/2015/04/23/introducing-portus-a-user-interface-for-docker-registry/">Introducing Portus: An Authorization Service and Front-end for Docker Registry</a>
       </li>
     
@@ -1053,10 +979,6 @@ recommend you to try it (unless you want to find and fix bugs ;) ).</p>
     
       <li class="post">
         <a href="/2014/02/13/docker-and-opensuse-getting-closer/">Docker and openSUSE Getting Closer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/11/28/better-docker-experience-on-opensuse/">Better Docker Experience on openSUSE</a>
       </li>
     
   </ul>

@@ -9,8 +9,8 @@
   <meta name="author" content="Flavio Castelli">
 
   
-  <meta name="description" content="One of the perks of working at SUSE is hackweek, an entire week you can dedicate
-working on whatever project you want. Last week the 12th edition of &hellip;">
+  <meta name="description" content="In case you missed the openSUSE images for Docker got suddenly smaller. During the last week I worked together with Marcus Schäfer
+(the author of &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,6 +90,60 @@ working on whatever project you want. Last week the 12th edition of &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2015/07/24/putting-opensuse-docker-images-on-a-diet/">Putting openSUSE Docker Images on a Diet</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-24T14:21:34+02:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>2:21 pm</span></time>
+        
+           | <a href="/2015/07/24/putting-opensuse-docker-images-on-a-diet/#disqus_thread"
+             data-disqus-identifier="http://flavio.castelli.name/2015/07/24/putting-opensuse-docker-images-on-a-diet/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In case you missed the openSUSE images for Docker got suddenly smaller.</p>
+
+<p>During the last week I worked together with <a href="https://plus.google.com/118327827420943568236/about">Marcus Schäfer</a>
+(the author of KIWI) to reduce their size.</p>
+
+<p>We fixed some obvious mistakes (like avoiding to install man pages and
+documentation), but we also removed some useless packages.</p>
+
+<p>These are the results of our work:</p>
+
+<ul>
+<li>openSUSE 13.2 image: from 254M down to 82M</li>
+<li>openSUSE Tumbleweed image: from 267M down to 87M</li>
+</ul>
+
+
+<p>Just to make some comparisons, the Ubuntu image is around 188M while the
+Fedora one is about 186M. We cannot obviously compete with images like busybox or
+Alpine, but the situation definitely improved!</p>
+
+<p>Needless to say, the new images are already on the DockerHub.</p>
+
+<p>Have fun!</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1152,51 +1206,6 @@ code</a>, apply now!</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2010/08/11/jump/">Jump: A Bookmarking System for the Bash Shell</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2010-08-11T21:29:29+02:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2010</span></span> <span class='time'>9:29 pm</span></time>
-        
-           | <a href="/2010/08/11/jump/#disqus_thread"
-             data-disqus-identifier="http://flavio.castelli.name/2010/08/11/jump/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://flavio.castelli.name/wp-content/uploads/2010/08/van-halen-%0Ajump.jpeg"></a>Let me introduce a small project I&rsquo;ve been working on with a friend
-of mine, <a href="http://twitter.com/gcapizzi">Giuseppe Capizzi</a>. The project is
-called <strong>jump</strong> and ﻿allows you to quickly change directories in the bash
-shell using bookmarks.</p>
-
-<p>Thanks to Jump, you won&rsquo;t have to type those long paths anymore.</p>
-
-<p><img src="/images/jump/van-halen-jump.jpeg"></p>
-
-<p>You can find jump&rsquo;s source code, detailed documentation and installation
-instructions <a href="http://github.com/flavio/jump">here</a>.</p>
-
-<p>SUSE packages can be found
-<a href="http://software.opensuse.org/search?baseproject=ALL&amp;p=1&amp;q=rubygem-%0Ajump">here</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -1212,6 +1221,10 @@ instructions <a href="http://github.com/flavio/jump">here</a>.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2015/07/24/putting-opensuse-docker-images-on-a-diet/">Putting openSUSE Docker Images on a Diet</a>
+      </li>
+    
+      <li class="post">
         <a href="/2015/04/23/introducing-portus-a-user-interface-for-docker-registry/">Introducing Portus: An Authorization Service and Front-end for Docker Registry</a>
       </li>
     
@@ -1225,10 +1238,6 @@ instructions <a href="http://github.com/flavio/jump">here</a>.</p>
     
       <li class="post">
         <a href="/2014/02/13/docker-and-opensuse-getting-closer/">Docker and openSUSE Getting Closer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/11/28/better-docker-experience-on-opensuse/">Better Docker Experience on openSUSE</a>
       </li>
     
   </ul>
