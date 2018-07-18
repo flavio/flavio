@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Json on Flavio Castelli</title>
+    <link>http://flavio.castelli.me/categories/json/</link>
+    <description>Recent content in Json on Flavio Castelli</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 04 Nov 2008 13:37:07 +0000</lastBuildDate>
+    
+	<atom:link href="http://flavio.castelli.me/categories/json/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>QJson: a Qt-based library for mapping JSON data to QVariant objects</title>
+      <link>http://flavio.castelli.me/2008/11/04/qjson-a-qt-based-library-for-mapping-json-data-to-qvariant-objects/</link>
+      <pubDate>Tue, 04 Nov 2008 13:37:07 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2008/11/04/qjson-a-qt-based-library-for-mapping-json-data-to-qvariant-objects/</guid>
+      <description>In order to realize a project of mine I started looking for a Qt library for mapping JSON data to Qt objects.
+I came over a couple of solutions but none of them made me happy. So in the last weekend I wrote my own library : QJson The library is based on Qt toolkit and converts JSON data to QVariant instances. JSON arrays will be mapped to QVariantList instances, while JSON&amp;rsquo;s objects will be mapped to QVariantMap.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Plasma on Flavio Castelli</title>
+    <link>http://flavio.castelli.me/categories/plasma/</link>
+    <description>Recent content in Plasma on Flavio Castelli</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 23 Jul 2010 23:32:31 +0000</lastBuildDate>
+    
+	<atom:link href="http://flavio.castelli.me/categories/plasma/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Fast user switch plasmoid improvements</title>
+      <link>http://flavio.castelli.me/2010/07/23/fast-user-switch-plasmoid-improvements/</link>
+      <pubDate>Fri, 23 Jul 2010 23:32:31 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2010/07/23/fast-user-switch-plasmoid-improvements/</guid>
+      <description>Just a quick note, I released a new version of the fastuserswitch plasmoid. This new release implements all the improvements suggested by the users plus some minor fixes.
+Code can be downloaded from here. openSUSE packages are already available on the build service.
+These are some screenshots illustrating fastuserswitch&amp;rsquo;s new features.
+{% img /images/fast_user_switch/fastuserswitch011.png %} {% img /images/fast_user_switch/fastuserswitch021.png %} {% img /images/fast_user_switch/fastuserswitch03.png %}</description>
+    </item>
+    
+    <item>
+      <title>Fast user switch plasmoid</title>
+      <link>http://flavio.castelli.me/2010/07/15/fast-user-switch-plasmoid/</link>
+      <pubDate>Thu, 15 Jul 2010 07:23:11 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2010/07/15/fast-user-switch-plasmoid/</guid>
+      <description>Last week my mother in law started to share her Linux laptop with my wife. Suddenly my wife asked me how she could switch from one user session to another. She was looking for something similar to OS X fast user switch feature but she couldn&amp;rsquo;t find it. In fact there wasn&amp;rsquo;t a fast and easy way to switch between users&amp;rsquo; sessions with KDE, until&amp;hellip; now :)
+Let me introduce my first plasmoid: the fast user switch plasmoid.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Orchestration on Flavio Castelli</title>
+    <link>http://flavio.castelli.me/categories/orchestration/</link>
+    <description>Recent content in Orchestration on Flavio Castelli</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 03 Nov 2014 14:51:42 +0100</lastBuildDate>
+    
+	<atom:link href="http://flavio.castelli.me/categories/orchestration/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Orchestrating Docker containers on openSUSE</title>
+      <link>http://flavio.castelli.me/2014/11/03/orchestrating-docker-containers-on-opensuse/</link>
+      <pubDate>Mon, 03 Nov 2014 14:51:42 +0100</pubDate>
+      
+      <guid>http://flavio.castelli.me/2014/11/03/orchestrating-docker-containers-on-opensuse/</guid>
+      <description>A couple of weeks ago the 11th edition of SUSE&amp;rsquo;s hackweek took place. This year I decided to spend this time to look into the different orchestration and service discovery tools build around Docker.
+In the beginning I looked into the kubernetes project. I found it really promising but AFAIK not yet ready to be used. It&amp;rsquo;s still in its early days and it&amp;rsquo;s in constant evolution. I will surely keep looking into it.</description>
+    </item>
+    
+  </channel>
+</rss>

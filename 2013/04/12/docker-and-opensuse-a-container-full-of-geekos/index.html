@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>Docker and openSUSE: a container full of Geekos</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="http://flavio.castelli.me/favicon.png" rel="icon">
+
+  
+  
+  
+
+  
+
+  <link href="/atom.xml" rel="alternate" title="Flavio Castelli" type="application/atom+xml">
+
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.44" />
+
+  
+  
+
+  
+  
+
+</head>
+<body>
+
+
+<header role="banner"><hgroup>
+  
+  <h1><a href="http://flavio.castelli.me/">Flavio Castelli</a></h1>
+    <h2>Debugging my life</h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+        <option value="http://flavio.castelli.me/">» Blog</option>
+      
+        <option value="http://flavio.castelli.me/post">» Archive</option>
+      
+
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+    
+      <li><a href="http://flavio.castelli.me/" title="Blog">Blog</a></li>
+    
+  
+    
+      <li><a href="http://flavio.castelli.me/post" title="Archive" >Archive</a></li>
+    
+  
+</ul>
+
+
+<ul class="subscription">
+  
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS"><i class="fa fa-rss-square fa-lg"></i></a></li>
+
+</ul>
+
+
+<form action="https://www.google.com/search" method="get" target="_blank">
+  <fieldset role="search">
+  	<input class="search" type="text" name="q" results="0" placeholder="Search"/>
+    <input type="hidden" name="q" value="site:http://flavio.castelli.me/" />
+  </fieldset>
+</form>
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+    <p class="meta">Apr 12, 2013
+         - 6 minute read 
+         - <a href="http://flavio.castelli.me/2013/04/12/docker-and-opensuse-a-container-full-of-geekos/#disqus_thread">Comments</a>
+
+        
+        
+        
+            - <a class="label" href="http://flavio.castelli.me/categories/cloud/">cloud </a><a class="label" href="http://flavio.castelli.me/categories/opensuse/">openSUSE </a><a class="label" href="http://flavio.castelli.me/categories/paas/">paas </a><a class="label" href="http://flavio.castelli.me/categories/hackweek/">hackweek </a>
+        
+    </p>
+    <h1 class="entry-title">
+         Docker and openSUSE: a container full of Geekos 
+    </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          
+          
+
+<p><a href="http://hackweek.suse.com/">SUSE&rsquo;s Hackweek #9</a> is over. It has
+been an awesome week during which I worked hard to make <a href="http://www.docker.io">docker</a>
+a first class citizen on <a href="http://www.opensuse.org/">openSUSE</a>. I also spent
+some time working on an openSUSE container that could be used by docker&rsquo;s users.</p>
+
+<p>The project has been tracked on <a href="https://github.com/SUSE/hackweek/wiki/docker.io-and-openSUSE">this</a>
+page of hackweek&rsquo;s wiki, this is a detailed report of what I achieved.</p>
+
+<h2 id="installing-docker-on-opensuse-12-3">Installing docker on openSUSE 12.3</h2>
+
+<p>Docker has been packaged inside of <a href="https://build.opensuse.org/project/show?project=home%3Aflavio_castelli%3Adocker">this</a>
+OBS project.</p>
+
+<p>So installing it requires just two commands:</p>
+
+<pre><code>sudo zypper ar http://download.opensuse.org/repositories/home:/flavio_castelli:/docker/openSUSE_12.3 docker
+sudo zypper in docker
+</code></pre>
+
+<p>There&rsquo;s also a <a href="http://software.opensuse.org/ymp/home:flavio_castelli:docker/openSUSE_12.3/docker.ymp?base=openSUSE%3A12.3&amp;query=docker">1 Click Install</a>
+for the lazy ones :)</p>
+
+<p>Zypper will install docker and its dependencies which are:</p>
+
+<ul>
+<li><code>lxc</code>: docker&rsquo;s &ldquo;magic&rdquo; is built on top of <a href="http://lxc.sourceforge.net/">LXC</a>.</li>
+<li><code>bridge-utils</code>: is used to setup the bridge interface used by docker&rsquo;s
+containers.</li>
+<li><code>dnsmasq</code>: is used to start the dhcp server used by the containers.</li>
+<li><code>iptables</code>: is used to get containers&rsquo; networking work.</li>
+<li><code>bsdtar</code>: is used by docker to compress/extract the containers.</li>
+<li><a href="http://aufs.sourceforge.net/">aufs3</a> kernel module: is used by docker to
+track the changes made to the containers.</li>
+</ul>
+
+<p>The <code>aufs3</code> kernel module is <strong>not</strong> part of the official kernel and is <strong>not</strong>
+available on the official repositories. Hence adding docker will trigger the
+<strong>installation of a new kernel package</strong> on your machine.</p>
+
+<p>Both the kernel and the aufs3 packages are going to be installed from the
+<em>home:flavio_castelli:docker</em> repository but they
+are in fact links to the packages created by <a href="https://build.opensuse.org/home?user=-miska-">Michal Hrusecky</a>
+inside of his <a href="https://build.opensuse.org/package/show?package=aufs3&amp;project=home%3A-miska-%3Aaufs">aufs project</a>
+on OBS.</p>
+
+<p><strong>Note well:</strong> docker works only on 64bit hosts. That&rsquo;s why there are no 32bit
+packages.</p>
+
+<h2 id="docker-appliance">Docker appliance</h2>
+
+<p>If you don&rsquo;t want to install docker on your system or you are just curious and
+want to jump straight into action there&rsquo;s a <a href="http://susestudio.com">SUSE Studio</a>
+appliance ready for you. You can find it <a href="http://susestudio.com/a/CZ0T0D/docker">here</a>.</p>
+
+<p>If you are not familiar with SUSE Gallery let me tell you two things about it:</p>
+
+<ul>
+<li>you can download the appliance on your computer and play with it or&hellip;</li>
+<li>you can clone the appliance on SUSE Studio and customize it even further or&hellip;</li>
+<li>you can test the appliance from your browser using SUSE Studio&rsquo;s Testdrive
+feature (no SUSE Studio account required!).</li>
+</ul>
+
+<p>The latter option is really cool, because it will allow you to play with docker
+immediately. There&rsquo;s just one thing to keep in mind about Testdrive: outgoing
+connections are disabled, so you won&rsquo;t be able to install new stuff (or download
+new docker images). Fortunately this appliance comes with the busybox container
+bundled, so you will be able to play a bit with docker.</p>
+
+<h2 id="running-docker">Running docker</h2>
+
+<p>The docker daemon must be running in order to use your containers. The openSUSE
+package comes with a init script which can be used to manage it.</p>
+
+<p>The script is <code>/etc/init.d/docker</code>, but there&rsquo;s also the usual symbolic link
+called <code>/usr/sbin/rcdocker</code>.</p>
+
+<p>To start the docker daemon just type:</p>
+
+<pre><code>sudo /usr/sbin/rcdocker start
+</code></pre>
+
+<p>This will trigger the following actions:</p>
+
+<ol>
+<li>The <code>docker0</code> bridge interface is created. This interface is bridged
+ with <code>eth0</code>.</li>
+<li>A <code>dnsmasq</code> instance listening on the <code>docker0</code> interface is started.</li>
+<li>IP forwarding and IP masquerading are enabled.</li>
+<li>Docker daemon is started.</li>
+</ol>
+
+<p>All the containers will get an IP on the <code>10.0.3.0/24</code> network.</p>
+
+<h2 id="playing-with-docker">Playing with docker</h2>
+
+<p>Now is time to play with docker.</p>
+
+<p>First of all you need to download an image: <code>docker pull base</code></p>
+
+<p>This will fetch the official Ubuntu-based image created by the
+<a href="http://www.dotcloud.com/">dotCloud</a> guys.</p>
+
+<p>You will be able to run the Ubuntu container on your openSUSE host without any
+problem, that&rsquo;s LXC&rsquo;s &ldquo;magic&rdquo; ;)</p>
+
+<p>If you want to use only &ldquo;green&rdquo; products just pull the openSUSE 12.3 container
+I created for you:</p>
+
+<pre><code>docker pull flavio/opensuse-12-3
+</code></pre>
+
+<p>Please <strong>experiment a lot with this image</strong> and <strong>give me your feedback</strong>.
+The dotCloud guys proposed me to promote it to top-level base image, but I want
+to be sure everything works fine before doing that.</p>
+
+<p>Now you can go through the <a href="http://docs.docker.io/en/latest/examples/running_examples/">examples</a>
+reported on the official
+<a href="http://docs.docker.io/en/latest/concepts/containers/">docker&rsquo;s documentation</a>.</p>
+
+<h2 id="create-your-own-opensuse-images-with-suse-studio">Create your own openSUSE images with SUSE Studio</h2>
+
+<p>I think it would be extremely cool to create docker&rsquo;s images using
+<a href="http://susestudio.com">SUSE Studio</a>.
+As you might know I&rsquo;m part of the SUSE Studio team, so I looked a bit into how
+to add support to this new format.</p>
+
+<p><strong>&ndash; personal opinion &ndash;</strong></p>
+
+<p>There are some technical challenges to solve, but I don&rsquo;t think it would be hard
+to address them.</p>
+
+<p><strong>&ndash; personal opinion &ndash;</strong></p>
+
+<p>If you are interested in adding the docker format to SUSE Studio please create
+a new feature request on <a href="https://features.opensuse.org/">openFATE</a> and vote it!</p>
+
+<p>In the meantime there&rsquo;s another way to create your custom docker images, just
+keep reading.</p>
+
+<h2 id="create-your-own-opensuse-images-with-kiwi">Create your own openSUSE images with KIWI</h2>
+
+<p><a href="http://opensuse.github.io/kiwi">KIWI</a> is the amazing tool at the heart of
+SUSE Studio and can be used to create LXC containers.</p>
+
+<p>As said earlier docker runs LXC containers, so we are going to follow
+<a href="http://doc.opensuse.org/projects/kiwi/doc/#sec.lxc.building">these</a> instructions.</p>
+
+<p>First of all install KIWI from the <a href="https://build.opensuse.org/project/show?project=Virtualization%3AAppliances">Virtualization:Appliances</a> project on OBS:</p>
+
+<pre><code>sudo zypper ar http://download.opensuse.org/repositories/Virtualization:/Appliances/openSUSE_12.3 virtualization:appliances
+sudo zypper in kiwi kiwi-doc
+</code></pre>
+
+<p>We are going to use the configuration files of a simple LXC container shipped
+the <code>kiwi-doc</code> package:</p>
+
+<pre><code>cp -r /usr/share/doc/packages/kiwi/examples/suse-11.3/suse-lxc-guest ~/openSUSE_12_3_docker
+</code></pre>
+
+<p>The <code>openSUSE_12_3_docker</code> directory contains two configuration files used by
+KIWI (<code>config.sh</code> and <code>config.xml</code>) plus the <code>root</code> directory.</p>
+
+<p>The contents of this directory are going to be added to the resulting container.
+It&rsquo;s really important to create the <code>/etc/resolv.conf</code> file inside of the
+final image since docker is going to mount the <code>resol.conf</code> file of the host
+system inside of the running guest. If the file is not found docker won&rsquo;t be able
+to start our container.</p>
+
+<p>An empty file is enough:</p>
+
+<pre><code>touch ~/openSUSE_12_3_docker/root/etc/resolv.conf
+</code></pre>
+
+<p>Now we can create the rootfs of the container using KIWI:</p>
+
+<pre><code>sudo /usr/sbin/kiwi --prepare ~/openSUSE_12_3_docker --root /tmp/openSUSE_12_3_docker_rootfs
+</code></pre>
+
+<p>We can skip the next step reported on KIWI&rsquo;s documentation, that&rsquo;s not needed
+with docker because it will produce an invalid container. Just execute the
+following command:</p>
+
+<pre><code>sudo tar cvjpf openSUSE_12_3_docker.tar.bz2 -C /tmp/openSUSE_12_3_docker_rootfs/ .
+</code></pre>
+
+<p>This will produce a tarball containing the rootfs of your container.</p>
+
+<p>Now you can import it inside of docker, there are two ways to achieve that:</p>
+
+<ul>
+<li>from a web server.</li>
+<li>from a local file.</li>
+</ul>
+
+<p>Importing the image from a web server is really convenient if you ran KIWI
+on a different machine.</p>
+
+<p>Just move the tarball to a directory which is exposed by the web server. If you don&rsquo;t
+have one installed just move to the directory containing the tarball and type the following
+command:</p>
+
+<pre><code>python -m SimpleHTTPServer 8080
+</code></pre>
+
+<p>This will start a simple http server listening on port 8080 of your machine.</p>
+
+<p>On the machine running docker just type:</p>
+
+<pre><code>docker import http://mywebserver/openSUSE_12_3_docker.tar.bz2 my_openSUSE_image latest
+</code></pre>
+
+<p>If the tarball is already on the machine running docker you just need to type:</p>
+
+<pre><code>cat ~/openSUSE_12_3_docker.tar.bz2 | docker import - my_openSUSE_image latest
+</code></pre>
+
+<p>Docker will download (just in the 1st case) and import the tarball. The resulting
+image will be named <em>&lsquo;my_openSUSE_image&rsquo;</em> and it will have a tag named <em>&lsquo;latest&rsquo;</em>.</p>
+
+<p>The name of the tag is really important since docker tries to run the
+image with the <em>&lsquo;latest&rsquo;</em> tag unless you explicitly specify a different value.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Hackweek #9 has been both productive and fun for me. I hope you will have fun
+too using docker on openSUSE.</p>
+
+<p>As usual, feedback is welcome.</p>
+
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn"></span></span>
+    
+    <time>Apr 12, 2013</time>
+    
+    </span>
+  </p>
+
+  
+  
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="http://flavio.castelli.me/2012/11/27/qjson-0.8.1-released/" title="qjson 0.8.1 released">qjson 0.8.1 released</a>
+    
+
+    
+      <a class="basic-alignment right" href="http://flavio.castelli.me/2013/11/28/better-docker-experience-on-opensuse/" title="Better Docker experience on openSUSE">Better Docker experience on openSUSE</a>
+    
+  </p>
+  
+    
+      <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'flavio-castelli-name';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+
+    <p>
+      
+        <p>Father, husband and passionate programmer.</p>
+
+<p>Engineering manager of the kubernetes core team at SUSE.</p>
+
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" href="https://github.com/flavio/" title="https://github.com/flavio/"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      <a target="_blank" href="https://twitter.com/flavio_castelli/" title="https://twitter.com/flavio_castelli/"><i class="fa fa-twitter fa-3x"></i></a>
+      
+         
+      
+      <a target="_blank" href="https://www.linkedin.com/in/flaviocastelli/" title="https://www.linkedin.com/in/flaviocastelli/"><i class="fa fa-linkedin fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+    
+      <section class="odd">
+        
+        
+      </section>
+    
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+            
+              <li class="post">
+                <a href="/2015/07/24/putting-opensuse-docker-images-on-a-diet/">Putting openSUSE Docker images on a diet</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/2015/04/23/introducing-portus-an-authorization-service-and-front-end-for-docker-registry/">Introducing Portus: an authorization service and front-end for Docker registry</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/2014/11/03/orchestrating-docker-containers-on-opensuse/">Orchestrating Docker containers on openSUSE</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/2014/05/06/building-docker-images-with-kiwi/">Building docker images with KIWI</a>
+              </li>
+            
+          
+        </ul>
+      </section>
+    
+  
+</aside>
+
+  </div>
+</div>
+
+<footer role="contentinfo">
+  <p>Copyright &copy; 2018  - <a href="http://flavio.castelli.me/license/">License</a> -
+  <span class="credit">Powered by <a target="_blank" href="https://gohugo.io">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/">Hugo-Octopress</a> theme.
+</p>
+
+</footer>
+
+
+
+
+
+
+</body>
+</html>
+

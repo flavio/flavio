@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Opensuse on Flavio Castelli</title>
+    <link>http://flavio.castelli.me/categories/opensuse/</link>
+    <description>Recent content in Opensuse on Flavio Castelli</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 24 Jul 2015 14:21:34 +0200</lastBuildDate>
+    
+	<atom:link href="http://flavio.castelli.me/categories/opensuse/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Putting openSUSE Docker images on a diet</title>
+      <link>http://flavio.castelli.me/2015/07/24/putting-opensuse-docker-images-on-a-diet/</link>
+      <pubDate>Fri, 24 Jul 2015 14:21:34 +0200</pubDate>
+      
+      <guid>http://flavio.castelli.me/2015/07/24/putting-opensuse-docker-images-on-a-diet/</guid>
+      <description>In case you missed the openSUSE images for Docker got suddenly smaller.
+During the last week I worked together with Marcus Schäfer (the author of KIWI) to reduce their size.
+We fixed some obvious mistakes (like avoiding to install man pages and documentation), but we also removed some useless packages.
+These are the results of our work:
+ openSUSE 13.2 image: from 254M down to 82M openSUSE Tumbleweed image: from 267M down to 87M  Just to make some comparisons, the Ubuntu image is around 188M while the Fedora one is about 186M.</description>
+    </item>
+    
+    <item>
+      <title>Introducing Portus: an authorization service and front-end for Docker registry</title>
+      <link>http://flavio.castelli.me/2015/04/23/introducing-portus-an-authorization-service-and-front-end-for-docker-registry/</link>
+      <pubDate>Thu, 23 Apr 2015 21:43:09 +0200</pubDate>
+      
+      <guid>http://flavio.castelli.me/2015/04/23/introducing-portus-an-authorization-service-and-front-end-for-docker-registry/</guid>
+      <description>One of the perks of working at SUSE is hackweek, an entire week you can dedicate working on whatever project you want. Last week the 12th edition of hackweek took place. So I decided to spend it working on solving one of the problems many users have when running an on-premise instance of a Docker registry.
+The Docker registry works like a charm, but it&amp;rsquo;s hard to have full control over the images you push to it.</description>
+    </item>
+    
+    <item>
+      <title>Orchestrating Docker containers on openSUSE</title>
+      <link>http://flavio.castelli.me/2014/11/03/orchestrating-docker-containers-on-opensuse/</link>
+      <pubDate>Mon, 03 Nov 2014 14:51:42 +0100</pubDate>
+      
+      <guid>http://flavio.castelli.me/2014/11/03/orchestrating-docker-containers-on-opensuse/</guid>
+      <description>A couple of weeks ago the 11th edition of SUSE&amp;rsquo;s hackweek took place. This year I decided to spend this time to look into the different orchestration and service discovery tools build around Docker.
+In the beginning I looked into the kubernetes project. I found it really promising but AFAIK not yet ready to be used. It&amp;rsquo;s still in its early days and it&amp;rsquo;s in constant evolution. I will surely keep looking into it.</description>
+    </item>
+    
+    <item>
+      <title>Building docker images with KIWI</title>
+      <link>http://flavio.castelli.me/2014/05/06/building-docker-images-with-kiwi/</link>
+      <pubDate>Tue, 06 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2014/05/06/building-docker-images-with-kiwi/</guid>
+      <description>I&amp;rsquo;m pleased to announce Marcus Schäfer has just made possible to build docker images with KIWI.
+For those who never heard about it, KIWI is a tool which creates Linux systems for both physical and virtual machines. It can create openSUSE, SUSE and other types of Linux distributions.
+Update: I changed the required version of kiwi and the openSUSE 13.1 template. Kiwi just received some improvements which do no longer force the image to include the lxc package.</description>
+    </item>
+    
+    <item>
+      <title>Docker and openSUSE getting closer</title>
+      <link>http://flavio.castelli.me/2014/02/13/docker-and-opensuse-getting-closer/</link>
+      <pubDate>Thu, 13 Feb 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2014/02/13/docker-and-opensuse-getting-closer/</guid>
+      <description>I have some good news about Docker and openSUSE.
+First of all the Docker package has been moved from my personal OBS project to the more official Virtualization one. The next step is to get the Docker package into Factory :)
+I&amp;rsquo;m going to drop the docker package from home:flavio_castelli:docker, so make sure to subscribe to the Virtualization repository to get latest versions of Docker.
+I have also submitted some openSUSE related documentation to the official Docker project.</description>
+    </item>
+    
+    <item>
+      <title>Better Docker experience on openSUSE</title>
+      <link>http://flavio.castelli.me/2013/11/28/better-docker-experience-on-opensuse/</link>
+      <pubDate>Thu, 28 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2013/11/28/better-docker-experience-on-opensuse/</guid>
+      <description>I don&amp;rsquo;t know if you are aware of that, but Docker 0.7.0 has been released a couple of days ago.
+You can read the full announcement here, but let me talk about the biggest change introduced by this release: storage drivers!
+Docker has always used AUFS, a &amp;ldquo;unionfs-like&amp;rdquo; file system, to power its containers. Unfortunately AUFS is neither part of the official kernel nor of the openSUSE/SLE one.
+In the past I had to build a custom patched kernel to run Docker on openSUSE.</description>
+    </item>
+    
+    <item>
+      <title>Docker and openSUSE: a container full of Geekos</title>
+      <link>http://flavio.castelli.me/2013/04/12/docker-and-opensuse-a-container-full-of-geekos/</link>
+      <pubDate>Fri, 12 Apr 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2013/04/12/docker-and-opensuse-a-container-full-of-geekos/</guid>
+      <description>SUSE&amp;rsquo;s Hackweek #9 is over. It has been an awesome week during which I worked hard to make docker a first class citizen on openSUSE. I also spent some time working on an openSUSE container that could be used by docker&amp;rsquo;s users.
+The project has been tracked on this page of hackweek&amp;rsquo;s wiki, this is a detailed report of what I achieved.
+Installing docker on openSUSE 12.3 Docker has been packaged inside of this OBS project.</description>
+    </item>
+    
+  </channel>
+</rss>

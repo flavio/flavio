@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kiwi on Flavio Castelli</title>
+    <link>http://flavio.castelli.me/categories/kiwi/</link>
+    <description>Recent content in Kiwi on Flavio Castelli</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 06 May 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://flavio.castelli.me/categories/kiwi/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Building docker images with KIWI</title>
+      <link>http://flavio.castelli.me/2014/05/06/building-docker-images-with-kiwi/</link>
+      <pubDate>Tue, 06 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2014/05/06/building-docker-images-with-kiwi/</guid>
+      <description>I&amp;rsquo;m pleased to announce Marcus Schäfer has just made possible to build docker images with KIWI.
+For those who never heard about it, KIWI is a tool which creates Linux systems for both physical and virtual machines. It can create openSUSE, SUSE and other types of Linux distributions.
+Update: I changed the required version of kiwi and the openSUSE 13.1 template. Kiwi just received some improvements which do no longer force the image to include the lxc package.</description>
+    </item>
+    
+  </channel>
+</rss>

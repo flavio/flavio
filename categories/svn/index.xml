@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Svn on Flavio Castelli</title>
+    <link>http://flavio.castelli.me/categories/svn/</link>
+    <description>Recent content in Svn on Flavio Castelli</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 23 Nov 2007 15:49:12 +0000</lastBuildDate>
+    
+	<atom:link href="http://flavio.castelli.me/categories/svn/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Updated git-svn howto</title>
+      <link>http://flavio.castelli.me/2007/11/23/updated-git-svn-howto/</link>
+      <pubDate>Fri, 23 Nov 2007 15:49:12 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/11/23/updated-git-svn-howto/</guid>
+      <description>Maybe someone has already experimented this situation:
+ You&amp;rsquo;re hacking on your local working copy and you want to keep it up-to-date but, since you have some uncommitted changes, git-svn rebase cannot be executed
+ I was just thinking to write something about_ _this problem when I read a post on digikam blog.
+In this post Marcel proposes a workaround using a bash function. In fact there&amp;rsquo;s a &amp;ldquo;cleaner&amp;rdquo; solution, if you&amp;rsquo;re interested read the last part of my git-svn howto.</description>
+    </item>
+    
+    <item>
+      <title>Howto use Git and svn together</title>
+      <link>http://flavio.castelli.me/2007/09/04/howto-use-git-and-svn-together/</link>
+      <pubDate>Tue, 04 Sep 2007 12:22:15 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/09/04/howto-use-git-and-svn-together/</guid>
+      <description>In these days I&amp;rsquo;ve heard lot of rumors around Git. After reading some manual/tutorial/guide I discovered that it can be really useful, especially if you spend lot of time coding off-line (that&amp;rsquo;s my situation).
+This is a really small howto that describes how to work on a project versioned with svn (maybe taken from KDE repository ;) ) using git.
+What&amp;rsquo;re the advantages? Since Git is a distributed revision control system (while svn is a centralized one) you can perform commits, brances, merges,&amp;hellip; on your local working dir without being connected to internet.</description>
+    </item>
+    
+  </channel>
+</rss>

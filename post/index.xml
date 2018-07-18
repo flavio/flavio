@@ -1,0 +1,836 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Flavio Castelli</title>
+    <link>http://flavio.castelli.me/post/</link>
+    <description>Recent content in Posts on Flavio Castelli</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 24 Jul 2015 14:21:34 +0200</lastBuildDate>
+    
+	<atom:link href="http://flavio.castelli.me/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Putting openSUSE Docker images on a diet</title>
+      <link>http://flavio.castelli.me/2015/07/24/putting-opensuse-docker-images-on-a-diet/</link>
+      <pubDate>Fri, 24 Jul 2015 14:21:34 +0200</pubDate>
+      
+      <guid>http://flavio.castelli.me/2015/07/24/putting-opensuse-docker-images-on-a-diet/</guid>
+      <description>In case you missed the openSUSE images for Docker got suddenly smaller.
+During the last week I worked together with Marcus Schäfer (the author of KIWI) to reduce their size.
+We fixed some obvious mistakes (like avoiding to install man pages and documentation), but we also removed some useless packages.
+These are the results of our work:
+ openSUSE 13.2 image: from 254M down to 82M openSUSE Tumbleweed image: from 267M down to 87M  Just to make some comparisons, the Ubuntu image is around 188M while the Fedora one is about 186M.</description>
+    </item>
+    
+    <item>
+      <title>Introducing Portus: an authorization service and front-end for Docker registry</title>
+      <link>http://flavio.castelli.me/2015/04/23/introducing-portus-an-authorization-service-and-front-end-for-docker-registry/</link>
+      <pubDate>Thu, 23 Apr 2015 21:43:09 +0200</pubDate>
+      
+      <guid>http://flavio.castelli.me/2015/04/23/introducing-portus-an-authorization-service-and-front-end-for-docker-registry/</guid>
+      <description>One of the perks of working at SUSE is hackweek, an entire week you can dedicate working on whatever project you want. Last week the 12th edition of hackweek took place. So I decided to spend it working on solving one of the problems many users have when running an on-premise instance of a Docker registry.
+The Docker registry works like a charm, but it&amp;rsquo;s hard to have full control over the images you push to it.</description>
+    </item>
+    
+    <item>
+      <title>Orchestrating Docker containers on openSUSE</title>
+      <link>http://flavio.castelli.me/2014/11/03/orchestrating-docker-containers-on-opensuse/</link>
+      <pubDate>Mon, 03 Nov 2014 14:51:42 +0100</pubDate>
+      
+      <guid>http://flavio.castelli.me/2014/11/03/orchestrating-docker-containers-on-opensuse/</guid>
+      <description>A couple of weeks ago the 11th edition of SUSE&amp;rsquo;s hackweek took place. This year I decided to spend this time to look into the different orchestration and service discovery tools build around Docker.
+In the beginning I looked into the kubernetes project. I found it really promising but AFAIK not yet ready to be used. It&amp;rsquo;s still in its early days and it&amp;rsquo;s in constant evolution. I will surely keep looking into it.</description>
+    </item>
+    
+    <item>
+      <title>Building docker images with KIWI</title>
+      <link>http://flavio.castelli.me/2014/05/06/building-docker-images-with-kiwi/</link>
+      <pubDate>Tue, 06 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2014/05/06/building-docker-images-with-kiwi/</guid>
+      <description>I&amp;rsquo;m pleased to announce Marcus Schäfer has just made possible to build docker images with KIWI.
+For those who never heard about it, KIWI is a tool which creates Linux systems for both physical and virtual machines. It can create openSUSE, SUSE and other types of Linux distributions.
+Update: I changed the required version of kiwi and the openSUSE 13.1 template. Kiwi just received some improvements which do no longer force the image to include the lxc package.</description>
+    </item>
+    
+    <item>
+      <title>Docker and openSUSE getting closer</title>
+      <link>http://flavio.castelli.me/2014/02/13/docker-and-opensuse-getting-closer/</link>
+      <pubDate>Thu, 13 Feb 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2014/02/13/docker-and-opensuse-getting-closer/</guid>
+      <description>I have some good news about Docker and openSUSE.
+First of all the Docker package has been moved from my personal OBS project to the more official Virtualization one. The next step is to get the Docker package into Factory :)
+I&amp;rsquo;m going to drop the docker package from home:flavio_castelli:docker, so make sure to subscribe to the Virtualization repository to get latest versions of Docker.
+I have also submitted some openSUSE related documentation to the official Docker project.</description>
+    </item>
+    
+    <item>
+      <title>Better Docker experience on openSUSE</title>
+      <link>http://flavio.castelli.me/2013/11/28/better-docker-experience-on-opensuse/</link>
+      <pubDate>Thu, 28 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2013/11/28/better-docker-experience-on-opensuse/</guid>
+      <description>I don&amp;rsquo;t know if you are aware of that, but Docker 0.7.0 has been released a couple of days ago.
+You can read the full announcement here, but let me talk about the biggest change introduced by this release: storage drivers!
+Docker has always used AUFS, a &amp;ldquo;unionfs-like&amp;rdquo; file system, to power its containers. Unfortunately AUFS is neither part of the official kernel nor of the openSUSE/SLE one.
+In the past I had to build a custom patched kernel to run Docker on openSUSE.</description>
+    </item>
+    
+    <item>
+      <title>Docker and openSUSE: a container full of Geekos</title>
+      <link>http://flavio.castelli.me/2013/04/12/docker-and-opensuse-a-container-full-of-geekos/</link>
+      <pubDate>Fri, 12 Apr 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2013/04/12/docker-and-opensuse-a-container-full-of-geekos/</guid>
+      <description>SUSE&amp;rsquo;s Hackweek #9 is over. It has been an awesome week during which I worked hard to make docker a first class citizen on openSUSE. I also spent some time working on an openSUSE container that could be used by docker&amp;rsquo;s users.
+The project has been tracked on this page of hackweek&amp;rsquo;s wiki, this is a detailed report of what I achieved.
+Installing docker on openSUSE 12.3 Docker has been packaged inside of this OBS project.</description>
+    </item>
+    
+    <item>
+      <title>qjson 0.8.1 released</title>
+      <link>http://flavio.castelli.me/2012/11/27/qjson-0.8.1-released/</link>
+      <pubDate>Tue, 27 Nov 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2012/11/27/qjson-0.8.1-released/</guid>
+      <description>Just a quick information, QJson 0.8.1 has been released. This release ensure API and ABI compatibility with version 0.7.1.
+The previous 0.8.0 release broke ABI compatibility without changing the SOVERSION.
+Toward QJson 1.0.0 I&amp;rsquo;m not entirely happy with some parts of QJson&amp;rsquo;s API. I addressed these issues inside of the 1_0_0 branch.
+I would appreciate to hear your opinion before merging this branch into master and releasing QJson 1.0.0.</description>
+    </item>
+    
+    <item>
+      <title>QJson 0.8.0 released</title>
+      <link>http://flavio.castelli.me/2012/11/21/qjson-0.8.0-released/</link>
+      <pubDate>Wed, 21 Nov 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2012/11/21/qjson-0.8.0-released/</guid>
+      <description>Almost three years passed since latest release of QJson. A lot of stuff happened in my life and QJson definitely paid for that. I have to admit I&amp;rsquo;m a bit ashamed.
+So here we go, QJson 0.8.0 is out!
+What changed A lot of bugs has been smashed during this time, this new release will fix issues like this one and this in a nicer way.
+QJson&amp;rsquo;s API is still backward compatible, while the ABI changed.</description>
+    </item>
+    
+    <item>
+      <title>Introducing dister, a Heroku like solution for SUSE Studio</title>
+      <link>http://flavio.castelli.me/2011/03/29/introducing-dister-a-heroku-like-solution-for-suse-studio/</link>
+      <pubDate>Tue, 29 Mar 2011 15:39:21 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2011/03/29/introducing-dister-a-heroku-like-solution-for-suse-studio/</guid>
+      <description>SUSE Studio is an awesome tool, with a couple of clicks you can create an openSUSE/SUSE based system and deploy to your hard drive, an usb flash, a live dvd, a VMware/VirtualBox/Xen server and even Amazon EC2 cloud.
+Suppose you want to create a tailored SUSE Studio appliance to run a Ruby on Rails app, this is a list of things you have to take care of:
+ install all the gems required by the app (this can be a long list).</description>
+    </item>
+    
+    <item>
+      <title>Jump: a bookmarking system for the bash shell</title>
+      <link>http://flavio.castelli.me/2010/08/11/jump-a-bookmarking-system-for-the-bash-shell/</link>
+      <pubDate>Wed, 11 Aug 2010 21:29:29 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2010/08/11/jump-a-bookmarking-system-for-the-bash-shell/</guid>
+      <description>[](http://flavio.castelli.name/wp-content/uploads/2010/08/van-halen- jump.jpeg)Let me introduce a small project I&amp;rsquo;ve been working on with a friend of mine, Giuseppe Capizzi. The project is called jump and ﻿allows you to quickly change directories in the bash shell using bookmarks.
+Thanks to Jump, you won&amp;rsquo;t have to type those long paths anymore.
+You can find jump&amp;rsquo;s source code, detailed documentation and installation instructions here.
+SUSE packages can be found here.</description>
+    </item>
+    
+    <item>
+      <title>Fast user switch plasmoid improvements</title>
+      <link>http://flavio.castelli.me/2010/07/23/fast-user-switch-plasmoid-improvements/</link>
+      <pubDate>Fri, 23 Jul 2010 23:32:31 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2010/07/23/fast-user-switch-plasmoid-improvements/</guid>
+      <description>Just a quick note, I released a new version of the fastuserswitch plasmoid. This new release implements all the improvements suggested by the users plus some minor fixes.
+Code can be downloaded from here. openSUSE packages are already available on the build service.
+These are some screenshots illustrating fastuserswitch&amp;rsquo;s new features.
+{% img /images/fast_user_switch/fastuserswitch011.png %} {% img /images/fast_user_switch/fastuserswitch021.png %} {% img /images/fast_user_switch/fastuserswitch03.png %}</description>
+    </item>
+    
+    <item>
+      <title>Fast user switch plasmoid</title>
+      <link>http://flavio.castelli.me/2010/07/15/fast-user-switch-plasmoid/</link>
+      <pubDate>Thu, 15 Jul 2010 07:23:11 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2010/07/15/fast-user-switch-plasmoid/</guid>
+      <description>Last week my mother in law started to share her Linux laptop with my wife. Suddenly my wife asked me how she could switch from one user session to another. She was looking for something similar to OS X fast user switch feature but she couldn&amp;rsquo;t find it. In fact there wasn&amp;rsquo;t a fast and easy way to switch between users&amp;rsquo; sessions with KDE, until&amp;hellip; now :)
+Let me introduce my first plasmoid: the fast user switch plasmoid.</description>
+    </item>
+    
+    <item>
+      <title>How to run a single rails unit test</title>
+      <link>http://flavio.castelli.me/2010/05/28/how-to-run-a-single-rails-unit-test/</link>
+      <pubDate>Fri, 28 May 2010 15:57:57 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2010/05/28/how-to-run-a-single-rails-unit-test/</guid>
+      <description>This post explains how to execute a single unit test (or even a single test method) instead of running the complete unit test suite.
+In order to run the unit tests of your rails application, basically you have these official possibilities:
+ rake test: runs all unit, functional and integration tests. rake test:units: runs all the unit tests. rake test:functionals: runs all the functional tests. rake test:integration: runs all the integration tests.</description>
+    </item>
+    
+    <item>
+      <title>QJson and Symbian</title>
+      <link>http://flavio.castelli.me/2010/03/14/qjson-and-symbian/</link>
+      <pubDate>Sun, 14 Mar 2010 00:55:51 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2010/03/14/qjson-and-symbian/</guid>
+      <description>I&amp;rsquo;m really pleased to announce that latest version of QJson on master is working on Symbian. You can find the installation instruction here.
+Since I&amp;rsquo;m not a Symbian developer it has been a little hard for me to achieve that. I would like to thank Antti Luoma for his help.
+There are also good news for Windows developers: now building QJson under Windows is easier. Checkout the new installation instruction page.</description>
+    </item>
+    
+    <item>
+      <title>QJson code moves to gitorious</title>
+      <link>http://flavio.castelli.me/2009/12/05/qjson-code-moves-to-gitorious/</link>
+      <pubDate>Sat, 05 Dec 2009 16:48:25 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2009/12/05/qjson-code-moves-to-gitorious/</guid>
+      <description>Just a quick note: I have just moved QJson source code to this git repository hosted by gitorious.
+I&amp;rsquo;ll keep the code on KDE&amp;rsquo;s svn synchronized with the git repository.</description>
+    </item>
+    
+    <item>
+      <title>QJson: from QObject to JSON and vice-versa</title>
+      <link>http://flavio.castelli.me/2009/12/04/qjson-from-qobject-to-json-and-vice-versa/</link>
+      <pubDate>Fri, 04 Dec 2009 01:07:48 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2009/12/04/qjson-from-qobject-to-json-and-vice-versa/</guid>
+      <description>Some days ago I introduced the possibility to serialize a QObject instance to JSON. Today I&amp;rsquo;m going to show you the opposite operation: initializing a QObject using a JSON object.
+I refactored a bit my latest changes: I created a new class called QObjectHelper that provides the methods required to convert a QObject instance to a QVariantMap and vice-versa.
+This class can be used in conjunction with the Serializer and Parser classes to serialize and deserialize QObject instances to and from JSON.</description>
+    </item>
+    
+    <item>
+      <title>QJson: easier serialization of QObject instances to JSON</title>
+      <link>http://flavio.castelli.me/2009/11/30/qjson-easier-serialization-of-qobject-instances-to-json/</link>
+      <pubDate>Mon, 30 Nov 2009 20:20:58 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2009/11/30/qjson-easier-serialization-of-qobject-instances-to-json/</guid>
+      <description>I have just committed into trunk a couple of changes that make easier to serialize a QObject instance to JSON.
+This solution relies on the awesome Qt&amp;rsquo;s property system.
+Suppose the declaration of Person class looks like this:
+{% codeblock [class definition] [lang:cpp ] %} class Person : public QObject { Q_OBJECT
+Q_PROPERTY(QString name READ name WRITE setName) Q_PROPERTY(int phoneNumber READ phoneNumber WRITE setPhoneNumber) Q_PROPERTY(Gender gender READ gender WRITE setGender) Q_PROPERTY(QDate dob READ dob WRITE setDob) Q_ENUMS(Gender)</description>
+    </item>
+    
+    <item>
+      <title>kaveau updates</title>
+      <link>http://flavio.castelli.me/2009/09/14/kaveau-updates/</link>
+      <pubDate>Mon, 14 Sep 2009 23:38:54 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2009/09/14/kaveau-updates/</guid>
+      <description>Some weeks have passed since the announcement of kaveau. I&amp;rsquo;m really proud and happy about this project because I received a lot of positive feedback messages and it has been chosen as one of the best Hackweek&amp;rsquo;s projects.
+In the meantime I kept working on kaveau, so let me show you what has changed:
+ rdiff-backup has been replaced by rsync. the setup wizard has been improved according to the feedback messages I received.</description>
+    </item>
+    
+    <item>
+      <title>Using QJson under Windows</title>
+      <link>http://flavio.castelli.me/2009/09/04/using-qjson-under-windows/</link>
+      <pubDate>Fri, 04 Sep 2009 13:44:42 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2009/09/04/using-qjson-under-windows/</guid>
+      <description>Recently lots of people asked me how to build QJson under Windows. Most of them reported build/link errors, so I decided to try personally.
+The good news is that QJson can be successfully built under Window, I can show you proof ;)
+{% img /images/qjson/qjson_windows_1.png %} {% img /images/qjson/qjson_windows_2.png %}
+I have written the build instructions on QJson website: just take a look here.
+One last note: if you have problems with QJson please subscribe to the developer mailing list and post a message.</description>
+    </item>
+    
+    <item>
+      <title>kaveau: easy and integrated backups solution for KDE</title>
+      <link>http://flavio.castelli.me/2009/07/28/kaveau-easy-and-integrated-backups-solution-for-kde/</link>
+      <pubDate>Tue, 28 Jul 2009 09:47:05 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2009/07/28/kaveau-easy-and-integrated-backups-solution-for-kde/</guid>
+      <description>During the last week I had the possibility to work on anything I wanted, Novell&amp;rsquo;s hackweek is so cool :)
+I decided to dedicate myself to an idea that has been obsessing me since a long time. Last December my brand new hard disk suddenly died, making impossible to recover anything. Fortunately I had just synchronized the most important documents between my workstation and my laptop, so I didn&amp;rsquo;t lose anything important.</description>
+    </item>
+    
+    <item>
+      <title>New QJson release</title>
+      <link>http://flavio.castelli.me/2009/07/23/new-qjson-release/</link>
+      <pubDate>Thu, 23 Jul 2009 11:51:30 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2009/07/23/new-qjson-release/</guid>
+      <description>Gran Canaria Desktop Summit has been great and really productive. I had the pleasure to meet people interested in QJson, chat with them but also hack with them.
+In fact we hacked a lot, doing lots of changes to QJson:
+ the API has been cleaned, now it can be considered stable unicode support has been completely rewritten it&amp;rsquo;s now possible to convert QVariant objects into JSON ones   So it&amp;rsquo;s with a great pleasure that I announce the release of QJson 0.</description>
+    </item>
+    
+    <item>
+      <title>QJson at Gran Canaria Desktop Summit</title>
+      <link>http://flavio.castelli.me/2009/06/30/qjson-at-gran-canaria-desktop-summit/</link>
+      <pubDate>Tue, 30 Jun 2009 19:46:38 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2009/06/30/qjson-at-gran-canaria-desktop-summit/</guid>
+      <description>Now that I have booked both the flights and the hotel it&amp;rsquo;s official: I&amp;rsquo;ll attend the Gran Canaria Desktop Summit.
+On Thursday 9th July I&amp;rsquo;ll give a BoF about QJson.
+During the talk I will show:
+ the advantages brought by QJson. the usage of QJson. some real programs using QJson.  See you soon!</description>
+    </item>
+    
+    <item>
+      <title>rockmarble: see who is going to rock in your town</title>
+      <link>http://flavio.castelli.me/2009/04/07/rockmarble-see-who-is-going-to-rock-in-your-town/</link>
+      <pubDate>Tue, 07 Apr 2009 17:40:45 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2009/04/07/rockmarble-see-who-is-going-to-rock-in-your-town/</guid>
+      <description>During the last weekend I hacked a bit on rockmarble and I added a new feature: retrieve all the events happening in a certain city.
+As usual data is provided by last.fm, which should return also the events _&amp;ldquo;near&amp;rdquo; _the specified city (don&amp;rsquo;t ask me to define a value for near :) ).
+I have created new openSUSE packages, this time everything should work fine. Just make sure to remove all qjson packages before installing this release (in fact all the previous problems were due to packaging errors of qjson, now I have created new packages called libqjson0).</description>
+    </item>
+    
+    <item>
+      <title>rockmarble: how to follow your favourite artists tour with Marble</title>
+      <link>http://flavio.castelli.me/2009/04/02/rockmarble-how-to-follow-your-favourite-artists-tour-with-marble/</link>
+      <pubDate>Thu, 02 Apr 2009 08:51:43 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2009/04/02/rockmarble-how-to-follow-your-favourite-artists-tour-with-marble/</guid>
+      <description>During the last weekend I wanted to have some fun with QJson. So I came out with this idea: retrieve from last.fm the tour dates of my favourite artists and display the locations using Marble.
+After some hacking I created this small application: rockmarble&amp;hellip;
+If you have a last.fm account rockmarble will import your favourite artist list. Otherwise you can add one artists at a time.
+The tour location will be displayed inside Marble, using openstreetmap.</description>
+    </item>
+    
+    <item>
+      <title>QJson: a Qt-based library for mapping JSON data to QVariant objects</title>
+      <link>http://flavio.castelli.me/2008/11/04/qjson-a-qt-based-library-for-mapping-json-data-to-qvariant-objects/</link>
+      <pubDate>Tue, 04 Nov 2008 13:37:07 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2008/11/04/qjson-a-qt-based-library-for-mapping-json-data-to-qvariant-objects/</guid>
+      <description>In order to realize a project of mine I started looking for a Qt library for mapping JSON data to Qt objects.
+I came over a couple of solutions but none of them made me happy. So in the last weekend I wrote my own library : QJson The library is based on Qt toolkit and converts JSON data to QVariant instances. JSON arrays will be mapped to QVariantList instances, while JSON&amp;rsquo;s objects will be mapped to QVariantMap.</description>
+    </item>
+    
+    <item>
+      <title>Ruby downloader for Jamendo</title>
+      <link>http://flavio.castelli.me/2008/10/03/ruby-downloader-for-jamendo/</link>
+      <pubDate>Fri, 03 Oct 2008 11:28:28 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2008/10/03/ruby-downloader-for-jamendo/</guid>
+      <description>Also this year I&amp;rsquo;ll attend the Linux day (a day dedicated to Gnu/Linux and FLOSS that occurs every year in Italy) organized by my LUG. Guess what I&amp;rsquo;ll be talking about&amp;hellip; ;)
+While organizing the event somebody proposed to setup a local server with some music released under CC license. He suggested to download some albums from Jamendo (due to network issues we won&amp;rsquo;t be able to provide direct access to the website).</description>
+    </item>
+    
+    <item>
+      <title>Can dreams became true?</title>
+      <link>http://flavio.castelli.me/2008/07/16/can-dreams-became-true/</link>
+      <pubDate>Wed, 16 Jul 2008 13:57:52 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2008/07/16/can-dreams-became-true/</guid>
+      <description>During the last years of university I spent some time wondering about my future job. After the degree I received lot of offers (fortunately also good ones), but none of them matched with my &amp;ldquo;dream job&amp;rdquo; . There was always something missing/different. I was just trying to convince myself that the &amp;ldquo;perfect job&amp;rdquo; can exist only in our dreams when my feed reader pointed me here.
+After reading these lines:</description>
+    </item>
+    
+    <item>
+      <title>Still coding</title>
+      <link>http://flavio.castelli.me/2008/05/27/still-coding/</link>
+      <pubDate>Tue, 27 May 2008 21:36:29 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2008/05/27/still-coding/</guid>
+      <description>Yes, long time has passed since my last post (really strange, isn&amp;rsquo;t it :D ). It has been a busy period, full of work, dog training and&amp;hellip; coding (fortunately!).
+During this time I&amp;rsquo;ve been working on XesamQLib creation. This is a Qt based library for accessing Xesam services. Its API is going to be similar to Xesam-glib one and it will make life easier for developers who want to interact with programs exposing Xesam service (who talked about Strigi?</description>
+    </item>
+    
+    <item>
+      <title>Two new entries in my life</title>
+      <link>http://flavio.castelli.me/2008/03/26/two-new-entries-in-my-life/</link>
+      <pubDate>Wed, 26 Mar 2008 21:05:25 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2008/03/26/two-new-entries-in-my-life/</guid>
+      <description>Last week two new entries entered my life.A shiny brand-new _Macbook pro _arrived on Thursday. I&amp;rsquo;ve always dreamed of one of this wonderful laptops (I&amp;rsquo;ve been an happy iBook user for a long time). Two weeks ago I finally surrendered (I&amp;rsquo;ve always been scared of the high price) and I&amp;rsquo;ve ordered this new toy. Now, after one week of usage I&amp;rsquo;m really happy about it.
+Currently I&amp;rsquo;m using Linux as primary Os, but I&amp;rsquo;ll give a try also to KDE4 on Mac ;)</description>
+    </item>
+    
+    <item>
+      <title>My current tasks</title>
+      <link>http://flavio.castelli.me/2008/01/18/my-current-tasks/</link>
+      <pubDate>Fri, 18 Jan 2008 15:31:23 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2008/01/18/my-current-tasks/</guid>
+      <description>Usually I write blog posts announcing what I have done, but this time it is useless. So I&amp;rsquo;m going to blog about what I&amp;rsquo;m going to do. After latest Strigi irc meeting, I came out with this task:
+ KDE integration: Flavio will coordinate the definition of interfaces over which KDE will handle searching and metadata. He can ask Aaron, Evgeny and Jos for help with the interface design. The interface will cover:</description>
+    </item>
+    
+    <item>
+      <title>Strigi irc meeting</title>
+      <link>http://flavio.castelli.me/2008/01/11/strigi-irc-meeting/</link>
+      <pubDate>Fri, 11 Jan 2008 10:59:09 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2008/01/11/strigi-irc-meeting/</guid>
+      <description>Just giving more voice to original announce: Tomorrow, Saturday 12 January, at 17 UTC an irc meeting will take place on #strigi channel (it&amp;rsquo;s on freenode if you don&amp;rsquo;t know).
+During the meeting Strigi developers will discuss about the future developments of Strigi.
+Special guest: Aaron Aseigo. You&amp;rsquo;re all welcome.</description>
+    </item>
+    
+    <item>
+      <title>Tyding up Strigi analyzers</title>
+      <link>http://flavio.castelli.me/2008/01/10/tyding-up-strigi-analyzers/</link>
+      <pubDate>Thu, 10 Jan 2008 15:49:17 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2008/01/10/tyding-up-strigi-analyzers/</guid>
+      <description>As you may know, KDE4 will use Strigi for meta information extraction instead of the old KFilePlugin classes.
+Since Strigi&amp;rsquo;s analyzer work in a different way, lot of code has to be ported. Unfortunately, after a good start, some relevant analyzers were still missing.
+But in the last weeks Strigi gained support of:
+ wave file avi files txt files dds files rgb files sid files ico files  I&amp;rsquo;ve also updated this summary page.</description>
+    </item>
+    
+    <item>
+      <title>Strigi gains FAM support</title>
+      <link>http://flavio.castelli.me/2007/11/26/strigi-gains-fam-support/</link>
+      <pubDate>Mon, 26 Nov 2007 12:33:52 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/11/26/strigi-gains-fam-support/</guid>
+      <description>Last Monday I submitted lot of changes into Strigi&amp;rsquo;s trunk. I&amp;rsquo;ve heavily refactored some classes in order to obtain a more flexible file system notification infrastructure. Thanks to this work now it will be easier to add support for new file system notification facilities. For example, in order to add File Alteration Monitor (aka FAM) support I had to write only 576 loc (including license and documentation stuff).
+So, by now, Strigi supports the following file system monitoring facilities:</description>
+    </item>
+    
+    <item>
+      <title>Updated git-svn howto</title>
+      <link>http://flavio.castelli.me/2007/11/23/updated-git-svn-howto/</link>
+      <pubDate>Fri, 23 Nov 2007 15:49:12 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/11/23/updated-git-svn-howto/</guid>
+      <description>Maybe someone has already experimented this situation:
+ You&amp;rsquo;re hacking on your local working copy and you want to keep it up-to-date but, since you have some uncommitted changes, git-svn rebase cannot be executed
+ I was just thinking to write something about_ _this problem when I read a post on digikam blog.
+In this post Marcel proposes a workaround using a bash function. In fact there&amp;rsquo;s a &amp;ldquo;cleaner&amp;rdquo; solution, if you&amp;rsquo;re interested read the last part of my git-svn howto.</description>
+    </item>
+    
+    <item>
+      <title>Linux Day 2007</title>
+      <link>http://flavio.castelli.me/2007/10/29/linux-day-2007/</link>
+      <pubDate>Mon, 29 Oct 2007 12:37:49 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/10/29/linux-day-2007/</guid>
+      <description>Last Saturday Linux day 2007 took place.
+Linux Day is an Italian manifestation that promotes Linux and FOSS. During this day different organizations (mostly Linux User Groups) arrange events with speeches, installation parties and more.
+Since lot of people requested it, I gave a speech about KDE 4 during the Linux day organized by my LUG (BGLug).
+The presentation covers the main changes and features introduced by KDE 4. I took inspiration from Troy&amp;rsquo;s &amp;ldquo;Road to KDE 4&amp;rdquo; articles (I like them really much).</description>
+    </item>
+    
+    <item>
+      <title>Howto use Git and svn together</title>
+      <link>http://flavio.castelli.me/2007/09/04/howto-use-git-and-svn-together/</link>
+      <pubDate>Tue, 04 Sep 2007 12:22:15 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/09/04/howto-use-git-and-svn-together/</guid>
+      <description>In these days I&amp;rsquo;ve heard lot of rumors around Git. After reading some manual/tutorial/guide I discovered that it can be really useful, especially if you spend lot of time coding off-line (that&amp;rsquo;s my situation).
+This is a really small howto that describes how to work on a project versioned with svn (maybe taken from KDE repository ;) ) using git.
+What&amp;rsquo;re the advantages? Since Git is a distributed revision control system (while svn is a centralized one) you can perform commits, brances, merges,&amp;hellip; on your local working dir without being connected to internet.</description>
+    </item>
+    
+    <item>
+      <title>Strigi gains full Xesam queries support</title>
+      <link>http://flavio.castelli.me/2007/08/31/strigi-gains-full-xesam-queries-support/</link>
+      <pubDate>Fri, 31 Aug 2007 17:30:52 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/08/31/strigi-gains-full-xesam-queries-support/</guid>
+      <description>As I said in this previous post, Strigi&amp;rsquo;s Xesam support was half-done since XesamUserSearchLanguage wasn’t yet handled. Well, this is no longer true&amp;hellip; ;) In these weeks I’ve been working on XesamUserSearchLanguage support. Ehm&amp;hellip; to be honest, I’ve been fighting with Bison.
+But in the end I tamed the beast and now Xesam support in Strigi is full.
+IMHO XesamUserSearchLanguage can be considered more important than XesamQueryLanguage since common users will write queries in this way.</description>
+    </item>
+    
+    <item>
+      <title>Xesam and bathroom hacking</title>
+      <link>http://flavio.castelli.me/2007/08/10/xesam-and-bathroom-hacking/</link>
+      <pubDate>Fri, 10 Aug 2007 15:00:21 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/08/10/xesam-and-bathroom-hacking/</guid>
+      <description>Yesterday morning I was quite arrived at work when Laura (my gf) called me. Something went wrong in our bathroom and water was everywhere. She closed the main water tap and I took the first train for home (yes, since I&amp;rsquo;m an outlier I take the train two times per day). Once arrived at home I performed some hacking on the guilty washing machine, checked some pipes and than took the next train for office.</description>
+    </item>
+    
+    <item>
+      <title>How to have some fun with Strigi and Xesam queries</title>
+      <link>http://flavio.castelli.me/2007/08/09/how-to-have-some-fun-with-strigi-and-xesam-queries/</link>
+      <pubDate>Thu, 09 Aug 2007 13:10:30 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/08/09/how-to-have-some-fun-with-strigi-and-xesam-queries/</guid>
+      <description>Last day just after I hit the &amp;ldquo;submit&amp;rdquo; button a doubt came into my mind: &amp;ldquo;did I say everything ?&amp;rdquo; Well, the answer is &amp;ldquo;No!&amp;rdquo; In fact I forgot to tell you one of the most important things: how to have some fun with Strigi and Xesam! Actually the only way to perform XesamQueryLanguage queries with Strigi is through the strigicmd program.
+Strigicmd is a command-line tool shipped with Strigi. It can perform different actions like:</description>
+    </item>
+    
+    <item>
+      <title>Strigi gets XesamQueryLanguage queries support</title>
+      <link>http://flavio.castelli.me/2007/08/07/strigi-gets-xesamquerylanguage-queries-support/</link>
+      <pubDate>Tue, 07 Aug 2007 14:43:27 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/08/07/strigi-gets-xesamquerylanguage-queries-support/</guid>
+      <description>Since last Thursday Strigi gained XesamQueryLanguage support. This means that now is possible to process queries formulated using this syntax.
+But why is this important? If you aren&amp;rsquo;t able to answer the previous question probably you don&amp;rsquo;t know what is Xesam. Here&amp;rsquo;s a short definition taken from the official site: Xesam is an umbrella project with the purpose of providing unified apis and specs for desktop search- and metadata services.</description>
+    </item>
+    
+    <item>
+      <title>Create your Simpson avatar</title>
+      <link>http://flavio.castelli.me/2007/07/26/create-your-simpson-avatar/</link>
+      <pubDate>Thu, 26 Jul 2007 20:46:32 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/07/26/create-your-simpson-avatar/</guid>
+      <description>Yesterday a colleague pointed me to the Simpson the movie website. One of the coolest things of it is the possibility to create your own Simpson avatar.
+How to resist?! :)
+After some clicks I made this beautiful avatar:
+{% img /images/avatar_simpson.jpg %}
+Isn&amp;rsquo;t it amazing? :D</description>
+    </item>
+    
+    <item>
+      <title>Guestbook and spam</title>
+      <link>http://flavio.castelli.me/2007/07/18/guestbook-and-spam/</link>
+      <pubDate>Wed, 18 Jul 2007 13:49:02 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/07/18/guestbook-and-spam/</guid>
+      <description>In the last days I got an exponential grow of spam messages into the guestbook. Since drupal&amp;rsquo;s guestbook module has some problems with spam- prevention components, I&amp;rsquo;ve disabled anonymous posting.
+I&amp;rsquo;ll enable it again as soon as possible.
+BTW: I don&amp;rsquo;t know who will care about this limitation ;)</description>
+    </item>
+    
+    <item>
+      <title>New house opening</title>
+      <link>http://flavio.castelli.me/2007/07/18/new-house-opening/</link>
+      <pubDate>Wed, 18 Jul 2007 10:47:46 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/07/18/new-house-opening/</guid>
+      <description>Last friday evening I made a party in my new house. We celebrated my birthday and also the &amp;ldquo;opening&amp;rdquo; of the new house.
+Many thanks to Roberto for the photos (made with his mobile phone!).</description>
+    </item>
+    
+    <item>
+      <title>Lots of improvements into Strigi inotify support</title>
+      <link>http://flavio.castelli.me/2007/07/10/lots-of-improvements-into-strigi-inotify-support/</link>
+      <pubDate>Tue, 10 Jul 2007 22:50:34 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/07/10/lots-of-improvements-into-strigi-inotify-support/</guid>
+      <description>Some days ago I committed lots of changes regarding inotify support. Goodies and improvements have been introduced&amp;hellip; I had this code laying on my laptop for several weeks because I wasn&amp;rsquo;t able to fully test it. An annoying bug afflicting the update index operations was blocking me. But some days ago Jos fixed it, so I didn&amp;rsquo;t have any excuse :)
+These are the major changes introduced:
+ event caching: using a small cache it&amp;rsquo;s now possible to simplify multiple events and prevent high cpu usage when lot of changes occur on the same files interruption handling during the re-index operations: changing the directories to watch during an indexing operation will break the previous job and start a new one other small changes for improving cpu utilization   Actually I&amp;rsquo;m very happy of the first point, but I think the second one can still be improved&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Remember to commit</title>
+      <link>http://flavio.castelli.me/2007/07/05/remember-to-commit/</link>
+      <pubDate>Thu, 05 Jul 2007 20:43:04 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/07/05/remember-to-commit/</guid>
+      <description>I have to admit that lately I have a really bad habit: I forget to commit my changes to Strigi. In this way I end-up performing multiple commits with different changes inside: from stupid to interesting one. This is a really bad behavior, so today I decided to perform some svn status and svn diff and I made some commits on Strigi trunk. Most of all are just code readability improvement == don&amp;rsquo;t exceed the 80 chars per line.</description>
+    </item>
+    
+    <item>
+      <title>Work, work, work and... new house!</title>
+      <link>http://flavio.castelli.me/2007/07/03/work-work-work-and...-new-house/</link>
+      <pubDate>Tue, 03 Jul 2007 21:44:47 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/07/03/work-work-work-and...-new-house/</guid>
+      <description>In my last message I promised to write some more contents on this site, in order to keep it more updated. As usual I disappointed this promise :) So, what I have been doing in these day? Just a simple answer: I&amp;rsquo;ve worked a lot. &amp;ldquo;Work&amp;rdquo; can be divided in the following categories:
+ office work KDE &amp;amp; Strigi coding Physical work   The most important of all is the last one.</description>
+    </item>
+    
+    <item>
+      <title>Site updates</title>
+      <link>http://flavio.castelli.me/2007/06/07/site-updates/</link>
+      <pubDate>Thu, 07 Jun 2007 18:49:20 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/06/07/site-updates/</guid>
+      <description>In these days I decided to improve the site switching from Joomla to Drupal. I liked Joomla very much because it was really easy and immediate to use. But there was a think I didn&amp;rsquo;t like about it: the way it handled news. I wanted to have something similar to a blog, and this isn&amp;rsquo;t Joomla mission. So, after using Drupal for strigi&amp;rsquo;s website, I fall in love with it and I decided to make &amp;ldquo;the switch&amp;rdquo;.</description>
+    </item>
+    
+    <item>
+      <title>Desktop searching</title>
+      <link>http://flavio.castelli.me/2007/06/05/desktop-searching/</link>
+      <pubDate>Tue, 05 Jun 2007 14:22:16 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/06/05/desktop-searching/</guid>
+      <description>An overview of desktop searching under linux.
+This speech illustrates:
+ what&amp;rsquo;s desktop searching what&amp;rsquo;re the benefits of desktop searching technology what&amp;rsquo;re the programs availables under linux overview of Beagle overview of Strigi  Desktop searchingView more presentations from Flavio Castelli. </description>
+    </item>
+    
+    <item>
+      <title>KDE4 preview at Gazzaniga&#39;s Lug</title>
+      <link>http://flavio.castelli.me/2007/05/30/kde4-preview-at-gazzanigas-lug/</link>
+      <pubDate>Wed, 30 May 2007 15:14:31 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/05/30/kde4-preview-at-gazzanigas-lug/</guid>
+      <description>Yesterday I&amp;rsquo;ve made a speech at Gazzaniga&amp;rsquo;s Lug regarding next KDE4 major features and Strigi.
+I&amp;rsquo;ve uploaded the slides, you can find them in the paper category.</description>
+    </item>
+    
+    <item>
+      <title>KDE4 preview at Gazzaniga (BG)</title>
+      <link>http://flavio.castelli.me/2007/05/29/kde4-preview-at-gazzaniga-bg/</link>
+      <pubDate>Tue, 29 May 2007 12:38:37 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/05/29/kde4-preview-at-gazzaniga-bg/</guid>
+      <description>A KDE 4 small overview This speech illustrates some of the major KDE4 features. Slides are shorts since has been made for a &amp;ldquo;wiki-night&amp;rdquo; :)
+Kde4 previewView more presentations from Flavio Castelli. </description>
+    </item>
+    
+    <item>
+      <title>dot.kde.org and me</title>
+      <link>http://flavio.castelli.me/2007/05/10/dot.kde.org-and-me/</link>
+      <pubDate>Thu, 10 May 2007 19:35:41 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/05/10/dot.kde.org-and-me/</guid>
+      <description>I&amp;rsquo;m really honored to report that dot.kde.org has published the english translation of my interview for kde-it. You can find it here.</description>
+    </item>
+    
+    <item>
+      <title>KDE Italy and me</title>
+      <link>http://flavio.castelli.me/2007/05/07/kde-italy-and-me/</link>
+      <pubDate>Mon, 07 May 2007 19:32:01 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/05/07/kde-italy-and-me/</guid>
+      <description>I&amp;rsquo;m really honored to report that KDE-Italy site published an interview about me. You can find it here. Many thanks to Giovanni Venturi, webmaster and maintainer of kde-it.org!</description>
+    </item>
+    
+    <item>
+      <title>Back from FOSDEM</title>
+      <link>http://flavio.castelli.me/2007/03/01/back-from-fosdem/</link>
+      <pubDate>Thu, 01 Mar 2007 19:06:22 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/03/01/back-from-fosdem/</guid>
+      <description>A small resume of my FOSDEM experience&amp;hellip;
+Friday evening Departure from Italy. The plane landed in Charlesroi airport, where we (me and Laura) take a bus for Bruxelles. Once in the city it was so late that there was no public transport, so we had to take a cab in order to reach our hotel.
+Saturday Small tour in Bruxelles. As we thought Bruxelles is a beautiful city with lot of things to see, in fact there are too many things to see for a 2 day trip!</description>
+    </item>
+    
+    <item>
+      <title>Strigi Desktop integration</title>
+      <link>http://flavio.castelli.me/2007/02/28/strigi-desktop-integration/</link>
+      <pubDate>Wed, 28 Feb 2007 19:26:43 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/02/28/strigi-desktop-integration/</guid>
+      <description>Short abstract: Strigi desktop integration: how to access Strigi features.
+Strigi, the fastest and smallest desktop search engine, provides fast searches and good metadata extraction capabilities. It will be used by the next KDE, but it can be easily integrated in other programs.
+Long abstract: Modern humans are using more and more data every day. Keeping data organized is becoming insufficient, so finding and filtering documents have become key tasks in modern operating systems.</description>
+    </item>
+    
+    <item>
+      <title>Going to FOSDEM 2007 edition</title>
+      <link>http://flavio.castelli.me/2007/02/17/going-to-fosdem-2007-edition/</link>
+      <pubDate>Sat, 17 Feb 2007 20:11:20 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/02/17/going-to-fosdem-2007-edition/</guid>
+      <description>This year I&amp;rsquo;ll go to FOSDEM 2007 edition where I&amp;rsquo;ll give a presentation regarding Strigi.
+FOSDEM stands for &amp;ldquo;Free Open Source Developers European Meeting&amp;rdquo;.
+This is one of the most important happenings for the open-source scene in Europe. It takes place in Bruxelles, where for two days the university if full of talks, and stands of open-source projects.
+Big projects have a DevRoom, a place reserved for talks related with them.</description>
+    </item>
+    
+    <item>
+      <title>Still alive</title>
+      <link>http://flavio.castelli.me/2007/02/17/still-alive/</link>
+      <pubDate>Sat, 17 Feb 2007 19:15:59 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/02/17/still-alive/</guid>
+      <description>As usually lot of time passed since my last post on this site. Hundred of things happened in the meantime&amp;hellip; Going in order:
+ I took my second level degree in Computer Engineering I began to work in a IT company I&amp;rsquo;m going to give a presentation of strigi to fosdem It&amp;rsquo;s really hard (and honestly I don&amp;rsquo;t have enough time) to give a detailed resume of all these facts. The graduation went really fine, my teacher and the other one in the examining session liked my work and I got a good score.</description>
+    </item>
+    
+    <item>
+      <title>klaptopdaemon improvement</title>
+      <link>http://flavio.castelli.me/2006/12/10/klaptopdaemon-improvement/</link>
+      <pubDate>Sun, 10 Dec 2006 22:24:02 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2006/12/10/klaptopdaemon-improvement/</guid>
+      <description>Last night I spent a couple of hours adding a missing feature to klaptopdaemon. Are you curious? keep reading&amp;hellip; Yesterday I installed a new kde icon theme. It looked really nice but there was a problem: klaptopdaemon tray icon didn&amp;rsquo;t work. In fact the icon didn&amp;rsquo;t show the battery level, it was always at 0%. Quite annoying isn&amp;rsquo;t it? Since I liked the theme I decided to add a new option to klaptopdaemon: print the battery level percentage over the systray icon.</description>
+    </item>
+    
+    <item>
+      <title>HpCalc</title>
+      <link>http://flavio.castelli.me/2006/12/01/hpcalc/</link>
+      <pubDate>Fri, 01 Dec 2006 12:53:48 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2006/12/01/hpcalc/</guid>
+      <description>HpCalc is an open-source multi-platform editor for the Hp 39G calculator. I was bored by the official &amp;ldquo;Applet Development kit&amp;rdquo;, a really old and ugly program written for Windows 3.1 (!!), so I decided to write something new (and maybe better).
+I made this program just for fun and for learning something (it was the first time I used the Qt library), so don&amp;rsquo;t bother me if this isn&amp;rsquo;t fully comparable to Hp&amp;rsquo;s ADK.</description>
+    </item>
+    
+    <item>
+      <title>Netiquette</title>
+      <link>http://flavio.castelli.me/2006/10/28/netiquette/</link>
+      <pubDate>Sat, 28 Oct 2006 12:41:20 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2006/10/28/netiquette/</guid>
+      <description>An introduction to netiquette. Revised version
+This speech illustrates:
+ what&amp;rsquo;s a mailing list and how does it works what&amp;rsquo;s a newsgroup what&amp;rsquo;s netiquette how to quote how to don&amp;rsquo;t break mailing lists threads  Netiquette v11View more presentations from Flavio Castelli. </description>
+    </item>
+    
+    <item>
+      <title>Regular expressions</title>
+      <link>http://flavio.castelli.me/2006/09/12/regular-expressions/</link>
+      <pubDate>Tue, 12 Sep 2006 12:13:13 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2006/09/12/regular-expressions/</guid>
+      <description>An introduction to Regular Expressions. This speech illustrates:
+ regular expressions language main rules regexps with c++ (with boost library) regexps with python regexps with perl regexps with bash  Regular expressionsView more presentations from Flavio Castelli. </description>
+    </item>
+    
+    <item>
+      <title>My second level thesis</title>
+      <link>http://flavio.castelli.me/2006/08/08/my-second-level-thesis/</link>
+      <pubDate>Tue, 08 Aug 2006 19:57:32 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2006/08/08/my-second-level-thesis/</guid>
+      <description>Months passed in silence and now you publish two news in a couple of minutes!? yep, tonight I just want to go over internet and write something here&amp;hellip; Wink It&amp;rsquo;s time to talk about my second level thesis&amp;hellip;
+Kat A couple of months passed since I started seeking something interesting to challenge with. I found kat, an open-source information retrieval program for KDE. If you don&amp;rsquo;t know what&amp;rsquo;s an information retrieval program you&amp;rsquo;ve just to think about a local google.</description>
+    </item>
+    
+    <item>
+      <title>QShapes: a process modeling tool</title>
+      <link>http://flavio.castelli.me/2006/08/08/qshapes-a-process-modeling-tool/</link>
+      <pubDate>Tue, 08 Aug 2006 12:48:55 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2006/08/08/qshapes-a-process-modeling-tool/</guid>
+      <description>A lot of time passed since my last post. As usually I&amp;rsquo;ve been too busy to keep the site updated, forgive me! Last time I let fall something about one of my university projects: qshapes. Now it&amp;rsquo;s time to tell you something more&amp;hellip; QShapes is a process modeling tool, in short words a kind of 2D CAD.
+I&amp;rsquo;m going to release it under GPL over berlios site. Actually I I&amp;rsquo;ve registered the project (see http://developer.</description>
+    </item>
+    
+    <item>
+      <title>iBook X keyboard mapping</title>
+      <link>http://flavio.castelli.me/2006/05/12/ibook-x-keyboard-mapping/</link>
+      <pubDate>Fri, 12 May 2006 18:09:06 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2006/05/12/ibook-x-keyboard-mapping/</guid>
+      <description>How to have a comfortable keyboard layout under X. A guide destinated to italian iBook linux users
+Target have the following keymap: apple keyboard = alt gr
+Instructions You&amp;rsquo;ve to edit your /etc/X11/xkb/keycodes/xfree86 file. Remember to make a backup copy of this file before editing. These&amp;rsquo;re the easy steps:
+ under X run a program like xev to find the exact keycode of your apple key change the code with the new one comment all the old command referring the new keycode   Restart X and keep your finger crossed ;)</description>
+    </item>
+    
+    <item>
+      <title>iBook console keyboard mapping</title>
+      <link>http://flavio.castelli.me/2006/05/12/ibook-console-keyboard-mapping/</link>
+      <pubDate>Fri, 12 May 2006 12:05:14 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2006/05/12/ibook-console-keyboard-mapping/</guid>
+      <description>How to have a comfortable italian keyboard layout on your iBook.
+Target We just want this mapping:
+apple key = alt gr numpad return (the key near to left arrow) = canc  Procedure Simply download the file at the end of the page and load it using loadkeys ibook-it.map.gz
+Simple, isn&amp;rsquo;t it?
+Download I found this file over internet, the author is Dario Besseghini. Thank you Dario!
+{% gist 2469779 %}</description>
+    </item>
+    
+    <item>
+      <title>No more exams!</title>
+      <link>http://flavio.castelli.me/2006/05/10/no-more-exams/</link>
+      <pubDate>Wed, 10 May 2006 19:10:07 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2006/05/10/no-more-exams/</guid>
+      <description>Just a small announcement: last month (by 14th september) I&amp;rsquo;ve finished all my exams!!
+Obviously I&amp;rsquo;m really happy but I&amp;rsquo;m also really busy because I&amp;rsquo;m working hard on strigi. I&amp;rsquo;ll let you know something more about it in these days&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>iBook mouse emulation</title>
+      <link>http://flavio.castelli.me/2006/05/05/ibook-mouse-emulation/</link>
+      <pubDate>Fri, 05 May 2006 12:07:21 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2006/05/05/ibook-mouse-emulation/</guid>
+      <description>In this really small guide you&amp;rsquo;ll discover howto enable mouse button emulation on a iBook G4 running linux
+Target: I just wanted to enable mouse button emulation on my iBook using the following shortcuts:
+fn + ctrl = middle mouse button fn + alt = left mouse button  Requisites: You&amp;rsquo;ve to enable CONFIG_MAC_EMUMOUSEBTN in your kernel.
+Commands: In order to enable this shortcut at every boot add the following lines to your /etc/sysctl.</description>
+    </item>
+    
+    <item>
+      <title>Linux on console</title>
+      <link>http://flavio.castelli.me/2006/04/01/linux-on-console/</link>
+      <pubDate>Sat, 01 Apr 2006 12:38:05 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2006/04/01/linux-on-console/</guid>
+      <description>These slides are about linux and modern console
+The article focuses on the installation of linux over some modern console like:
+ Sega Dreamcast™ Sony Playstation 2 ™ Microsoft Xbox™ The presentation focuses mostly on the Xbox™ case.  Linux consoleView more presentations from Flavio Castelli. </description>
+    </item>
+    
+    <item>
+      <title>Svn commit helper</title>
+      <link>http://flavio.castelli.me/2006/02/16/svn-commit-helper/</link>
+      <pubDate>Thu, 16 Feb 2006 12:51:41 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2006/02/16/svn-commit-helper/</guid>
+      <description>Svn-commit is a command line utility for making rapid commit with subversion. Suppose you&amp;rsquo;re working on your local copy of a subversion project. If you forget to run commands like svn del file or svn add file each time you add or remove a file, when you&amp;rsquo;ll try to commit your working copy you&amp;rsquo;ll obtain something like this:
+ ? file: for each file/directory that isn&amp;rsquo;t under the revision system !</description>
+    </item>
+    
+    <item>
+      <title>Regexp with boost</title>
+      <link>http://flavio.castelli.me/2006/02/16/regexp-with-boost/</link>
+      <pubDate>Thu, 16 Feb 2006 12:42:50 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2006/02/16/regexp-with-boost/</guid>
+      <description>How can you add regular expressions to C++? Here you&amp;rsquo;re three small examples.
+Pattern matching In this example you’ll find how you can match a regexp in a string.
+{% codeblock [pattern matching] [lang:c++ ] %} // Created by Flavio Castelli  // distrubuted under GPL v2 license
+#include  #include 
+int main() { boost::regex pattern (&amp;ldquo;bg|olug&amp;rdquo;,boost::regex_constants::icase|boost::regex_constants::perl); std::string stringa (&amp;ldquo;Searching for BsLug&amp;rdquo;);
+if (boost::regex_search (stringa, pattern, boost::regex_constants::format_perl)) printf (&amp;ldquo;found\n&amp;rdquo;); else printf(&amp;ldquo;not found\n&amp;rdquo;);</description>
+    </item>
+    
+    <item>
+      <title>Svn cleaner</title>
+      <link>http://flavio.castelli.me/2006/02/15/svn-cleaner/</link>
+      <pubDate>Wed, 15 Feb 2006 00:17:23 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2006/02/15/svn-cleaner/</guid>
+      <description>This simple program removes recursively all .svn directories.
+Requirements: In order to run remove-svn requires python.
+Synopsis: remove-svn syntax is: remove-svn dir in this way remove-svn will recursively remove all .svn directories found under dir.
+An example: remove-svnpwd``
+UPDATE A faster way for removing .svn file through this simple bash command: find ./ -name *svn* | xargs rm -rf
+The old script has been removed.</description>
+    </item>
+    
+    <item>
+      <title>QtCanvas</title>
+      <link>http://flavio.castelli.me/2006/01/01/qtcanvas/</link>
+      <pubDate>Sun, 01 Jan 2006 00:13:43 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2006/01/01/qtcanvas/</guid>
+      <description>Finally qtcanvas classes are available for Qt 4 series
+This isn&amp;rsquo;t the final version of qtcanvas, it&amp;rsquo;s only a backport of the original classes shipped with Qt3.
+So what&amp;rsquo;s the difference between this qtcanvas and qt3canvas (available only through Qt3 support with Qt4)? Simple this version works with all open-source versions of Qt &amp;gt;= 4.1.0!!
+In this way you can use qtcanvas also under windows (before it wasn&amp;rsquo;t possible with the open-source edition).</description>
+    </item>
+    
+    <item>
+      <title>Gentoo documentation checker</title>
+      <link>http://flavio.castelli.me/2005/12/08/gentoo-documentation-checker/</link>
+      <pubDate>Thu, 08 Dec 2005 18:52:16 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2005/12/08/gentoo-documentation-checker/</guid>
+      <description>gen-docheck is a useful tool for the gentoo italian translation team. gen-dockeck compares the version number of english document and italian translation.
+In this way you can watch the status of one or more guides, keeping the translations updated.
+Features:  mail notification support (straight to guide&amp;rsquo;s translator or to a specified address) filter guides using regular expressions  Requirements: gen-dockeck requires:
+ perl perl module LWP::Simple (under debian is provided by libwww-perl) perl module Net::SMTP perl module Getopt::Long (usually available by default with all perl installation) perl module Pod::Usage (usually available by default with all perl installation)  Synopsis: gen-docheck syntax: gen-docheck [--help] [--man] [--config configuration file] for more informations read the man page: gen-docheck --manan</description>
+    </item>
+    
+    <item>
+      <title>Howto edit multime id3 tags from command line</title>
+      <link>http://flavio.castelli.me/2005/12/08/howto-edit-multime-id3-tags-from-command-line/</link>
+      <pubDate>Thu, 08 Dec 2005 18:45:39 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2005/12/08/howto-edit-multime-id3-tags-from-command-line/</guid>
+      <description>Goal id3medit is a simple script for tagging all mp3/ogg files present in a directory.
+Requirements: id3medit relies on id3v2, a command-line tool for editing id3v2 tags file names must be in format: &amp;rsquo;## - trackname.ext&amp;rsquo;. Where ## is track&amp;rsquo;s number, and ext is file&amp;rsquo;s extension (mp3 or ogg in case insensitive format)
+Synopsis: id3medit syntax is: id3medit artist album year(*) genre(*) Where * denotes optional arguments You can obtain genre identification number in this way: id3v2 -L | grep -i genre</description>
+    </item>
+    
+    <item>
+      <title>Linux and cryptography</title>
+      <link>http://flavio.castelli.me/2005/08/12/linux-and-cryptography/</link>
+      <pubDate>Fri, 12 Aug 2005 12:31:05 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2005/08/12/linux-and-cryptography/</guid>
+      <description>A speech about cryptography and linux.
+This speech is about:
+ crypted email with gnupg crypted file system avaible under linux, an overview and a comparison of loop-AES , cryptoloop, dm-crypt, bestcrypt creation of a full crypted file-system, root included. The most interesting feature is system&amp;rsquo;s boot sequence, which uses a usb token for authenticating users  Seminario crittografia-linux-day-2004View more presentations from Flavio Castelli. </description>
+    </item>
+    
+  </channel>
+</rss>

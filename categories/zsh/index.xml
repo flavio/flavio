@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Zsh on Flavio Castelli</title>
+    <link>http://flavio.castelli.me/categories/zsh/</link>
+    <description>Recent content in Zsh on Flavio Castelli</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 11 Aug 2010 21:29:29 +0000</lastBuildDate>
+    
+	<atom:link href="http://flavio.castelli.me/categories/zsh/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Jump: a bookmarking system for the bash shell</title>
+      <link>http://flavio.castelli.me/2010/08/11/jump-a-bookmarking-system-for-the-bash-shell/</link>
+      <pubDate>Wed, 11 Aug 2010 21:29:29 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2010/08/11/jump-a-bookmarking-system-for-the-bash-shell/</guid>
+      <description>[](http://flavio.castelli.name/wp-content/uploads/2010/08/van-halen- jump.jpeg)Let me introduce a small project I&amp;rsquo;ve been working on with a friend of mine, Giuseppe Capizzi. The project is called jump and ﻿allows you to quickly change directories in the bash shell using bookmarks.
+Thanks to Jump, you won&amp;rsquo;t have to type those long paths anymore.
+You can find jump&amp;rsquo;s source code, detailed documentation and installation instructions here.
+SUSE packages can be found here.</description>
+    </item>
+    
+  </channel>
+</rss>

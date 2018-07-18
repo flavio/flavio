@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Real Life on Flavio Castelli</title>
+    <link>http://flavio.castelli.me/categories/real-life/</link>
+    <description>Recent content in Real Life on Flavio Castelli</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 10 May 2006 19:10:07 +0000</lastBuildDate>
+    
+	<atom:link href="http://flavio.castelli.me/categories/real-life/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>No more exams!</title>
+      <link>http://flavio.castelli.me/2006/05/10/no-more-exams/</link>
+      <pubDate>Wed, 10 May 2006 19:10:07 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2006/05/10/no-more-exams/</guid>
+      <description>Just a small announcement: last month (by 14th september) I&amp;rsquo;ve finished all my exams!!
+Obviously I&amp;rsquo;m really happy but I&amp;rsquo;m also really busy because I&amp;rsquo;m working hard on strigi. I&amp;rsquo;ll let you know something more about it in these days&amp;hellip;</description>
+    </item>
+    
+  </channel>
+</rss>

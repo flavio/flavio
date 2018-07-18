@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Xesam on Flavio Castelli</title>
+    <link>http://flavio.castelli.me/categories/xesam/</link>
+    <description>Recent content in Xesam on Flavio Castelli</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 18 Jan 2008 15:31:23 +0000</lastBuildDate>
+    
+	<atom:link href="http://flavio.castelli.me/categories/xesam/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>My current tasks</title>
+      <link>http://flavio.castelli.me/2008/01/18/my-current-tasks/</link>
+      <pubDate>Fri, 18 Jan 2008 15:31:23 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2008/01/18/my-current-tasks/</guid>
+      <description>Usually I write blog posts announcing what I have done, but this time it is useless. So I&amp;rsquo;m going to blog about what I&amp;rsquo;m going to do. After latest Strigi irc meeting, I came out with this task:
+ KDE integration: Flavio will coordinate the definition of interfaces over which KDE will handle searching and metadata. He can ask Aaron, Evgeny and Jos for help with the interface design. The interface will cover:</description>
+    </item>
+    
+    <item>
+      <title>Strigi gains full Xesam queries support</title>
+      <link>http://flavio.castelli.me/2007/08/31/strigi-gains-full-xesam-queries-support/</link>
+      <pubDate>Fri, 31 Aug 2007 17:30:52 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/08/31/strigi-gains-full-xesam-queries-support/</guid>
+      <description>As I said in this previous post, Strigi&amp;rsquo;s Xesam support was half-done since XesamUserSearchLanguage wasn’t yet handled. Well, this is no longer true&amp;hellip; ;) In these weeks I’ve been working on XesamUserSearchLanguage support. Ehm&amp;hellip; to be honest, I’ve been fighting with Bison.
+But in the end I tamed the beast and now Xesam support in Strigi is full.
+IMHO XesamUserSearchLanguage can be considered more important than XesamQueryLanguage since common users will write queries in this way.</description>
+    </item>
+    
+    <item>
+      <title>Xesam and bathroom hacking</title>
+      <link>http://flavio.castelli.me/2007/08/10/xesam-and-bathroom-hacking/</link>
+      <pubDate>Fri, 10 Aug 2007 15:00:21 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/08/10/xesam-and-bathroom-hacking/</guid>
+      <description>Yesterday morning I was quite arrived at work when Laura (my gf) called me. Something went wrong in our bathroom and water was everywhere. She closed the main water tap and I took the first train for home (yes, since I&amp;rsquo;m an outlier I take the train two times per day). Once arrived at home I performed some hacking on the guilty washing machine, checked some pipes and than took the next train for office.</description>
+    </item>
+    
+    <item>
+      <title>How to have some fun with Strigi and Xesam queries</title>
+      <link>http://flavio.castelli.me/2007/08/09/how-to-have-some-fun-with-strigi-and-xesam-queries/</link>
+      <pubDate>Thu, 09 Aug 2007 13:10:30 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/08/09/how-to-have-some-fun-with-strigi-and-xesam-queries/</guid>
+      <description>Last day just after I hit the &amp;ldquo;submit&amp;rdquo; button a doubt came into my mind: &amp;ldquo;did I say everything ?&amp;rdquo; Well, the answer is &amp;ldquo;No!&amp;rdquo; In fact I forgot to tell you one of the most important things: how to have some fun with Strigi and Xesam! Actually the only way to perform XesamQueryLanguage queries with Strigi is through the strigicmd program.
+Strigicmd is a command-line tool shipped with Strigi. It can perform different actions like:</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Flavio Castelli</title>
+    <link>http://flavio.castelli.me/categories/</link>
+    <description>Recent content in Categories on Flavio Castelli</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 11 Aug 2010 21:29:29 +0000</lastBuildDate>
+    
+	<atom:link href="http://flavio.castelli.me/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Bash</title>
+      <link>http://flavio.castelli.me/categories/bash/</link>
+      <pubDate>Wed, 11 Aug 2010 21:29:29 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/bash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bglug</title>
+      <link>http://flavio.castelli.me/categories/bglug/</link>
+      <pubDate>Mon, 29 Oct 2007 12:37:49 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/bglug/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43;</title>
+      <link>http://flavio.castelli.me/categories/c&#43;&#43;/</link>
+      <pubDate>Tue, 07 Apr 2009 17:40:45 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/c&#43;&#43;/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cloud</title>
+      <link>http://flavio.castelli.me/categories/cloud/</link>
+      <pubDate>Tue, 06 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/cloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>http://flavio.castelli.me/categories/docker/</link>
+      <pubDate>Fri, 24 Jul 2015 14:21:34 +0200</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Git</title>
+      <link>http://flavio.castelli.me/categories/git/</link>
+      <pubDate>Fri, 23 Nov 2007 15:49:12 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hackweek</title>
+      <link>http://flavio.castelli.me/categories/hackweek/</link>
+      <pubDate>Thu, 23 Apr 2015 21:43:09 +0200</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/hackweek/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Howto</title>
+      <link>http://flavio.castelli.me/categories/howto/</link>
+      <pubDate>Fri, 28 May 2010 15:57:57 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/howto/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Italy</title>
+      <link>http://flavio.castelli.me/categories/italy/</link>
+      <pubDate>Mon, 29 Oct 2007 12:37:49 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/italy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Jamendo</title>
+      <link>http://flavio.castelli.me/categories/jamendo/</link>
+      <pubDate>Fri, 03 Oct 2008 11:28:28 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/jamendo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Json</title>
+      <link>http://flavio.castelli.me/categories/json/</link>
+      <pubDate>Tue, 04 Nov 2008 13:37:07 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/json/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kde</title>
+      <link>http://flavio.castelli.me/categories/kde/</link>
+      <pubDate>Tue, 27 Nov 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/kde/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kiwi</title>
+      <link>http://flavio.castelli.me/categories/kiwi/</link>
+      <pubDate>Tue, 06 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/kiwi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Last.fm</title>
+      <link>http://flavio.castelli.me/categories/last.fm/</link>
+      <pubDate>Tue, 07 Apr 2009 17:40:45 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/last.fm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Life</title>
+      <link>http://flavio.castelli.me/categories/life/</link>
+      <pubDate>Wed, 16 Jul 2008 13:57:52 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/life/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux Day</title>
+      <link>http://flavio.castelli.me/categories/linux-day/</link>
+      <pubDate>Mon, 29 Oct 2007 12:37:49 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/linux-day/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Marble</title>
+      <link>http://flavio.castelli.me/categories/marble/</link>
+      <pubDate>Tue, 07 Apr 2009 17:40:45 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/marble/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Opensuse</title>
+      <link>http://flavio.castelli.me/categories/opensuse/</link>
+      <pubDate>Fri, 24 Jul 2015 14:21:34 +0200</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/opensuse/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Orchestration</title>
+      <link>http://flavio.castelli.me/categories/orchestration/</link>
+      <pubDate>Mon, 03 Nov 2014 14:51:42 +0100</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/orchestration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Paas</title>
+      <link>http://flavio.castelli.me/categories/paas/</link>
+      <pubDate>Thu, 13 Feb 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/paas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Perl</title>
+      <link>http://flavio.castelli.me/categories/perl/</link>
+      <pubDate>Thu, 08 Dec 2005 18:52:16 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/perl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Plasma</title>
+      <link>http://flavio.castelli.me/categories/plasma/</link>
+      <pubDate>Fri, 23 Jul 2010 23:32:31 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/plasma/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Portus</title>
+      <link>http://flavio.castelli.me/categories/portus/</link>
+      <pubDate>Thu, 23 Apr 2015 21:43:09 +0200</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/portus/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>http://flavio.castelli.me/categories/python/</link>
+      <pubDate>Thu, 16 Feb 2006 12:51:41 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Qjson</title>
+      <link>http://flavio.castelli.me/categories/qjson/</link>
+      <pubDate>Tue, 27 Nov 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/qjson/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Qt</title>
+      <link>http://flavio.castelli.me/categories/qt/</link>
+      <pubDate>Tue, 27 Nov 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/qt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Real Life</title>
+      <link>http://flavio.castelli.me/categories/real-life/</link>
+      <pubDate>Wed, 10 May 2006 19:10:07 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/real-life/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ruby</title>
+      <link>http://flavio.castelli.me/categories/ruby/</link>
+      <pubDate>Tue, 29 Mar 2011 15:39:21 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/ruby/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ruby on Rails</title>
+      <link>http://flavio.castelli.me/categories/ruby-on-rails/</link>
+      <pubDate>Tue, 29 Mar 2011 15:39:21 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/ruby-on-rails/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Strigi</title>
+      <link>http://flavio.castelli.me/categories/strigi/</link>
+      <pubDate>Tue, 27 May 2008 21:36:29 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/strigi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Suse</title>
+      <link>http://flavio.castelli.me/categories/suse/</link>
+      <pubDate>Thu, 23 Apr 2015 21:43:09 +0200</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/suse/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Suse Studio</title>
+      <link>http://flavio.castelli.me/categories/suse-studio/</link>
+      <pubDate>Tue, 29 Mar 2011 15:39:21 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/suse-studio/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Svn</title>
+      <link>http://flavio.castelli.me/categories/svn/</link>
+      <pubDate>Fri, 23 Nov 2007 15:49:12 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/svn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tdd</title>
+      <link>http://flavio.castelli.me/categories/tdd/</link>
+      <pubDate>Fri, 28 May 2010 15:57:57 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/tdd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Xesam</title>
+      <link>http://flavio.castelli.me/categories/xesam/</link>
+      <pubDate>Fri, 18 Jan 2008 15:31:23 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/xesam/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Xexam</title>
+      <link>http://flavio.castelli.me/categories/xexam/</link>
+      <pubDate>Tue, 07 Aug 2007 14:43:27 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/xexam/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Zsh</title>
+      <link>http://flavio.castelli.me/categories/zsh/</link>
+      <pubDate>Wed, 11 Aug 2010 21:29:29 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/zsh/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

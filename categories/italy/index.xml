@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Italy on Flavio Castelli</title>
+    <link>http://flavio.castelli.me/categories/italy/</link>
+    <description>Recent content in Italy on Flavio Castelli</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 29 Oct 2007 12:37:49 +0000</lastBuildDate>
+    
+	<atom:link href="http://flavio.castelli.me/categories/italy/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Linux Day 2007</title>
+      <link>http://flavio.castelli.me/2007/10/29/linux-day-2007/</link>
+      <pubDate>Mon, 29 Oct 2007 12:37:49 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/10/29/linux-day-2007/</guid>
+      <description>Last Saturday Linux day 2007 took place.
+Linux Day is an Italian manifestation that promotes Linux and FOSS. During this day different organizations (mostly Linux User Groups) arrange events with speeches, installation parties and more.
+Since lot of people requested it, I gave a speech about KDE 4 during the Linux day organized by my LUG (BGLug).
+The presentation covers the main changes and features introduced by KDE 4. I took inspiration from Troy&amp;rsquo;s &amp;ldquo;Road to KDE 4&amp;rdquo; articles (I like them really much).</description>
+    </item>
+    
+    <item>
+      <title>Desktop searching</title>
+      <link>http://flavio.castelli.me/2007/06/05/desktop-searching/</link>
+      <pubDate>Tue, 05 Jun 2007 14:22:16 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/06/05/desktop-searching/</guid>
+      <description>An overview of desktop searching under linux.
+This speech illustrates:
+ what&amp;rsquo;s desktop searching what&amp;rsquo;re the benefits of desktop searching technology what&amp;rsquo;re the programs availables under linux overview of Beagle overview of Strigi  Desktop searchingView more presentations from Flavio Castelli. </description>
+    </item>
+    
+    <item>
+      <title>KDE4 preview at Gazzaniga (BG)</title>
+      <link>http://flavio.castelli.me/2007/05/29/kde4-preview-at-gazzaniga-bg/</link>
+      <pubDate>Tue, 29 May 2007 12:38:37 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/05/29/kde4-preview-at-gazzaniga-bg/</guid>
+      <description>A KDE 4 small overview This speech illustrates some of the major KDE4 features. Slides are shorts since has been made for a &amp;ldquo;wiki-night&amp;rdquo; :)
+Kde4 previewView more presentations from Flavio Castelli. </description>
+    </item>
+    
+    <item>
+      <title>Netiquette</title>
+      <link>http://flavio.castelli.me/2006/10/28/netiquette/</link>
+      <pubDate>Sat, 28 Oct 2006 12:41:20 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2006/10/28/netiquette/</guid>
+      <description>An introduction to netiquette. Revised version
+This speech illustrates:
+ what&amp;rsquo;s a mailing list and how does it works what&amp;rsquo;s a newsgroup what&amp;rsquo;s netiquette how to quote how to don&amp;rsquo;t break mailing lists threads  Netiquette v11View more presentations from Flavio Castelli. </description>
+    </item>
+    
+    <item>
+      <title>Regular expressions</title>
+      <link>http://flavio.castelli.me/2006/09/12/regular-expressions/</link>
+      <pubDate>Tue, 12 Sep 2006 12:13:13 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2006/09/12/regular-expressions/</guid>
+      <description>An introduction to Regular Expressions. This speech illustrates:
+ regular expressions language main rules regexps with c++ (with boost library) regexps with python regexps with perl regexps with bash  Regular expressionsView more presentations from Flavio Castelli. </description>
+    </item>
+    
+    <item>
+      <title>Linux on console</title>
+      <link>http://flavio.castelli.me/2006/04/01/linux-on-console/</link>
+      <pubDate>Sat, 01 Apr 2006 12:38:05 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2006/04/01/linux-on-console/</guid>
+      <description>These slides are about linux and modern console
+The article focuses on the installation of linux over some modern console like:
+ Sega Dreamcast™ Sony Playstation 2 ™ Microsoft Xbox™ The presentation focuses mostly on the Xbox™ case.  Linux consoleView more presentations from Flavio Castelli. </description>
+    </item>
+    
+    <item>
+      <title>Linux and cryptography</title>
+      <link>http://flavio.castelli.me/2005/08/12/linux-and-cryptography/</link>
+      <pubDate>Fri, 12 Aug 2005 12:31:05 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2005/08/12/linux-and-cryptography/</guid>
+      <description>A speech about cryptography and linux.
+This speech is about:
+ crypted email with gnupg crypted file system avaible under linux, an overview and a comparison of loop-AES , cryptoloop, dm-crypt, bestcrypt creation of a full crypted file-system, root included. The most interesting feature is system&amp;rsquo;s boot sequence, which uses a usb token for authenticating users  Seminario crittografia-linux-day-2004View more presentations from Flavio Castelli. </description>
+    </item>
+    
+  </channel>
+</rss>

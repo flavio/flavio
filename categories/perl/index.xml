@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Perl on Flavio Castelli</title>
+    <link>http://flavio.castelli.me/categories/perl/</link>
+    <description>Recent content in Perl on Flavio Castelli</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 08 Dec 2005 18:52:16 +0000</lastBuildDate>
+    
+	<atom:link href="http://flavio.castelli.me/categories/perl/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Gentoo documentation checker</title>
+      <link>http://flavio.castelli.me/2005/12/08/gentoo-documentation-checker/</link>
+      <pubDate>Thu, 08 Dec 2005 18:52:16 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2005/12/08/gentoo-documentation-checker/</guid>
+      <description>gen-docheck is a useful tool for the gentoo italian translation team. gen-dockeck compares the version number of english document and italian translation.
+In this way you can watch the status of one or more guides, keeping the translations updated.
+Features:  mail notification support (straight to guide&amp;rsquo;s translator or to a specified address) filter guides using regular expressions  Requirements: gen-dockeck requires:
+ perl perl module LWP::Simple (under debian is provided by libwww-perl) perl module Net::SMTP perl module Getopt::Long (usually available by default with all perl installation) perl module Pod::Usage (usually available by default with all perl installation)  Synopsis: gen-docheck syntax: gen-docheck [--help] [--man] [--config configuration file] for more informations read the man page: gen-docheck --manan</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Qt on Flavio Castelli</title>
+    <link>http://flavio.castelli.me/categories/qt/</link>
+    <description>Recent content in Qt on Flavio Castelli</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 27 Nov 2012 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://flavio.castelli.me/categories/qt/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>qjson 0.8.1 released</title>
+      <link>http://flavio.castelli.me/2012/11/27/qjson-0.8.1-released/</link>
+      <pubDate>Tue, 27 Nov 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2012/11/27/qjson-0.8.1-released/</guid>
+      <description>Just a quick information, QJson 0.8.1 has been released. This release ensure API and ABI compatibility with version 0.7.1.
+The previous 0.8.0 release broke ABI compatibility without changing the SOVERSION.
+Toward QJson 1.0.0 I&amp;rsquo;m not entirely happy with some parts of QJson&amp;rsquo;s API. I addressed these issues inside of the 1_0_0 branch.
+I would appreciate to hear your opinion before merging this branch into master and releasing QJson 1.0.0.</description>
+    </item>
+    
+    <item>
+      <title>QJson 0.8.0 released</title>
+      <link>http://flavio.castelli.me/2012/11/21/qjson-0.8.0-released/</link>
+      <pubDate>Wed, 21 Nov 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2012/11/21/qjson-0.8.0-released/</guid>
+      <description>Almost three years passed since latest release of QJson. A lot of stuff happened in my life and QJson definitely paid for that. I have to admit I&amp;rsquo;m a bit ashamed.
+So here we go, QJson 0.8.0 is out!
+What changed A lot of bugs has been smashed during this time, this new release will fix issues like this one and this in a nicer way.
+QJson&amp;rsquo;s API is still backward compatible, while the ABI changed.</description>
+    </item>
+    
+    <item>
+      <title>QJson and Symbian</title>
+      <link>http://flavio.castelli.me/2010/03/14/qjson-and-symbian/</link>
+      <pubDate>Sun, 14 Mar 2010 00:55:51 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2010/03/14/qjson-and-symbian/</guid>
+      <description>I&amp;rsquo;m really pleased to announce that latest version of QJson on master is working on Symbian. You can find the installation instruction here.
+Since I&amp;rsquo;m not a Symbian developer it has been a little hard for me to achieve that. I would like to thank Antti Luoma for his help.
+There are also good news for Windows developers: now building QJson under Windows is easier. Checkout the new installation instruction page.</description>
+    </item>
+    
+    <item>
+      <title>QJson code moves to gitorious</title>
+      <link>http://flavio.castelli.me/2009/12/05/qjson-code-moves-to-gitorious/</link>
+      <pubDate>Sat, 05 Dec 2009 16:48:25 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2009/12/05/qjson-code-moves-to-gitorious/</guid>
+      <description>Just a quick note: I have just moved QJson source code to this git repository hosted by gitorious.
+I&amp;rsquo;ll keep the code on KDE&amp;rsquo;s svn synchronized with the git repository.</description>
+    </item>
+    
+    <item>
+      <title>QJson: from QObject to JSON and vice-versa</title>
+      <link>http://flavio.castelli.me/2009/12/04/qjson-from-qobject-to-json-and-vice-versa/</link>
+      <pubDate>Fri, 04 Dec 2009 01:07:48 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2009/12/04/qjson-from-qobject-to-json-and-vice-versa/</guid>
+      <description>Some days ago I introduced the possibility to serialize a QObject instance to JSON. Today I&amp;rsquo;m going to show you the opposite operation: initializing a QObject using a JSON object.
+I refactored a bit my latest changes: I created a new class called QObjectHelper that provides the methods required to convert a QObject instance to a QVariantMap and vice-versa.
+This class can be used in conjunction with the Serializer and Parser classes to serialize and deserialize QObject instances to and from JSON.</description>
+    </item>
+    
+    <item>
+      <title>QJson: easier serialization of QObject instances to JSON</title>
+      <link>http://flavio.castelli.me/2009/11/30/qjson-easier-serialization-of-qobject-instances-to-json/</link>
+      <pubDate>Mon, 30 Nov 2009 20:20:58 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2009/11/30/qjson-easier-serialization-of-qobject-instances-to-json/</guid>
+      <description>I have just committed into trunk a couple of changes that make easier to serialize a QObject instance to JSON.
+This solution relies on the awesome Qt&amp;rsquo;s property system.
+Suppose the declaration of Person class looks like this:
+{% codeblock [class definition] [lang:cpp ] %} class Person : public QObject { Q_OBJECT
+Q_PROPERTY(QString name READ name WRITE setName) Q_PROPERTY(int phoneNumber READ phoneNumber WRITE setPhoneNumber) Q_PROPERTY(Gender gender READ gender WRITE setGender) Q_PROPERTY(QDate dob READ dob WRITE setDob) Q_ENUMS(Gender)</description>
+    </item>
+    
+    <item>
+      <title>Using QJson under Windows</title>
+      <link>http://flavio.castelli.me/2009/09/04/using-qjson-under-windows/</link>
+      <pubDate>Fri, 04 Sep 2009 13:44:42 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2009/09/04/using-qjson-under-windows/</guid>
+      <description>Recently lots of people asked me how to build QJson under Windows. Most of them reported build/link errors, so I decided to try personally.
+The good news is that QJson can be successfully built under Window, I can show you proof ;)
+{% img /images/qjson/qjson_windows_1.png %} {% img /images/qjson/qjson_windows_2.png %}
+I have written the build instructions on QJson website: just take a look here.
+One last note: if you have problems with QJson please subscribe to the developer mailing list and post a message.</description>
+    </item>
+    
+    <item>
+      <title>New QJson release</title>
+      <link>http://flavio.castelli.me/2009/07/23/new-qjson-release/</link>
+      <pubDate>Thu, 23 Jul 2009 11:51:30 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2009/07/23/new-qjson-release/</guid>
+      <description>Gran Canaria Desktop Summit has been great and really productive. I had the pleasure to meet people interested in QJson, chat with them but also hack with them.
+In fact we hacked a lot, doing lots of changes to QJson:
+ the API has been cleaned, now it can be considered stable unicode support has been completely rewritten it&amp;rsquo;s now possible to convert QVariant objects into JSON ones   So it&amp;rsquo;s with a great pleasure that I announce the release of QJson 0.</description>
+    </item>
+    
+    <item>
+      <title>QJson at Gran Canaria Desktop Summit</title>
+      <link>http://flavio.castelli.me/2009/06/30/qjson-at-gran-canaria-desktop-summit/</link>
+      <pubDate>Tue, 30 Jun 2009 19:46:38 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2009/06/30/qjson-at-gran-canaria-desktop-summit/</guid>
+      <description>Now that I have booked both the flights and the hotel it&amp;rsquo;s official: I&amp;rsquo;ll attend the Gran Canaria Desktop Summit.
+On Thursday 9th July I&amp;rsquo;ll give a BoF about QJson.
+During the talk I will show:
+ the advantages brought by QJson. the usage of QJson. some real programs using QJson.  See you soon!</description>
+    </item>
+    
+    <item>
+      <title>rockmarble: see who is going to rock in your town</title>
+      <link>http://flavio.castelli.me/2009/04/07/rockmarble-see-who-is-going-to-rock-in-your-town/</link>
+      <pubDate>Tue, 07 Apr 2009 17:40:45 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2009/04/07/rockmarble-see-who-is-going-to-rock-in-your-town/</guid>
+      <description>During the last weekend I hacked a bit on rockmarble and I added a new feature: retrieve all the events happening in a certain city.
+As usual data is provided by last.fm, which should return also the events _&amp;ldquo;near&amp;rdquo; _the specified city (don&amp;rsquo;t ask me to define a value for near :) ).
+I have created new openSUSE packages, this time everything should work fine. Just make sure to remove all qjson packages before installing this release (in fact all the previous problems were due to packaging errors of qjson, now I have created new packages called libqjson0).</description>
+    </item>
+    
+    <item>
+      <title>rockmarble: how to follow your favourite artists tour with Marble</title>
+      <link>http://flavio.castelli.me/2009/04/02/rockmarble-how-to-follow-your-favourite-artists-tour-with-marble/</link>
+      <pubDate>Thu, 02 Apr 2009 08:51:43 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2009/04/02/rockmarble-how-to-follow-your-favourite-artists-tour-with-marble/</guid>
+      <description>During the last weekend I wanted to have some fun with QJson. So I came out with this idea: retrieve from last.fm the tour dates of my favourite artists and display the locations using Marble.
+After some hacking I created this small application: rockmarble&amp;hellip;
+If you have a last.fm account rockmarble will import your favourite artist list. Otherwise you can add one artists at a time.
+The tour location will be displayed inside Marble, using openstreetmap.</description>
+    </item>
+    
+    <item>
+      <title>QJson: a Qt-based library for mapping JSON data to QVariant objects</title>
+      <link>http://flavio.castelli.me/2008/11/04/qjson-a-qt-based-library-for-mapping-json-data-to-qvariant-objects/</link>
+      <pubDate>Tue, 04 Nov 2008 13:37:07 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2008/11/04/qjson-a-qt-based-library-for-mapping-json-data-to-qvariant-objects/</guid>
+      <description>In order to realize a project of mine I started looking for a Qt library for mapping JSON data to Qt objects.
+I came over a couple of solutions but none of them made me happy. So in the last weekend I wrote my own library : QJson The library is based on Qt toolkit and converts JSON data to QVariant instances. JSON arrays will be mapped to QVariantList instances, while JSON&amp;rsquo;s objects will be mapped to QVariantMap.</description>
+    </item>
+    
+    <item>
+      <title>Still coding</title>
+      <link>http://flavio.castelli.me/2008/05/27/still-coding/</link>
+      <pubDate>Tue, 27 May 2008 21:36:29 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2008/05/27/still-coding/</guid>
+      <description>Yes, long time has passed since my last post (really strange, isn&amp;rsquo;t it :D ). It has been a busy period, full of work, dog training and&amp;hellip; coding (fortunately!).
+During this time I&amp;rsquo;ve been working on XesamQLib creation. This is a Qt based library for accessing Xesam services. Its API is going to be similar to Xesam-glib one and it will make life easier for developers who want to interact with programs exposing Xesam service (who talked about Strigi?</description>
+    </item>
+    
+    <item>
+      <title>HpCalc</title>
+      <link>http://flavio.castelli.me/2006/12/01/hpcalc/</link>
+      <pubDate>Fri, 01 Dec 2006 12:53:48 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2006/12/01/hpcalc/</guid>
+      <description>HpCalc is an open-source multi-platform editor for the Hp 39G calculator. I was bored by the official &amp;ldquo;Applet Development kit&amp;rdquo;, a really old and ugly program written for Windows 3.1 (!!), so I decided to write something new (and maybe better).
+I made this program just for fun and for learning something (it was the first time I used the Qt library), so don&amp;rsquo;t bother me if this isn&amp;rsquo;t fully comparable to Hp&amp;rsquo;s ADK.</description>
+    </item>
+    
+    <item>
+      <title>QShapes: a process modeling tool</title>
+      <link>http://flavio.castelli.me/2006/08/08/qshapes-a-process-modeling-tool/</link>
+      <pubDate>Tue, 08 Aug 2006 12:48:55 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2006/08/08/qshapes-a-process-modeling-tool/</guid>
+      <description>A lot of time passed since my last post. As usually I&amp;rsquo;ve been too busy to keep the site updated, forgive me! Last time I let fall something about one of my university projects: qshapes. Now it&amp;rsquo;s time to tell you something more&amp;hellip; QShapes is a process modeling tool, in short words a kind of 2D CAD.
+I&amp;rsquo;m going to release it under GPL over berlios site. Actually I I&amp;rsquo;ve registered the project (see http://developer.</description>
+    </item>
+    
+    <item>
+      <title>QtCanvas</title>
+      <link>http://flavio.castelli.me/2006/01/01/qtcanvas/</link>
+      <pubDate>Sun, 01 Jan 2006 00:13:43 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2006/01/01/qtcanvas/</guid>
+      <description>Finally qtcanvas classes are available for Qt 4 series
+This isn&amp;rsquo;t the final version of qtcanvas, it&amp;rsquo;s only a backport of the original classes shipped with Qt3.
+So what&amp;rsquo;s the difference between this qtcanvas and qt3canvas (available only through Qt3 support with Qt4)? Simple this version works with all open-source versions of Qt &amp;gt;= 4.1.0!!
+In this way you can use qtcanvas also under windows (before it wasn&amp;rsquo;t possible with the open-source edition).</description>
+    </item>
+    
+  </channel>
+</rss>

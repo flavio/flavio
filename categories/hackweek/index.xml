@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hackweek on Flavio Castelli</title>
+    <link>http://flavio.castelli.me/categories/hackweek/</link>
+    <description>Recent content in Hackweek on Flavio Castelli</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 23 Apr 2015 21:43:09 +0200</lastBuildDate>
+    
+	<atom:link href="http://flavio.castelli.me/categories/hackweek/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Introducing Portus: an authorization service and front-end for Docker registry</title>
+      <link>http://flavio.castelli.me/2015/04/23/introducing-portus-an-authorization-service-and-front-end-for-docker-registry/</link>
+      <pubDate>Thu, 23 Apr 2015 21:43:09 +0200</pubDate>
+      
+      <guid>http://flavio.castelli.me/2015/04/23/introducing-portus-an-authorization-service-and-front-end-for-docker-registry/</guid>
+      <description>One of the perks of working at SUSE is hackweek, an entire week you can dedicate working on whatever project you want. Last week the 12th edition of hackweek took place. So I decided to spend it working on solving one of the problems many users have when running an on-premise instance of a Docker registry.
+The Docker registry works like a charm, but it&amp;rsquo;s hard to have full control over the images you push to it.</description>
+    </item>
+    
+    <item>
+      <title>Docker and openSUSE: a container full of Geekos</title>
+      <link>http://flavio.castelli.me/2013/04/12/docker-and-opensuse-a-container-full-of-geekos/</link>
+      <pubDate>Fri, 12 Apr 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2013/04/12/docker-and-opensuse-a-container-full-of-geekos/</guid>
+      <description>SUSE&amp;rsquo;s Hackweek #9 is over. It has been an awesome week during which I worked hard to make docker a first class citizen on openSUSE. I also spent some time working on an openSUSE container that could be used by docker&amp;rsquo;s users.
+The project has been tracked on this page of hackweek&amp;rsquo;s wiki, this is a detailed report of what I achieved.
+Installing docker on openSUSE 12.3 Docker has been packaged inside of this OBS project.</description>
+    </item>
+    
+  </channel>
+</rss>

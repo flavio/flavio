@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Marble on Flavio Castelli</title>
+    <link>http://flavio.castelli.me/categories/marble/</link>
+    <description>Recent content in Marble on Flavio Castelli</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 07 Apr 2009 17:40:45 +0000</lastBuildDate>
+    
+	<atom:link href="http://flavio.castelli.me/categories/marble/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>rockmarble: see who is going to rock in your town</title>
+      <link>http://flavio.castelli.me/2009/04/07/rockmarble-see-who-is-going-to-rock-in-your-town/</link>
+      <pubDate>Tue, 07 Apr 2009 17:40:45 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2009/04/07/rockmarble-see-who-is-going-to-rock-in-your-town/</guid>
+      <description>During the last weekend I hacked a bit on rockmarble and I added a new feature: retrieve all the events happening in a certain city.
+As usual data is provided by last.fm, which should return also the events _&amp;ldquo;near&amp;rdquo; _the specified city (don&amp;rsquo;t ask me to define a value for near :) ).
+I have created new openSUSE packages, this time everything should work fine. Just make sure to remove all qjson packages before installing this release (in fact all the previous problems were due to packaging errors of qjson, now I have created new packages called libqjson0).</description>
+    </item>
+    
+    <item>
+      <title>rockmarble: how to follow your favourite artists tour with Marble</title>
+      <link>http://flavio.castelli.me/2009/04/02/rockmarble-how-to-follow-your-favourite-artists-tour-with-marble/</link>
+      <pubDate>Thu, 02 Apr 2009 08:51:43 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2009/04/02/rockmarble-how-to-follow-your-favourite-artists-tour-with-marble/</guid>
+      <description>During the last weekend I wanted to have some fun with QJson. So I came out with this idea: retrieve from last.fm the tour dates of my favourite artists and display the locations using Marble.
+After some hacking I created this small application: rockmarble&amp;hellip;
+If you have a last.fm account rockmarble will import your favourite artist list. Otherwise you can add one artists at a time.
+The tour location will be displayed inside Marble, using openstreetmap.</description>
+    </item>
+    
+  </channel>
+</rss>

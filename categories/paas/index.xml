@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Paas on Flavio Castelli</title>
+    <link>http://flavio.castelli.me/categories/paas/</link>
+    <description>Recent content in Paas on Flavio Castelli</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 13 Feb 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://flavio.castelli.me/categories/paas/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Docker and openSUSE getting closer</title>
+      <link>http://flavio.castelli.me/2014/02/13/docker-and-opensuse-getting-closer/</link>
+      <pubDate>Thu, 13 Feb 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2014/02/13/docker-and-opensuse-getting-closer/</guid>
+      <description>I have some good news about Docker and openSUSE.
+First of all the Docker package has been moved from my personal OBS project to the more official Virtualization one. The next step is to get the Docker package into Factory :)
+I&amp;rsquo;m going to drop the docker package from home:flavio_castelli:docker, so make sure to subscribe to the Virtualization repository to get latest versions of Docker.
+I have also submitted some openSUSE related documentation to the official Docker project.</description>
+    </item>
+    
+    <item>
+      <title>Better Docker experience on openSUSE</title>
+      <link>http://flavio.castelli.me/2013/11/28/better-docker-experience-on-opensuse/</link>
+      <pubDate>Thu, 28 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2013/11/28/better-docker-experience-on-opensuse/</guid>
+      <description>I don&amp;rsquo;t know if you are aware of that, but Docker 0.7.0 has been released a couple of days ago.
+You can read the full announcement here, but let me talk about the biggest change introduced by this release: storage drivers!
+Docker has always used AUFS, a &amp;ldquo;unionfs-like&amp;rdquo; file system, to power its containers. Unfortunately AUFS is neither part of the official kernel nor of the openSUSE/SLE one.
+In the past I had to build a custom patched kernel to run Docker on openSUSE.</description>
+    </item>
+    
+    <item>
+      <title>Docker and openSUSE: a container full of Geekos</title>
+      <link>http://flavio.castelli.me/2013/04/12/docker-and-opensuse-a-container-full-of-geekos/</link>
+      <pubDate>Fri, 12 Apr 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2013/04/12/docker-and-opensuse-a-container-full-of-geekos/</guid>
+      <description>SUSE&amp;rsquo;s Hackweek #9 is over. It has been an awesome week during which I worked hard to make docker a first class citizen on openSUSE. I also spent some time working on an openSUSE container that could be used by docker&amp;rsquo;s users.
+The project has been tracked on this page of hackweek&amp;rsquo;s wiki, this is a detailed report of what I achieved.
+Installing docker on openSUSE 12.3 Docker has been packaged inside of this OBS project.</description>
+    </item>
+    
+  </channel>
+</rss>

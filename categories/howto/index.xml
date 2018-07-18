@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Howto on Flavio Castelli</title>
+    <link>http://flavio.castelli.me/categories/howto/</link>
+    <description>Recent content in Howto on Flavio Castelli</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 28 May 2010 15:57:57 +0000</lastBuildDate>
+    
+	<atom:link href="http://flavio.castelli.me/categories/howto/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to run a single rails unit test</title>
+      <link>http://flavio.castelli.me/2010/05/28/how-to-run-a-single-rails-unit-test/</link>
+      <pubDate>Fri, 28 May 2010 15:57:57 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2010/05/28/how-to-run-a-single-rails-unit-test/</guid>
+      <description>This post explains how to execute a single unit test (or even a single test method) instead of running the complete unit test suite.
+In order to run the unit tests of your rails application, basically you have these official possibilities:
+ rake test: runs all unit, functional and integration tests. rake test:units: runs all the unit tests. rake test:functionals: runs all the functional tests. rake test:integration: runs all the integration tests.</description>
+    </item>
+    
+    <item>
+      <title>Updated git-svn howto</title>
+      <link>http://flavio.castelli.me/2007/11/23/updated-git-svn-howto/</link>
+      <pubDate>Fri, 23 Nov 2007 15:49:12 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/11/23/updated-git-svn-howto/</guid>
+      <description>Maybe someone has already experimented this situation:
+ You&amp;rsquo;re hacking on your local working copy and you want to keep it up-to-date but, since you have some uncommitted changes, git-svn rebase cannot be executed
+ I was just thinking to write something about_ _this problem when I read a post on digikam blog.
+In this post Marcel proposes a workaround using a bash function. In fact there&amp;rsquo;s a &amp;ldquo;cleaner&amp;rdquo; solution, if you&amp;rsquo;re interested read the last part of my git-svn howto.</description>
+    </item>
+    
+    <item>
+      <title>Howto use Git and svn together</title>
+      <link>http://flavio.castelli.me/2007/09/04/howto-use-git-and-svn-together/</link>
+      <pubDate>Tue, 04 Sep 2007 12:22:15 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/09/04/howto-use-git-and-svn-together/</guid>
+      <description>In these days I&amp;rsquo;ve heard lot of rumors around Git. After reading some manual/tutorial/guide I discovered that it can be really useful, especially if you spend lot of time coding off-line (that&amp;rsquo;s my situation).
+This is a really small howto that describes how to work on a project versioned with svn (maybe taken from KDE repository ;) ) using git.
+What&amp;rsquo;re the advantages? Since Git is a distributed revision control system (while svn is a centralized one) you can perform commits, brances, merges,&amp;hellip; on your local working dir without being connected to internet.</description>
+    </item>
+    
+    <item>
+      <title>Xesam and bathroom hacking</title>
+      <link>http://flavio.castelli.me/2007/08/10/xesam-and-bathroom-hacking/</link>
+      <pubDate>Fri, 10 Aug 2007 15:00:21 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/08/10/xesam-and-bathroom-hacking/</guid>
+      <description>Yesterday morning I was quite arrived at work when Laura (my gf) called me. Something went wrong in our bathroom and water was everywhere. She closed the main water tap and I took the first train for home (yes, since I&amp;rsquo;m an outlier I take the train two times per day). Once arrived at home I performed some hacking on the guilty washing machine, checked some pipes and than took the next train for office.</description>
+    </item>
+    
+    <item>
+      <title>How to have some fun with Strigi and Xesam queries</title>
+      <link>http://flavio.castelli.me/2007/08/09/how-to-have-some-fun-with-strigi-and-xesam-queries/</link>
+      <pubDate>Thu, 09 Aug 2007 13:10:30 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/08/09/how-to-have-some-fun-with-strigi-and-xesam-queries/</guid>
+      <description>Last day just after I hit the &amp;ldquo;submit&amp;rdquo; button a doubt came into my mind: &amp;ldquo;did I say everything ?&amp;rdquo; Well, the answer is &amp;ldquo;No!&amp;rdquo; In fact I forgot to tell you one of the most important things: how to have some fun with Strigi and Xesam! Actually the only way to perform XesamQueryLanguage queries with Strigi is through the strigicmd program.
+Strigicmd is a command-line tool shipped with Strigi. It can perform different actions like:</description>
+    </item>
+    
+    <item>
+      <title>iBook X keyboard mapping</title>
+      <link>http://flavio.castelli.me/2006/05/12/ibook-x-keyboard-mapping/</link>
+      <pubDate>Fri, 12 May 2006 18:09:06 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2006/05/12/ibook-x-keyboard-mapping/</guid>
+      <description>How to have a comfortable keyboard layout under X. A guide destinated to italian iBook linux users
+Target have the following keymap: apple keyboard = alt gr
+Instructions You&amp;rsquo;ve to edit your /etc/X11/xkb/keycodes/xfree86 file. Remember to make a backup copy of this file before editing. These&amp;rsquo;re the easy steps:
+ under X run a program like xev to find the exact keycode of your apple key change the code with the new one comment all the old command referring the new keycode   Restart X and keep your finger crossed ;)</description>
+    </item>
+    
+    <item>
+      <title>iBook console keyboard mapping</title>
+      <link>http://flavio.castelli.me/2006/05/12/ibook-console-keyboard-mapping/</link>
+      <pubDate>Fri, 12 May 2006 12:05:14 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2006/05/12/ibook-console-keyboard-mapping/</guid>
+      <description>How to have a comfortable italian keyboard layout on your iBook.
+Target We just want this mapping:
+apple key = alt gr numpad return (the key near to left arrow) = canc  Procedure Simply download the file at the end of the page and load it using loadkeys ibook-it.map.gz
+Simple, isn&amp;rsquo;t it?
+Download I found this file over internet, the author is Dario Besseghini. Thank you Dario!
+{% gist 2469779 %}</description>
+    </item>
+    
+    <item>
+      <title>iBook mouse emulation</title>
+      <link>http://flavio.castelli.me/2006/05/05/ibook-mouse-emulation/</link>
+      <pubDate>Fri, 05 May 2006 12:07:21 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2006/05/05/ibook-mouse-emulation/</guid>
+      <description>In this really small guide you&amp;rsquo;ll discover howto enable mouse button emulation on a iBook G4 running linux
+Target: I just wanted to enable mouse button emulation on my iBook using the following shortcuts:
+fn + ctrl = middle mouse button fn + alt = left mouse button  Requisites: You&amp;rsquo;ve to enable CONFIG_MAC_EMUMOUSEBTN in your kernel.
+Commands: In order to enable this shortcut at every boot add the following lines to your /etc/sysctl.</description>
+    </item>
+    
+  </channel>
+</rss>

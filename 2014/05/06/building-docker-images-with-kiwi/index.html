@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>Building docker images with KIWI</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="http://flavio.castelli.me/favicon.png" rel="icon">
+
+  
+  
+  
+
+  
+
+  <link href="/atom.xml" rel="alternate" title="Flavio Castelli" type="application/atom+xml">
+
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.44" />
+
+  
+  
+
+  
+  
+
+</head>
+<body>
+
+
+<header role="banner"><hgroup>
+  
+  <h1><a href="http://flavio.castelli.me/">Flavio Castelli</a></h1>
+    <h2>Debugging my life</h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+        <option value="http://flavio.castelli.me/">» Blog</option>
+      
+        <option value="http://flavio.castelli.me/post">» Archive</option>
+      
+
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+    
+      <li><a href="http://flavio.castelli.me/" title="Blog">Blog</a></li>
+    
+  
+    
+      <li><a href="http://flavio.castelli.me/post" title="Archive" >Archive</a></li>
+    
+  
+</ul>
+
+
+<ul class="subscription">
+  
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS"><i class="fa fa-rss-square fa-lg"></i></a></li>
+
+</ul>
+
+
+<form action="https://www.google.com/search" method="get" target="_blank">
+  <fieldset role="search">
+  	<input class="search" type="text" name="q" results="0" placeholder="Search"/>
+    <input type="hidden" name="q" value="site:http://flavio.castelli.me/" />
+  </fieldset>
+</form>
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+    <p class="meta">May 6, 2014
+         - 2 minute read 
+         - <a href="http://flavio.castelli.me/2014/05/06/building-docker-images-with-kiwi/#disqus_thread">Comments</a>
+
+        
+        
+        
+            - <a class="label" href="http://flavio.castelli.me/categories/cloud/">cloud </a><a class="label" href="http://flavio.castelli.me/categories/opensuse/">openSUSE </a><a class="label" href="http://flavio.castelli.me/categories/suse/">SUSE </a><a class="label" href="http://flavio.castelli.me/categories/docker/">docker </a><a class="label" href="http://flavio.castelli.me/categories/kiwi/">KIWI </a>
+        
+    </p>
+    <h1 class="entry-title">
+         Building docker images with KIWI 
+    </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          
+          
+
+<p>I&rsquo;m pleased to announce <a href="https://github.com/schaefi">Marcus Schäfer</a> has
+just made possible to build docker images with <a href="http://opensuse.github.io/kiwi/">KIWI</a>.</p>
+
+<p>For those who never heard about it, KIWI is a tool which creates Linux systems
+for both physical and virtual machines. It can create openSUSE, SUSE and other types of
+Linux distributions.</p>
+
+<p><strong>Update:</strong> I changed the required version of kiwi and the openSUSE 13.1 template.
+Kiwi just received some improvements which do no longer force the image
+to include the <em>lxc</em> package.</p>
+
+<h2 id="why-is-this-important">Why is this important?</h2>
+
+<p>As you might know Docker has already its <a href="http://docs.docker.io/reference/builder/">build system</a>
+which provides a really easy way to create new images. However these images
+must be based on existing ones, which leads to the problem of creating the 1st
+parent image. That&rsquo;s where KIWI comes to the rescue.</p>
+
+<p>Indeed Kiwi can be used to build the openSUSE/SUSE/whatever docker images that are
+going to act as the foundation blocks of other ones.</p>
+
+<h2 id="requirements">Requirements</h2>
+
+<p>Docker support has been added to KIWI 5.06.87. You can find this package inside
+of the <a href="https://build.opensuse.org/project/show?project=Virtualization%3AAppliances">Virtualization:Appliances</a>
+project on OBS.</p>
+
+<p>Install the <code>kiwi</code> and the <code>kiwi-doc</code> packages on your system. Then go to the
+<code>/usr/share/doc/packages/kiwi/examples/</code> directory where you will find a simple
+openSUSE 13.1 template.</p>
+
+<h2 id="building-the-system">Building the system</h2>
+
+<p>Just copy the whole <code>/usr/share/doc/packages/kiwi/examples/suse-13.1/suse-docker-container</code>
+directory to another location and make your changes.</p>
+
+<p>The heart of the whole image is the <code>config.xml</code> file:</p>
+
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+
+&lt;image schemaversion=&quot;6.1&quot; name=&quot;suse-13.1-docker-guest&quot;&gt;
+  &lt;description type=&quot;system&quot;&gt;
+    &lt;author&gt;Flavio Castelli&lt;/author&gt;
+    &lt;contact&gt;fcastelli@suse.com&lt;/contact&gt;
+    &lt;specification&gt;openSUSE 13.1 docker image&lt;/specification&gt;
+  &lt;/description&gt;
+  &lt;preferences&gt;
+    &lt;type image=&quot;docker&quot; container=&quot;os131&quot;&gt;
+      &lt;machine&gt;
+        &lt;vmdisk/&gt;
+        &lt;vmnic interface=&quot;eth0&quot; mode=&quot;veth&quot;/&gt;
+      &lt;/machine&gt;
+    &lt;/type&gt;
+    &lt;version&gt;1.0.0&lt;/version&gt;
+    &lt;packagemanager&gt;zypper&lt;/packagemanager&gt;
+    &lt;rpm-check-signatures&gt;false&lt;/rpm-check-signatures&gt;
+    &lt;rpm-force&gt;true&lt;/rpm-force&gt;
+    &lt;locale&gt;en_US&lt;/locale&gt;
+    &lt;keytable&gt;us.map.gz&lt;/keytable&gt;
+    &lt;hwclock&gt;utc&lt;/hwclock&gt;
+    &lt;timezone&gt;US/Eastern&lt;/timezone&gt;
+  &lt;/preferences&gt;
+  &lt;users group=&quot;root&quot;&gt;
+    &lt;user password=&quot;$1$wYJUgpM5$RXMMeASDc035eX.NbYWFl0&quot; home=&quot;/root&quot; name=&quot;root&quot;/&gt;
+  &lt;/users&gt;
+  &lt;repository type=&quot;yast2&quot;&gt;
+    &lt;source path=&quot;opensuse://13.1/repo/oss/&quot;/&gt;
+  &lt;/repository&gt;
+  &lt;packages type=&quot;image&quot;&gt;
+    &lt;package name=&quot;coreutils&quot;/&gt;
+    &lt;package name=&quot;iputils&quot;/&gt;
+  &lt;/packages&gt;
+  &lt;packages type=&quot;bootstrap&quot;&gt;
+    &lt;package name=&quot;filesystem&quot;/&gt;
+    &lt;package name=&quot;glibc-locale&quot;/&gt;
+    &lt;package name=&quot;module-init-tools&quot;/&gt;
+  &lt;/packages&gt;
+&lt;/image&gt;
+</code></pre>
+
+<p>This is a really minimal image which contains just a bunch of packages.</p>
+
+<p>The first step is the creation of the image&rsquo;s root system:</p>
+
+<pre><code>kiwi -p /usr/share/doc/packages/kiwi/examples/suse-13.1/suse-docker-container \
+     --root /tmp/myimage
+</code></pre>
+
+<p>The next step compresses the file system of the image into a single tarball:</p>
+
+<pre><code>    kiwi --create /tmp/myimage --type docker -d /tmp/myimage-result
+</code></pre>
+
+<p>The tarball can be found under <code>/tmp/myimage-result</code>. This can be imported
+into docker using the following command:</p>
+
+<pre><code>docker import - myImage &lt; /path/to/myimage.tbz
+</code></pre>
+
+<p>The image named <code>myImage</code> is now ready to be used.</p>
+
+<h2 id="what-s-next">What&rsquo;s next</h2>
+
+<p>In the next days I&rsquo;ll make another blog post explaining how to build docker
+images using KIWI and the <a href="http://openbuildservice.org/">Open Build Service</a>.
+This is a powerful combination which allows to achieve continuous delivery.</p>
+
+<p>Stay tuned and have fun!</p>
+
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn"></span></span>
+    
+    <time>May 6, 2014</time>
+    
+    </span>
+  </p>
+
+  
+  
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="http://flavio.castelli.me/2014/02/13/docker-and-opensuse-getting-closer/" title="Docker and openSUSE getting closer">Docker and openSUSE getting closer</a>
+    
+
+    
+      <a class="basic-alignment right" href="http://flavio.castelli.me/2014/11/03/orchestrating-docker-containers-on-opensuse/" title="Orchestrating Docker containers on openSUSE">Orchestrating Docker containers on openSUSE</a>
+    
+  </p>
+  
+    
+      <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'flavio-castelli-name';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+
+    <p>
+      
+        <p>Father, husband and passionate programmer.</p>
+
+<p>Engineering manager of the kubernetes core team at SUSE.</p>
+
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" href="https://github.com/flavio/" title="https://github.com/flavio/"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      <a target="_blank" href="https://twitter.com/flavio_castelli/" title="https://twitter.com/flavio_castelli/"><i class="fa fa-twitter fa-3x"></i></a>
+      
+         
+      
+      <a target="_blank" href="https://www.linkedin.com/in/flaviocastelli/" title="https://www.linkedin.com/in/flaviocastelli/"><i class="fa fa-linkedin fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+    
+      <section class="odd">
+        
+        
+      </section>
+    
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+            
+              <li class="post">
+                <a href="/2015/07/24/putting-opensuse-docker-images-on-a-diet/">Putting openSUSE Docker images on a diet</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/2015/04/23/introducing-portus-an-authorization-service-and-front-end-for-docker-registry/">Introducing Portus: an authorization service and front-end for Docker registry</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/2014/11/03/orchestrating-docker-containers-on-opensuse/">Orchestrating Docker containers on openSUSE</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/2014/05/06/building-docker-images-with-kiwi/">Building docker images with KIWI</a>
+              </li>
+            
+          
+        </ul>
+      </section>
+    
+  
+</aside>
+
+  </div>
+</div>
+
+<footer role="contentinfo">
+  <p>Copyright &copy; 2018  - <a href="http://flavio.castelli.me/license/">License</a> -
+  <span class="credit">Powered by <a target="_blank" href="https://gohugo.io">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/">Hugo-Octopress</a> theme.
+</p>
+
+</footer>
+
+
+
+
+
+
+</body>
+</html>
+

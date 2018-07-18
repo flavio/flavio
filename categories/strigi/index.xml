@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Strigi on Flavio Castelli</title>
+    <link>http://flavio.castelli.me/categories/strigi/</link>
+    <description>Recent content in Strigi on Flavio Castelli</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 27 May 2008 21:36:29 +0000</lastBuildDate>
+    
+	<atom:link href="http://flavio.castelli.me/categories/strigi/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Still coding</title>
+      <link>http://flavio.castelli.me/2008/05/27/still-coding/</link>
+      <pubDate>Tue, 27 May 2008 21:36:29 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2008/05/27/still-coding/</guid>
+      <description>Yes, long time has passed since my last post (really strange, isn&amp;rsquo;t it :D ). It has been a busy period, full of work, dog training and&amp;hellip; coding (fortunately!).
+During this time I&amp;rsquo;ve been working on XesamQLib creation. This is a Qt based library for accessing Xesam services. Its API is going to be similar to Xesam-glib one and it will make life easier for developers who want to interact with programs exposing Xesam service (who talked about Strigi?</description>
+    </item>
+    
+    <item>
+      <title>My current tasks</title>
+      <link>http://flavio.castelli.me/2008/01/18/my-current-tasks/</link>
+      <pubDate>Fri, 18 Jan 2008 15:31:23 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2008/01/18/my-current-tasks/</guid>
+      <description>Usually I write blog posts announcing what I have done, but this time it is useless. So I&amp;rsquo;m going to blog about what I&amp;rsquo;m going to do. After latest Strigi irc meeting, I came out with this task:
+ KDE integration: Flavio will coordinate the definition of interfaces over which KDE will handle searching and metadata. He can ask Aaron, Evgeny and Jos for help with the interface design. The interface will cover:</description>
+    </item>
+    
+    <item>
+      <title>Strigi irc meeting</title>
+      <link>http://flavio.castelli.me/2008/01/11/strigi-irc-meeting/</link>
+      <pubDate>Fri, 11 Jan 2008 10:59:09 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2008/01/11/strigi-irc-meeting/</guid>
+      <description>Just giving more voice to original announce: Tomorrow, Saturday 12 January, at 17 UTC an irc meeting will take place on #strigi channel (it&amp;rsquo;s on freenode if you don&amp;rsquo;t know).
+During the meeting Strigi developers will discuss about the future developments of Strigi.
+Special guest: Aaron Aseigo. You&amp;rsquo;re all welcome.</description>
+    </item>
+    
+    <item>
+      <title>Tyding up Strigi analyzers</title>
+      <link>http://flavio.castelli.me/2008/01/10/tyding-up-strigi-analyzers/</link>
+      <pubDate>Thu, 10 Jan 2008 15:49:17 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2008/01/10/tyding-up-strigi-analyzers/</guid>
+      <description>As you may know, KDE4 will use Strigi for meta information extraction instead of the old KFilePlugin classes.
+Since Strigi&amp;rsquo;s analyzer work in a different way, lot of code has to be ported. Unfortunately, after a good start, some relevant analyzers were still missing.
+But in the last weeks Strigi gained support of:
+ wave file avi files txt files dds files rgb files sid files ico files  I&amp;rsquo;ve also updated this summary page.</description>
+    </item>
+    
+    <item>
+      <title>Strigi gains FAM support</title>
+      <link>http://flavio.castelli.me/2007/11/26/strigi-gains-fam-support/</link>
+      <pubDate>Mon, 26 Nov 2007 12:33:52 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/11/26/strigi-gains-fam-support/</guid>
+      <description>Last Monday I submitted lot of changes into Strigi&amp;rsquo;s trunk. I&amp;rsquo;ve heavily refactored some classes in order to obtain a more flexible file system notification infrastructure. Thanks to this work now it will be easier to add support for new file system notification facilities. For example, in order to add File Alteration Monitor (aka FAM) support I had to write only 576 loc (including license and documentation stuff).
+So, by now, Strigi supports the following file system monitoring facilities:</description>
+    </item>
+    
+    <item>
+      <title>Strigi gains full Xesam queries support</title>
+      <link>http://flavio.castelli.me/2007/08/31/strigi-gains-full-xesam-queries-support/</link>
+      <pubDate>Fri, 31 Aug 2007 17:30:52 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/08/31/strigi-gains-full-xesam-queries-support/</guid>
+      <description>As I said in this previous post, Strigi&amp;rsquo;s Xesam support was half-done since XesamUserSearchLanguage wasn’t yet handled. Well, this is no longer true&amp;hellip; ;) In these weeks I’ve been working on XesamUserSearchLanguage support. Ehm&amp;hellip; to be honest, I’ve been fighting with Bison.
+But in the end I tamed the beast and now Xesam support in Strigi is full.
+IMHO XesamUserSearchLanguage can be considered more important than XesamQueryLanguage since common users will write queries in this way.</description>
+    </item>
+    
+    <item>
+      <title>Xesam and bathroom hacking</title>
+      <link>http://flavio.castelli.me/2007/08/10/xesam-and-bathroom-hacking/</link>
+      <pubDate>Fri, 10 Aug 2007 15:00:21 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/08/10/xesam-and-bathroom-hacking/</guid>
+      <description>Yesterday morning I was quite arrived at work when Laura (my gf) called me. Something went wrong in our bathroom and water was everywhere. She closed the main water tap and I took the first train for home (yes, since I&amp;rsquo;m an outlier I take the train two times per day). Once arrived at home I performed some hacking on the guilty washing machine, checked some pipes and than took the next train for office.</description>
+    </item>
+    
+    <item>
+      <title>How to have some fun with Strigi and Xesam queries</title>
+      <link>http://flavio.castelli.me/2007/08/09/how-to-have-some-fun-with-strigi-and-xesam-queries/</link>
+      <pubDate>Thu, 09 Aug 2007 13:10:30 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/08/09/how-to-have-some-fun-with-strigi-and-xesam-queries/</guid>
+      <description>Last day just after I hit the &amp;ldquo;submit&amp;rdquo; button a doubt came into my mind: &amp;ldquo;did I say everything ?&amp;rdquo; Well, the answer is &amp;ldquo;No!&amp;rdquo; In fact I forgot to tell you one of the most important things: how to have some fun with Strigi and Xesam! Actually the only way to perform XesamQueryLanguage queries with Strigi is through the strigicmd program.
+Strigicmd is a command-line tool shipped with Strigi. It can perform different actions like:</description>
+    </item>
+    
+    <item>
+      <title>Strigi gets XesamQueryLanguage queries support</title>
+      <link>http://flavio.castelli.me/2007/08/07/strigi-gets-xesamquerylanguage-queries-support/</link>
+      <pubDate>Tue, 07 Aug 2007 14:43:27 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/08/07/strigi-gets-xesamquerylanguage-queries-support/</guid>
+      <description>Since last Thursday Strigi gained XesamQueryLanguage support. This means that now is possible to process queries formulated using this syntax.
+But why is this important? If you aren&amp;rsquo;t able to answer the previous question probably you don&amp;rsquo;t know what is Xesam. Here&amp;rsquo;s a short definition taken from the official site: Xesam is an umbrella project with the purpose of providing unified apis and specs for desktop search- and metadata services.</description>
+    </item>
+    
+    <item>
+      <title>Lots of improvements into Strigi inotify support</title>
+      <link>http://flavio.castelli.me/2007/07/10/lots-of-improvements-into-strigi-inotify-support/</link>
+      <pubDate>Tue, 10 Jul 2007 22:50:34 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/07/10/lots-of-improvements-into-strigi-inotify-support/</guid>
+      <description>Some days ago I committed lots of changes regarding inotify support. Goodies and improvements have been introduced&amp;hellip; I had this code laying on my laptop for several weeks because I wasn&amp;rsquo;t able to fully test it. An annoying bug afflicting the update index operations was blocking me. But some days ago Jos fixed it, so I didn&amp;rsquo;t have any excuse :)
+These are the major changes introduced:
+ event caching: using a small cache it&amp;rsquo;s now possible to simplify multiple events and prevent high cpu usage when lot of changes occur on the same files interruption handling during the re-index operations: changing the directories to watch during an indexing operation will break the previous job and start a new one other small changes for improving cpu utilization   Actually I&amp;rsquo;m very happy of the first point, but I think the second one can still be improved&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Remember to commit</title>
+      <link>http://flavio.castelli.me/2007/07/05/remember-to-commit/</link>
+      <pubDate>Thu, 05 Jul 2007 20:43:04 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/07/05/remember-to-commit/</guid>
+      <description>I have to admit that lately I have a really bad habit: I forget to commit my changes to Strigi. In this way I end-up performing multiple commits with different changes inside: from stupid to interesting one. This is a really bad behavior, so today I decided to perform some svn status and svn diff and I made some commits on Strigi trunk. Most of all are just code readability improvement == don&amp;rsquo;t exceed the 80 chars per line.</description>
+    </item>
+    
+    <item>
+      <title>Desktop searching</title>
+      <link>http://flavio.castelli.me/2007/06/05/desktop-searching/</link>
+      <pubDate>Tue, 05 Jun 2007 14:22:16 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/06/05/desktop-searching/</guid>
+      <description>An overview of desktop searching under linux.
+This speech illustrates:
+ what&amp;rsquo;s desktop searching what&amp;rsquo;re the benefits of desktop searching technology what&amp;rsquo;re the programs availables under linux overview of Beagle overview of Strigi  Desktop searchingView more presentations from Flavio Castelli. </description>
+    </item>
+    
+    <item>
+      <title>dot.kde.org and me</title>
+      <link>http://flavio.castelli.me/2007/05/10/dot.kde.org-and-me/</link>
+      <pubDate>Thu, 10 May 2007 19:35:41 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/05/10/dot.kde.org-and-me/</guid>
+      <description>I&amp;rsquo;m really honored to report that dot.kde.org has published the english translation of my interview for kde-it. You can find it here.</description>
+    </item>
+    
+    <item>
+      <title>KDE Italy and me</title>
+      <link>http://flavio.castelli.me/2007/05/07/kde-italy-and-me/</link>
+      <pubDate>Mon, 07 May 2007 19:32:01 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/05/07/kde-italy-and-me/</guid>
+      <description>I&amp;rsquo;m really honored to report that KDE-Italy site published an interview about me. You can find it here. Many thanks to Giovanni Venturi, webmaster and maintainer of kde-it.org!</description>
+    </item>
+    
+    <item>
+      <title>Back from FOSDEM</title>
+      <link>http://flavio.castelli.me/2007/03/01/back-from-fosdem/</link>
+      <pubDate>Thu, 01 Mar 2007 19:06:22 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/03/01/back-from-fosdem/</guid>
+      <description>A small resume of my FOSDEM experience&amp;hellip;
+Friday evening Departure from Italy. The plane landed in Charlesroi airport, where we (me and Laura) take a bus for Bruxelles. Once in the city it was so late that there was no public transport, so we had to take a cab in order to reach our hotel.
+Saturday Small tour in Bruxelles. As we thought Bruxelles is a beautiful city with lot of things to see, in fact there are too many things to see for a 2 day trip!</description>
+    </item>
+    
+    <item>
+      <title>Strigi Desktop integration</title>
+      <link>http://flavio.castelli.me/2007/02/28/strigi-desktop-integration/</link>
+      <pubDate>Wed, 28 Feb 2007 19:26:43 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/02/28/strigi-desktop-integration/</guid>
+      <description>Short abstract: Strigi desktop integration: how to access Strigi features.
+Strigi, the fastest and smallest desktop search engine, provides fast searches and good metadata extraction capabilities. It will be used by the next KDE, but it can be easily integrated in other programs.
+Long abstract: Modern humans are using more and more data every day. Keeping data organized is becoming insufficient, so finding and filtering documents have become key tasks in modern operating systems.</description>
+    </item>
+    
+    <item>
+      <title>Going to FOSDEM 2007 edition</title>
+      <link>http://flavio.castelli.me/2007/02/17/going-to-fosdem-2007-edition/</link>
+      <pubDate>Sat, 17 Feb 2007 20:11:20 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2007/02/17/going-to-fosdem-2007-edition/</guid>
+      <description>This year I&amp;rsquo;ll go to FOSDEM 2007 edition where I&amp;rsquo;ll give a presentation regarding Strigi.
+FOSDEM stands for &amp;ldquo;Free Open Source Developers European Meeting&amp;rdquo;.
+This is one of the most important happenings for the open-source scene in Europe. It takes place in Bruxelles, where for two days the university if full of talks, and stands of open-source projects.
+Big projects have a DevRoom, a place reserved for talks related with them.</description>
+    </item>
+    
+    <item>
+      <title>My second level thesis</title>
+      <link>http://flavio.castelli.me/2006/08/08/my-second-level-thesis/</link>
+      <pubDate>Tue, 08 Aug 2006 19:57:32 +0000</pubDate>
+      
+      <guid>http://flavio.castelli.me/2006/08/08/my-second-level-thesis/</guid>
+      <description>Months passed in silence and now you publish two news in a couple of minutes!? yep, tonight I just want to go over internet and write something here&amp;hellip; Wink It&amp;rsquo;s time to talk about my second level thesis&amp;hellip;
+Kat A couple of months passed since I started seeking something interesting to challenge with. I found kat, an open-source information retrieval program for KDE. If you don&amp;rsquo;t know what&amp;rsquo;s an information retrieval program you&amp;rsquo;ve just to think about a local google.</description>
+    </item>
+    
+  </channel>
+</rss>
