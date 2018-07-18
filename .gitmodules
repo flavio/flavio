@@ -1,0 +1,6 @@
+[submodule "themes/hugo-atom-feed"]
+	path = themes/hugo-atom-feed
+	url = https://github.com/kaushalmodi/hugo-atom-feed.git
+[submodule "themes/octopress"]
+	path = themes/octopress
+	url = https://github.com/flavio/Hugo-Octopress.git
