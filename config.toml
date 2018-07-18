@@ -1,0 +1,56 @@
+baseURL = "http://flavio.castelli.me/"
+languageCode = "en-us"
+title = "Flavio Castelli"
+theme = ["hugo-atom-feed", "octopress"]
+
+
+# Disqus shortcode
+# Disable comments for any individual post by adding "comments: false" in its frontmatter
+disqusShortname = "flavio-castelli-name"
+
+
+[mediaTypes]
+[mediaTypes."application/atom"]
+suffixes = ["xml"]
+
+[outputFormats.Atom]
+mediaType = "application/atom"
+baseName = "atom"
+isPlainText = false
+
+[outputs]
+home = [ "HTML", "Atom" ]
+
+
+[permalinks]
+# Configures post URLs
+post = "/:year/:month/:day/:title/"
+
+[params]
+rss = false
+subtitle = "Debugging my life"
+github = "https://github.com/flavio/"
+twitter = "https://twitter.com/flavio_castelli/"
+linkedin = "https://www.linkedin.com/in/flaviocastelli/"
+
+# Search engine URL
+searchEngineURL = "https://www.google.com/search"
+
+sidebarMenuEnabled = true
+sidebarRecentLimit = 4
+
+sidebarText = """Father, husband and passionate programmer.
+
+Engineering manager of the kubernetes core team at SUSE.
+"""
+
+
+[[menu.main]]
+  Name = "Blog"
+  URL = "/"
+  weight = -10
+
+[[menu.main]]
+  Name = "Archive"
+  URL = "/post"
+  weight = -9
