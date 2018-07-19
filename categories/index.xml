@@ -48,9 +48,18 @@
     </item>
     
     <item>
+      <title>Containers</title>
+      <link>http://flavio.castelli.me/categories/containers/</link>
+      <pubDate>Wed, 18 Jul 2018 15:48:16 +0200</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/containers/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Docker</title>
       <link>http://flavio.castelli.me/categories/docker/</link>
-      <pubDate>Fri, 24 Jul 2015 14:21:34 +0200</pubDate>
+      <pubDate>Wed, 18 Jul 2018 15:48:16 +0200</pubDate>
       
       <guid>http://flavio.castelli.me/categories/docker/</guid>
       <description></description>
@@ -167,7 +176,7 @@
     <item>
       <title>Opensuse</title>
       <link>http://flavio.castelli.me/categories/opensuse/</link>
-      <pubDate>Fri, 24 Jul 2015 14:21:34 +0200</pubDate>
+      <pubDate>Wed, 18 Jul 2018 15:48:16 +0200</pubDate>
       
       <guid>http://flavio.castelli.me/categories/opensuse/</guid>
       <description></description>
@@ -212,7 +221,7 @@
     <item>
       <title>Portus</title>
       <link>http://flavio.castelli.me/categories/portus/</link>
-      <pubDate>Thu, 23 Apr 2015 21:43:09 +0200</pubDate>
+      <pubDate>Wed, 18 Jul 2018 15:48:16 +0200</pubDate>
       
       <guid>http://flavio.castelli.me/categories/portus/</guid>
       <description></description>

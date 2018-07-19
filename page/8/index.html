@@ -123,6 +123,46 @@
         
 
 <header>
+    <p class="meta">Feb 16, 2006
+         - 2 minute read 
+         - <a href="http://flavio.castelli.me/2006/02/16/regexp-with-boost/#disqus_thread">Comments</a>
+
+        
+        
+        
+            - <a class="label" href="http://flavio.castelli.me/categories/c&#43;&#43;/">c&#43;&#43; </a>
+        
+    </p>
+    <h1 class="entry-title">
+        <a href="http://flavio.castelli.me/2006/02/16/regexp-with-boost/">Regexp with boost</a>
+    </h1>
+</header>
+
+
+        
+          <p>How can you add regular expressions to C++? Here you&rsquo;re three small examples.
+Pattern matching In this example you’ll find how you can match a regexp in a string.
+{% codeblock [pattern matching] [lang:c++ ] %} // Created by Flavio Castelli  // distrubuted under GPL v2 license
+#include  #include 
+int main() { boost::regex pattern (&ldquo;bg|olug&rdquo;,boost::regex_constants::icase|boost::regex_constants::perl); std::string stringa (&ldquo;Searching for BsLug&rdquo;);
+if (boost::regex_search (stringa, pattern, boost::regex_constants::format_perl)) printf (&ldquo;found\n&rdquo;); else printf(&ldquo;not found\n&rdquo;);</p>
+
+          
+              <footer>
+                  <a href="http://flavio.castelli.me/2006/02/16/regexp-with-boost/" rel="full-article">Read On &rarr;</a>
+              </footer>
+          
+
+        
+
+    </article>
+    
+    <article>
+
+        
+        
+
+<header>
     <p class="meta">Feb 15, 2006
          - 1 minute read 
          - <a href="http://flavio.castelli.me/2006/02/15/svn-cleaner/#disqus_thread">Comments</a>
@@ -414,6 +454,12 @@ This speech is about:
           
             
               <li class="post">
+                <a href="/2018/07/18/hackweek-project-docker-registry-mirror/">Hackweek Project Docker Registry Mirror</a>
+              </li>
+            
+          
+            
+              <li class="post">
                 <a href="/2015/07/24/putting-opensuse-docker-images-on-a-diet/">Putting openSUSE Docker images on a diet</a>
               </li>
             
@@ -427,12 +473,6 @@ This speech is about:
             
               <li class="post">
                 <a href="/2014/11/03/orchestrating-docker-containers-on-opensuse/">Orchestrating Docker containers on openSUSE</a>
-              </li>
-            
-          
-            
-              <li class="post">
-                <a href="/2014/05/06/building-docker-images-with-kiwi/">Building docker images with KIWI</a>
               </li>
             
           

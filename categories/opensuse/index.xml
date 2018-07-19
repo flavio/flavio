@@ -6,10 +6,21 @@
     <description>Recent content in Opensuse on Flavio Castelli</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 24 Jul 2015 14:21:34 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 18 Jul 2018 15:48:16 +0200</lastBuildDate>
     
 	<atom:link href="http://flavio.castelli.me/categories/opensuse/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hackweek Project Docker Registry Mirror</title>
+      <link>http://flavio.castelli.me/2018/07/18/hackweek-project-docker-registry-mirror/</link>
+      <pubDate>Wed, 18 Jul 2018 15:48:16 +0200</pubDate>
+      
+      <guid>http://flavio.castelli.me/2018/07/18/hackweek-project-docker-registry-mirror/</guid>
+      <description>As part of SUSE Hackweek 17 I decided to work on a fully fledged docker registry mirror.
+You might wonder why this is needed, after all it&amp;rsquo;s already possible to run a docker distribution (aka registry) instance as a pull-through cache. While that&amp;rsquo;s true, this solution doesn&amp;rsquo;t address the needs of more &amp;ldquo;sophisticated&amp;rdquo; users.
+The problem Based on the feedback we got from a lot of SUSE customers it&amp;rsquo;s clear that a simple registry configured to act as a pull-through cache isn&amp;rsquo;t enough.</description>
+    </item>
     
     <item>
       <title>Putting openSUSE Docker images on a diet</title>

@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://flavio.castelli.me/2018/07/18/hackweek-project-docker-registry-mirror/</loc>
+    <lastmod>2018-07-18T15:48:16+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://flavio.castelli.me/2015/07/24/putting-opensuse-docker-images-on-a-diet/</loc>
     <lastmod>2015-07-24T14:21:34+02:00</lastmod>
   </url>
@@ -408,14 +413,20 @@
   </url>
   
   <url>
+    <loc>http://flavio.castelli.me/categories/containers/</loc>
+    <lastmod>2018-07-18T15:48:16+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://flavio.castelli.me/categories/docker/</loc>
-    <lastmod>2015-07-24T14:21:34+02:00</lastmod>
+    <lastmod>2018-07-18T15:48:16+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://flavio.castelli.me/</loc>
-    <lastmod>2015-07-24T14:21:34+02:00</lastmod>
+    <lastmod>2018-07-18T15:48:16+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -493,7 +504,7 @@
   
   <url>
     <loc>http://flavio.castelli.me/categories/opensuse/</loc>
-    <lastmod>2015-07-24T14:21:34+02:00</lastmod>
+    <lastmod>2018-07-18T15:48:16+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -523,13 +534,13 @@
   
   <url>
     <loc>http://flavio.castelli.me/categories/portus/</loc>
-    <lastmod>2015-04-23T21:43:09+02:00</lastmod>
+    <lastmod>2018-07-18T15:48:16+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://flavio.castelli.me/post/</loc>
-    <lastmod>2015-07-24T14:21:34+02:00</lastmod>
+    <lastmod>2018-07-18T15:48:16+02:00</lastmod>
     <priority>0</priority>
   </url>
   

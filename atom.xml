@@ -5,9 +5,353 @@
         
         Flavio Castelli</title>
         <link href="http://flavio.castelli.me/atom.xml" rel="self" type="application/atom" /><link href="http://flavio.castelli.me/"/>
-    <updated>2018-07-18T15:05:22+02:00</updated>
+    <updated>2018-07-19T11:37:48+02:00</updated>
     
     <id>http://flavio.castelli.me/</id>
+        
+        <entry>
+            <title type="html"><![CDATA[Hackweek Project Docker Registry Mirror]]></title>
+            <link href="http://flavio.castelli.me/2018/07/18/hackweek-project-docker-registry-mirror/"/>
+            <id>http://flavio.castelli.me/2018/07/18/hackweek-project-docker-registry-mirror/</id>
+            
+            <published>2018-07-18T15:48:16+02:00</published>
+            <updated>2018-07-18T15:48:16+02:00</updated>
+            
+            
+            <content type="html"><![CDATA[
+
+<p>As part of <a href="https://hackweek.suse.com/">SUSE Hackweek 17</a> I decided to work on a
+fully fledged docker registry mirror.</p>
+
+<p>You might wonder why this is needed, after all it&rsquo;s already possible to run a
+docker distribution (aka registry) instance as a
+<a href="https://docs.docker.com/registry/recipes/mirror/">pull-through cache</a>. While
+that&rsquo;s true, this solution doesn&rsquo;t address the needs of more &ldquo;sophisticated&rdquo;
+users.</p>
+
+<h2 id="the-problem">The problem</h2>
+
+<p>Based on the feedback we got from a lot of SUSE customers it&rsquo;s clear that a simple
+registry configured to act as a pull-through cache isn&rsquo;t enough.</p>
+
+<p>Let&rsquo;s go step by step to understand the requirements we have.</p>
+
+<h3 id="on-premise-cache-of-container-images">On-premise cache of container images</h3>
+
+<p>First of all it should be possible to have a mirror of certain container images
+locally. This is useful to save time and bandwidth. For example there&rsquo;s no
+reason to download the same image over an over on each node of a Kubernetes
+cluster.</p>
+
+<p>A docker registry configured to act as a pull-through cache can help with that.
+There&rsquo;s still need to warm the cache, this can be left to the organic pull
+of images done by the cluster or could be done artificially by some script
+run by an operator.</p>
+
+<p>Unfortunately a pull-through cache is not going to solve this problem for
+nodes running inside of an <em>air-gapped</em> environment. Nodes operated in such an
+environment are located into a completely segregated network, that would make it
+impossible for the pull-through registry to reach the external registry.</p>
+
+<h3 id="retain-control-over-the-contents-of-the-mirror">Retain control over the contents of the mirror</h3>
+
+<p>Cluster operators want to have control of the images available inside of the
+local mirror.</p>
+
+<p>For example, assuming we are mirroring the Docker Hub, an operator might be
+fine with having the <code>library/mariadb</code> image but not the <code>library/redis</code> one.</p>
+
+<p>When operating a registry configured as pull-through cache, all the images of
+the <em>upstream registry</em> are at the reach of all the users of the cluster. It&rsquo;s
+just a matter of doing a simple <code>docker pull</code> to get the image cached into
+the local pull-through cache and sneak it into all the nodes.</p>
+
+<p>Moreover some operators want to grant the privilege of adding images to the local
+mirror only to trusted users.</p>
+
+<h3 id="there-s-life-outside-of-the-docker-hub">There&rsquo;s life outside of the Docker Hub</h3>
+
+<p>The Docker Hub is certainly the most known container registry. However there are
+also other registries being used: SUSE operates its own registry, there&rsquo;s Quay.io,
+Google Container Registry (aka <code>gcr</code>) and there are even user operated ones.</p>
+
+<p>A docker registry configured to act as a pull-through cache can mirror only one
+registry. Which means that, if you are interested in mirroring both the Docker
+Hub and Quay.io, you will have to run two instances of docker registry
+pull-through caches: one for the Docker Hub, the other for Quay.io.</p>
+
+<p>This is just overhead for the final operator.</p>
+
+<h2 id="a-better-solution">A better solution</h2>
+
+<p>During the last week I worked to build a PoC to demonstrate we can create a docker
+registry mirror solution that can satisfy all the requirements above.</p>
+
+<p>I wanted to have a single box running the entire solution and I wanted all the
+different pieces of it to be containerized. I hence resorted to use a
+node powered by <a href="https://kubic.opensuse.org/">openSUSE Kubic</a>.</p>
+
+<p>I didn&rsquo;t need all the different pieces of Kubernetes, I just needed <code>kubelet</code> so
+that I could run it in <em>disconnected mode</em>. Disconnected means the <code>kubelet</code>
+process is not connected to a Kubernetes API server, instead it reads PODs
+manifest files straight from a local directory.</p>
+
+<h3 id="the-all-in-one-box">The all-in-one box</h3>
+
+<p>I created an openSUSE Kubic node and then I started by deploying a standard
+docker registry.
+This instance is <strong>not</strong> configured to act as a pull-through cache. However it
+is configured to use an external authorization service. This is needed to allow
+the operator to have full control of who can <em>push</em>/<em>pull</em>/<em>delete</em> images.</p>
+
+<p>I configured the registry POD to store the registry data to a directory on the
+machine by using a Kubernetes <a href="https://kubernetes.io/docs/concepts/storage/volumes/#hostpath">hostPath</a>
+volume.</p>
+
+<p>On the very same node I deployed the authorization service needed by the
+docker registry. I choose <a href="https://port.us.org">Portus</a>, an open source solution
+created at SUSE
+<a href="http://flavio.castelli.me/2015/04/23/introducing-portus-an-authorization-service-and-front-end-for-docker-registry/">a long time ago</a>.</p>
+
+<p>Portus needs a database, hence I deployed a containerized instance of MariaDB
+on the same node. Again I used a Kubernetes <code>hostPath</code> to ensure the persistence
+of the database contents. I placed both Portus and its MariaDB instance into the
+same POD. I configured MariaDB to listen only to localhost, making it reachable
+only by the Portus instance (that&rsquo;s because they are in the same
+<a href="https://medium.com/google-cloud/understanding-kubernetes-networking-pods-7117dd28727">Kubernetes POD</a>).</p>
+
+<p>I configured both the registry and Portus to bind to a local unix socket,
+then I deployed a container running HAProxy to expose both of them to
+the world.</p>
+
+<p>The HAProxy is the only container that uses the host network. Meaning it&rsquo;s
+actually listening on port 80 and port 443 of the openSUSE Kubic node.</p>
+
+<p>I went ahead and created two new DNS entries inside of my local network:</p>
+
+<ul>
+<li><code>registry.kube.lan</code>: this is the FQDN of the registry</li>
+<li><code>portus.kube.lan</code>: this is the FQDN of portus</li>
+</ul>
+
+<p>I configured both the names to be resolved with the IP address of my container
+host.</p>
+
+<p>I then used <a href="https://github.com/cloudflare/cfssl">cfssl</a> to generate a CA and
+then a pair of certificates and keys for <code>registry.kube.lan</code> and <code>portus.kube.lan</code>.</p>
+
+<p>Finally I configured HAProxy to:</p>
+
+<ul>
+<li>Listen on port 80 and 443.</li>
+<li>Automatically redirect traffic from port 80 to port 443.</li>
+<li>Perform TLS termination for registry and Portus.</li>
+<li>Load balance requests against the right unix socket using
+the <a href="https://www.haproxy.com/blog/enhanced-ssl-load-balancing-with-server-name-indication-sni-tls-extension/">Server Name Indication (SNI)</a>.</li>
+</ul>
+
+<p>By having dedicated FQDN for the registry and Portus and by using HAProxy&rsquo;s SNI
+based load balancing, we can leave the registry listening on a standard port
+(<code>443</code>) instead of using a different one (eg: <code>5000</code>). In my opinion that&rsquo;s a big
+win, based on my personal experience having the registry listen on a non standard
+port makes things more confusing both for the operators and the end users.</p>
+
+<p>Once I was over with these steps I was able to log into <code>https://portus.kube.lan</code>
+and perform the usual setup wizard of Portus.</p>
+
+<h3 id="mirroring-images">Mirroring images</h3>
+
+<p>We now have to mirror images from multiple registries into the local one, but
+how can we do that?</p>
+
+<p>Sometimes ago I stumbled over <a href="https://github.com/ivanilves/lstags">this tool</a>,
+which can be used to copy images from multiple registries into a single one.
+While doing that it can change the namespace of the image to put it all the
+images coming from a certain registry into a specific namespace.</p>
+
+<p>I wanted to use this tool, but I realized it relies on the docker open-source
+engine to perform the pull and push operations. That&rsquo;s a blocking issue for me
+because I wanted to run the mirroring tool into a container without doing nasty
+tricks like mounting the docker socket of the host into a container.</p>
+
+<p>Basically I wanted the mirroring tool to <strong>not</strong> rely on the docker open source
+engine.</p>
+
+<p>At SUSE we are already using and contributing to
+<a href="https://github.com/projectatomic/skopeo">skopeo</a>, an amazing tool
+that allows interactions with container images and container registries without
+requiring any docker daemon.</p>
+
+<p>The solution was clear: extend skopeo to provide mirroring capabilities.</p>
+
+<p>I drafted a design proposal with my colleague <a href="https://github.com/marcov">Marco Vedovati</a>,
+started coding and then ended up with <a href="https://github.com/projectatomic/skopeo/pull/524">this pull request</a>.</p>
+
+<p>While working on that I also uncovered a <a href="https://github.com/containers/image/pull/480">small glitch</a>
+inside of the <code>containers/image</code> library used by skopeo.</p>
+
+<p>Using a patched skopeo binary (which include both the patches above) I then
+mirrored a bunch of images into my local registry:</p>
+
+<pre><code>$ skopeo sync --source docker://docker.io/busybox:musl --dest-creds=&quot;flavio:password&quot; docker://registry.kube.lan
+$ skopeo sync --source docker://quay.io/coreos/etcd --dest-creds=&quot;flavio:password&quot; docker://registry.kube.lan
+</code></pre>
+
+<p>The first command mirrored only the <code>busybox:musl</code> container image from the
+Docker Hub to my local registry, while the second command mirrored <strong>all</strong> the
+<code>coreos/etcd</code> images from the quay.io registry to my local registry.</p>
+
+<p>Since the local registry is protected by Portus I had to specify my credentials
+while performing the sync operation.</p>
+
+<p>Running multiple <code>sync</code> commands is not really practical, that&rsquo;s why we added
+a <code>source-file</code> flag. That allows an operator to write a configuration file
+indicating the images to mirror. More on that on a dedicated blog post.</p>
+
+<p>At this point my local registry had the following images:</p>
+
+<ul>
+<li><code>docker.io/busybox:musl</code></li>
+<li><code>quay.io/coreos/etcd:v3.1</code></li>
+<li><code>quay.io/coreos/etcd:latest</code></li>
+<li><code>quay.io/coreos/etcd:v3.3</code></li>
+<li><code>quay.io/coreos/etcd:v3.3</code></li>
+<li>&hellip; more <code>quay.io/coreos/etcd</code> images &hellip;</li>
+</ul>
+
+<p>As you can see the namespace of the mirrored images is changed to
+include the FQDN of the registry from which they have been downloaded.
+This avoids clashes between the images and makes easier to track their
+origin.</p>
+
+<h4 id="mirroring-on-air-gapped-environments">Mirroring on air-gapped environments</h4>
+
+<p>As I mentioned above I wanted to provide a solution that could be used also
+to run mirrors inside of air-gapped environments.</p>
+
+<p>The only tricky part for such a scenario is how to get the images from the
+<em>upstream registries</em> into the local one.</p>
+
+<p>This can be done in two steps by using the <code>skopeo sync</code> command.</p>
+
+<p>We start by downloading the images on a machine that is connected to the internet.
+But instead of storing the images into a local registry we put them on a local
+directory:</p>
+
+<pre><code>$ skopeo sync --source docker://quay.io/coreos/etcd dir:/media/usb-disk/mirrored-images
+</code></pre>
+
+<p>This is going to copy all the versions of the <code>quay.io/coreos/etcd</code> image into
+a local directory <code>/media/usb-disk/mirrored-images</code>.</p>
+
+<p>Let&rsquo;s assume <code>/media/usb-disk</code> is the mount point of an external USB drive.
+We can then unmount the USB drive, scan its contents with some tool, and
+plug it into computer of the air-gapped network. From this computer we
+can populate the local registry mirror by using the following command:</p>
+
+<pre><code>$ skopeo sync --source dir:/media/usb-disk/mirrored-images --dest-creds=&quot;username:password&quot; docker://registry.secure.lan
+</code></pre>
+
+<p>This will automatically import all the images that have been previously downloaded
+to the external USB drive.</p>
+
+<h3 id="pulling-the-images">Pulling the images</h3>
+
+<p>Now that we have all our images mirrored it&rsquo;s time to start consuming them.</p>
+
+<p>It might be tempting to just update all our <code>Dockerfile</code>(s), Kubernetes
+manifests, <a href="http://helm.sh/">Helm charts</a>, automation scripts, &hellip;
+to reference the images from <code>registry.kube.lan/&lt;upstream registry FQDN&gt;/&lt;image&gt;:&lt;tag&gt;</code>.
+This however would be tedious and unpractical.</p>
+
+<p>As you might know the docker open source engine has a <code>--registry-mirror</code>.
+Unfortunately the docker open source engine can only be configured to mirror the
+Docker Hub, other external registries are not handled.</p>
+
+<p>This annoying limitation lead me and <a href="https://github.com/vrothberg">Valentin Rothberg</a>
+to create <a href="https://github.com/moby/moby/pull/34319">this pull request</a>
+against the <a href="https://mobyproject.org/">Moby project</a>.</p>
+
+<p>Valentin is also porting the patch against <a href="https://github.com/projectatomic/libpod">libpod</a>,
+that will allow to have the same feature also inside of
+<a href="http://cri-o.io/">CRI-O</a> and <code>podman</code>.</p>
+
+<p>During my experiments I figured some
+<a href="https://github.com/SUSE/docker-ce/commit/9129064d6d7e6647f27685f7f52d0645bdf2b4ca">little bits</a>
+were missing from the original PR.</p>
+
+<p>I built a docker engine with the <a href="https://github.com/SUSE/docker-ce/tree/suse-v17.09.x-private-registry-with-prefix-and-auth">full patch</a>
+applied and I created this <code>/etc/docker/daemon.json</code> configuration file:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;registries&#34;</span>: [
+    {
+      <span style="color:#f92672">&#34;Prefix&#34;</span>: <span style="color:#e6db74">&#34;quay.io&#34;</span>,
+      <span style="color:#f92672">&#34;Mirrors&#34;</span>: [
+        {
+          <span style="color:#f92672">&#34;URL&#34;</span>: <span style="color:#e6db74">&#34;https://registry.kube.lan/quay.io&#34;</span>
+        }
+      ]
+    },
+    {
+      <span style="color:#f92672">&#34;Prefix&#34;</span>: <span style="color:#e6db74">&#34;docker.io&#34;</span>,
+      <span style="color:#f92672">&#34;Mirrors&#34;</span>: [
+        {
+          <span style="color:#f92672">&#34;URL&#34;</span>: <span style="color:#e6db74">&#34;https://registry.kube.lan/docker.io&#34;</span>
+        }
+      ]
+    }
+  ]
+}</code></pre></div>
+<p>Then, on this node, I was able to issue commands like:</p>
+
+<pre><code>$ docker pull quay.io/coreos/etcd:v3.1
+</code></pre>
+
+<p>That resulted in the image being downloaded from <code>registry.kube.lan/quay.io/coreos/etcd:v3.1</code>,
+no communication was done against <code>quay.io</code>. Success!</p>
+
+<h2 id="what-about-unpatched-docker-engines-other-container-engines">What about unpatched docker engines/other container engines?</h2>
+
+<p>Everything is working fine on nodes that are running this not-yet merged patch,
+but what about vanilla versions of docker or other container engines?</p>
+
+<p>I think I have a solution for them as well, I&rsquo;m going to experiment a bit
+with that during the next week and then provide an update.</p>
+
+<h2 id="show-me-the-code">Show me the code!</h2>
+
+<p>This is a really long blog post. I&rsquo;ll create a new one with all the configuration
+files and instructions of the steps I performed. Stay tuned!</p>
+
+<p>In the meantime I would like to thank
+<a href="https://github.com/marcov">Marco Vedovati</a>,
+<a href="https://github.com/vrothberg">Valentin Rothberg</a> for their help with skopeo and
+the docker mirroring patch, plus <a href="https://github.com/mssola/">Miquel Sabaté Solà</a>
+for his help with Portus.</p>
+]]></content>
+            
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="http://flavio.castelli.me/categories/docker" term="docker" label="docker" />
+                             
+                                <category scheme="http://flavio.castelli.me/categories/portus" term="portus" label="portus" />
+                             
+                                <category scheme="http://flavio.castelli.me/categories/containers" term="containers" label="containers" />
+                             
+                                <category scheme="http://flavio.castelli.me/categories/opensuse" term="opensuse" label="openSUSE" />
+                            
+                        
+                    
+                 
+                    
+                
+            
+        </entry>
+    
         
         <entry>
             <title type="html"><![CDATA[Putting openSUSE Docker images on a diet]]></title>
@@ -278,49 +622,46 @@ openSUSE 13.1 template.</p>
 directory to another location and make your changes.</p>
 
 <p>The heart of the whole image is the <code>config.xml</code> file:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
 
-<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-
-&lt;image schemaversion=&quot;6.1&quot; name=&quot;suse-13.1-docker-guest&quot;&gt;
-  &lt;description type=&quot;system&quot;&gt;
-    &lt;author&gt;Flavio Castelli&lt;/author&gt;
-    &lt;contact&gt;fcastelli@suse.com&lt;/contact&gt;
-    &lt;specification&gt;openSUSE 13.1 docker image&lt;/specification&gt;
-  &lt;/description&gt;
-  &lt;preferences&gt;
-    &lt;type image=&quot;docker&quot; container=&quot;os131&quot;&gt;
-      &lt;machine&gt;
-        &lt;vmdisk/&gt;
-        &lt;vmnic interface=&quot;eth0&quot; mode=&quot;veth&quot;/&gt;
-      &lt;/machine&gt;
-    &lt;/type&gt;
-    &lt;version&gt;1.0.0&lt;/version&gt;
-    &lt;packagemanager&gt;zypper&lt;/packagemanager&gt;
-    &lt;rpm-check-signatures&gt;false&lt;/rpm-check-signatures&gt;
-    &lt;rpm-force&gt;true&lt;/rpm-force&gt;
-    &lt;locale&gt;en_US&lt;/locale&gt;
-    &lt;keytable&gt;us.map.gz&lt;/keytable&gt;
-    &lt;hwclock&gt;utc&lt;/hwclock&gt;
-    &lt;timezone&gt;US/Eastern&lt;/timezone&gt;
-  &lt;/preferences&gt;
-  &lt;users group=&quot;root&quot;&gt;
-    &lt;user password=&quot;$1$wYJUgpM5$RXMMeASDc035eX.NbYWFl0&quot; home=&quot;/root&quot; name=&quot;root&quot;/&gt;
-  &lt;/users&gt;
-  &lt;repository type=&quot;yast2&quot;&gt;
-    &lt;source path=&quot;opensuse://13.1/repo/oss/&quot;/&gt;
-  &lt;/repository&gt;
-  &lt;packages type=&quot;image&quot;&gt;
-    &lt;package name=&quot;coreutils&quot;/&gt;
-    &lt;package name=&quot;iputils&quot;/&gt;
-  &lt;/packages&gt;
-  &lt;packages type=&quot;bootstrap&quot;&gt;
-    &lt;package name=&quot;filesystem&quot;/&gt;
-    &lt;package name=&quot;glibc-locale&quot;/&gt;
-    &lt;package name=&quot;module-init-tools&quot;/&gt;
-  &lt;/packages&gt;
-&lt;/image&gt;
-</code></pre>
-
+<span style="color:#f92672">&lt;image</span> <span style="color:#a6e22e">schemaversion=</span><span style="color:#e6db74">&#34;6.1&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;suse-13.1-docker-guest&#34;</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;description</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;system&#34;</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;author&gt;</span>Flavio Castelli<span style="color:#f92672">&lt;/author&gt;</span>
+    <span style="color:#f92672">&lt;contact&gt;</span>fcastelli@suse.com<span style="color:#f92672">&lt;/contact&gt;</span>
+    <span style="color:#f92672">&lt;specification&gt;</span>openSUSE 13.1 docker image<span style="color:#f92672">&lt;/specification&gt;</span>
+  <span style="color:#f92672">&lt;/description&gt;</span>
+  <span style="color:#f92672">&lt;preferences&gt;</span>
+    <span style="color:#f92672">&lt;type</span> <span style="color:#a6e22e">image=</span><span style="color:#e6db74">&#34;docker&#34;</span> <span style="color:#a6e22e">container=</span><span style="color:#e6db74">&#34;os131&#34;</span><span style="color:#f92672">&gt;</span>
+      <span style="color:#f92672">&lt;machine&gt;</span>
+        <span style="color:#f92672">&lt;vmdisk/&gt;</span>
+        <span style="color:#f92672">&lt;vmnic</span> <span style="color:#a6e22e">interface=</span><span style="color:#e6db74">&#34;eth0&#34;</span> <span style="color:#a6e22e">mode=</span><span style="color:#e6db74">&#34;veth&#34;</span><span style="color:#f92672">/&gt;</span>
+      <span style="color:#f92672">&lt;/machine&gt;</span>
+    <span style="color:#f92672">&lt;/type&gt;</span>
+    <span style="color:#f92672">&lt;version&gt;</span>1.0.0<span style="color:#f92672">&lt;/version&gt;</span>
+    <span style="color:#f92672">&lt;packagemanager&gt;</span>zypper<span style="color:#f92672">&lt;/packagemanager&gt;</span>
+    <span style="color:#f92672">&lt;rpm-check-signatures&gt;</span>false<span style="color:#f92672">&lt;/rpm-check-signatures&gt;</span>
+    <span style="color:#f92672">&lt;rpm-force&gt;</span>true<span style="color:#f92672">&lt;/rpm-force&gt;</span>
+    <span style="color:#f92672">&lt;locale&gt;</span>en_US<span style="color:#f92672">&lt;/locale&gt;</span>
+    <span style="color:#f92672">&lt;keytable&gt;</span>us.map.gz<span style="color:#f92672">&lt;/keytable&gt;</span>
+    <span style="color:#f92672">&lt;hwclock&gt;</span>utc<span style="color:#f92672">&lt;/hwclock&gt;</span>
+    <span style="color:#f92672">&lt;timezone&gt;</span>US/Eastern<span style="color:#f92672">&lt;/timezone&gt;</span>
+  <span style="color:#f92672">&lt;/preferences&gt;</span>
+  <span style="color:#f92672">&lt;users</span> <span style="color:#a6e22e">group=</span><span style="color:#e6db74">&#34;root&#34;</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;user</span> <span style="color:#a6e22e">password=</span><span style="color:#e6db74">&#34;$1$wYJUgpM5$RXMMeASDc035eX.NbYWFl0&#34;</span> <span style="color:#a6e22e">home=</span><span style="color:#e6db74">&#34;/root&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;root&#34;</span><span style="color:#f92672">/&gt;</span>
+  <span style="color:#f92672">&lt;/users&gt;</span>
+  <span style="color:#f92672">&lt;repository</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;yast2&#34;</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;source</span> <span style="color:#a6e22e">path=</span><span style="color:#e6db74">&#34;opensuse://13.1/repo/oss/&#34;</span><span style="color:#f92672">/&gt;</span>
+  <span style="color:#f92672">&lt;/repository&gt;</span>
+  <span style="color:#f92672">&lt;packages</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;image&#34;</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;package</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;coreutils&#34;</span><span style="color:#f92672">/&gt;</span>
+    <span style="color:#f92672">&lt;package</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;iputils&#34;</span><span style="color:#f92672">/&gt;</span>
+  <span style="color:#f92672">&lt;/packages&gt;</span>
+  <span style="color:#f92672">&lt;packages</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;bootstrap&#34;</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;package</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;filesystem&#34;</span><span style="color:#f92672">/&gt;</span>
+    <span style="color:#f92672">&lt;package</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;glibc-locale&#34;</span><span style="color:#f92672">/&gt;</span>
+    <span style="color:#f92672">&lt;package</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;module-init-tools&#34;</span><span style="color:#f92672">/&gt;</span>
+  <span style="color:#f92672">&lt;/packages&gt;</span>
+<span style="color:#f92672">&lt;/image&gt;</span></code></pre></div>
 <p>This is a really minimal image which contains just a bunch of packages.</p>
 
 <p>The first step is the creation of the image&rsquo;s root system:</p>
