@@ -8,7 +8,10 @@ theme = ["hugo-atom-feed", "octopress"]
 # Disable comments for any individual post by adding "comments: false" in its frontmatter
 disqusShortname = "flavio-castelli-name"
 
+# highlighting
+pygmentsCodefences=true
 
+# Atom configuration - begin
 [mediaTypes]
 [mediaTypes."application/atom"]
 suffixes = ["xml"]
@@ -20,7 +23,7 @@ isPlainText = false
 
 [outputs]
 home = [ "HTML", "Atom" ]
-
+# Atom configuration - end
 
 [permalinks]
 # Configures post URLs
