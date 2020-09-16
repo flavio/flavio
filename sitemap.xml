@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://flavio.castelli.me/2020/09/16/build-multi-architecture-container-images-using-kubernetes/</loc>
+    <lastmod>2020-09-16T10:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flavio.castelli.me/2020/02/27/semantic-versioning-and-containers/</loc>
+    <lastmod>2020-02-27T21:48:16+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://flavio.castelli.me/2018/07/18/hackweek-project-docker-registry-mirror/</loc>
     <lastmod>2018-07-18T15:48:16+02:00</lastmod>
   </url>
@@ -383,6 +393,18 @@
   </url>
   
   <url>
+    <loc>http://flavio.castelli.me/categories/apparmor/</loc>
+    <lastmod>2020-09-16T10:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://flavio.castelli.me/categories/arm/</loc>
+    <lastmod>2020-09-16T10:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://flavio.castelli.me/categories/bash/</loc>
     <lastmod>2010-08-11T21:29:29+00:00</lastmod>
     <priority>0</priority>
@@ -395,6 +417,12 @@
   </url>
   
   <url>
+    <loc>http://flavio.castelli.me/categories/buildah/</loc>
+    <lastmod>2020-09-16T10:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://flavio.castelli.me/categories/c&#43;&#43;/</loc>
     <lastmod>2009-04-07T17:40:45+00:00</lastmod>
     <priority>0</priority>
@@ -402,7 +430,7 @@
   
   <url>
     <loc>http://flavio.castelli.me/categories/</loc>
-    <lastmod>2010-08-11T21:29:29+00:00</lastmod>
+    <lastmod>2020-09-16T10:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -414,19 +442,19 @@
   
   <url>
     <loc>http://flavio.castelli.me/categories/containers/</loc>
-    <lastmod>2018-07-18T15:48:16+02:00</lastmod>
+    <lastmod>2020-09-16T10:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://flavio.castelli.me/categories/docker/</loc>
-    <lastmod>2018-07-18T15:48:16+02:00</lastmod>
+    <lastmod>2020-02-27T21:48:16+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://flavio.castelli.me/</loc>
-    <lastmod>2018-07-18T15:48:16+02:00</lastmod>
+    <lastmod>2020-09-16T10:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -479,6 +507,12 @@
   </url>
   
   <url>
+    <loc>http://flavio.castelli.me/categories/kubernetes/</loc>
+    <lastmod>2020-09-16T10:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://flavio.castelli.me/categories/last.fm/</loc>
     <lastmod>2009-04-07T17:40:45+00:00</lastmod>
     <priority>0</priority>
@@ -499,6 +533,12 @@
   <url>
     <loc>http://flavio.castelli.me/categories/marble/</loc>
     <lastmod>2009-04-07T17:40:45+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://flavio.castelli.me/categories/multi-architecture-container/</loc>
+    <lastmod>2020-09-16T10:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -533,6 +573,12 @@
   </url>
   
   <url>
+    <loc>http://flavio.castelli.me/categories/podman/</loc>
+    <lastmod>2020-09-16T10:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://flavio.castelli.me/categories/portus/</loc>
     <lastmod>2018-07-18T15:48:16+02:00</lastmod>
     <priority>0</priority>
@@ -540,7 +586,7 @@
   
   <url>
     <loc>http://flavio.castelli.me/post/</loc>
-    <lastmod>2018-07-18T15:48:16+02:00</lastmod>
+    <lastmod>2020-09-16T10:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -577,6 +623,12 @@
   <url>
     <loc>http://flavio.castelli.me/categories/ruby-on-rails/</loc>
     <lastmod>2011-03-29T15:39:21+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://flavio.castelli.me/categories/seccomp/</loc>
+    <lastmod>2020-09-16T10:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -47,7 +47,7 @@
   <meta name="author" content="">
 
   
-  <meta name="generator" content="Hugo 0.44" />
+  <meta name="generator" content="Hugo 0.49.2" />
 
   
   
@@ -116,6 +116,78 @@
  <div id="content">
   <div class="blog-index">
     
+    
+    <article>
+
+        
+        
+
+<header>
+    <p class="meta">Nov 27, 2012
+         - 1 minute read 
+         - <a href="http://flavio.castelli.me/2012/11/27/qjson-0.8.1-released/#disqus_thread">Comments</a>
+
+        
+        
+        
+            - <a class="label" href="http://flavio.castelli.me/categories/qt/">qt </a><a class="label" href="http://flavio.castelli.me/categories/kde/">kde </a><a class="label" href="http://flavio.castelli.me/categories/qjson/">qjson </a>
+        
+    </p>
+    <h1 class="entry-title">
+        <a href="http://flavio.castelli.me/2012/11/27/qjson-0.8.1-released/">qjson 0.8.1 released</a>
+    </h1>
+</header>
+
+
+        
+          <p>Just a quick information, QJson 0.8.1 has been released. This release ensure API and ABI compatibility with version 0.7.1.
+The previous 0.8.0 release broke ABI compatibility without changing the SOVERSION.
+Toward QJson 1.0.0 I&rsquo;m not entirely happy with some parts of QJson&rsquo;s API. I addressed these issues inside of the 1_0_0 branch.
+I would appreciate to hear your opinion before merging this branch into master and releasing QJson 1.0.0.</p>
+
+          
+
+        
+
+    </article>
+    
+    <article>
+
+        
+        
+
+<header>
+    <p class="meta">Nov 21, 2012
+         - 2 minute read 
+         - <a href="http://flavio.castelli.me/2012/11/21/qjson-0.8.0-released/#disqus_thread">Comments</a>
+
+        
+        
+        
+            - <a class="label" href="http://flavio.castelli.me/categories/qjson/">qjson </a><a class="label" href="http://flavio.castelli.me/categories/qt/">qt </a><a class="label" href="http://flavio.castelli.me/categories/kde/">kde </a>
+        
+    </p>
+    <h1 class="entry-title">
+        <a href="http://flavio.castelli.me/2012/11/21/qjson-0.8.0-released/">QJson 0.8.0 released</a>
+    </h1>
+</header>
+
+
+        
+          <p>Almost three years passed since latest release of QJson. A lot of stuff happened in my life and QJson definitely paid for that. I have to admit I&rsquo;m a bit ashamed.
+So here we go, QJson 0.8.0 is out!
+What changed A lot of bugs has been smashed during this time, this new release will fix issues like this one and this in a nicer way.
+QJson&rsquo;s API is still backward compatible, while the ABI changed.</p>
+
+          
+              <footer>
+                  <a href="http://flavio.castelli.me/2012/11/21/qjson-0.8.0-released/" rel="full-article">Read On &rarr;</a>
+              </footer>
+          
+
+        
+
+    </article>
     
     <article>
 
@@ -401,82 +473,6 @@ This class can be used in conjunction with the Serializer and Parser classes to 
 
     </article>
     
-    <article>
-
-        
-        
-
-<header>
-    <p class="meta">Nov 30, 2009
-         - 2 minute read 
-         - <a href="http://flavio.castelli.me/2009/11/30/qjson-easier-serialization-of-qobject-instances-to-json/#disqus_thread">Comments</a>
-
-        
-        
-        
-            - <a class="label" href="http://flavio.castelli.me/categories/qt/">qt </a><a class="label" href="http://flavio.castelli.me/categories/qjson/">qjson </a>
-        
-    </p>
-    <h1 class="entry-title">
-        <a href="http://flavio.castelli.me/2009/11/30/qjson-easier-serialization-of-qobject-instances-to-json/">QJson: easier serialization of QObject instances to JSON</a>
-    </h1>
-</header>
-
-
-        
-          <p>I have just committed into trunk a couple of changes that make easier to serialize a QObject instance to JSON.
-This solution relies on the awesome Qt&rsquo;s property system.
-Suppose the declaration of Person class looks like this:
-{% codeblock [class definition] [lang:cpp ] %} class Person : public QObject { Q_OBJECT
-Q_PROPERTY(QString name READ name WRITE setName) Q_PROPERTY(int phoneNumber READ phoneNumber WRITE setPhoneNumber) Q_PROPERTY(Gender gender READ gender WRITE setGender) Q_PROPERTY(QDate dob READ dob WRITE setDob) Q_ENUMS(Gender)</p>
-
-          
-              <footer>
-                  <a href="http://flavio.castelli.me/2009/11/30/qjson-easier-serialization-of-qobject-instances-to-json/" rel="full-article">Read On &rarr;</a>
-              </footer>
-          
-
-        
-
-    </article>
-    
-    <article>
-
-        
-        
-
-<header>
-    <p class="meta">Sep 14, 2009
-         - 3 minute read 
-         - <a href="http://flavio.castelli.me/2009/09/14/kaveau-updates/#disqus_thread">Comments</a>
-
-        
-        
-        
-            - <a class="label" href="http://flavio.castelli.me/categories/kde/">KDE </a>
-        
-    </p>
-    <h1 class="entry-title">
-        <a href="http://flavio.castelli.me/2009/09/14/kaveau-updates/">kaveau updates</a>
-    </h1>
-</header>
-
-
-        
-          <p>Some weeks have passed since the announcement of kaveau. I&rsquo;m really proud and happy about this project because I received a lot of positive feedback messages and it has been chosen as one of the best Hackweek&rsquo;s projects.
-In the meantime I kept working on kaveau, so let me show you what has changed:
- rdiff-backup has been replaced by rsync. the setup wizard has been improved according to the feedback messages I received.</p>
-
-          
-              <footer>
-                  <a href="http://flavio.castelli.me/2009/09/14/kaveau-updates/" rel="full-article">Read On &rarr;</a>
-              </footer>
-          
-
-        
-
-    </article>
-    
     
     
 
@@ -542,7 +538,7 @@ In the meantime I kept working on kaveau, so let me show you what has changed:
       
         <p>Father, husband and passionate programmer.</p>
 
-<p>Engineering manager of the kubernetes core team at SUSE.</p>
+<p>Distinguished engineer at SUSE.</p>
 
       
     </p>
@@ -595,6 +591,18 @@ In the meantime I kept working on kaveau, so let me show you what has changed:
           
             
               <li class="post">
+                <a href="/2020/09/16/build-multi-architecture-container-images-using-kubernetes/">Build multi-architecture container images using Kubernetes</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/2020/02/27/semantic-versioning-and-containers/">Semantic versioning and containers</a>
+              </li>
+            
+          
+            
+              <li class="post">
                 <a href="/2018/07/18/hackweek-project-docker-registry-mirror/">Hackweek Project Docker Registry Mirror</a>
               </li>
             
@@ -602,18 +610,6 @@ In the meantime I kept working on kaveau, so let me show you what has changed:
             
               <li class="post">
                 <a href="/2015/07/24/putting-opensuse-docker-images-on-a-diet/">Putting openSUSE Docker images on a diet</a>
-              </li>
-            
-          
-            
-              <li class="post">
-                <a href="/2015/04/23/introducing-portus-an-authorization-service-and-front-end-for-docker-registry/">Introducing Portus: an authorization service and front-end for Docker registry</a>
-              </li>
-            
-          
-            
-              <li class="post">
-                <a href="/2014/11/03/orchestrating-docker-containers-on-opensuse/">Orchestrating Docker containers on openSUSE</a>
               </li>
             
           
@@ -627,7 +623,7 @@ In the meantime I kept working on kaveau, so let me show you what has changed:
 </div>
 
 <footer role="contentinfo">
-  <p>Copyright &copy; 2018  - <a href="http://flavio.castelli.me/license/">License</a> -
+  <p>Copyright &copy; 2020  - <a href="http://flavio.castelli.me/license/">License</a> -
   <span class="credit">Powered by <a target="_blank" href="https://gohugo.io">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/">Hugo-Octopress</a> theme.
 </p>
 

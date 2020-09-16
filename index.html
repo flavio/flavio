@@ -47,7 +47,7 @@
   <meta name="author" content="">
 
   
-  <meta name="generator" content="Hugo 0.44" />
+  <meta name="generator" content="Hugo 0.49.2" />
 
   
   
@@ -116,6 +116,81 @@
  <div id="content">
   <div class="blog-index">
     
+    
+    <article>
+
+        
+        
+
+<header>
+    <p class="meta">Sep 16, 2020
+         - 23 minute read 
+         - <a href="http://flavio.castelli.me/2020/09/16/build-multi-architecture-container-images-using-kubernetes/#disqus_thread">Comments</a>
+
+        
+        
+        
+            - <a class="label" href="http://flavio.castelli.me/categories/apparmor/">AppArmor </a><a class="label" href="http://flavio.castelli.me/categories/arm/">ARM </a><a class="label" href="http://flavio.castelli.me/categories/buildah/">buildah </a><a class="label" href="http://flavio.castelli.me/categories/containers/">containers </a><a class="label" href="http://flavio.castelli.me/categories/kubernetes/">kubernetes </a><a class="label" href="http://flavio.castelli.me/categories/multi-architecture-container/">multi-architecture container </a><a class="label" href="http://flavio.castelli.me/categories/podman/">podman </a><a class="label" href="http://flavio.castelli.me/categories/seccomp/">seccomp </a>
+        
+    </p>
+    <h1 class="entry-title">
+        <a href="http://flavio.castelli.me/2020/09/16/build-multi-architecture-container-images-using-kubernetes/">Build multi-architecture container images using Kubernetes</a>
+    </h1>
+</header>
+
+
+        
+          <p>Recently I&rsquo;ve added some Raspberry Pi 4 nodes to the Kubernetes cluster I&rsquo;m running at home.
+The overall support of ARM inside of the container ecosystem improved a lot over the last years with more container images made available for the armv7 and the arm64 architectures.
+But what about my own container images? I&rsquo;m running some homemade containerized applications on top of this cluster and I would like to have them scheduled both on the x64_64 nodes and on the ARM ones.</p>
+
+          
+              <footer>
+                  <a href="http://flavio.castelli.me/2020/09/16/build-multi-architecture-container-images-using-kubernetes/" rel="full-article">Read On &rarr;</a>
+              </footer>
+          
+
+        
+
+    </article>
+    
+    <article>
+
+        
+        
+
+<header>
+    <p class="meta">Feb 27, 2020
+         - 6 minute read 
+         - <a href="http://flavio.castelli.me/2020/02/27/semantic-versioning-and-containers/#disqus_thread">Comments</a>
+
+        
+        
+        
+            - <a class="label" href="http://flavio.castelli.me/categories/docker/">docker </a><a class="label" href="http://flavio.castelli.me/categories/containers/">containers </a><a class="label" href="http://flavio.castelli.me/categories/kubernetes/">kubernetes </a>
+        
+    </p>
+    <h1 class="entry-title">
+        <a href="http://flavio.castelli.me/2020/02/27/semantic-versioning-and-containers/">Semantic versioning and containers</a>
+    </h1>
+</header>
+
+
+        
+          <p>Developers are used to express the dependencies of their programs using semantic versioning constraints.
+For example a Node.js application relying on left-pad could force only certain versions of this library to be used by specifying a constraint like &gt;= 1.1.0 &lt; 1.2.0. This would force npm to install the latest version of the library that satisfies the constraint.
+How does that translates to containers?
+Imagine the following scenario: a developer deploys a containerized application that requires a Redi database.</p>
+
+          
+              <footer>
+                  <a href="http://flavio.castelli.me/2020/02/27/semantic-versioning-and-containers/" rel="full-article">Read On &rarr;</a>
+              </footer>
+          
+
+        
+
+    </article>
     
     <article>
 
@@ -415,78 +490,6 @@ Installing docker on openSUSE 12.3 Docker has been packaged inside of this OBS p
 
     </article>
     
-    <article>
-
-        
-        
-
-<header>
-    <p class="meta">Nov 27, 2012
-         - 1 minute read 
-         - <a href="http://flavio.castelli.me/2012/11/27/qjson-0.8.1-released/#disqus_thread">Comments</a>
-
-        
-        
-        
-            - <a class="label" href="http://flavio.castelli.me/categories/qt/">qt </a><a class="label" href="http://flavio.castelli.me/categories/kde/">kde </a><a class="label" href="http://flavio.castelli.me/categories/qjson/">qjson </a>
-        
-    </p>
-    <h1 class="entry-title">
-        <a href="http://flavio.castelli.me/2012/11/27/qjson-0.8.1-released/">qjson 0.8.1 released</a>
-    </h1>
-</header>
-
-
-        
-          <p>Just a quick information, QJson 0.8.1 has been released. This release ensure API and ABI compatibility with version 0.7.1.
-The previous 0.8.0 release broke ABI compatibility without changing the SOVERSION.
-Toward QJson 1.0.0 I&rsquo;m not entirely happy with some parts of QJson&rsquo;s API. I addressed these issues inside of the 1_0_0 branch.
-I would appreciate to hear your opinion before merging this branch into master and releasing QJson 1.0.0.</p>
-
-          
-
-        
-
-    </article>
-    
-    <article>
-
-        
-        
-
-<header>
-    <p class="meta">Nov 21, 2012
-         - 2 minute read 
-         - <a href="http://flavio.castelli.me/2012/11/21/qjson-0.8.0-released/#disqus_thread">Comments</a>
-
-        
-        
-        
-            - <a class="label" href="http://flavio.castelli.me/categories/qjson/">qjson </a><a class="label" href="http://flavio.castelli.me/categories/qt/">qt </a><a class="label" href="http://flavio.castelli.me/categories/kde/">kde </a>
-        
-    </p>
-    <h1 class="entry-title">
-        <a href="http://flavio.castelli.me/2012/11/21/qjson-0.8.0-released/">QJson 0.8.0 released</a>
-    </h1>
-</header>
-
-
-        
-          <p>Almost three years passed since latest release of QJson. A lot of stuff happened in my life and QJson definitely paid for that. I have to admit I&rsquo;m a bit ashamed.
-So here we go, QJson 0.8.0 is out!
-What changed A lot of bugs has been smashed during this time, this new release will fix issues like this one and this in a nicer way.
-QJson&rsquo;s API is still backward compatible, while the ABI changed.</p>
-
-          
-              <footer>
-                  <a href="http://flavio.castelli.me/2012/11/21/qjson-0.8.0-released/" rel="full-article">Read On &rarr;</a>
-              </footer>
-          
-
-        
-
-    </article>
-    
     
     
 
@@ -549,7 +552,7 @@ QJson&rsquo;s API is still backward compatible, while the ABI changed.</p>
       
         <p>Father, husband and passionate programmer.</p>
 
-<p>Engineering manager of the kubernetes core team at SUSE.</p>
+<p>Distinguished engineer at SUSE.</p>
 
       
     </p>
@@ -602,6 +605,18 @@ QJson&rsquo;s API is still backward compatible, while the ABI changed.</p>
           
             
               <li class="post">
+                <a href="/2020/09/16/build-multi-architecture-container-images-using-kubernetes/">Build multi-architecture container images using Kubernetes</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/2020/02/27/semantic-versioning-and-containers/">Semantic versioning and containers</a>
+              </li>
+            
+          
+            
+              <li class="post">
                 <a href="/2018/07/18/hackweek-project-docker-registry-mirror/">Hackweek Project Docker Registry Mirror</a>
               </li>
             
@@ -609,18 +624,6 @@ QJson&rsquo;s API is still backward compatible, while the ABI changed.</p>
             
               <li class="post">
                 <a href="/2015/07/24/putting-opensuse-docker-images-on-a-diet/">Putting openSUSE Docker images on a diet</a>
-              </li>
-            
-          
-            
-              <li class="post">
-                <a href="/2015/04/23/introducing-portus-an-authorization-service-and-front-end-for-docker-registry/">Introducing Portus: an authorization service and front-end for Docker registry</a>
-              </li>
-            
-          
-            
-              <li class="post">
-                <a href="/2014/11/03/orchestrating-docker-containers-on-opensuse/">Orchestrating Docker containers on openSUSE</a>
               </li>
             
           
@@ -634,7 +637,7 @@ QJson&rsquo;s API is still backward compatible, while the ABI changed.</p>
 </div>
 
 <footer role="contentinfo">
-  <p>Copyright &copy; 2018  - <a href="http://flavio.castelli.me/license/">License</a> -
+  <p>Copyright &copy; 2020  - <a href="http://flavio.castelli.me/license/">License</a> -
   <span class="credit">Powered by <a target="_blank" href="https://gohugo.io">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/">Hugo-Octopress</a> theme.
 </p>
 

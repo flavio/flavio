@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>Build multi-architecture container images using Kubernetes</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="http://flavio.castelli.me/favicon.png" rel="icon">
+
+  
+  
+  
+
+  
+
+  <link href="/atom.xml" rel="alternate" title="Flavio Castelli" type="application/atom+xml">
+
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.49.2" />
+
+  
+  
+
+  
+  
+
+</head>
+<body>
+
+
+<header role="banner"><hgroup>
+  
+  <h1><a href="http://flavio.castelli.me/">Flavio Castelli</a></h1>
+    <h2>Debugging my life</h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+        <option value="http://flavio.castelli.me/">» Blog</option>
+      
+        <option value="http://flavio.castelli.me/post">» Archive</option>
+      
+
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+    
+      <li><a href="http://flavio.castelli.me/" title="Blog">Blog</a></li>
+    
+  
+    
+      <li><a href="http://flavio.castelli.me/post" title="Archive" >Archive</a></li>
+    
+  
+</ul>
+
+
+<ul class="subscription">
+  
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS"><i class="fa fa-rss-square fa-lg"></i></a></li>
+
+</ul>
+
+
+<form action="https://www.google.com/search" method="get" target="_blank">
+  <fieldset role="search">
+  	<input class="search" type="text" name="q" results="0" placeholder="Search"/>
+    <input type="hidden" name="q" value="site:http://flavio.castelli.me/" />
+  </fieldset>
+</form>
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+    <p class="meta">Sep 16, 2020
+         - 23 minute read 
+         - <a href="http://flavio.castelli.me/2020/09/16/build-multi-architecture-container-images-using-kubernetes/#disqus_thread">Comments</a>
+
+        
+        
+        
+            - <a class="label" href="http://flavio.castelli.me/categories/apparmor/">AppArmor </a><a class="label" href="http://flavio.castelli.me/categories/arm/">ARM </a><a class="label" href="http://flavio.castelli.me/categories/buildah/">buildah </a><a class="label" href="http://flavio.castelli.me/categories/containers/">containers </a><a class="label" href="http://flavio.castelli.me/categories/kubernetes/">kubernetes </a><a class="label" href="http://flavio.castelli.me/categories/multi-architecture-container/">multi-architecture container </a><a class="label" href="http://flavio.castelli.me/categories/podman/">podman </a><a class="label" href="http://flavio.castelli.me/categories/seccomp/">seccomp </a>
+        
+    </p>
+    <h1 class="entry-title">
+         Build multi-architecture container images using Kubernetes 
+    </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          
+          
+
+<p>Recently I&rsquo;ve added some Raspberry Pi 4 nodes to the Kubernetes cluster I&rsquo;m
+running at home.</p>
+
+<p>The overall support of ARM inside of the container ecosystem improved a lot
+over the last years with more container images made available for the
+<code>armv7</code> and the <code>arm64</code> architectures.</p>
+
+<p>But what about my own container images? I&rsquo;m running some homemade
+containerized applications on top of this cluster and I would like to have them
+scheduled both on the x64_64 nodes and on the ARM ones.</p>
+
+<p>There are many ways to build ARM container images. You can go from something as
+simple, and tedious, as performing manual builds on a real/emulated ARM machines
+or you can do something more structured like using
+<a href="https://github.com/marketplace/actions/docker-buildx">this GitHub Action</a>,
+relying on something like the
+<a href="https://openbuildservice.org/2018/05/09/container-building-and-distribution/">Open Build Service</a>,&hellip;</p>
+
+<p>My personal desire was to leverage my mixed Kubernetes cluster and
+perform the image building right on top of it.</p>
+
+<p>Implementing this design has been a great learning experience, something IMHO
+worth to be shared with others.
+The journey has been too long to fit into a single blog post; I&rsquo;ll split my
+story into multiple posts.</p>
+
+<p>Our journey begins with the challenge of building a container image from
+within a container.</p>
+
+<h1 id="image-building">Image building</h1>
+
+<p>The most known way to build a container image is by using <code>docker build</code>.
+I didn&rsquo;t want to use docker to build my images because the build process
+will take place right on top of Kubernetes, meaning the build will happen in a
+containerized way.</p>
+
+<p>Some people are using docker as the container runtime of their Kubernetes
+clusters and are leveraging that to mount the docker socket inside of some
+of their containers. Once the docker socket is mounted, the containerized
+application has full access to the docker daemon that is running on the host.
+From there <del>it&rsquo;s game over</del> the container can perform actions such as building
+new images.</p>
+
+<p>I&rsquo;m a strong opponent of this approach because it&rsquo;s highly insecure. Moreover
+I&rsquo;m not using docker as container runtime and I guess many people will stop
+doing that in the near future once <a href="https://github.com/kubernetes/kubernetes/pull/94624">dockershim gets deprecated</a>.
+Translated: the majority of the future Kubernetes cluster will either have
+containerd, CRI-O or something similar instead of docker - hence bye bye
+to the docker socket hack.</p>
+
+<p>There are however many other ways to build containers that are not based on
+<code>docker build</code>.</p>
+
+<p>If you do a quick internet search about containerized image building you will
+definitely find <a href="https://github.com/GoogleContainerTools/kaniko">kaniko</a>.
+kaniko does exactly what I want: it performs containerized builds without using
+the docker daemon. There are also many examples covering image building on top
+of Kubernetes with kaniko. Unfortunately, at the time of writing, kaniko
+supports only the x86_64 architecture.</p>
+
+<p>Our chances are not over yet because there&rsquo;s another container building tool
+that can help us: <a href="https://github.com/containers/buildah/">buildah</a>.</p>
+
+<p>Buildah is part of the &ldquo;libpod ecosystem&rdquo;, which includes projects such as
+<a href="https://github.com/containers/podman/">podman</a>, <a href="https://github.com/containers/skopeo">skopeo</a>
+and <a href="https://cri-o.io/">CRI-O</a>. All these tools are available for multiple
+architectures: x86_64, aarch64 (aka ARM64), s390x and ppc64le.</p>
+
+<h1 id="running-buildah-containerized">Running buildah containerized</h1>
+
+<p>Buildah can build container images starting from a <code>Dockerfile</code> or in a
+more interactive way. All of that without requiring any privileged daemon
+running on your system.</p>
+
+<p>During the last years the buildah developers spent quite some efforts to support the use
+case of &ldquo;containerized buildah&rdquo;.
+<a href="https://developers.redhat.com/blog/2019/08/14/best-practices-for-running-buildah-in-a-container/">This</a>
+is just the most recent blog post that discusses this scenario in depth.</p>
+
+<p>Upstream has even a <code>Dockerfile</code> that can be used to create a buildah container
+image. This can be found <a href="https://github.com/containers/buildah/tree/master/contrib/buildahimage">here</a>.</p>
+
+<p>I took this <code>Dockerfile</code>, made some minor adjustments and uploaded it
+to <a href="https://build.opensuse.org/package/show/home:flavio_castelli:containers/buildahimage">this project</a>
+on the Open Build Service. As a result I got a multi architecture container
+image that can be pulled from <code>registry.opensuse.org/home/flavio_castelli/containers/containers/buildahimage:latest</code>.</p>
+
+<h1 id="the-storage-driver">The storage driver</h1>
+
+<p>As some container veterans probably know, there are several types of storage
+drivers that can be used by container engines.</p>
+
+<p>In case you&rsquo;re not familiar with this topic you can read these great
+documentation pages from Docker:</p>
+
+<ul>
+<li><a href="https://docs.docker.com/storage/storagedriver/">Overview of storage drivers</a></li>
+<li><a href="https://docs.docker.com/storage/storagedriver/select-storage-driver/">How to choose the right storage driver</a></li>
+</ul>
+
+<p>Note well: despite being written for the docker container engine, this applies
+also to podman, buildah, CRI-O and containerd.</p>
+
+<p>The most portable and performant storage driver is the <code>overlay</code> one.
+This is the one we want to use when running buildah containerized.</p>
+
+<p>The <code>overlay</code> driver can be used in safe way even inside of a container by
+leveraging <a href="https://github.com/containers/fuse-overlayfs">fuse-overlay</a>; this
+is described by the buildah blog post I linked above.</p>
+
+<p>However, using the <code>overlay</code> storage driver inside of a container requires
+Fuse to be enabled on the host and, most important of all, it requires the
+<code>/dev/fuse</code> device to be accessible by the container.</p>
+
+<p>The share operation cannot be done by simply mounting <code>/dev/fuse</code> as a volume
+because there are some extra &ldquo;low level&rdquo; steps that must be done (like properly
+instructing the cgroup device hierarchy).</p>
+
+<p>These extra steps are automatically handled by docker and podman via the
+<code>--device</code> flag of the <code>run</code> command:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ podman run --rm -ti --device /dev/fuse buildahimage bash</code></pre></div>
+<p>This problem will need to be solved in a different way when buildah is run
+on top of Kubernetes.</p>
+
+<h1 id="kubernetes-device-plugin">Kubernetes device plugin</h1>
+
+<p>Special host devices can be shared with containers running inside of a
+Kubernetes POD by using a recent feature called
+<a href="https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/">Kubernetes device plugins</a>.</p>
+
+<p>Quoting the upstream documentation:</p>
+
+<blockquote>
+<p>Kubernetes provides a device plugin framework that you can use to advertise system hardware resources to the Kubelet .</p>
+
+<p>Instead of customizing the code for Kubernetes itself, vendors can implement a device plugin that you deploy either manually or as a DaemonSet . The targeted devices include GPUs, high-performance NICs, FPGAs, InfiniBand adapters, and other similar computing resources that may require vendor specific initialization and setup.</p>
+</blockquote>
+
+<p>This Kubernetes feature is commonly used to allow containerized machine learning
+workloads to access the GPU cards available on the host.</p>
+
+<p>Luckily someone wrote a Kubernetes device plugin that exposes <code>/dev/fuse</code> to
+Kubernetes-managed containers:
+<a href="https://github.com/kuberenetes-learning-group/fuse-device-plugin">fuse-device-plugin</a>.</p>
+
+<p>I&rsquo;ve <a href="https://github.com/flavio/fuse-device-plugin">forked the project</a>, made
+some minor fixes to its Dockerfile and created a GitHub action to build
+the container image for <code>amd64</code>, <code>armv7</code> and <code>amd64</code> (a PR is coming soon).
+The images are available on the Docker Hub as: <code>flavio/fuse-device-plugin</code>.</p>
+
+<p>The fuse-device-plugin has to be deployed as a Kubernetes DaemonSet via this
+yaml file:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: fuse-device-plugin-daemonset
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      name: fuse-device-plugin-ds
+  template:
+    metadata:
+      labels:
+        name: fuse-device-plugin-ds
+    spec:
+      hostNetwork: <span style="color:#66d9ef">true</span>
+      containers:
+      - image: flavio/fuse-device-plugin:latest
+        name: fuse-device-plugin-ctr
+        securityContext:
+          allowPrivilegeEscalation: <span style="color:#66d9ef">false</span>
+          capabilities:
+            drop: [<span style="color:#e6db74">&#34;ALL&#34;</span>]
+        volumeMounts:
+          - name: device-plugin
+            mountPath: /var/lib/kubelet/device-plugins
+      volumes:
+        - name: device-plugin
+          hostPath:
+            path: /var/lib/kubelet/device-plugins</code></pre></div>
+<p>This is basically <a href="https://github.com/flavio/fuse-device-plugin/blob/master/fuse-device-plugin-k8s-1.16.yml">this</a> file,
+with the <code>flavio/fuse-device-plugin</code> image being used instead of the
+original one (which is built only for x86_64).</p>
+
+<p>Once the DaemonSet PODs are running on all the nodes of the cluster, we can see
+the Fuse device being exposed as an allocatable resource identified by the
+<code>github.com/fuse</code> key:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get nodes -o<span style="color:#f92672">=</span>jsonpath<span style="color:#f92672">=</span><span style="color:#e6db74">$&#39;{range .items[*]}{.metadata.name}: {.status.allocatable}\n{end}&#39;</span>
+jam-2: map<span style="color:#f92672">[</span>cpu:4 ephemeral-storage:224277137028 github.com/fuse:5k memory:3883332Ki pods:110<span style="color:#f92672">]</span>
+jam-1: map<span style="color:#f92672">[</span>cpu:4 ephemeral-storage:111984762997 github.com/fuse:5k memory:3883332Ki pods:110<span style="color:#f92672">]</span>
+jolly: map<span style="color:#f92672">[</span>cpu:4 ephemeral-storage:170873316014 github.com/fuse:5k gpu.intel.com/i915:1 hugepages-1Gi:0 hugepages-2Mi:0 memory:16208280Ki pods:110<span style="color:#f92672">]</span></code></pre></div>
+<p>The Fuse device can then be made available to a container by specifying a
+resource limit:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: fuse-example
+spec:
+  containers:
+  - name: main
+    image: alpine
+    command: [<span style="color:#e6db74">&#34;ls&#34;</span>, <span style="color:#e6db74">&#34;-l&#34;</span>, <span style="color:#e6db74">&#34;/dev&#34;</span>]
+    resources:
+      limits:
+        github.com/fuse: <span style="color:#ae81ff">1</span></code></pre></div>
+<p>If you look at the logs of this POD you will see something like that:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl logs fuse-example
+total <span style="color:#ae81ff">0</span>
+lrwxrwxrwx    <span style="color:#ae81ff">1</span> root     root            <span style="color:#ae81ff">11</span> Sep <span style="color:#ae81ff">15</span> <span style="color:#ae81ff">08</span>:31 core -&gt; /proc/kcore
+lrwxrwxrwx    <span style="color:#ae81ff">1</span> root     root            <span style="color:#ae81ff">13</span> Sep <span style="color:#ae81ff">15</span> <span style="color:#ae81ff">08</span>:31 fd -&gt; /proc/self/fd
+crw-rw-rw-    <span style="color:#ae81ff">1</span> root     root        <span style="color:#ae81ff">1</span>,   <span style="color:#ae81ff">7</span> Sep <span style="color:#ae81ff">15</span> <span style="color:#ae81ff">08</span>:31 full
+crw-rw-rw-    <span style="color:#ae81ff">1</span> root     root       <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">229</span> Sep <span style="color:#ae81ff">15</span> <span style="color:#ae81ff">08</span>:31 fuse
+drwxrwxrwt    <span style="color:#ae81ff">2</span> root     root            <span style="color:#ae81ff">40</span> Sep <span style="color:#ae81ff">15</span> <span style="color:#ae81ff">08</span>:31 mqueue
+crw-rw-rw-    <span style="color:#ae81ff">1</span> root     root        <span style="color:#ae81ff">1</span>,   <span style="color:#ae81ff">3</span> Sep <span style="color:#ae81ff">15</span> <span style="color:#ae81ff">08</span>:31 null
+lrwxrwxrwx    <span style="color:#ae81ff">1</span> root     root             <span style="color:#ae81ff">8</span> Sep <span style="color:#ae81ff">15</span> <span style="color:#ae81ff">08</span>:31 ptmx -&gt; pts/ptmx
+drwxr-xr-x    <span style="color:#ae81ff">2</span> root     root             <span style="color:#ae81ff">0</span> Sep <span style="color:#ae81ff">15</span> <span style="color:#ae81ff">08</span>:31 pts
+crw-rw-rw-    <span style="color:#ae81ff">1</span> root     root        <span style="color:#ae81ff">1</span>,   <span style="color:#ae81ff">8</span> Sep <span style="color:#ae81ff">15</span> <span style="color:#ae81ff">08</span>:31 random
+drwxrwxrwt    <span style="color:#ae81ff">2</span> root     root            <span style="color:#ae81ff">40</span> Sep <span style="color:#ae81ff">15</span> <span style="color:#ae81ff">08</span>:31 shm
+lrwxrwxrwx    <span style="color:#ae81ff">1</span> root     root            <span style="color:#ae81ff">15</span> Sep <span style="color:#ae81ff">15</span> <span style="color:#ae81ff">08</span>:31 stderr -&gt; /proc/self/fd/2
+lrwxrwxrwx    <span style="color:#ae81ff">1</span> root     root            <span style="color:#ae81ff">15</span> Sep <span style="color:#ae81ff">15</span> <span style="color:#ae81ff">08</span>:31 stdin -&gt; /proc/self/fd/0
+lrwxrwxrwx    <span style="color:#ae81ff">1</span> root     root            <span style="color:#ae81ff">15</span> Sep <span style="color:#ae81ff">15</span> <span style="color:#ae81ff">08</span>:31 stdout -&gt; /proc/self/fd/1
+-rw-rw-rw-    <span style="color:#ae81ff">1</span> root     root             <span style="color:#ae81ff">0</span> Sep <span style="color:#ae81ff">15</span> <span style="color:#ae81ff">08</span>:31 termination-log
+crw-rw-rw-    <span style="color:#ae81ff">1</span> root     root        <span style="color:#ae81ff">5</span>,   <span style="color:#ae81ff">0</span> Sep <span style="color:#ae81ff">15</span> <span style="color:#ae81ff">08</span>:31 tty
+crw-rw-rw-    <span style="color:#ae81ff">1</span> root     root        <span style="color:#ae81ff">1</span>,   <span style="color:#ae81ff">9</span> Sep <span style="color:#ae81ff">15</span> <span style="color:#ae81ff">08</span>:31 urandom
+crw-rw-rw-    <span style="color:#ae81ff">1</span> root     root        <span style="color:#ae81ff">1</span>,   <span style="color:#ae81ff">5</span> Sep <span style="color:#ae81ff">15</span> <span style="color:#ae81ff">08</span>:31 zero</code></pre></div>
+<p>Now that this problem is solved we can move to the next one. 😉</p>
+
+<h1 id="obtaining-the-source-code-of-our-image">Obtaining the source code of our image</h1>
+
+<p>The source code of the &ldquo;container image to be built&rdquo; must be made available
+to the containerized buildah.</p>
+
+<p>As many people do, I keep all my container definitions versioned
+inside of Git repositories. I had to find a way to clone the Git repository
+holding the definition of the &ldquo;container image to be built&rdquo; inside of the
+container running buildah.</p>
+
+<p>I decided to settle for this POD layout:</p>
+
+<ul>
+<li>The main container of the POD is going to be the one running buildah.</li>
+<li>The POD will have a <a href="https://kubernetes.io/docs/concepts/workloads/pods/init-containers/">Kubernetes init container</a>
+that will <code>git clone</code> the source code of the &ldquo;container image to be built&rdquo;
+before the main container is started.</li>
+</ul>
+
+<p>The contents produced by the <code>git clone</code> must be placed into a
+directory that can be accessed later on by the main container.
+I decided to use a Kubernetes volume of type <a href="https://kubernetes.io/docs/concepts/storage/volumes/#emptydir">emptyDir</a>
+to create a shared storage between the init and the main containers.
+The <code>emptyDir</code> volume is just perfect: it doesn&rsquo;t need any fancy Kubernetes
+Storage Class and it will automatically vanish once the build is done.</p>
+
+<p>To checkout the Git repository I decided to settle on the official
+<a href="https://github.com/kubernetes/git-sync">Kubernetes git-sync</a> container.</p>
+
+<p>Quoting its documentation:</p>
+
+<blockquote>
+<p>git-sync is a simple command that pulls a git repository into a local directory. It is a perfect &ldquo;sidecar&rdquo; container in Kubernetes - it can periodically pull files down from a repository so that an application can consume them.</p>
+
+<p>git-sync can pull one time, or on a regular interval. It can pull from the HEAD of a branch, from a git tag, or from a specific git hash. It will only re-pull if the target of the run has changed in the upstream repository. When it re-pulls, it updates the destination directory atomically. In order to do this, it uses a git worktree in a subdirectory of the &ndash;root and flips a symlink.</p>
+
+<p>git-sync can pull over HTTP(S) (with authentication or not) or SSH.</p>
+</blockquote>
+
+<p>This is just what I was looking for.</p>
+
+<p>I will start <code>git-sync</code> with the following parameters:</p>
+
+<ul>
+<li><code>--one-time</code>: this is needed to make git-sync exit once the checkout is done;
+otherwise it will keep running forever and it will periodically look for new
+commits inside of the repository. I don&rsquo;t need that, plus this would cause
+the main container to wait indefinitely for the init container to exit.</li>
+<li><code>--depth 1</code>: this is done to limit the checkout to the latest commit. I&rsquo;m not
+interested in the history of the repository. This will make the checkout faster
+and use less bandwidth and disk space.</li>
+<li><code>--repo &lt;my-repo</code>: the repo I want to checkout.</li>
+<li><code>--branch &lt;my-branch&gt;</code>: the branch to checkout.</li>
+</ul>
+
+<p>The git-sync container image was already built for multiple architectures, but
+unfortunately it <a href="https://github.com/kubernetes/git-sync/issues/222#issuecomment-685975894">turned out</a>
+the non x86_64 images were broken.
+The issue has been recently solved with the <a href="https://github.com/kubernetes/git-sync/releases/tag/v3.1.7">v3.1.7</a>.</p>
+
+<p>While waiting for the issue to be fixed I just rebuilt the container image on
+the Open Build Service. This is no longer needed, everybody can just use the
+official image.</p>
+
+<h1 id="trying-the-first-build">Trying the first build</h1>
+
+<p>It&rsquo;s now time to perform a simple test run. We will define a simple
+Kubernetes POD that will:</p>
+
+<ol>
+<li>Checkout the source code of a simple container image</li>
+<li>Build the container iamge using <code>buildah</code></li>
+</ol>
+
+<p>This is the POD definition:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: builder-amd64
+spec:
+  nodeSelector:
+    kubernetes.io/arch: <span style="color:#e6db74">&#34;amd64&#34;</span>
+  initContainers:
+  - name: git-sync
+    image: k8s.gcr.io/git-sync/git-sync:v3.<span style="color:#ae81ff">1.7</span>
+    args: [
+      <span style="color:#e6db74">&#34;--one-time&#34;</span>,
+      <span style="color:#e6db74">&#34;--depth&#34;</span>, <span style="color:#e6db74">&#34;1&#34;</span>,
+      <span style="color:#e6db74">&#34;--dest&#34;</span>, <span style="color:#e6db74">&#34;checkout&#34;</span>,
+      <span style="color:#e6db74">&#34;--repo&#34;</span>, <span style="color:#e6db74">&#34;https://github.com/flavio/guestbook-go.git&#34;</span>,
+      <span style="color:#e6db74">&#34;--branch&#34;</span>, <span style="color:#e6db74">&#34;master&#34;</span>]
+    volumeMounts:
+      - name: code
+        mountPath: /tmp/git
+  volumes:
+  - name: code
+    emptyDir:
+      medium: Memory
+  containers:
+  - name: main
+    image: registry.opensuse.org/home/flavio_castelli/containers/containers/buildahimage:latest
+    command: [<span style="color:#e6db74">&#34;/bin/sh&#34;</span>]
+    args: [<span style="color:#e6db74">&#34;-c&#34;</span>, <span style="color:#e6db74">&#34;cd code; cd $(readlink checkout); buildah bud -t guestbook .&#34;</span>]
+    volumeMounts:
+      - name: code
+        mountPath: /code
+    resources:
+      limits:
+        github.com/fuse: <span style="color:#ae81ff">1</span></code></pre></div>
+<p>Let&rsquo;s break it down into pieces.</p>
+
+<h2 id="determine-image-architecture">Determine image architecture</h2>
+
+<p>The POD uses a <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector">Kubernetes node selector</a>
+to ensure the build happens on a node with the x86_64 architecture. By doing
+that we will know the architecture of the final image.</p>
+
+<h2 id="checkout-the-source-code">Checkout the source code</h2>
+
+<p>As said earlier, the Git repository is checked out using an init container:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  initContainers:
+  - name: git-sync
+    image: k8s.gcr.io/git-sync/git-sync:v3.<span style="color:#ae81ff">1.7</span>
+    args: [
+      <span style="color:#e6db74">&#34;--one-time&#34;</span>,
+      <span style="color:#e6db74">&#34;--depth&#34;</span>, <span style="color:#e6db74">&#34;1&#34;</span>,
+      <span style="color:#e6db74">&#34;--dest&#34;</span>, <span style="color:#e6db74">&#34;checkout&#34;</span>,
+      <span style="color:#e6db74">&#34;--repo&#34;</span>, <span style="color:#e6db74">&#34;https://github.com/flavio/guestbook-go.git&#34;</span>,
+      <span style="color:#e6db74">&#34;--branch&#34;</span>, <span style="color:#e6db74">&#34;master&#34;</span>]
+    volumeMounts:
+      - name: code
+        mountPath: /tmp/git</code></pre></div>
+<p>The Git repository and the branch are currently hard-coded into the POD
+definition, this is going to be fixed later on. Right now that&rsquo;s good
+enough to see if things are working (spoiler alert: they won&rsquo;t 😅).</p>
+
+<p>The git-sync container will run before the <code>main</code> container and it will write
+the source code of the &ldquo;container image to be built&rdquo; inside of a Kubernetes
+volume named <code>code</code>.</p>
+
+<p>This is how the volume will look like after <code>git-sync</code> has ran:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ls -lh &lt;root of the volume&gt;
+drwxr-xr-x <span style="color:#ae81ff">9</span> <span style="color:#ae81ff">65533</span> <span style="color:#ae81ff">65533</span> <span style="color:#ae81ff">300</span> Sep <span style="color:#ae81ff">15</span> <span style="color:#ae81ff">09</span>:41 .git
+lrwxrwxrwx <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">65533</span> <span style="color:#ae81ff">65533</span>  <span style="color:#ae81ff">44</span> Sep <span style="color:#ae81ff">15</span> <span style="color:#ae81ff">09</span>:41 checkout -&gt; rev-155a69b7f81d5b010c5468a2edfbe9228b758d64
+drwxr-xr-x <span style="color:#ae81ff">6</span> <span style="color:#ae81ff">65533</span> <span style="color:#ae81ff">65533</span> <span style="color:#ae81ff">280</span> Sep <span style="color:#ae81ff">15</span> <span style="color:#ae81ff">09</span>:41 rev-155a69b7f81d5b010c5468a2edfbe9228b758d64</code></pre></div>
+<p>The source code is stored under the <code>rev-&lt;git commit ID&gt;</code> directory. There&rsquo;s
+a symlink named <code>checkout</code> that points to it. As you will see later, this will
+lead to a small twist.</p>
+
+<h2 id="shared-volume">Shared volume</h2>
+
+<p>The source code of our application is stored inside of a Kubernetes volume of
+type <code>emptyDir</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  volumes:
+  - name: code
+    emptyDir:
+      medium: Memory</code></pre></div>
+<p>I&rsquo;ve also instructed Kubernetes to store the volume in memory. Behind the scene
+Kubelet will use <a href="https://en.wikipedia.org/wiki/Tmpfs">tmpfs</a> to do that.</p>
+
+<h2 id="the-buildah-container">The buildah container</h2>
+
+<p>The POD will have just one container running inside of it. This is called <code>main</code>
+and its only purpose is to run buildah.</p>
+
+<p>This is the definition of the container:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  containers:
+  - name: main
+    image: registry.opensuse.org/home/flavio_castelli/containers/containers/buildahimage:latest
+    command: [<span style="color:#e6db74">&#34;/bin/sh&#34;</span>]
+    args: [<span style="color:#e6db74">&#34;-c&#34;</span>, <span style="color:#e6db74">&#34;cd /code; cd $(readlink checkout); buildah bud -t guestbook .&#34;</span>]
+    volumeMounts:
+      - name: code
+        mountPath: /code
+    resources:
+      limits:
+        github.com/fuse: <span style="color:#ae81ff">1</span></code></pre></div>
+<p>As expected the container is mounting the <code>code</code> Kubenetes volume too. Moreover,
+the container is requesting one resource of type <code>github.com/fuse</code>; as explained
+above this is needed to make <code>/dev/fuse</code> available inside of the container.</p>
+
+<p>The container executes a simple bash script. The oneliner can be expanded
+to that:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd /code
+cd <span style="color:#66d9ef">$(</span>readlink checkout<span style="color:#66d9ef">)</span>
+buildah bud -t guestbook .</code></pre></div>
+<p>There&rsquo;s one interesting detail in there. As you can see I&rsquo;m not &ldquo;cd-ing&rdquo; straight
+into <code>/code/checkout</code>, instead I&rsquo;m moving into <code>/code</code> and then resolving
+the actual target of the <code>checkout</code> symlink.</p>
+
+<p>We can&rsquo;t move straight into <code>/code/checkout</code> because that would give us an
+error:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">builder:/ <span style="color:#75715e"># cd /code/checkout
+</span><span style="color:#75715e"></span>bash: cd: /code/checkout: Permission denied</code></pre></div>
+<p>This happens because <code>/proc/sys/fs/protected_symlinks</code> is turned on by default.
+As you can read <a href="https://sysctl-explorer.net/fs/protected_symlinks/">here</a>, this
+is a way to protect from specific type of exploits. Not even <code>root</code> inside of the
+container can jump straight into <code>/code/checkout</code>, this is why I&rsquo;m doing this
+workaround.</p>
+
+<p>One last note, as you have probably noticed, buildah is just building the
+container image, it&rsquo;s not pushing it to any registry. We don&rsquo;t care about
+that right now.</p>
+
+<h1 id="an-unexpected-problem">An unexpected problem</h1>
+
+<p>Our journey is not over yet, there&rsquo;s one last challenge ahead of us.</p>
+
+<p>Before digging into the issue, let me provide some background. My local cluster
+was initially made by one x86_64 node running openSUSE Leap 15.2 and by two
+ARM64 nodes running the <a href="https://downloads.raspberrypi.org/raspios_arm64/images/">beta ARM64 build</a>
+of Rasperry Pi OS (formerly known as raspbian).</p>
+
+<p>I used the POD definition shown above to define two PODs:</p>
+
+<ul>
+<li><code>builder-amd64</code>: the <code>nodeSelector</code> constraint targets the <code>amd64</code> architecture</li>
+<li><code>builder-arm64</code>: the <code>nodeSelector</code> constraint targets the <code>arm64</code> architecture</li>
+</ul>
+
+<p>That lead to an interesting finding: the builds on ARM64 nodes worked fine, while
+all the builds on the x86_64 node failed.</p>
+
+<p>The failure was always the same and happened straight at the beginning of the
+process:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl logs -f builder-amd64
+mount /var/lib/containers/storage/overlay:/var/lib/containers/storage/overlay, flags: 0x1000: permission denied
+level<span style="color:#f92672">=</span>error msg<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;exit status 125&#34;</span></code></pre></div>
+<p>To me, that immediately smelled like a security feature blocking buildah.</p>
+
+<h2 id="finding-the-offending-security-check">Finding the offending security check</h2>
+
+<p>I needed something faster then <code>kubectl</code> to iterate over this problem.
+Luckily I was able to reproduce the same error while running buildah locally
+using podman:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo podman run <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --rm <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --device /dev/fuse <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -v &lt;path-to-container-image-sources&gt;:/code <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    registry.opensuse.org/home/flavio_castelli/containers/containers/buildahimage:latest <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    /bin/sh -c <span style="color:#e6db74">&#34;cd /code; buildah bud -t foo .&#34;</span></code></pre></div>
+<p>I was pretty sure the failure happened due to some tight security check. To
+prove my theory I ran the same container in
+<a href="https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities">privileged mode</a>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo podman run <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --rm <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --device /dev/fuse <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --privileged <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -v &lt;path-to-container-image-sources&gt;:/code <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    registry.opensuse.org/home/flavio_castelli/containers/containers/buildahimage:latest <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    /bin/sh -c <span style="color:#e6db74">&#34;cd /code; buildah bud -t foo .&#34;</span></code></pre></div>
+<p>The build completed successfully. Running a container in privileged mode is bad
+and makes me hurt, it&rsquo;s not a long term solution but at least that proved the
+build failure was definitely caused by some security constraint.</p>
+
+<p>The next step was to identify the security measure at the origin of the failure.
+That could be either something related with seccomp or AppArmor. I immediately
+ruled out SELinux as the root cause because it&rsquo;s not used on openSUSE by default.</p>
+
+<p>I then ran the container again, but this time I instructed podman to not apply
+any kind of seccomp profile; I basically disabled seccomp for my containerized
+workload.</p>
+
+<p>This can be done by using the <code>unconfined</code> mode for seccomp:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo podman run <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --rm <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --device /dev/fuse <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -v &lt;path-to-container-image-sources&gt;:/code <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --security-opt<span style="color:#f92672">=</span>seccomp<span style="color:#f92672">=</span>unconfined <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    registry.opensuse.org/home/flavio_castelli/containers/containers/buildahimage:latest <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    /bin/sh -c <span style="color:#e6db74">&#34;cd /code; buildah bud -t foo .&#34;</span></code></pre></div>
+<p>The build failed again with the same error. That meant seccomp was not causing
+the failure. AppArmor was left as the main suspect.</p>
+
+<p>Next, I just run the container but I instructed podman to not apply any kind
+of AppArmor profile; again, I basically disabled AppArmor for my containerized
+workload.</p>
+
+<p>This can be done by using the <code>unconfined</code> mode for AppArmor:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo podman run <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --rm <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --device /dev/fuse <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -v &lt;path-to-container-image-sources&gt;:/code <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --security-opt<span style="color:#f92672">=</span>apparmor<span style="color:#f92672">=</span>unconfined <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    registry.opensuse.org/home/flavio_castelli/containers/containers/buildahimage:latest <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    /bin/sh -c <span style="color:#e6db74">&#34;cd /code; buildah bud -t foo .&#34;</span></code></pre></div>
+<p>This time the build completed successfully. Hence the issue was caused by the
+default AppArmor profile.</p>
+
+<h2 id="create-an-apparmor-profile-for-buildah">Create an AppArmor profile for buildah</h2>
+
+<p>All the container engines (docker, podman, CRI-O, containerd) have an
+AppArmor profile that is applied to all the containerized workloads by default.</p>
+
+<p>The containerized Buildah is probably doing something that is not allowed by
+this generic profile. I just had to identify the offending operation and create
+a new tailor-made AppArmor profile for buildah.</p>
+
+<p>As a first step I had to obtain the default AppArmor profile. This is not as easy
+as it might seem. The profile is generated at runtime by all the container
+engines and is loaded into the kernel. Unfortunately there&rsquo;s no way to dump
+the information stored into the kernel and have a human-readable AppArmor profile.</p>
+
+<p>After some digging into the source code of podman and some reading on docker&rsquo;s
+GitHub issues, I produced a <a href="https://github.com/containers/podman/pull/7599">quick PR</a>
+that allowed me to print the default AppArmor profile on to the stdout.</p>
+
+<p>This is the default AppArmor profile used by podman:</p>
+
+<pre><code>#include &lt;tunables/global&gt;
+
+
+profile default flags=(attach_disconnected,mediate_deleted) {
+
+  #include &lt;abstractions/base&gt;
+
+
+  network,
+  capability,
+  file,
+  umount,
+
+
+  # Allow signals from privileged profiles and from within the same profile
+  signal (receive) peer=unconfined,
+  signal (send,receive) peer=default,
+
+
+  deny @{PROC}/* w,   # deny write for all files directly in /proc (not in a subdir)
+  # deny write to files not in /proc/&lt;number&gt;/** or /proc/sys/**
+  deny @{PROC}/{[^1-9],[^1-9][^0-9],[^1-9s][^0-9y][^0-9s],[^1-9][^0-9][^0-9][^0-9]*}/** w,
+  deny @{PROC}/sys/[^k]** w,  # deny /proc/sys except /proc/sys/k* (effectively /proc/sys/kernel)
+  deny @{PROC}/sys/kernel/{?,??,[^s][^h][^m]**} w,  # deny everything except shm* in /proc/sys/kernel/
+  deny @{PROC}/sysrq-trigger rwklx,
+  deny @{PROC}/kcore rwklx,
+
+  deny mount,
+
+  deny /sys/[^f]*/** wklx,
+  deny /sys/f[^s]*/** wklx,
+  deny /sys/fs/[^c]*/** wklx,
+  deny /sys/fs/c[^g]*/** wklx,
+  deny /sys/fs/cg[^r]*/** wklx,
+  deny /sys/firmware/** rwklx,
+  deny /sys/kernel/security/** rwklx,
+
+
+  # suppress ptrace denials when using using 'ps' inside a container
+  ptrace (trace,read) peer=default,
+
+}
+</code></pre>
+
+<p>A small parenthesis, this AppArmor profile is the same generated by all the other
+container engines. Some poor folks keep this file in sync manually, but there&rsquo;s a
+<a href="https://github.com/containerd/containerd/pull/4467">discussion upstream</a>
+to better organize things.</p>
+
+<p>Back to the build failure caused by AppArmor&hellip; I saved the default profile into
+a text file named <code>containerized_buildah</code> and I changed this line</p>
+
+<pre><code>profile default flags=(attach_disconnected,mediate_deleted) {
+</code></pre>
+
+<p>to look like that:</p>
+
+<pre><code>profile containerized_buildah flags=(attach_disconnected,mediate_deleted,complain) {
+</code></pre>
+
+<p>This changes the name of the profile and, most important of all, changes the policy mode
+to be of type <code>complain</code> instead of <code>enforcement</code>.</p>
+
+<p>Quoting the AppArmor man page:</p>
+
+<blockquote>
+<ul>
+<li>enforcement -  Profiles loaded in enforcement mode will result in enforcement of the policy defined in the profile as well as reporting policy violation attempts to syslogd.</li>
+<li>complain - Profiles loaded in  &ldquo;complain&rdquo; mode will not enforce policy.  Instead, it will report policy violation attempts. This mode is convenient for developing profiles.</li>
+</ul>
+</blockquote>
+
+<p>I then loaded the policy by doing:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo apparmor_parser -r containerized_buildah</code></pre></div>
+<p>Invoking the <code>aa-status</code> command reports a list of all the modules loaded,
+their policy mode and all the processes confined by AppArmor.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo aa-status
+...
+<span style="color:#ae81ff">2</span> profiles are in complain mode.
+   containerized_buildah
+...</code></pre></div>
+<p>One last operation had to done before I could start to debug
+the containerized buildah: turn off &ldquo;audit quieting&rdquo;. Again, straight
+from AppArmor&rsquo;s man page:</p>
+
+<blockquote>
+<p><strong>Turn off deny audit quieting</strong></p>
+
+<p>By default, operations that trigger &ldquo;deny&rdquo; rules are not logged.  This is called deny audit quieting.</p>
+
+<p>To turn off deny audit quieting, run:</p>
+
+<p><code>echo -n noquiet &gt;/sys/module/apparmor/parameters/audit</code></p>
+</blockquote>
+
+<p>Before starting the container, I opened a new terminal to execute this process:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"># tail -f /var/log/audit/audit.log | tee apparmor-build.log</code></pre></div>
+<p>On systems where auditd is running (like mine), all the AppArmor logs are sent
+to <code>/var/log/audit/audit.log</code>. This command allowed me to keep an eye open on
+the live stream of audit logs and save them into a smaller file named
+<code>apparmor-build.log</code>.</p>
+
+<p>Finally, I started the container using the custom AppArmor profile shown above:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo podman run <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --rm <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --device /dev/fuse <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -v &lt;path-to-container-image-sources&gt;:/code <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --security-opt<span style="color:#f92672">=</span>apparmor<span style="color:#f92672">=</span>containerized_buildah <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    registry.opensuse.org/home/flavio_castelli/containers/containers/buildahimage:latest <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    /bin/sh -c <span style="color:#e6db74">&#34;cd /code; buildah bud -t foo .&#34;</span></code></pre></div>
+<p>The build completed successfully. Grepping for <code>ALLOWED</code> inside of the audit file
+returned a stream of entries like the following ones:</p>
+
+<pre><code>type=AVC msg=audit(1600172410.567:622): apparmor=&quot;ALLOWED&quot; operation=&quot;mount&quot; info=&quot;failed mntpnt match&quot; error=-13 profile=&quot;containerized_buildah&quot; name=&quot;/tmp/containers.o5iLtx&quot; pid=25607 comm=&quot;exe&quot; srcname=&quot;/usr/bin/buildah&quot; flags=&quot;rw, bind&quot;
+type=AVC msg=audit(1600172410.567:623): apparmor=&quot;ALLOWED&quot; operation=&quot;mount&quot; info=&quot;failed mntpnt match&quot; error=-13 profile=&quot;containerized_buildah&quot; name=&quot;/tmp/containers.o5iLtx&quot; pid=25607 comm=&quot;exe&quot; flags=&quot;ro, remount, bind&quot;
+type=AVC msg=audit(1600172423.511:624): apparmor=&quot;ALLOWED&quot; operation=&quot;mount&quot; info=&quot;failed mntpnt match&quot; error=-13 profile=&quot;containerized_buildah&quot; name=&quot;/&quot; pid=25629 comm=&quot;exe&quot; flags=&quot;rw, rprivate&quot;
+...
+</code></pre>
+
+<p>As you can see all these entries are about <code>mount</code> operations, with <code>mount</code>
+being invoked with quite an assortment of flags.</p>
+
+<p>The default AppArmor profile explicitly denies <code>mount</code> operations:</p>
+
+<pre><code>...
+  deny mount,
+...
+</code></pre>
+
+<p>All I had to do was to change the <code>containerized_buildah</code> AppArmor profile to
+that:</p>
+
+<pre><code>#include &lt;tunables/global&gt;
+
+
+profile containerized_buildah flags=(attach_disconnected,mediate_deleted) {
+
+  #include &lt;abstractions/base&gt;
+
+
+  network,
+  capability,
+  file,
+  umount,
+  mount,
+
+  # Allow signals from privileged profiles and from within the same profile
+  signal (receive) peer=unconfined,
+  signal (send,receive) peer=default,
+
+
+  deny @{PROC}/* w,   # deny write for all files directly in /proc (not in a subdir)
+  # deny write to files not in /proc/&lt;number&gt;/** or /proc/sys/**
+  deny @{PROC}/{[^1-9],[^1-9][^0-9],[^1-9s][^0-9y][^0-9s],[^1-9][^0-9][^0-9][^0-9]*}/** w,
+  deny @{PROC}/sys/[^k]** w,  # deny /proc/sys except /proc/sys/k* (effectively /proc/sys/kernel)
+  deny @{PROC}/sys/kernel/{?,??,[^s][^h][^m]**} w,  # deny everything except shm* in /proc/sys/kernel/
+  deny @{PROC}/sysrq-trigger rwklx,
+  deny @{PROC}/kcore rwklx,
+
+  deny /sys/[^f]*/** wklx,
+  deny /sys/f[^s]*/** wklx,
+  deny /sys/fs/[^c]*/** wklx,
+  deny /sys/fs/c[^g]*/** wklx,
+  deny /sys/fs/cg[^r]*/** wklx,
+  deny /sys/firmware/** rwklx,
+  deny /sys/kernel/security/** rwklx,
+
+
+  # suppress ptrace denials when using using 'ps' inside a container
+  ptrace (trace,read) peer=default,
+
+}
+</code></pre>
+
+<p>The profile is now back to enforcement mode and, most important of all, it
+allows any kind of <code>mount</code> invocation.</p>
+
+<p>I tried to be more granular and allow only the <code>mount</code> flags
+actually used by buildah, but the list was too long, there were too many
+combinations and that seemed pretty fragile. The last thing I want to happen is
+to have AppArmor break buildah in the future if a slightly different <code>mount</code>
+operation is done.</p>
+
+<p>Reloading the AppArmor profile via <code>sudo apparmor_parser -r containerized_buildah</code>
+and restarting the build proved that the profile was doing its job also in
+enforcement mode: the build successfully completed. 🎉🎉🎉</p>
+
+<p>But the journey over yet, not quite&hellip;</p>
+
+<h2 id="why-apparmor-is-blocking-only-x86-64-builds">Why AppArmor is blocking only x86_64 builds?</h2>
+
+<p>Once I figured out the root cause of x86_64 builds there was one last mystery
+to be solved: why the ARM64 builds worked just fine? Why didn&rsquo;t AppArmor cause
+any issue over there?</p>
+
+<p>The answer was quite simple (and a bit shocking to me): it turned out the
+Raspberry Pi OS (formerly known as raspbian) ships a kernel that doesn&rsquo;t have
+AppArmor enabled. I never realized that!</p>
+
+<p>I didn&rsquo;t find the idea of running containers without any form of
+<a href="https://en.wikipedia.org/wiki/Mandatory_access_control">Mandatory Access Control</a>
+particularly thrilling. Hence I decided to change the operating system run on
+my Raspberry Pi nodes.</p>
+
+<p>I initially picked Raspberry Pi OS because I wanted to have my Raspberry Pi 4
+boot straight from an external USB disk instead of the internal memory card.
+At the time of writing, this feature requires a bleeding edge firmware and all
+the documentation points at Raspberry Pi OS. I just wanted to stick with
+what the community was using to reduce my chances of failure&hellip;</p>
+
+<p>However, if you need AppArmor support, you&rsquo;re left with two options:
+openSUSE and Ubuntu.</p>
+
+<p>I installed openSUSE Leap 15.2 for aarch64 (aka ARM64) on one of my Raspberry
+Pi 4. The process of getting it to boot from USB was pretty straightforward.
+I added the node back into the Kubernetes cluster, forced
+some workloads to move on top of it and monitored its behaviour.
+Everything was great, I was ready to put openSUSE on my 2nd Raspberry Pi 4 when
+I noticed something strange: my room was quieter than the usual&hellip;</p>
+
+<p>My Raspberry Pis are powered using the official <a href="https://www.raspberrypi.org/products/poe-hat/">PoE HAT</a>.
+I love this hat, but I hate its built-in fan because it&rsquo;s notoriously
+loud (yes, you can tune its thresholds, but it&rsquo;s still damn noisy when it kicks
+in).</p>
+
+<p>Well, my room was suddenly quieter because the fan of the PoE HAT was
+not spinning at all. That lead the CPU temperature to reach more than 85 °C 😱</p>
+
+<p>It turns out the PoE HAT needs a driver which is not part of the mainstream
+kernel and unfortunately nobody added it to the openSUSE kernel yet.
+That means openSUSE doesn&rsquo;t see and doesn&rsquo;t even turn on the PoE HAT fan (not
+even at full speed).</p>
+
+<p>I filed a enhancement bug report against openSUSE Tumbleweed to get the PoE HAT
+driver added to our kernel and moved over to Ubuntu. Unfortunately that was
+a blocking issue for me. What a pity 😢</p>
+
+<p>On the other hand, the kernel of Ubuntu Server supports both the PoE HAT fan and
+AppArmor. After some testing I switched all my Raspberry Pi nodes to run
+Ubuntu 20.04 Server.</p>
+
+<p>To prove my mental sanity, I ran the <code>builder-arm64</code> POD against the Ubuntu
+nodes using the default AppArmor profile. The build failed on ARM64 in the same
+way as it did on x86_64. What a relief 😅.</p>
+
+<h1 id="kubernetes-and-apparmor-profiles">Kubernetes and AppArmor profiles</h1>
+
+<p>At this point I&rsquo;ve a tailor-made AppArmor profile for buildah, plus all the nodes
+of my cluster have AppArmor support. It&rsquo;s time to put all the pieces together!</p>
+
+<p>The previous POD definition has to be extended to ensure the main container
+running buildah is using the tailor-made AppArmor profile instead of the
+default one.</p>
+
+<p><a href="https://kubernetes.io/docs/tutorials/clusters/apparmor/">Kubernetes&rsquo; AppArmor</a>
+support is a bit primitive, but effective. The only requirement, when using
+custom profiles, is to ensure the profile is already known by the AppArmor
+system on each node of the cluster.</p>
+
+<p>This can be done in an easy way: just copy the profile under
+<code>/etc/apparmor.d</code> and perform a <code>systemct reload apparmor</code>. This has to be done
+once, at the next boot the AppArmor service will automatically load all
+the profiles found inside of <code>/etc/apparmor.d</code>.</p>
+
+<p>This is how the final POD definition looks like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: builder-amd64
+  annotations:
+    container.apparmor.security.beta.kubernetes.io/main: localhost/containerized_buildah
+spec:
+  nodeSelector:
+    kubernetes.io/arch: <span style="color:#e6db74">&#34;amd64&#34;</span>
+  containers:
+  - name: main
+    image: registry.opensuse.org/home/flavio_castelli/containers/containers/buildahimage:latest
+    command: [<span style="color:#e6db74">&#34;/bin/sh&#34;</span>]
+    args: [<span style="color:#e6db74">&#34;-c&#34;</span>, <span style="color:#e6db74">&#34;cd code; cd $(readlink checkout); buildah bud -t guestbook .&#34;</span>]
+    volumeMounts:
+      - name: code
+        mountPath: /code
+    resources:
+      limits:
+        github.com/fuse: <span style="color:#ae81ff">1</span>
+  initContainers:
+  - name: git-sync
+    image: k8s.gcr.io/git-sync/git-sync:v3.<span style="color:#ae81ff">1.7</span>
+    args: [
+      <span style="color:#e6db74">&#34;--one-time&#34;</span>,
+      <span style="color:#e6db74">&#34;--depth&#34;</span>, <span style="color:#e6db74">&#34;1&#34;</span>,
+      <span style="color:#e6db74">&#34;--dest&#34;</span>, <span style="color:#e6db74">&#34;checkout&#34;</span>,
+      <span style="color:#e6db74">&#34;--repo&#34;</span>, <span style="color:#e6db74">&#34;https://github.com/flavio/guestbook-go.git&#34;</span>,
+      <span style="color:#e6db74">&#34;--branch&#34;</span>, <span style="color:#e6db74">&#34;master&#34;</span>]
+    volumeMounts:
+      - name: code
+        mountPath: /tmp/git
+  volumes:
+  - name: code
+    emptyDir:
+      medium: Memory</code></pre></div>
+<p>This time the build will work fine also inside of Kubernetes, regardless of the
+node architecture! 🥳</p>
+
+<h1 id="what-s-next">What&rsquo;s next?</h1>
+
+<p>First of all, congratulations for having made up to this point. It has been quite
+a long journey, I hope you enjoyed it.</p>
+
+<p>The next step consists of taking this foundation (a Kubernetes POD that can
+run buildah to build new container images) and find a way to orchestrate that.</p>
+
+<p>What I&rsquo;ll show you in the next blog post is how to create a workflow that, given
+a GitHub repository with a Dockerfile, builds two container images (amd64 and
+arm64), pushes both of them to a container registry and then creates
+a multi-architecture manifest referencing them.</p>
+
+<p>As always feedback is welcome, see you soon!</p>
+
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn"></span></span>
+    
+    <time>Sep 16, 2020</time>
+    
+    </span>
+  </p>
+
+  
+  
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="http://flavio.castelli.me/2020/02/27/semantic-versioning-and-containers/" title="Semantic versioning and containers">Semantic versioning and containers</a>
+    
+
+    
+  </p>
+  
+    
+      <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'flavio-castelli-name';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+
+    <p>
+      
+        <p>Father, husband and passionate programmer.</p>
+
+<p>Distinguished engineer at SUSE.</p>
+
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" href="https://github.com/flavio/" title="https://github.com/flavio/"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      <a target="_blank" href="https://twitter.com/flavio_castelli/" title="https://twitter.com/flavio_castelli/"><i class="fa fa-twitter fa-3x"></i></a>
+      
+         
+      
+      <a target="_blank" href="https://www.linkedin.com/in/flaviocastelli/" title="https://www.linkedin.com/in/flaviocastelli/"><i class="fa fa-linkedin fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+    
+      <section class="odd">
+        
+        
+      </section>
+    
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+            
+              <li class="post">
+                <a href="/2020/09/16/build-multi-architecture-container-images-using-kubernetes/">Build multi-architecture container images using Kubernetes</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/2020/02/27/semantic-versioning-and-containers/">Semantic versioning and containers</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/2018/07/18/hackweek-project-docker-registry-mirror/">Hackweek Project Docker Registry Mirror</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/2015/07/24/putting-opensuse-docker-images-on-a-diet/">Putting openSUSE Docker images on a diet</a>
+              </li>
+            
+          
+        </ul>
+      </section>
+    
+  
+</aside>
+
+  </div>
+</div>
+
+<footer role="contentinfo">
+  <p>Copyright &copy; 2020  - <a href="http://flavio.castelli.me/license/">License</a> -
+  <span class="credit">Powered by <a target="_blank" href="https://gohugo.io">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/">Hugo-Octopress</a> theme.
+</p>
+
+</footer>
+
+
+
+
+
+
+</body>
+</html>
+

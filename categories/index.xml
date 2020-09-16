@@ -6,10 +6,28 @@
     <description>Recent content in Categories on Flavio Castelli</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 11 Aug 2010 21:29:29 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 16 Sep 2020 10:00:00 +0200</lastBuildDate>
     
 	<atom:link href="http://flavio.castelli.me/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Apparmor</title>
+      <link>http://flavio.castelli.me/categories/apparmor/</link>
+      <pubDate>Wed, 16 Sep 2020 10:00:00 +0200</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/apparmor/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Arm</title>
+      <link>http://flavio.castelli.me/categories/arm/</link>
+      <pubDate>Wed, 16 Sep 2020 10:00:00 +0200</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/arm/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Bash</title>
@@ -26,6 +44,15 @@
       <pubDate>Mon, 29 Oct 2007 12:37:49 +0000</pubDate>
       
       <guid>http://flavio.castelli.me/categories/bglug/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Buildah</title>
+      <link>http://flavio.castelli.me/categories/buildah/</link>
+      <pubDate>Wed, 16 Sep 2020 10:00:00 +0200</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/buildah/</guid>
       <description></description>
     </item>
     
@@ -50,7 +77,7 @@
     <item>
       <title>Containers</title>
       <link>http://flavio.castelli.me/categories/containers/</link>
-      <pubDate>Wed, 18 Jul 2018 15:48:16 +0200</pubDate>
+      <pubDate>Wed, 16 Sep 2020 10:00:00 +0200</pubDate>
       
       <guid>http://flavio.castelli.me/categories/containers/</guid>
       <description></description>
@@ -59,7 +86,7 @@
     <item>
       <title>Docker</title>
       <link>http://flavio.castelli.me/categories/docker/</link>
-      <pubDate>Wed, 18 Jul 2018 15:48:16 +0200</pubDate>
+      <pubDate>Thu, 27 Feb 2020 21:48:16 +0200</pubDate>
       
       <guid>http://flavio.castelli.me/categories/docker/</guid>
       <description></description>
@@ -138,6 +165,15 @@
     </item>
     
     <item>
+      <title>Kubernetes</title>
+      <link>http://flavio.castelli.me/categories/kubernetes/</link>
+      <pubDate>Wed, 16 Sep 2020 10:00:00 +0200</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Last.fm</title>
       <link>http://flavio.castelli.me/categories/last.fm/</link>
       <pubDate>Tue, 07 Apr 2009 17:40:45 +0000</pubDate>
@@ -170,6 +206,15 @@
       <pubDate>Tue, 07 Apr 2009 17:40:45 +0000</pubDate>
       
       <guid>http://flavio.castelli.me/categories/marble/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Multi Architecture Container</title>
+      <link>http://flavio.castelli.me/categories/multi-architecture-container/</link>
+      <pubDate>Wed, 16 Sep 2020 10:00:00 +0200</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/multi-architecture-container/</guid>
       <description></description>
     </item>
     
@@ -215,6 +260,15 @@
       <pubDate>Fri, 23 Jul 2010 23:32:31 +0000</pubDate>
       
       <guid>http://flavio.castelli.me/categories/plasma/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Podman</title>
+      <link>http://flavio.castelli.me/categories/podman/</link>
+      <pubDate>Wed, 16 Sep 2020 10:00:00 +0200</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/podman/</guid>
       <description></description>
     </item>
     
@@ -278,6 +332,15 @@
       <pubDate>Tue, 29 Mar 2011 15:39:21 +0000</pubDate>
       
       <guid>http://flavio.castelli.me/categories/ruby-on-rails/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Seccomp</title>
+      <link>http://flavio.castelli.me/categories/seccomp/</link>
+      <pubDate>Wed, 16 Sep 2020 10:00:00 +0200</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/seccomp/</guid>
       <description></description>
     </item>
     

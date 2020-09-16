@@ -6,10 +6,22 @@
     <description>Recent content in Docker on Flavio Castelli</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 18 Jul 2018 15:48:16 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 27 Feb 2020 21:48:16 +0200</lastBuildDate>
     
 	<atom:link href="http://flavio.castelli.me/categories/docker/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Semantic versioning and containers</title>
+      <link>http://flavio.castelli.me/2020/02/27/semantic-versioning-and-containers/</link>
+      <pubDate>Thu, 27 Feb 2020 21:48:16 +0200</pubDate>
+      
+      <guid>http://flavio.castelli.me/2020/02/27/semantic-versioning-and-containers/</guid>
+      <description>Developers are used to express the dependencies of their programs using semantic versioning constraints.
+For example a Node.js application relying on left-pad could force only certain versions of this library to be used by specifying a constraint like &amp;gt;= 1.1.0 &amp;lt; 1.2.0. This would force npm to install the latest version of the library that satisfies the constraint.
+How does that translates to containers?
+Imagine the following scenario: a developer deploys a containerized application that requires a Redi database.</description>
+    </item>
     
     <item>
       <title>Hackweek Project Docker Registry Mirror</title>

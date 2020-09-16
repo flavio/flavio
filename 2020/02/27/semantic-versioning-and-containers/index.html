@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>Semantic versioning and containers</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="http://flavio.castelli.me/favicon.png" rel="icon">
+
+  
+  
+  
+
+  
+
+  <link href="/atom.xml" rel="alternate" title="Flavio Castelli" type="application/atom+xml">
+
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.49.2" />
+
+  
+  
+
+  
+  
+
+</head>
+<body>
+
+
+<header role="banner"><hgroup>
+  
+  <h1><a href="http://flavio.castelli.me/">Flavio Castelli</a></h1>
+    <h2>Debugging my life</h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+        <option value="http://flavio.castelli.me/">» Blog</option>
+      
+        <option value="http://flavio.castelli.me/post">» Archive</option>
+      
+
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+    
+      <li><a href="http://flavio.castelli.me/" title="Blog">Blog</a></li>
+    
+  
+    
+      <li><a href="http://flavio.castelli.me/post" title="Archive" >Archive</a></li>
+    
+  
+</ul>
+
+
+<ul class="subscription">
+  
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS"><i class="fa fa-rss-square fa-lg"></i></a></li>
+
+</ul>
+
+
+<form action="https://www.google.com/search" method="get" target="_blank">
+  <fieldset role="search">
+  	<input class="search" type="text" name="q" results="0" placeholder="Search"/>
+    <input type="hidden" name="q" value="site:http://flavio.castelli.me/" />
+  </fieldset>
+</form>
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+    <p class="meta">Feb 27, 2020
+         - 6 minute read 
+         - <a href="http://flavio.castelli.me/2020/02/27/semantic-versioning-and-containers/#disqus_thread">Comments</a>
+
+        
+        
+        
+            - <a class="label" href="http://flavio.castelli.me/categories/docker/">docker </a><a class="label" href="http://flavio.castelli.me/categories/containers/">containers </a><a class="label" href="http://flavio.castelli.me/categories/kubernetes/">kubernetes </a>
+        
+    </p>
+    <h1 class="entry-title">
+         Semantic versioning and containers 
+    </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          
+          
+
+<p>Developers are used to express the dependencies of their programs using
+<a href="https://semver.org/">semantic versioning</a> constraints.</p>
+
+<p>For example a Node.js application relying on left-pad could force only certain
+versions of this library to be used by specifying a constraint like
+<code>&gt;= 1.1.0 &lt; 1.2.0</code>. This would force npm to install the latest version of the
+library that satisfies the constraint.</p>
+
+<p>How does that translates to containers?</p>
+
+<p>Imagine the following scenario: a developer deploys a containerized application
+that requires a Redi database. The developer deploys the latest version
+of the redis container (eg: <code>redis:4.0.5</code>), ensures his application works fine
+and then moves to do other things.</p>
+
+<p>After some weeks a security issue/bug is found inside of Redis and a new patched
+release takes place. Suddenly the deployed container is outdated. How can the
+developer be aware a new v4 release of Redis is available? Wouldn&rsquo;t be even
+better to have some automated tool taking care of this upgrade?</p>
+
+<p>After some more weeks a new minor release of Redis is released (eg: <code>4.1.0</code>).
+Is it safe to automatically update to a new minor release of Redis, is the
+developer application going to work as expected?</p>
+
+<p>Some container images have special tags like <code>v4</code> or <code>v4.1</code> and the developer
+could just leverage them to kinda pinpoint the redis container to a more
+delimited set of versions. However using these tags reduces reproducibility
+and debuggability.</p>
+
+<p>Let&rsquo;s imagine the redis image being deployed is <code>redis:v4.1</code> and everything is
+working as expected. Assume after some time the developer (or some automated tool)
+pulls a new version of the <code>redis:v4.1</code> image and suddenly the application
+has some issues. How can the developer understand what really changed?
+Wouldn&rsquo;t it be great to be able to say something like &ldquo;everything worked fine
+with <code>redis:4.1.0</code> but it broke when I upgraded to <code>redis:4.1.9</code>&rdquo;?</p>
+
+<p>There are some tools that can be used to find and automatically update old
+container images: <a href="https://containrrr.github.io/watchtower/">Watchtower</a>
+and <a href="https://github.com/pyouroboros/ouroboros">ouroboros</a>. However none of them
+allows the flexibility I was looking for (in terms of checks), plus they are
+both tailored to work only against docker.</p>
+
+<p>Because of that, during the 2020 edition of
+<a href="https://hackweek.suse.com/">SUSE Hackweek</a>, I spent some time working on
+a different solution to this use case.</p>
+
+<h2 id="introducing-fresh-container">Introducing fresh-container</h2>
+
+<p><a href="https://github.com/flavio/fresh-container">fresh-container</a> is a tool that
+can be used to see if a container can be updated to a more recent release.</p>
+
+<p>fresh-container is different compared to Watchtower and ouroboros because it
+relies on <a href="https://semver.org">semantic versioning</a> to process container
+image tags.</p>
+
+<p>Semantic versioning is used to express the version constraints a container
+version must satisfy. This gives more flexibility, for example take a look
+at the following scenarios:</p>
+
+<ul>
+<li>I&rsquo;m fine with any release of Redis that is part of the v4 code stream: <code>&gt;= 4.0.0 &lt; 5.0.0</code></li>
+<li>I&rsquo;m fine only with patch releases of Redis that belong to the 4.1 code stream: <code>&gt;= 4.1.0 &lt; 4.2.0</code></li>
+<li>I&rsquo;m don&rsquo;t want any release of Redis after v6: <code>&lt; 6.0.0</code></li>
+</ul>
+
+<h3 id="cli-mode">CLI mode</h3>
+
+<p><code>fresh-container</code> can be run as a standalone program:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ fresh-container check --constraint <span style="color:#e6db74">&#34;&gt;= 1.9.0 &lt; 1.10.0&#34;</span> nginx:1.9.0
+
+The <span style="color:#e6db74">&#39;docker.io/library/nginx&#39;</span> container image can be upgraded from the <span style="color:#e6db74">&#39;1.9.0&#39;</span> tag to the <span style="color:#e6db74">&#39;1.9.15&#39;</span> one and still satisfy the <span style="color:#e6db74">&#39;&gt;= 1.9.0 &lt; 1.10.0&#39;</span> constraint.</code></pre></div>
+<p>Behind the scenes fresh-container will query the container registry hosting
+the image to gather the list of all the available tags. The tags that do not
+respect semantic versioning will be ignored and finally the tool will
+evaluate the constraint provided by the user.</p>
+
+<p>It can also generate computer parsable output by producing a JSON response:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ fresh-container check -o json --constraint <span style="color:#e6db74">&#34;&gt;= 1.9.0 &lt; 1.10.0&#34;</span> nginx:1.9.0
+
+<span style="color:#f92672">{</span>
+  <span style="color:#e6db74">&#34;image&#34;</span>: <span style="color:#e6db74">&#34;docker.io/library/nginx&#34;</span>,
+  <span style="color:#e6db74">&#34;constraint&#34;</span>: <span style="color:#e6db74">&#34;&gt;= 1.9.0 &lt; 1.10.0&#34;</span>,
+  <span style="color:#e6db74">&#34;current_version&#34;</span>: <span style="color:#e6db74">&#34;1.9.0&#34;</span>,
+  <span style="color:#e6db74">&#34;next_version&#34;</span>: <span style="color:#e6db74">&#34;1.9.15&#34;</span>,
+  <span style="color:#e6db74">&#34;stale&#34;</span>: true
+<span style="color:#f92672">}</span></code></pre></div>
+<h3 id="server-mode">Server mode</h3>
+
+<p>Querying the remote container registries to fetch all the available tags of a
+container image is an expensive operation. That gets even worse when multiple
+containers have to be inspected on a regular basis.</p>
+
+<p>The fresh-container binary can operate in a server mode to alleviate this issue:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ fresh-container server</code></pre></div>
+<p>This will start a web server offering a simple REST API that can be used to
+perform queries. The remote tags of the container images are cached inside of
+an in-memory database to speed up constraint resolution.</p>
+
+<p>It&rsquo;s possible to run <code>fresh-container check</code> against a <code>fresh-container</code> server
+to perform faster queries by using the <code>--server &lt;http://fresh-container-server&gt;</code>
+flag.</p>
+
+<h2 id="kubernetes-integration">Kubernetes integration</h2>
+
+<p>fresh-container is a tool built to serve one specific use case: your provide some
+data as input and, as output, it will tell you if the container image can be
+updated to a more recent version.</p>
+
+<p>It&rsquo;s main goal is to be leveraged by other tools to build something bigger like
+<a href="https://github.com/flavio/fresh-container-operator">fresh-container-operator</a>.</p>
+
+<p>This is a kubernetes operator that, once deployed inside of a kubernetes cluster,
+will look at all the kubernetes deployments running inside of it and finds the
+ones having stale containers.</p>
+
+<p>The operator can also automatically update these outdated deployments to use
+the latest version of the container images that satisfy their requirements.</p>
+
+<h3 id="usage">Usage</h3>
+
+<p>How does it work? First of all you have to enrich your deployment definition
+by adding some ad-hoc annotations.</p>
+
+<p>For each container image used by the deployment you have to specify the semantic
+versioning constraint that has to be used to evaluate their &ldquo;freshness&rdquo;.</p>
+
+<p>Take a look at the following example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  annotations:
+    fresh-container.autopilot: <span style="color:#e6db74">&#34;false&#34;</span>
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: <span style="color:#ae81ff">1</span>
+  template:
+    metadata:
+      labels:
+        app: nginx
+      annotations:
+        fresh-container.constraint/nginx: <span style="color:#e6db74">&#34;&gt;= 1.9.0 &lt; 1.10.0&#34;</span>
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:<span style="color:#ae81ff">1.9</span>.<span style="color:#ae81ff">0</span>
+        ports:
+        - containerPort: <span style="color:#ae81ff">80</span></code></pre></div>
+<p>In this case the operator will look at the version of the nginx container
+in use and evaluate it against the <code>&gt;= 1.9.0 &lt; 1.10.0</code> constraint.</p>
+
+<p><strong>Note well:</strong> deployments that do not have any
+<code>fresh-container.constraint/&lt;container name&gt;</code> will be ignored by the operator.</p>
+
+<h3 id="find-stale-deployments">Find stale deployments</h3>
+
+<p>The operator adds the special label <code>fresh-container.hasOutdatedContainers=true</code>
+to all the deployments that have one or more stale containers inside of them.</p>
+
+<p>This allows quick searches against all the deployments:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ kubectl get deployments --all-namespaces -l fresh-container.hasOutdatedContainers<span style="color:#f92672">=</span>true
+NAMESPACE   NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+default     nginx-deployment   <span style="color:#ae81ff">1</span>/1     <span style="color:#ae81ff">1</span>            <span style="color:#ae81ff">1</span>           19m</code></pre></div>
+<h3 id="why-is-a-deployment-stale">Why is a deployment stale?</h3>
+
+<p>The details about the stale containers are added by the operator as annotations
+of the deployment:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl describe deployments.apps nginx-deployment
+Name:                   nginx-deployment
+Namespace:              default
+CreationTimestamp:      Thu, <span style="color:#ae81ff">27</span> Feb <span style="color:#ae81ff">2020</span> <span style="color:#ae81ff">10</span>:32:55 +0100
+Labels:                 fresh-container.hasOutdatedContainers<span style="color:#f92672">=</span>true
+Annotations:            deployment.kubernetes.io/revision: <span style="color:#ae81ff">1</span>
+                        fresh-container.autopilot: false
+                        fresh-container.lastChecked: <span style="color:#ae81ff">2020</span>-02-27T09:45:07Z
+                        fresh-container.nextTag/nginx: <span style="color:#ae81ff">1</span>.9.15</code></pre></div>
+<p>For each stale container the operator adds an annotation with
+<code>fresh-container.nextTag/&lt;container name&gt;</code> as key and the tag of the most recent
+container that satisfies the constraint as value.</p>
+
+<p>In the example above you can see that the nginx container inside of the
+deployment can be updated to the <code>1.9.15</code> tag while still satisfying the
+<code>&gt;= 1.9.0 &lt; 1.10.0</code> constraint.</p>
+
+<h2 id="automatic-upgrades">Automatic upgrades</h2>
+
+<p>The next step is to allow fresh-container-operator to update all the
+deployments that have stale containers.</p>
+
+<p>This is not done by default, but can be enable on a per-deployment basis
+by adding the <code>fresh-container.autopilot=true</code> annotation inside of the
+deployment metadata.</p>
+
+<h2 id="what-comes-next">What comes next</h2>
+
+<p>As I stated in the beginning I created these projects during the 2020 edition of
+<a href="https://hackweek.suse.com/">SUSE Hackweek</a>. They are early prototypes that
+need more love.</p>
+
+<p>I would be happy to hear what you think about them. Feel free to leave a comment
+below or open an issue on their GitHub projects:</p>
+
+<ul>
+<li><a href="https://github.com/flavio/fresh-container">fresh-container</a></li>
+<li><a href="https://github.com/flavio/fresh-containeri-operator">fresh-container-operator</a></li>
+</ul>
+
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn"></span></span>
+    
+    <time>Feb 27, 2020</time>
+    
+    </span>
+  </p>
+
+  
+  
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="http://flavio.castelli.me/2018/07/18/hackweek-project-docker-registry-mirror/" title="Hackweek Project Docker Registry Mirror">Hackweek Project Docker Registry Mirror</a>
+    
+
+    
+      <a class="basic-alignment right" href="http://flavio.castelli.me/2020/09/16/build-multi-architecture-container-images-using-kubernetes/" title="Build multi-architecture container images using Kubernetes">Build multi-architecture container images using Kubernetes</a>
+    
+  </p>
+  
+    
+      <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'flavio-castelli-name';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+
+    <p>
+      
+        <p>Father, husband and passionate programmer.</p>
+
+<p>Distinguished engineer at SUSE.</p>
+
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" href="https://github.com/flavio/" title="https://github.com/flavio/"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      <a target="_blank" href="https://twitter.com/flavio_castelli/" title="https://twitter.com/flavio_castelli/"><i class="fa fa-twitter fa-3x"></i></a>
+      
+         
+      
+      <a target="_blank" href="https://www.linkedin.com/in/flaviocastelli/" title="https://www.linkedin.com/in/flaviocastelli/"><i class="fa fa-linkedin fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+    
+      <section class="odd">
+        
+        
+      </section>
+    
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+            
+              <li class="post">
+                <a href="/2020/09/16/build-multi-architecture-container-images-using-kubernetes/">Build multi-architecture container images using Kubernetes</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/2020/02/27/semantic-versioning-and-containers/">Semantic versioning and containers</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/2018/07/18/hackweek-project-docker-registry-mirror/">Hackweek Project Docker Registry Mirror</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/2015/07/24/putting-opensuse-docker-images-on-a-diet/">Putting openSUSE Docker images on a diet</a>
+              </li>
+            
+          
+        </ul>
+      </section>
+    
+  
+</aside>
+
+  </div>
+</div>
+
+<footer role="contentinfo">
+  <p>Copyright &copy; 2020  - <a href="http://flavio.castelli.me/license/">License</a> -
+  <span class="credit">Powered by <a target="_blank" href="https://gohugo.io">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/">Hugo-Octopress</a> theme.
+</p>
+
+</footer>
+
+
+
+
+
+
+</body>
+</html>
+
