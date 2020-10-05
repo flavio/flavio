@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://flavio.castelli.me/2020/10/05/build-multi-architecture-container-images-using-argo-workflow/</loc>
+    <lastmod>2020-10-05T18:30:00+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://flavio.castelli.me/2020/09/16/build-multi-architecture-container-images-using-kubernetes/</loc>
     <lastmod>2020-09-16T10:00:00+02:00</lastmod>
   </url>
@@ -399,8 +404,20 @@
   </url>
   
   <url>
+    <loc>http://flavio.castelli.me/categories/argo/</loc>
+    <lastmod>2020-10-05T18:30:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://flavio.castelli.me/categories/argo-workflow/</loc>
+    <lastmod>2020-10-05T18:30:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://flavio.castelli.me/categories/arm/</loc>
-    <lastmod>2020-09-16T10:00:00+02:00</lastmod>
+    <lastmod>2020-10-05T18:30:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -418,7 +435,7 @@
   
   <url>
     <loc>http://flavio.castelli.me/categories/buildah/</loc>
-    <lastmod>2020-09-16T10:00:00+02:00</lastmod>
+    <lastmod>2020-10-05T18:30:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -442,7 +459,7 @@
   
   <url>
     <loc>http://flavio.castelli.me/categories/containers/</loc>
-    <lastmod>2020-09-16T10:00:00+02:00</lastmod>
+    <lastmod>2020-10-05T18:30:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -454,7 +471,7 @@
   
   <url>
     <loc>http://flavio.castelli.me/</loc>
-    <lastmod>2020-09-16T10:00:00+02:00</lastmod>
+    <lastmod>2020-10-05T18:30:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -508,7 +525,7 @@
   
   <url>
     <loc>http://flavio.castelli.me/categories/kubernetes/</loc>
-    <lastmod>2020-09-16T10:00:00+02:00</lastmod>
+    <lastmod>2020-10-05T18:30:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -538,7 +555,7 @@
   
   <url>
     <loc>http://flavio.castelli.me/categories/multi-architecture-container/</loc>
-    <lastmod>2020-09-16T10:00:00+02:00</lastmod>
+    <lastmod>2020-10-05T18:30:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -586,7 +603,7 @@
   
   <url>
     <loc>http://flavio.castelli.me/post/</loc>
-    <lastmod>2020-09-16T10:00:00+02:00</lastmod>
+    <lastmod>2020-10-05T18:30:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   

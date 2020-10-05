@@ -6,10 +6,20 @@
     <description>Recent content in Arm on Flavio Castelli</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 16 Sep 2020 10:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2020 18:30:00 +0200</lastBuildDate>
     
 	<atom:link href="http://flavio.castelli.me/categories/arm/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Build multi-architecture container images using argo workflow</title>
+      <link>http://flavio.castelli.me/2020/10/05/build-multi-architecture-container-images-using-argo-workflow/</link>
+      <pubDate>Mon, 05 Oct 2020 18:30:00 +0200</pubDate>
+      
+      <guid>http://flavio.castelli.me/2020/10/05/build-multi-architecture-container-images-using-argo-workflow/</guid>
+      <description>Note well: this blog post is part of a series, checkout the previous episode about running containerized buildah on top of Kubernetes.
+ Quick recap I have a small Kubernetes cluster running at home that is made of ARM64 and x86_64 nodes. I want to build multi-architecture images so that I can run them everywhere on the cluster, regardless of the node architecture. My plan is to leverage the same cluster to build these container images.</description>
+    </item>
     
     <item>
       <title>Build multi-architecture container images using Kubernetes</title>

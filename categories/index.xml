@@ -21,9 +21,27 @@
     </item>
     
     <item>
+      <title>Argo</title>
+      <link>http://flavio.castelli.me/categories/argo/</link>
+      <pubDate>Mon, 05 Oct 2020 18:30:00 +0200</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/argo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Argo Workflow</title>
+      <link>http://flavio.castelli.me/categories/argo-workflow/</link>
+      <pubDate>Mon, 05 Oct 2020 18:30:00 +0200</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/argo-workflow/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Arm</title>
       <link>http://flavio.castelli.me/categories/arm/</link>
-      <pubDate>Wed, 16 Sep 2020 10:00:00 +0200</pubDate>
+      <pubDate>Mon, 05 Oct 2020 18:30:00 +0200</pubDate>
       
       <guid>http://flavio.castelli.me/categories/arm/</guid>
       <description></description>
@@ -50,7 +68,7 @@
     <item>
       <title>Buildah</title>
       <link>http://flavio.castelli.me/categories/buildah/</link>
-      <pubDate>Wed, 16 Sep 2020 10:00:00 +0200</pubDate>
+      <pubDate>Mon, 05 Oct 2020 18:30:00 +0200</pubDate>
       
       <guid>http://flavio.castelli.me/categories/buildah/</guid>
       <description></description>
@@ -77,7 +95,7 @@
     <item>
       <title>Containers</title>
       <link>http://flavio.castelli.me/categories/containers/</link>
-      <pubDate>Wed, 16 Sep 2020 10:00:00 +0200</pubDate>
+      <pubDate>Mon, 05 Oct 2020 18:30:00 +0200</pubDate>
       
       <guid>http://flavio.castelli.me/categories/containers/</guid>
       <description></description>
@@ -167,7 +185,7 @@
     <item>
       <title>Kubernetes</title>
       <link>http://flavio.castelli.me/categories/kubernetes/</link>
-      <pubDate>Wed, 16 Sep 2020 10:00:00 +0200</pubDate>
+      <pubDate>Mon, 05 Oct 2020 18:30:00 +0200</pubDate>
       
       <guid>http://flavio.castelli.me/categories/kubernetes/</guid>
       <description></description>
@@ -212,7 +230,7 @@
     <item>
       <title>Multi Architecture Container</title>
       <link>http://flavio.castelli.me/categories/multi-architecture-container/</link>
-      <pubDate>Wed, 16 Sep 2020 10:00:00 +0200</pubDate>
+      <pubDate>Mon, 05 Oct 2020 18:30:00 +0200</pubDate>
       
       <guid>http://flavio.castelli.me/categories/multi-architecture-container/</guid>
       <description></description>

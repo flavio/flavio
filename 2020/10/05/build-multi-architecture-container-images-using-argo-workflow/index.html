@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>Build multi-architecture container images using argo workflow</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="http://flavio.castelli.me/favicon.png" rel="icon">
+
+  
+  
+  
+
+  
+
+  <link href="/atom.xml" rel="alternate" title="Flavio Castelli" type="application/atom+xml">
+
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.49.2" />
+
+  
+  
+
+  
+  
+
+</head>
+<body>
+
+
+<header role="banner"><hgroup>
+  
+  <h1><a href="http://flavio.castelli.me/">Flavio Castelli</a></h1>
+    <h2>Debugging my life</h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+        <option value="http://flavio.castelli.me/">» Blog</option>
+      
+        <option value="http://flavio.castelli.me/post">» Archive</option>
+      
+
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+    
+      <li><a href="http://flavio.castelli.me/" title="Blog">Blog</a></li>
+    
+  
+    
+      <li><a href="http://flavio.castelli.me/post" title="Archive" >Archive</a></li>
+    
+  
+</ul>
+
+
+<ul class="subscription">
+  
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS"><i class="fa fa-rss-square fa-lg"></i></a></li>
+
+</ul>
+
+
+<form action="https://www.google.com/search" method="get" target="_blank">
+  <fieldset role="search">
+  	<input class="search" type="text" name="q" results="0" placeholder="Search"/>
+    <input type="hidden" name="q" value="site:http://flavio.castelli.me/" />
+  </fieldset>
+</form>
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+    <p class="meta">Oct 5, 2020
+         - 16 minute read 
+         - <a href="http://flavio.castelli.me/2020/10/05/build-multi-architecture-container-images-using-argo-workflow/#disqus_thread">Comments</a>
+
+        
+        
+        
+            - <a class="label" href="http://flavio.castelli.me/categories/argo/">argo </a><a class="label" href="http://flavio.castelli.me/categories/argo-workflow/">argo workflow </a><a class="label" href="http://flavio.castelli.me/categories/arm/">ARM </a><a class="label" href="http://flavio.castelli.me/categories/buildah/">buildah </a><a class="label" href="http://flavio.castelli.me/categories/containers/">containers </a><a class="label" href="http://flavio.castelli.me/categories/kubernetes/">kubernetes </a><a class="label" href="http://flavio.castelli.me/categories/multi-architecture-container/">multi-architecture container </a>
+        
+    </p>
+    <h1 class="entry-title">
+         Build multi-architecture container images using argo workflow 
+    </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          
+          
+
+<blockquote>
+<p><strong>Note well:</strong> this blog post is part of a series, checkout the previous episode about
+<a href="/2020/09/16/build-multi-architecture-container-images-using-kubernetes/">running containerized buildah on top of Kubernetes</a>.</p>
+</blockquote>
+
+<h1 id="quick-recap">Quick recap</h1>
+
+<p>I have a small Kubernetes cluster running at home that is made of ARM64 and x86_64
+nodes. I want to build multi-architecture images so that I can run them
+everywhere on the cluster, regardless of the node architecture.
+My plan is to leverage the same cluster to build these container images. That
+leads to a &ldquo;<a href="https://www.imdb.com/title/tt1375666/">Inception</a>-style&rdquo; scenario:
+building container images from within a container itself.</p>
+
+<p>To achieve that I decided to rely on <a href="https://github.com/containers/buildah/">buildah</a>
+to build the container images. I&rsquo;ve shown how run buildah in a containerized
+fashion <strong>without</strong> using a privileged container and with a tailor-made AppArmor
+profile to secure it.</p>
+
+<p>The previous blog post also showed the definition of Kubernetes PODs that would
+build the actual images.</p>
+
+<h1 id="today-s-goals">Today&rsquo;s goals</h1>
+
+<p>What I&rsquo;m going to show today is how to automate the whole building process.</p>
+
+<p>Given the references to the Git repository that provides a container image
+definition, I want to automate these steps:</p>
+
+<ol>
+<li>Build the container image on a ARM64 node, push the image to a container
+ registry.</li>
+<li>Build the container image on a x86_64 node, push the image to a container
+ registry.</li>
+<li>Create a multi-architecture container image manifest, push it to a container
+ registry.</li>
+</ol>
+
+<p>Steps #1 and #2 can be done in parallel, while step #3 needs to wait for the
+previous ones to complete.</p>
+
+<p>This kind of automation can be done using some pipeline solution.</p>
+
+<h1 id="kubernetes-native-pipeline-solutions">Kubernetes native pipeline solutions</h1>
+
+<p>There are many Continuous Integration and Continuous Delivery solutions that
+are available for Kubernetes. If you love to seek enlightenment by staring in
+front of beautiful logos, checkout <a href="https://landscape.cncf.io/category=continuous-integration-delivery&amp;format=card-mode&amp;grouping=category">this</a>
+portion of the <a href="https://landscape.cncf.io/">CNCF landscape</a> dedicated to
+CI and CD solutions. 🤯</p>
+
+<p>After some research I came up with two potential candidates:
+<a href="https://argoproj.github.io/">Argo</a> and <a href="https://argoproj.github.io/">Tekton</a>.</p>
+
+<p>Both are valid projects with active communities. However I decided to settle
+on Argo. The main reason that led to this decision was the lack of ARM64 support
+from Tekton.</p>
+
+<p>Interestingly enough, both Tekton and <a href="https://github.com/GoogleContainerTools/kaniko">kaniko</a>
+(which I discussed in the previous blog post of this series) use the same
+mechanism to build themselves, a mechanism that can produce
+only x86_64 container images and is not so easy to extend.</p>
+
+<p>Argo is an umbrella of different projects, each one of them tackling specific
+problems like:</p>
+
+<ul>
+<li><a href="https://argoproj.github.io/projects/argo">Workflows and pipelines</a></li>
+<li><a href="https://argoproj.github.io/projects/argo-cd">Continuous delivery</a></li>
+<li><a href="https://argoproj.github.io/projects/argo-events">Event handling</a></li>
+<li><a href="https://argoproj.github.io/argo-rollouts">Enriched Kubernetes Deployment resources</a></li>
+</ul>
+
+<p>The projects above are just the mature ones, many others can be found
+under the <a href="https://github.com/argoproj-labs">Argo project labs</a> GitHub organization.
+These projects are not yet considered production ready, but are super interesting.</p>
+
+<p>My favourite ones are:</p>
+
+<ul>
+<li><a href="https://github.com/argoproj-labs/argocd-notifications">Notifications for Argo CD</a></li>
+<li><a href="https://argocd-image-updater.readthedocs.io/en/stable/">Automatic updater of deployed images</a></li>
+</ul>
+
+<p>The majority of these projects don&rsquo;t have ARM64 container images yet, but work
+is being done and this work is significantly simpler compared to the one of
+porting Tekton. Most important of all: the core projects I need have already
+been ported.</p>
+
+<h1 id="creating-pipelines-using-argo-workflow">Creating pipelines using Argo Workflow</h1>
+
+<p>A pipeline can be created inside Argo by defining a <a href="https://argoproj.github.io/argo/fields/#workflow">Workflow resource</a>.</p>
+
+<p>Copying from the <a href="https://argoproj.github.io/argo/core-concepts/">core concepts</a>
+documentation page of Argo Workflow, these are the elements I&rsquo;m going to use:</p>
+
+<ul>
+<li><em>Workflow</em>: a Kubernetes resource defining the execution of one or more <code>template</code>.</li>
+<li><em>Template</em>: a <code>step</code>, <code>steps</code> or <code>dag</code>.</li>
+<li><em>Step</em>: a single step of a workflow, typically runs a container based on inputs and capture the outputs.</li>
+<li><em>Steps</em>: a list of steps.</li>
+<li><em>Directed Acyclic Graph (DAG)</em>: a set of steps (nodes) and the dependencies (edges) between them.</li>
+</ul>
+
+<p>Spoiler alert, I&rsquo;m going to create multiple Argo Templates, each one of them focusing on
+one specific part of the problem. Then I&rsquo;ll use a DAG to explicit the dependencies
+between all these Templates. Finally, I&rsquo;ll define an Argo Workflow to &ldquo;wrap&rdquo;
+all these objects.</p>
+
+<p>I could show you the final result right away, but you would probably be
+overwhelmed by it. I&rsquo;ll instead go step-by-step as I did. I&rsquo;ll start with
+a small subset of the problem and then I&rsquo;ll keep building on top of it.</p>
+
+<h2 id="porting-our-build-pod-to-an-argo-workflow">Porting our build POD to an Argo Workflow</h2>
+
+<p>By the end of the previous blog post, I was able to build a container
+image by using the following Kubernetes POD definition:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: builder
+  annotations:
+    container.apparmor.security.beta.kubernetes.io/main: localhost/containerized_buildah
+spec:
+  nodeSelector:
+    kubernetes.io/arch: <span style="color:#e6db74">&#34;amd64&#34;</span>
+  containers:
+  - name: main
+    image: registry.opensuse.org/home/flavio_castelli/containers/containers/buildahimage:latest
+    command: [<span style="color:#e6db74">&#34;/bin/sh&#34;</span>]
+    args: [<span style="color:#e6db74">&#34;-c&#34;</span>, <span style="color:#e6db74">&#34;cd code; cd $(readlink checkout); buildah bud -t guestbook .&#34;</span>]
+    volumeMounts:
+      - name: code
+        mountPath: /code
+    resources:
+      limits:
+        github.com/fuse: <span style="color:#ae81ff">1</span>
+  initContainers:
+  - name: git-sync
+    image: k8s.gcr.io/git-sync/git-sync:v3.<span style="color:#ae81ff">1.7</span>
+    args: [
+      <span style="color:#e6db74">&#34;--one-time&#34;</span>,
+      <span style="color:#e6db74">&#34;--depth&#34;</span>, <span style="color:#e6db74">&#34;1&#34;</span>,
+      <span style="color:#e6db74">&#34;--dest&#34;</span>, <span style="color:#e6db74">&#34;checkout&#34;</span>,
+      <span style="color:#e6db74">&#34;--repo&#34;</span>, <span style="color:#e6db74">&#34;https://github.com/flavio/guestbook-go.git&#34;</span>,
+      <span style="color:#e6db74">&#34;--branch&#34;</span>, <span style="color:#e6db74">&#34;master&#34;</span>]
+    volumeMounts:
+      - name: code
+        mountPath: /tmp/git
+  volumes:
+  - name: code
+    emptyDir:
+      medium: Memory</code></pre></div>
+<p>These are the key points of this POD:</p>
+
+<ul>
+<li>It uses an <a href="https://kubernetes.io/docs/concepts/workloads/pods/init-containers/">Init Container</a>
+to retrieve the source code of the container image from a Git repository.</li>
+<li>A Kubernetes Volume is used to share the source code of the container image to be built
+between the Init Container and the main one.</li>
+<li>The Git repository details, the image name and other references are all hard-coded.</li>
+<li>The POD just builds the container image, there&rsquo;s no push action at the end of it.</li>
+<li>The POD is forcefully scheduled on a x86_64 node; hence this will produce
+only x86_64 container images.</li>
+<li>The POD requires a Fuse resource, this is required to allow buildah to use
+the performant overlay graph driver.</li>
+<li>The POD uses a specific AppArmor profile, not the default one provided by
+the container engine.</li>
+</ul>
+
+<p>Starting from something like Argo&rsquo;s <a href="https://argoproj.github.io/argo/examples/#hello-world">&ldquo;Hello world Workflow&rdquo;</a>,
+we can transpose the POD defined above to something like that:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: simple-build-
+spec:
+  entry point: buildah
+  templates:
+  - name: buildah
+    metadata:
+      annotations:
+        container.apparmor.security.beta.kubernetes.io/main: localhost/containerized_buildah
+    nodeSelector:
+      kubernetes.io/arch: <span style="color:#e6db74">&#34;amd64&#34;</span>
+    container:
+      image: registry.opensuse.org/home/flavio_castelli/containers/containers/buildahimage:latest
+      command: [<span style="color:#e6db74">&#34;/bin/sh&#34;</span>]
+      args: [<span style="color:#e6db74">&#34;-c&#34;</span>, <span style="color:#e6db74">&#34;cd code; cd $(readlink checkout); buildah bud -t guestbook .&#34;</span>]
+      volumeMounts:
+        - name: code
+          mountPath: /code
+      resources:
+        limits:
+          github.com/fuse: <span style="color:#ae81ff">1</span>
+    initContainers:
+    - name: git-sync
+      image: k8s.gcr.io/git-sync/git-sync:v3.<span style="color:#ae81ff">1.7</span>
+      args: [
+        <span style="color:#e6db74">&#34;--one-time&#34;</span>,
+        <span style="color:#e6db74">&#34;--depth&#34;</span>, <span style="color:#e6db74">&#34;1&#34;</span>,
+        <span style="color:#e6db74">&#34;--dest&#34;</span>, <span style="color:#e6db74">&#34;checkout&#34;</span>,
+        <span style="color:#e6db74">&#34;--repo&#34;</span>, <span style="color:#e6db74">&#34;https://github.com/flavio/guestbook-go.git&#34;</span>,
+        <span style="color:#e6db74">&#34;--branch&#34;</span>, <span style="color:#e6db74">&#34;master&#34;</span>]
+      volumeMounts:
+        - name: code
+          mountPath: /tmp/git
+    volumes:
+    - name: code
+      emptyDir:
+        medium: Memory</code></pre></div>
+<p>As you can see the POD definition has been transformed into a <a href="https://argoproj.github.io/argo/fields/#template">Template</a>
+object. The contents of the POD <code>spec</code> section have been basically copied and pasted under the Template.
+The POD annotations have been moved straight under the <code>template.metadata</code> section.</p>
+
+<p>I have to admit this was pretty confusing to me in the beginning, but everything became clear once I
+started to look at the <a href="https://argoproj.github.io/argo/fields/">field documentation</a> of the Argo resources.</p>
+
+<p>The workflow can be submitted using the <code>argo</code> cli tool:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ argo submit workflow-simple-build.yaml
+Name:                simple-build-qk4t4
+Namespace:           argo
+ServiceAccount:      default
+Status:              Pending
+Created:             Wed Sep <span style="color:#ae81ff">30</span> <span style="color:#ae81ff">15</span>:45:20 +0200 <span style="color:#f92672">(</span>now<span style="color:#f92672">)</span></code></pre></div>
+<p>This will be visible also from the Argo Workflow UI:</p>
+
+<p><img src="/images/build-multi-arch-containers-post2/argo-workflow-build1.png" alt="Image of Argo Workflow UI" /></p>
+
+<h2 id="refactoring-the-argo-workflow">Refactoring the Argo Workflow</h2>
+
+<p>The previous Workflow definition can be cleaned up a bit, leading to
+the following YAML file:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: simple-build-
+spec:
+  entry point: buildah
+  templates:
+  - name: buildah
+    inputs:
+      parameters:
+      - name: arch
+      - name: repository
+      - name: branch
+      - name: image_name
+      - name: image_tag
+    metadata:
+      annotations:
+        container.apparmor.security.beta.kubernetes.io/main: localhost/containerized_buildah
+    nodeSelector:
+      kubernetes.io/arch: <span style="color:#e6db74">&#34;amd64&#34;</span>
+    script:
+      image: registry.opensuse.org/home/flavio_castelli/containers/containers/buildahimage:latest
+      command: [bash]
+      source: <span style="color:#e6db74">|
+</span><span style="color:#e6db74">        set -xe
+</span><span style="color:#e6db74">        cd /code/
+</span><span style="color:#e6db74">        # needed to workaround protected_symlink - we can&#39;t just cd into /code/checkout
+</span><span style="color:#e6db74">        cd $(readlink checkout)
+</span><span style="color:#e6db74">        buildah bud -t {{inputs.parameters.image_name}}:{{inputs.parameters.image_tag}}-{{inputs.parameters.arch}} .
+</span><span style="color:#e6db74">        buildah push --cert-dir /certs {{inputs.parameters.image_name}}:{{inputs.parameters.image_tag}}-{{inputs.parameters.arch}}
+</span><span style="color:#e6db74">        echo Image built and pushed to remote registry</span>
+      volumeMounts:
+        - name: code
+          mountPath: /code
+        - name: certs
+          mountPath: /certs
+          readOnly: <span style="color:#66d9ef">true</span>
+      resources:
+        limits:
+          github.com/fuse: <span style="color:#ae81ff">1</span>
+    initContainers:
+    - name: git-sync
+      image: k8s.gcr.io/git-sync/git-sync:v3.<span style="color:#ae81ff">1.7</span>
+      args: [
+        <span style="color:#e6db74">&#34;--one-time&#34;</span>,
+        <span style="color:#e6db74">&#34;--depth&#34;</span>, <span style="color:#e6db74">&#34;1&#34;</span>,
+        <span style="color:#e6db74">&#34;--dest&#34;</span>, <span style="color:#e6db74">&#34;checkout&#34;</span>,
+        <span style="color:#e6db74">&#34;--repo&#34;</span>, <span style="color:#e6db74">&#34;{{inputs.parameters.repository}}&#34;</span>,
+        <span style="color:#e6db74">&#34;--branch&#34;</span>, <span style="color:#e6db74">&#34;{{inputs.parameters.branch}}&#34;</span>]
+      volumeMounts:
+        - name: code
+          mountPath: /tmp/git
+    volumes:
+    - name: code
+      emptyDir:
+        medium: Memory
+    - name: certs
+      secret:
+        secretName: registry-cert</code></pre></div>
+<p>Compared to the previous definition, this one doesn&rsquo;t have any hard-coded
+value inside of it. The details of the Git repository, the image name, the container registry,&hellip; all
+of that is now passed dynamically to the template by using the <code>input.parameters</code> map.</p>
+
+<p>The <code>main</code> container has also been rewritten to use an Argo Workflow specific field: <code>script.source</code>. This
+is really handy because it provides a nice way to write a bash script to be executed inside the
+container.</p>
+
+<p>The <code>source</code> script has been also extended to perform a <code>push</code> operation at the
+end of the build process.
+As you can see the architecture of the image is appended to the tag of the image.
+This is a common pattern used when building multi-architecture container images.</p>
+
+<p>One final note about the <code>push</code> operation. The destination registry is secured
+using a self-signed certificate. Because of that either the CA that signed the
+certificate or the registry&rsquo;s certificate have to be provided to buildah.
+This can be done by using the <code>--cert-dir</code> flag and by placing the certificates
+to be loaded under the specified path.
+Note well, the certificate files must have the <code>.crt</code> file extension otherwise
+they won&rsquo;t be handled.</p>
+
+<p>I &ldquo;loaded&rdquo; the certificate into Kubernetes by using a Kubernetes secret
+like this one:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: v1
+kind: Secret
+metadata:
+  name: registry-cert
+  namespace: argo
+type: Opaque
+data:
+  ca.crt: `base64 -w <span style="color:#ae81ff">0</span> actualcert.crt`</code></pre></div>
+<p>As you can see the <code>main</code> container is now mounting the contents of the <code>registry-cert</code>
+Kubernetes Secret under <code>/certs</code>.</p>
+
+<p>This time, when submitting the workflow, we must specify its parameters:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ argo submit workflow-simple-build-2.yaml <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -p arch<span style="color:#f92672">=</span>amd64 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -p repository<span style="color:#f92672">=</span>https://github.com/flavio/guestbook-go.git <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -p branch<span style="color:#f92672">=</span>master <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -p image_name<span style="color:#f92672">=</span>registry-testing.svc.lan/guestbook-go <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -p image_tag<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>.0.1
+Name:                simple-build-npqdw
+Namespace:           argo
+ServiceAccount:      default
+Status:              Pending
+Created:             Wed Sep <span style="color:#ae81ff">30</span> <span style="color:#ae81ff">15</span>:52:06 +0200 <span style="color:#f92672">(</span>now<span style="color:#f92672">)</span>
+Parameters:
+  arch:              <span style="color:#f92672">{</span><span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0</span> amd64<span style="color:#f92672">}</span>
+  repository:        <span style="color:#f92672">{</span><span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0</span> https://github.com/flavio/guestbook-go.git<span style="color:#f92672">}</span>
+  branch:            <span style="color:#f92672">{</span><span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0</span> master<span style="color:#f92672">}</span>
+  image_name:        <span style="color:#f92672">{</span><span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0</span> registry-testing.svc.lan/guestbook-go<span style="color:#f92672">}</span>
+  image_tag:         <span style="color:#f92672">{</span><span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>.0.1<span style="color:#f92672">}</span></code></pre></div>
+<h2 id="building-on-multiple-architectures">Building on multiple architectures</h2>
+
+<p>The Workflow object defined so far is still hard-coded to be scheduled only
+on x86_64 nodes (see the <code>nodeSelector</code> constraint).</p>
+
+<p>I could create a new Workflow definition by copying one shown before and then
+change the <code>nodeSelector</code> constraint to reference the
+ARM64 architecture. However, this would violate the
+<a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY principle</a>.</p>
+
+<p>Instead, I will abstract the Workflow definition by leveraging a feature of
+Argo Workflow called
+<a href="https://argoproj.github.io/argo/examples/#loops">loops</a>.
+I will define a parameter for the target architecture and then I will iterate
+over two possible values: <code>amd64</code> and <code>arm64</code>.</p>
+
+<p>This is the resulting Workflow definition:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: simple-build-
+spec:
+  entry point: build-images-arch-loop
+  templates:
+  - name: build-images-arch-loop
+    inputs:
+      parameters:
+      - name: repository
+      - name: branch
+      - name: image_name
+      - name: image_tag
+    steps:
+    - - name: build-image
+        template: buildah
+        arguments:
+          parameters:
+          - name: arch
+            value: <span style="color:#e6db74">&#34;{{item.arch}}&#34;</span>
+          - name: repository
+            value: <span style="color:#e6db74">&#34;{{inputs.parameters.repository}}&#34;</span>
+          - name: branch
+            value: <span style="color:#e6db74">&#34;{{inputs.parameters.branch}}&#34;</span>
+          - name: image_name
+            value: <span style="color:#e6db74">&#34;{{inputs.parameters.image_name}}&#34;</span>
+          - name: image_tag
+            value: <span style="color:#e6db74">&#34;{{inputs.parameters.image_tag}}&#34;</span>
+        withItems:
+          - { arch: <span style="color:#e6db74">&#39;amd64&#39;</span> }
+          - { arch: <span style="color:#e6db74">&#39;arm64&#39;</span> }
+  - name: buildah
+    inputs:
+      parameters:
+      - name: arch
+      - name: repository
+      - name: branch
+      - name: image_name
+      - name: image_tag
+    metadata:
+      annotations:
+        container.apparmor.security.beta.kubernetes.io/main: localhost/containerized_buildah
+    nodeSelector:
+      kubernetes.io/arch: <span style="color:#e6db74">&#34;{{inputs.parameters.arch}}&#34;</span>
+    script:
+      image: registry.opensuse.org/home/flavio_castelli/containers/containers/buildahimage:latest
+      command: [bash]
+      source: <span style="color:#e6db74">|
+</span><span style="color:#e6db74">        set -xe
+</span><span style="color:#e6db74">        cd /code/
+</span><span style="color:#e6db74">        # needed to workaround protected_symlink - we can&#39;t just cd into /code/checkout
+</span><span style="color:#e6db74">        cd $(readlink checkout)
+</span><span style="color:#e6db74">        buildah bud -t {{inputs.parameters.image_name}}:{{inputs.parameters.image_tag}}-{{inputs.parameters.arch}} .
+</span><span style="color:#e6db74">        buildah push --cert-dir /certs {{inputs.parameters.image_name}}:{{inputs.parameters.image_tag}}-{{inputs.parameters.arch}}
+</span><span style="color:#e6db74">        echo Image built and pushed to remote registry</span>
+      volumeMounts:
+        - name: code
+          mountPath: /code
+        - name: certs
+          mountPath: /certs
+          readOnly: <span style="color:#66d9ef">true</span>
+      resources:
+        limits:
+          github.com/fuse: <span style="color:#ae81ff">1</span>
+    initContainers:
+    - name: git-sync
+      image: k8s.gcr.io/git-sync/git-sync:v3.<span style="color:#ae81ff">1.7</span>
+      args: [
+        <span style="color:#e6db74">&#34;--one-time&#34;</span>,
+        <span style="color:#e6db74">&#34;--depth&#34;</span>, <span style="color:#e6db74">&#34;1&#34;</span>,
+        <span style="color:#e6db74">&#34;--dest&#34;</span>, <span style="color:#e6db74">&#34;checkout&#34;</span>,
+        <span style="color:#e6db74">&#34;--repo&#34;</span>, <span style="color:#e6db74">&#34;{{inputs.parameters.repository}}&#34;</span>,
+        <span style="color:#e6db74">&#34;--branch&#34;</span>, <span style="color:#e6db74">&#34;{{inputs.parameters.branch}}&#34;</span>]
+      volumeMounts:
+        - name: code
+          mountPath: /tmp/git
+    volumes:
+    - name: code
+      emptyDir:
+        medium: Memory
+    - name: certs
+      secret:
+        secretName: registry-cert</code></pre></div>
+<p>The workflow definition grew a bit. I&rsquo;ve added a new template called <code>build-images-arch-loop</code>, which is now
+the entry point of the workflow. This template performs a loop over the
+<code>[ { arch: 'amd64' }, { arch: 'arm64' } ]</code> array, each time invoking the <code>buildah</code>
+template with slightly different input parameters. The only parameter that changes
+across the invocations is the <code>arch</code> one, which is used to define the
+<code>nodeSelector</code> constraint.</p>
+
+<p>Executing this workflow results in two steps being executed at the same time: one building the image on
+a random x86_64 node, the other doing the same thing on a random ARM64 node.</p>
+
+<p>This can be clearly seen from the Argo Workflow UI:</p>
+
+<p><img src="/images/build-multi-arch-containers-post2/argo-workflow-build3.png" alt="Image of Argo Workflow UI" /></p>
+
+<p>When the workflow execution is over, the registry will contain two different images:</p>
+
+<ul>
+<li><code>&lt;image-name&gt;:&lt;image-tag&gt;-amd64</code></li>
+<li><code>&lt;image-name&gt;:&lt;image-tag&gt;-arm64</code></li>
+</ul>
+
+<p>Now there&rsquo;s just one last step to perform: create a multi-architecture container manifest referencing
+these two images.</p>
+
+<h2 id="creating-the-image-manifest">Creating the image manifest</h2>
+
+<p>The <a href="https://github.com/docker/distribution/blob/master/docs/spec/manifest-v2-2.md">Image manifest Version 2, Schema 2</a>
+specification defines a new type of image manifest called <em>&ldquo;Manifest list&rdquo;</em>
+(<code>application/vnd.docker.distribution.manifest.list.v2+json</code>).</p>
+
+<p>Quoting the official specification:</p>
+
+<blockquote>
+<p>The manifest list is the &ldquo;fat manifest&rdquo; which points to specific image manifests for one or more platforms. Its use is optional, and relatively few images will use one of these manifests. A client will distinguish a manifest list from an image manifest based on the Content-Type returned in the HTTP response.</p>
+</blockquote>
+
+<p>The creation of such a manifest is pretty easy and it can be done with docker, podman
+and buildah in a similar way.</p>
+
+<p>I will still use buildah to create the manifest and push it to the registry
+where all the images are stored.</p>
+
+<p>This is the Argo Template that takes care of that:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"> - name: create-manifest
+    inputs:
+      parameters:
+      - name: image_name
+      - name: image_tag
+      - name: architectures
+    metadata:
+      annotations:
+        container.apparmor.security.beta.kubernetes.io/main: localhost/containerized_buildah
+    volumes:
+    - name: certs
+      secret:
+        secretName: registry-cert
+    script:
+      image: registry.opensuse.org/home/flavio_castelli/containers/containers/buildahimage:latest
+      command: [bash]
+      source: <span style="color:#e6db74">|
+</span><span style="color:#e6db74">        set -xe
+</span><span style="color:#e6db74">        image_name=&#34;{{inputs.parameters.image_name}}&#34;
+</span><span style="color:#e6db74">        image_tag=&#34;{{inputs.parameters.image_tag}}&#34;
+</span><span style="color:#e6db74">        architectures=&#34;{{inputs.parameters.architectures}}&#34;
+</span><span style="color:#e6db74">        target=&#34;${image_name}:${image_tag}&#34;
+</span><span style="color:#e6db74">        architectures_list=($(echo $architectures | tr &#34;,&#34; &#34;\n&#34;))
+</span><span style="color:#e6db74">        buildah manifest create ${target}
+</span><span style="color:#e6db74">        #Print the split string
+</span><span style="color:#e6db74">        for arch in &#34;${architectures_list[@]}&#34;
+</span><span style="color:#e6db74">        do
+</span><span style="color:#e6db74">          arch_image=&#34;${image_name}:${image_tag}-${arch}&#34;
+</span><span style="color:#e6db74">          buildah pull --cert-dir /certs ${arch_image}
+</span><span style="color:#e6db74">          buildah manifest add ${target} ${arch_image}
+</span><span style="color:#e6db74">        done
+</span><span style="color:#e6db74">        buildah manifest push --cert-dir /certs ${target} docker://${target}
+</span><span style="color:#e6db74">        echo Manifest creation done</span>
+      volumeMounts:
+        - name: certs
+          mountPath: /certs
+          readOnly: <span style="color:#66d9ef">true</span>
+      resources:
+        limits:
+          github.com/fuse: <span style="color:#ae81ff">1</span></code></pre></div>
+<p>The template has an input parameter called <code>architectures</code>, this string is made
+of the architectures names joined by a comma; e.g. <code>&quot;amd64,arm64&quot;</code>.</p>
+
+<p>The <code>script</code> creates a manifest with the name of the image and then, iterating
+over the architectures, it adds the architecture-specific images to it.
+Once this is done the manifest is pushed to the container registry.</p>
+
+<p>To make a simple example, assuming the following scenario:</p>
+
+<ul>
+<li>We are building the <code>guestbook-go</code> application with release <code>v0.1.0</code></li>
+<li>We want to build the image for the x86_64 and the ARM64 architectures</li>
+<li>We want to push the images to the <code>registry.svc.lan</code> registry</li>
+</ul>
+
+<p>The Argo Template that creates the manifest will pull the following
+images:</p>
+
+<ul>
+<li><code>registry.svc.lan/guestbook-go:v0.1.0-amd64</code>: the x86_64 image</li>
+<li><code>registry.svc.lan/guestbook-go:v0.1.0-arm64</code>: the ARM64 image</li>
+</ul>
+
+<p>Finally, the Template will create and push a manifest named <code>registry.svc.lan/guestbook-go:v0.1.0</code>.
+This image reference will always return the right container image to the node
+requesting it.</p>
+
+<p>Adding the container image to the manifest is done with the
+<code>buildah manifest add</code> command. This command doesn&rsquo;t actually need to have
+the container image available locally, it would be enough to reach out to
+the registry hosting it to obtain the manifest digest.</p>
+
+<p>In our case the images are stored on a registry secured with
+a custom certificate. Unfortunately, the <code>manifest add</code> command
+was lacking some flags (like the <code>cert</code> one); because of that I had
+to introduce the workaround  of pre-pulling all the images referenced
+by the manifest. This has the side effect of wasting some time, bandwidth and
+disk space.</p>
+
+<p>I&rsquo;ve submitted patches both to <a href="https://github.com/containers/buildah/pull/2593">buildah</a>
+and to <a href="https://github.com/containers/podman/pull/7576">podman</a> to enrich their
+<code>manifest add</code> commands; both pull requests have been merged into the <code>master</code>
+branches. The next release of buildah will ship with my patch and the
+manifest creation Template  will be simpler and faster.</p>
+
+<h2 id="explicating-dependencies-between-argo-templates">Explicating dependencies between Argo templates</h2>
+
+<p>Argo allows to define a workflow sequence with clear dependencies
+between each step. This is done by defining a <a href="https://argoproj.github.io/argo/examples/#dag">DAG</a>.</p>
+
+<p>Our workflow will be made of one Argo Template of type DAG, that will have two tasks:</p>
+
+<ol>
+<li>Build the multi-architecture images. This is done with the Argo
+ Workflow loop shown above.</li>
+<li>Create the manifest. This task depends on the successful completion of
+ the previous one.</li>
+</ol>
+
+<p>This is the Template definition:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- name: full-process
+  dag:
+    tasks:
+    - name: build-images
+      template: build-images-arch-loop
+      arguments:
+        parameters:
+        - name: repository
+          value: <span style="color:#e6db74">&#34;{{workflow.parameters.repository}}&#34;</span>
+        - name: branch
+          value: <span style="color:#e6db74">&#34;{{workflow.parameters.branch}}&#34;</span>
+        - name: image_name
+          value: <span style="color:#e6db74">&#34;{{workflow.parameters.image_name}}&#34;</span>
+        - name: image_tag
+          value: <span style="color:#e6db74">&#34;{{workflow.parameters.image_tag}}&#34;</span>
+    - name: create-multi-arch-manifest
+      dependencies: [build-images]
+      template: create-manifest
+      arguments:
+        parameters:
+        - name: image_name
+          value: <span style="color:#e6db74">&#34;{{workflow.parameters.image_name}}&#34;</span>
+        - name: image_tag
+          value: <span style="color:#e6db74">&#34;{{workflow.parameters.image_tag}}&#34;</span>
+        - name: architectures
+          value: <span style="color:#e6db74">&#34;{{workflow.parameters.architectures_string}}&#34;</span></code></pre></div>
+<p>As you can see the Template takes the usual series of parameters we&rsquo;ve already defined,
+and forwards them to the tasks.</p>
+
+<p>This is the <strong>full</strong> definition of our Argo workflow, hold on&hellip; this is really long 🙀</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: build-multi-arch-image-
+spec:
+  ttlStrategy:
+    secondsAfterCompletion: <span style="color:#ae81ff">60</span>
+  entry point: full-process
+  arguments:
+    parameters:
+    - name: repository
+      value: https://github.com/flavio/guestbook-go.git
+    - name: branch
+      value: master
+    - name: image_name
+      value: registry-testing.svc.lan/guestbook
+    - name: image_tag
+      value: <span style="color:#ae81ff">0.0</span>.<span style="color:#ae81ff">1</span>
+    - name: architectures_string
+      value: <span style="color:#e6db74">&#34;arm64,amd64&#34;</span>
+  templates:
+  - name: full-process
+    dag:
+      tasks:
+      - name: build-images
+        template: build-images-arch-loop
+        arguments:
+          parameters:
+          - name: repository
+            value: <span style="color:#e6db74">&#34;{{workflow.parameters.repository}}&#34;</span>
+          - name: branch
+            value: <span style="color:#e6db74">&#34;{{workflow.parameters.branch}}&#34;</span>
+          - name: image_name
+            value: <span style="color:#e6db74">&#34;{{workflow.parameters.image_name}}&#34;</span>
+          - name: image_tag
+            value: <span style="color:#e6db74">&#34;{{workflow.parameters.image_tag}}&#34;</span>
+      - name: create-multi-arch-manifest
+        dependencies: [build-images]
+        template: create-manifest
+        arguments:
+          parameters:
+          - name: image_name
+            value: <span style="color:#e6db74">&#34;{{workflow.parameters.image_name}}&#34;</span>
+          - name: image_tag
+            value: <span style="color:#e6db74">&#34;{{workflow.parameters.image_tag}}&#34;</span>
+          - name: architectures
+            value: <span style="color:#e6db74">&#34;{{workflow.parameters.architectures_string}}&#34;</span>
+  - name: build-images-arch-loop
+    inputs:
+      parameters:
+      - name: repository
+      - name: branch
+      - name: image_name
+      - name: image_tag
+    steps:
+    - - name: build-image
+        template: buildah
+        arguments:
+          parameters:
+          - name: arch
+            value: <span style="color:#e6db74">&#34;{{item.arch}}&#34;</span>
+          - name: repository
+            value: <span style="color:#e6db74">&#34;{{inputs.parameters.repository}}&#34;</span>
+          - name: branch
+            value: <span style="color:#e6db74">&#34;{{inputs.parameters.branch}}&#34;</span>
+          - name: image_name
+            value: <span style="color:#e6db74">&#34;{{inputs.parameters.image_name}}&#34;</span>
+          - name: image_tag
+            value: <span style="color:#e6db74">&#34;{{inputs.parameters.image_tag}}&#34;</span>
+        withItems:
+          - { arch: <span style="color:#e6db74">&#39;amd64&#39;</span> }
+          - { arch: <span style="color:#e6db74">&#39;arm64&#39;</span> }
+  - name: buildah
+    inputs:
+      parameters:
+      - name: arch
+      - name: repository
+      - name: branch
+      - name: image_name
+      - name: image_tag
+    metadata:
+      annotations:
+        container.apparmor.security.beta.kubernetes.io/main: localhost/containerized_buildah
+    nodeSelector:
+      kubernetes.io/arch: <span style="color:#e6db74">&#34;{{inputs.parameters.arch}}&#34;</span>
+    volumes:
+    - name: code
+      emptyDir:
+        medium: Memory
+    - name: certs
+      secret:
+        secretName: registry-cert
+    script:
+      image: registry.opensuse.org/home/flavio_castelli/containers/containers/buildahimage:latest
+      command: [bash]
+      source: <span style="color:#e6db74">|
+</span><span style="color:#e6db74">        set -xe
+</span><span style="color:#e6db74">        cd /code/
+</span><span style="color:#e6db74">        # needed to workaround protected_symlink - we can&#39;t just cd into /code/checkout
+</span><span style="color:#e6db74">        cd $(readlink checkout)
+</span><span style="color:#e6db74">        buildah bud -t {{inputs.parameters.image_name}}:{{inputs.parameters.image_tag}}-{{inputs.parameters.arch}} .
+</span><span style="color:#e6db74">        buildah push --cert-dir /certs {{inputs.parameters.image_name}}:{{inputs.parameters.image_tag}}-{{inputs.parameters.arch}}
+</span><span style="color:#e6db74">        echo Image built and pushed to remote registry</span>
+      volumeMounts:
+        - name: code
+          mountPath: /code
+        - name: certs
+          mountPath: /certs
+          readOnly: <span style="color:#66d9ef">true</span>
+      resources:
+        limits:
+          github.com/fuse: <span style="color:#ae81ff">1</span>
+    initContainers:
+    - name: git-sync
+      image: k8s.gcr.io/git-sync/git-sync:v3.<span style="color:#ae81ff">1.7</span>
+      args: [
+        <span style="color:#e6db74">&#34;--one-time&#34;</span>,
+        <span style="color:#e6db74">&#34;--depth&#34;</span>, <span style="color:#e6db74">&#34;1&#34;</span>,
+        <span style="color:#e6db74">&#34;--dest&#34;</span>, <span style="color:#e6db74">&#34;checkout&#34;</span>,
+        <span style="color:#e6db74">&#34;--repo&#34;</span>, <span style="color:#e6db74">&#34;{{inputs.parameters.repository}}&#34;</span>,
+        <span style="color:#e6db74">&#34;--branch&#34;</span>, <span style="color:#e6db74">&#34;{{inputs.parameters.branch}}&#34;</span>]
+      volumeMounts:
+        - name: code
+          mountPath: /tmp/git
+  - name: create-manifest
+    inputs:
+      parameters:
+      - name: image_name
+      - name: image_tag
+      - name: architectures
+    metadata:
+      annotations:
+        container.apparmor.security.beta.kubernetes.io/main: localhost/containerized_buildah
+    volumes:
+    - name: certs
+      secret:
+        secretName: registry-cert
+    script:
+      image: registry.opensuse.org/home/flavio_castelli/containers/containers/buildahimage:latest
+      command: [bash]
+      source: <span style="color:#e6db74">|
+</span><span style="color:#e6db74">        set -xe
+</span><span style="color:#e6db74">        image_name=&#34;{{inputs.parameters.image_name}}&#34;
+</span><span style="color:#e6db74">        image_tag=&#34;{{inputs.parameters.image_tag}}&#34;
+</span><span style="color:#e6db74">        architectures=&#34;{{inputs.parameters.architectures}}&#34;
+</span><span style="color:#e6db74">        target=&#34;${image_name}:${image_tag}&#34;
+</span><span style="color:#e6db74">        architectures_list=($(echo $architectures | tr &#34;,&#34; &#34;\n&#34;))
+</span><span style="color:#e6db74">        buildah manifest create ${target}
+</span><span style="color:#e6db74">        #Print the split string
+</span><span style="color:#e6db74">        for arch in &#34;${architectures_list[@]}&#34;
+</span><span style="color:#e6db74">        do
+</span><span style="color:#e6db74">          arch_image=&#34;${image_name}:${image_tag}-${arch}&#34;
+</span><span style="color:#e6db74">          buildah pull --cert-dir /certs ${arch_image}
+</span><span style="color:#e6db74">          buildah manifest add ${target} ${arch_image}
+</span><span style="color:#e6db74">        done
+</span><span style="color:#e6db74">        buildah manifest push --cert-dir /certs ${target} docker://${target}
+</span><span style="color:#e6db74">        echo Manifest creation done</span>
+      volumeMounts:
+        - name: certs
+          mountPath: /certs
+          readOnly: <span style="color:#66d9ef">true</span>
+      resources:
+        limits:
+          github.com/fuse: <span style="color:#ae81ff">1</span></code></pre></div>
+<p>That&rsquo;s how life goes with Kubernetes, sometimes there&rsquo;s just a <strong>lot</strong> of YAML&hellip;</p>
+
+<p><img src="/images/build-multi-arch-containers-post2/fortune-teller-yaml.jpg" alt="Fortune teller and Kubernetes" /></p>
+
+<p>Now we can submit the workflow to Argo:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ argo submit build-pipeline-final.yml
+Name:                build-multi-arch-image-wndlr
+Namespace:           argo
+ServiceAccount:      default
+Status:              Pending
+Created:             Thu Oct <span style="color:#ae81ff">01</span> <span style="color:#ae81ff">16</span>:22:46 +0200 <span style="color:#f92672">(</span>now<span style="color:#f92672">)</span>
+Parameters:
+  repository:        <span style="color:#f92672">{</span><span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0</span> https://github.com/flavio/guestbook-go.git<span style="color:#f92672">}</span>
+  branch:            <span style="color:#f92672">{</span><span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0</span> master<span style="color:#f92672">}</span>
+  image_name:        <span style="color:#f92672">{</span><span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0</span> registry-testing.svc.lan/guestbook<span style="color:#f92672">}</span>
+  image_tag:         <span style="color:#f92672">{</span><span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>.0.1<span style="color:#f92672">}</span>
+  architectures_string: <span style="color:#f92672">{</span><span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0</span> arm64,amd64<span style="color:#f92672">}</span></code></pre></div>
+<p>The visual representation of the workflow is pretty nice:</p>
+
+<p><img src="/images/build-multi-arch-containers-post2/argo-workflow-build4.png" alt="Image of Argo Workflow UI" /></p>
+
+<p>As you might have noticed, I didn&rsquo;t provide any parameter to <code>argo submit</code>; the
+Argo Workflow now has default values for all the input parameters.</p>
+
+<h2 id="garbage-collector">Garbage collector</h2>
+
+<p>Something worth of note, Argo Workflow leaves behind all the containers it creates.
+This is good to triage failures, but I don&rsquo;t want to clutter my cluster with all
+these resources.</p>
+
+<p>Argo provides <a href="https://argoproj.github.io/argo/cost-optimisation/#limit-the-total-number-of-workflows-and-pods">cost optimization</a>
+parameters to implement cleanup strategies. The one I&rsquo;ve used above is the
+<a href="https://argoproj.github.io/argo/fields/#ttlstrategy">Workflow TTL Strategy</a>.</p>
+
+<p>You can see these lines at the top of the full Workflow definition:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: build-multi-arch-image-
+spec:
+  ttlStrategy:
+    secondsAfterCompletion: <span style="color:#ae81ff">60</span></code></pre></div>
+<p>This triggers an automatic cleanup of all the PODs spawned by the
+Workflow 60 seconds after its completion, be it successful or not.</p>
+
+<h1 id="summary">Summary</h1>
+
+<p>Today we have seen how to create a pipeline that builds container images
+for multiple architectures on top an existing Kubernetes cluster.</p>
+
+<p>Argo Workflow proved to be a good solution for this kind of automation. There&rsquo;s
+quite some YAML involved with that, but I highly doubt over projects
+would have spared us from that.</p>
+
+<p>What can we do next? Well, to me the answer is pretty clear. The definition of
+the  container image is stored inside of a Git repository; hence I want to connect
+my Argo Workflow to the events happening inside of the Git repository.</p>
+
+<p>Stay tuned for more updates! In the meantime feedback is always welcome.</p>
+
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn"></span></span>
+    
+    <time>Oct 5, 2020</time>
+    
+    </span>
+  </p>
+
+  
+  
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="http://flavio.castelli.me/2020/09/16/build-multi-architecture-container-images-using-kubernetes/" title="Build multi-architecture container images using Kubernetes">Build multi-architecture container images using Kubernetes</a>
+    
+
+    
+  </p>
+  
+    
+      <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'flavio-castelli-name';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+
+    <p>
+      
+        <p>Father, husband and passionate programmer.</p>
+
+<p>Distinguished engineer at SUSE.</p>
+
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" href="https://github.com/flavio/" title="https://github.com/flavio/"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      <a target="_blank" href="https://twitter.com/flavio_castelli/" title="https://twitter.com/flavio_castelli/"><i class="fa fa-twitter fa-3x"></i></a>
+      
+         
+      
+      <a target="_blank" href="https://www.linkedin.com/in/flaviocastelli/" title="https://www.linkedin.com/in/flaviocastelli/"><i class="fa fa-linkedin fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+    
+      <section class="odd">
+        
+        
+      </section>
+    
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+            
+              <li class="post">
+                <a href="/2020/10/05/build-multi-architecture-container-images-using-argo-workflow/">Build multi-architecture container images using argo workflow</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/2020/09/16/build-multi-architecture-container-images-using-kubernetes/">Build multi-architecture container images using Kubernetes</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/2020/02/27/semantic-versioning-and-containers/">Semantic versioning and containers</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/2018/07/18/hackweek-project-docker-registry-mirror/">Hackweek Project Docker Registry Mirror</a>
+              </li>
+            
+          
+        </ul>
+      </section>
+    
+  
+</aside>
+
+  </div>
+</div>
+
+<footer role="contentinfo">
+  <p>Copyright &copy; 2020  - <a href="http://flavio.castelli.me/license/">License</a> -
+  <span class="credit">Powered by <a target="_blank" href="https://gohugo.io">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/">Hugo-Octopress</a> theme.
+</p>
+
+</footer>
+
+
+
+
+
+
+</body>
+</html>
+
