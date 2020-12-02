@@ -182,7 +182,7 @@ kind: Workflow
 metadata:
   generateName: simple-build-
 spec:
-  entry point: buildah
+  entrypoint: buildah
   templates:
   - name: buildah
     metadata:
@@ -251,7 +251,7 @@ kind: Workflow
 metadata:
   generateName: simple-build-
 spec:
-  entry point: buildah
+  entrypoint: buildah
   templates:
   - name: buildah
     inputs:
@@ -392,7 +392,7 @@ kind: Workflow
 metadata:
   generateName: simple-build-
 spec:
-  entry point: build-images-arch-loop
+  entrypoint: build-images-arch-loop
   templates:
   - name: build-images-arch-loop
     inputs:
@@ -652,7 +652,7 @@ metadata:
 spec:
   ttlStrategy:
     secondsAfterCompletion: 60
-  entry point: full-process
+  entrypoint: full-process
   arguments:
     parameters:
     - name: repository
