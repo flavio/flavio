@@ -5,7 +5,7 @@
         
         Flavio Castelli</title>
         <link href="http://flavio.castelli.me/atom.xml" rel="self" type="application/atom" /><link href="http://flavio.castelli.me/"/>
-    <updated>2020-10-05T18:49:43+02:00</updated>
+    <updated>2020-12-02T17:39:06+01:00</updated>
     
     <id>http://flavio.castelli.me/</id>
         
@@ -197,7 +197,7 @@ kind: Workflow
 metadata:
   generateName: simple-build-
 spec:
-  entry point: buildah
+  entrypoint: buildah
   templates:
   - name: buildah
     metadata:
@@ -258,7 +258,7 @@ kind: Workflow
 metadata:
   generateName: simple-build-
 spec:
-  entry point: buildah
+  entrypoint: buildah
   templates:
   - name: buildah
     inputs:
@@ -386,7 +386,7 @@ kind: Workflow
 metadata:
   generateName: simple-build-
 spec:
-  entry point: build-images-arch-loop
+  entrypoint: build-images-arch-loop
   templates:
   - name: build-images-arch-loop
     inputs:
@@ -645,7 +645,7 @@ metadata:
 spec:
   ttlStrategy:
     secondsAfterCompletion: <span style="color:#ae81ff">60</span>
-  entry point: full-process
+  entrypoint: full-process
   arguments:
     parameters:
     - name: repository
