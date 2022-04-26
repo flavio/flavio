@@ -123,6 +123,44 @@
         
 
 <header>
+    <p class="meta">Nov 28, 2013
+         - 2 minute read 
+         - <a href="http://flavio.castelli.me/2013/11/28/better-docker-experience-on-opensuse/#disqus_thread">Comments</a>
+
+        
+        
+        
+            - <a class="label" href="http://flavio.castelli.me/categories/cloud/">cloud </a><a class="label" href="http://flavio.castelli.me/categories/opensuse/">openSUSE </a><a class="label" href="http://flavio.castelli.me/categories/paas/">paas </a>
+        
+    </p>
+    <h1 class="entry-title">
+        <a href="http://flavio.castelli.me/2013/11/28/better-docker-experience-on-opensuse/">Better Docker experience on openSUSE</a>
+    </h1>
+</header>
+
+
+        
+          <p>I don&rsquo;t know if you are aware of that, but Docker 0.7.0 has been released a couple of days ago.
+You can read the full announcement here, but let me talk about the biggest change introduced by this release: storage drivers!
+Docker has always used AUFS, a &ldquo;unionfs-like&rdquo; file system, to power its containers. Unfortunately AUFS is neither part of the official kernel nor of the openSUSE/SLE one.
+In the past I had to build a custom patched kernel to run Docker on openSUSE.</p>
+
+          
+              <footer>
+                  <a href="http://flavio.castelli.me/2013/11/28/better-docker-experience-on-opensuse/" rel="full-article">Read On &rarr;</a>
+              </footer>
+          
+
+        
+
+    </article>
+    
+    <article>
+
+        
+        
+
+<header>
     <p class="meta">Apr 12, 2013
          - 6 minute read 
          - <a href="http://flavio.castelli.me/2013/04/12/docker-and-opensuse-a-container-full-of-geekos/#disqus_thread">Comments</a>
@@ -441,38 +479,6 @@ There are also good news for Windows developers: now building QJson under Window
 
     </article>
     
-    <article>
-
-        
-        
-
-<header>
-    <p class="meta">Dec 5, 2009
-         - 1 minute read 
-         - <a href="http://flavio.castelli.me/2009/12/05/qjson-code-moves-to-gitorious/#disqus_thread">Comments</a>
-
-        
-        
-        
-            - <a class="label" href="http://flavio.castelli.me/categories/qt/">qt </a><a class="label" href="http://flavio.castelli.me/categories/qjson/">qjson </a>
-        
-    </p>
-    <h1 class="entry-title">
-        <a href="http://flavio.castelli.me/2009/12/05/qjson-code-moves-to-gitorious/">QJson code moves to gitorious</a>
-    </h1>
-</header>
-
-
-        
-          <p>Just a quick note: I have just moved QJson source code to this git repository hosted by gitorious.
-I&rsquo;ll keep the code on KDE&rsquo;s svn synchronized with the git repository.</p>
-
-          
-
-        
-
-    </article>
-    
     
     
 
@@ -591,6 +597,12 @@ I&rsquo;ll keep the code on KDE&rsquo;s svn synchronized with the git repository
           
             
               <li class="post">
+                <a href="/2022/04/26/write-kubectl-plugins-using-webassembly-and-wasi/">Write kubectl plugins using WebAssembly and WASI</a>
+              </li>
+            
+          
+            
+              <li class="post">
                 <a href="/2020/10/05/build-multi-architecture-container-images-using-argo-workflow/">Build multi-architecture container images using argo workflow</a>
               </li>
             
@@ -607,12 +619,6 @@ I&rsquo;ll keep the code on KDE&rsquo;s svn synchronized with the git repository
               </li>
             
           
-            
-              <li class="post">
-                <a href="/2018/07/18/hackweek-project-docker-registry-mirror/">Hackweek Project Docker Registry Mirror</a>
-              </li>
-            
-          
         </ul>
       </section>
     
@@ -623,7 +629,7 @@ I&rsquo;ll keep the code on KDE&rsquo;s svn synchronized with the git repository
 </div>
 
 <footer role="contentinfo">
-  <p>Copyright &copy; 2020  - <a href="http://flavio.castelli.me/license/">License</a> -
+  <p>Copyright &copy; 2022  - <a href="http://flavio.castelli.me/license/">License</a> -
   <span class="credit">Powered by <a target="_blank" href="https://gohugo.io">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/">Hugo-Octopress</a> theme.
 </p>
 

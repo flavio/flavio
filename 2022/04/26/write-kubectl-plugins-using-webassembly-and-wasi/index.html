@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>Write kubectl plugins using WebAssembly and WASI</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="http://flavio.castelli.me/favicon.png" rel="icon">
+
+  
+  
+  
+
+  
+
+  <link href="/atom.xml" rel="alternate" title="Flavio Castelli" type="application/atom+xml">
+
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.49.2" />
+
+  
+  
+
+  
+  
+
+</head>
+<body>
+
+
+<header role="banner"><hgroup>
+  
+  <h1><a href="http://flavio.castelli.me/">Flavio Castelli</a></h1>
+    <h2>Debugging my life</h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+        <option value="http://flavio.castelli.me/">» Blog</option>
+      
+        <option value="http://flavio.castelli.me/post">» Archive</option>
+      
+
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+    
+      <li><a href="http://flavio.castelli.me/" title="Blog">Blog</a></li>
+    
+  
+    
+      <li><a href="http://flavio.castelli.me/post" title="Archive" >Archive</a></li>
+    
+  
+</ul>
+
+
+<ul class="subscription">
+  
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS"><i class="fa fa-rss-square fa-lg"></i></a></li>
+
+</ul>
+
+
+<form action="https://www.google.com/search" method="get" target="_blank">
+  <fieldset role="search">
+  	<input class="search" type="text" name="q" results="0" placeholder="Search"/>
+    <input type="hidden" name="q" value="site:http://flavio.castelli.me/" />
+  </fieldset>
+</form>
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+    <p class="meta">Apr 26, 2022
+         - 4 minute read 
+         - <a href="http://flavio.castelli.me/2022/04/26/write-kubectl-plugins-using-webassembly-and-wasi/#disqus_thread">Comments</a>
+
+        
+        
+        
+            - <a class="label" href="http://flavio.castelli.me/categories/kubernetes/">kubernetes </a><a class="label" href="http://flavio.castelli.me/categories/webassembly/">WebAssembly </a><a class="label" href="http://flavio.castelli.me/categories/wasi/">WASI </a>
+        
+    </p>
+    <h1 class="entry-title">
+         Write kubectl plugins using WebAssembly and WASI 
+    </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          
+          
+
+<p>A long time passed since the last time I wrote something on this blog! 😅
+I haven&rsquo;t been idle during this time, quite the opposite&hellip; I kept myself busy experimenting with <a href="https://webassembly.org/">WebAssembly</a>
+and Kubernetes.</p>
+
+<p>You probably have already heard about WebAssembly, but there are high chances
+that happened in the context of Web application development. There&rsquo;s however
+a new emerging trend that consists of using WebAssembly outside of the browser.</p>
+
+<p>WebAssembly has many interesting properties that make it great for writing
+plugin systems or even distributing small computational units (think of FaaS).</p>
+
+<p>WebAssembly is what is being used to power <a href="https://kubewarden.io">Kubewarden</a>,
+a project I created almost two years ago at SUSE Rancher, with the help of
+<a href="https://github.com/ereslibre">Rafa</a> and other
+<a href="https://github.com/orgs/kubewarden/people">awesome folks</a>.
+This is where the majority of my &ldquo;blogging energies&rdquo; have been
+<a href="https://www.kubewarden.io/blog/">focused</a>.</p>
+
+<p>Now, let&rsquo;s go back to the main focus of today&rsquo;s blog entry: <strong>write kubectl
+plugins using WebAssembly</strong>.</p>
+
+<h2 id="the-current-state-of-things">The current state of things</h2>
+
+<p>As you all know, kubectl can be easily extended by
+<a href="https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/">writing external plugins</a>.</p>
+
+<p>These plugins are executables named <code>kubectl-&lt;name of the plugin&gt;</code> that, once
+put in your <code>$PATH</code> can be invoked via <code>kubectl &lt;name of the plugin&gt;</code>. This
+is the same mechanism used to write <code>git</code> plugins.</p>
+
+<p>These plugins can be managed via a tool called <a href="https://krew.sigs.k8s.io/">Krew</a>.</p>
+
+<p>The <code>kubectl</code> tool is available for multiple operating systems and architectures,
+which means these plugins must be available for many platforms.</p>
+
+<h2 id="can-webassembly-help-here">Can WebAssembly help here?</h2>
+
+<p>I think writing kubectl plugins using WebAssembly has the following advantages:</p>
+
+<ul>
+<li>Portability: you don&rsquo;t have to build your WebAssembly-powered plugin for all the
+possible operating systems and architectures the end users might want.</li>
+<li>Security: each WebAssembly module is executed inside of a dedicated sandbox. They
+cannot see other modules or processes running on the host. They also don&rsquo;t have access to the host resources (filesystem, devices, network).
+Think of them as containers.</li>
+<li>Size: the majority of kubectl plugins are written using Go, which produces big
+binaries. The average size of a kubectl plugin is around 9 Mb. WebAssembly on
+the other hand, can produce plugins that are half the size.</li>
+</ul>
+
+<p>Last but not least, this sounds like a fun experiment!</p>
+
+<h2 id="introducing-krew-wasm">Introducing <code>krew-wasm</code></h2>
+
+<p>The idea about writing kubectl plugins with WebAssembly originated during a
+brainstorming session I was doing with Rafa about our upcoming talk for
+<a href="https://sched.co/zgbM">WasmDay EU 2022</a>. The idea kinda &ldquo;infected&rdquo; me, I had to
+hack on it ASAP!!! This is how the <a href="https://github.com/flavio/krew-wasm"><code>krew-wasm</code></a>
+project was created.</p>
+
+<p>krew-wasm takes inspiration from <a href="https://krew.sigs.k8s.io/">Krew</a>,
+but it <strong>does not</strong> aim to replace it. That&rsquo;s quite the opposite, it&rsquo;s a
+complementary tool that can be used alongside with Krew.</p>
+
+<p>The sole purpose of krew-wasm is to manage and execute kubectl plugins written using
+<a href="https://webassembly.org/">WebAssembly</a> and <a href="https://wasi.dev/">WASI</a>.</p>
+
+<p>krew-wasm plugins are WebAssembly modules that are distributed using container
+registries, the same infra used to host container images.</p>
+
+<p>krew-wasm can download kubectl WebAssembly plugins from a container registry and
+make them discoverable to kubectl.
+This is achieved by creating a symbolic link for each managed plugin. This symbolic
+link is named <code>kubectl-&lt;name of the plugin&gt;</code> but, instead of pointing to the
+WebAssembly module, it points to the <code>krew-wasm</code> executable.</p>
+
+<p>Once invoked, <code>krew-wasm</code> determines its usage mode which could either be a
+&ldquo;direct invocation&rdquo; (when the user invokes the <code>krew-wasm</code> binary to manage plugins)
+or it could be a &ldquo;wrapper invocation&rdquo; done via <code>kubectl</code>.</p>
+
+<p>When invoked in &ldquo;wrapper mode&rdquo;, krew-wasm takes care of loading the WebAssembly
+plugin and invoking it. krew-wasm works as a WebAssembly host, and takes care of
+setting up the WASI environment used by the plugin.</p>
+
+<p>I&rsquo;ll leave the technical details out of this post, but if you want you can
+find more on the <a href="https://github.com/flavio/krew-wasm">GitHub project</a> page.</p>
+
+<h2 id="some-examples">Some examples</h2>
+
+<p>The POC would not be complete without some plugins to run. Guess what, you can find
+a one right <a href="https://github.com/flavio/kubectl-decoder">here</a>!</p>
+
+<p>The <code>kubectl decoder</code> plugin dumps Kubernetes Secret objects to the standard output,
+decoding all the data that is base64-encoded. On top of that, when a x509 certificate
+is found inside of the Secret, a detailed output is shown rather then the not so helpful
+PEM encoded representation of the certificate.</p>
+
+<p>If you want to experiment with this idea, you can write your plugins using Rust and <a href="https://github.com/flavio/krew-wasm-plugin-sdk-rust">this SDK</a>.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>This has been a nice experiment. It proves the combination of WebAssembly and WASI
+can be used to produce working kubectl plugins.</p>
+
+<p>What&rsquo;s more interesting is the fact these technologies could be used to extend other Cloud Native projects. Did
+someone say <a href="https://helm.sh/docs/topics/plugins/">helm</a>? 😜</p>
+
+<p>There are however some limitations, mostly caused by the freshness of WASI. These
+are documented <a href="https://github.com/flavio/krew-wasm#limitations=">here</a>. However, I&rsquo;m pretty sure things will definitely improve over the next months.
+After all the WebAssembly ecosystem is moving at a fast pace!</p>
+
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn"></span></span>
+    
+    <time>Apr 26, 2022</time>
+    
+    </span>
+  </p>
+
+  
+  
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="http://flavio.castelli.me/2020/10/05/build-multi-architecture-container-images-using-argo-workflow/" title="Build multi-architecture container images using argo workflow">Build multi-architecture container images using argo workflow</a>
+    
+
+    
+  </p>
+  
+    
+      <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'flavio-castelli-name';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+
+    <p>
+      
+        <p>Father, husband and passionate programmer.</p>
+
+<p>Distinguished engineer at SUSE.</p>
+
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" href="https://github.com/flavio/" title="https://github.com/flavio/"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      <a target="_blank" href="https://twitter.com/flavio_castelli/" title="https://twitter.com/flavio_castelli/"><i class="fa fa-twitter fa-3x"></i></a>
+      
+         
+      
+      <a target="_blank" href="https://www.linkedin.com/in/flaviocastelli/" title="https://www.linkedin.com/in/flaviocastelli/"><i class="fa fa-linkedin fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+    
+      <section class="odd">
+        
+        
+      </section>
+    
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+            
+              <li class="post">
+                <a href="/2022/04/26/write-kubectl-plugins-using-webassembly-and-wasi/">Write kubectl plugins using WebAssembly and WASI</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/2020/10/05/build-multi-architecture-container-images-using-argo-workflow/">Build multi-architecture container images using argo workflow</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/2020/09/16/build-multi-architecture-container-images-using-kubernetes/">Build multi-architecture container images using Kubernetes</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/2020/02/27/semantic-versioning-and-containers/">Semantic versioning and containers</a>
+              </li>
+            
+          
+        </ul>
+      </section>
+    
+  
+</aside>
+
+  </div>
+</div>
+
+<footer role="contentinfo">
+  <p>Copyright &copy; 2022  - <a href="http://flavio.castelli.me/license/">License</a> -
+  <span class="credit">Powered by <a target="_blank" href="https://gohugo.io">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/">Hugo-Octopress</a> theme.
+</p>
+
+</footer>
+
+
+
+
+
+
+</body>
+</html>
+

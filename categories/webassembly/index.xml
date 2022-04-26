@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Webassembly on Flavio Castelli</title>
+    <link>http://flavio.castelli.me/categories/webassembly/</link>
+    <description>Recent content in Webassembly on Flavio Castelli</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 26 Apr 2022 21:00:00 +0200</lastBuildDate>
+    
+	<atom:link href="http://flavio.castelli.me/categories/webassembly/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Write kubectl plugins using WebAssembly and WASI</title>
+      <link>http://flavio.castelli.me/2022/04/26/write-kubectl-plugins-using-webassembly-and-wasi/</link>
+      <pubDate>Tue, 26 Apr 2022 21:00:00 +0200</pubDate>
+      
+      <guid>http://flavio.castelli.me/2022/04/26/write-kubectl-plugins-using-webassembly-and-wasi/</guid>
+      <description>A long time passed since the last time I wrote something on this blog! 😅 I haven&amp;rsquo;t been idle during this time, quite the opposite&amp;hellip; I kept myself busy experimenting with WebAssembly and Kubernetes.
+You probably have already heard about WebAssembly, but there are high chances that happened in the context of Web application development. There&amp;rsquo;s however a new emerging trend that consists of using WebAssembly outside of the browser.</description>
+    </item>
+    
+  </channel>
+</rss>

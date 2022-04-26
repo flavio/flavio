@@ -5,9 +5,153 @@
         
         Flavio Castelli</title>
         <link href="http://flavio.castelli.me/atom.xml" rel="self" type="application/atom" /><link href="http://flavio.castelli.me/"/>
-    <updated>2020-12-02T17:39:06+01:00</updated>
+    <updated>2022-04-26T21:04:06+02:00</updated>
     
     <id>http://flavio.castelli.me/</id>
+        
+        <entry>
+            <title type="html"><![CDATA[Write kubectl plugins using WebAssembly and WASI]]></title>
+            <link href="http://flavio.castelli.me/2022/04/26/write-kubectl-plugins-using-webassembly-and-wasi/"/>
+            <id>http://flavio.castelli.me/2022/04/26/write-kubectl-plugins-using-webassembly-and-wasi/</id>
+            
+            <published>2022-04-26T21:00:00+02:00</published>
+            <updated>2022-04-26T21:00:00+02:00</updated>
+            
+            
+            <content type="html"><![CDATA[
+
+<p>A long time passed since the last time I wrote something on this blog! 😅
+I haven&rsquo;t been idle during this time, quite the opposite&hellip; I kept myself busy experimenting with <a href="https://webassembly.org/">WebAssembly</a>
+and Kubernetes.</p>
+
+<p>You probably have already heard about WebAssembly, but there are high chances
+that happened in the context of Web application development. There&rsquo;s however
+a new emerging trend that consists of using WebAssembly outside of the browser.</p>
+
+<p>WebAssembly has many interesting properties that make it great for writing
+plugin systems or even distributing small computational units (think of FaaS).</p>
+
+<p>WebAssembly is what is being used to power <a href="https://kubewarden.io">Kubewarden</a>,
+a project I created almost two years ago at SUSE Rancher, with the help of
+<a href="https://github.com/ereslibre">Rafa</a> and other
+<a href="https://github.com/orgs/kubewarden/people">awesome folks</a>.
+This is where the majority of my &ldquo;blogging energies&rdquo; have been
+<a href="https://www.kubewarden.io/blog/">focused</a>.</p>
+
+<p>Now, let&rsquo;s go back to the main focus of today&rsquo;s blog entry: <strong>write kubectl
+plugins using WebAssembly</strong>.</p>
+
+<h2 id="the-current-state-of-things">The current state of things</h2>
+
+<p>As you all know, kubectl can be easily extended by
+<a href="https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/">writing external plugins</a>.</p>
+
+<p>These plugins are executables named <code>kubectl-&lt;name of the plugin&gt;</code> that, once
+put in your <code>$PATH</code> can be invoked via <code>kubectl &lt;name of the plugin&gt;</code>. This
+is the same mechanism used to write <code>git</code> plugins.</p>
+
+<p>These plugins can be managed via a tool called <a href="https://krew.sigs.k8s.io/">Krew</a>.</p>
+
+<p>The <code>kubectl</code> tool is available for multiple operating systems and architectures,
+which means these plugins must be available for many platforms.</p>
+
+<h2 id="can-webassembly-help-here">Can WebAssembly help here?</h2>
+
+<p>I think writing kubectl plugins using WebAssembly has the following advantages:</p>
+
+<ul>
+<li>Portability: you don&rsquo;t have to build your WebAssembly-powered plugin for all the
+possible operating systems and architectures the end users might want.</li>
+<li>Security: each WebAssembly module is executed inside of a dedicated sandbox. They
+cannot see other modules or processes running on the host. They also don&rsquo;t have access to the host resources (filesystem, devices, network).
+Think of them as containers.</li>
+<li>Size: the majority of kubectl plugins are written using Go, which produces big
+binaries. The average size of a kubectl plugin is around 9 Mb. WebAssembly on
+the other hand, can produce plugins that are half the size.</li>
+</ul>
+
+<p>Last but not least, this sounds like a fun experiment!</p>
+
+<h2 id="introducing-krew-wasm">Introducing <code>krew-wasm</code></h2>
+
+<p>The idea about writing kubectl plugins with WebAssembly originated during a
+brainstorming session I was doing with Rafa about our upcoming talk for
+<a href="https://sched.co/zgbM">WasmDay EU 2022</a>. The idea kinda &ldquo;infected&rdquo; me, I had to
+hack on it ASAP!!! This is how the <a href="https://github.com/flavio/krew-wasm"><code>krew-wasm</code></a>
+project was created.</p>
+
+<p>krew-wasm takes inspiration from <a href="https://krew.sigs.k8s.io/">Krew</a>,
+but it <strong>does not</strong> aim to replace it. That&rsquo;s quite the opposite, it&rsquo;s a
+complementary tool that can be used alongside with Krew.</p>
+
+<p>The sole purpose of krew-wasm is to manage and execute kubectl plugins written using
+<a href="https://webassembly.org/">WebAssembly</a> and <a href="https://wasi.dev/">WASI</a>.</p>
+
+<p>krew-wasm plugins are WebAssembly modules that are distributed using container
+registries, the same infra used to host container images.</p>
+
+<p>krew-wasm can download kubectl WebAssembly plugins from a container registry and
+make them discoverable to kubectl.
+This is achieved by creating a symbolic link for each managed plugin. This symbolic
+link is named <code>kubectl-&lt;name of the plugin&gt;</code> but, instead of pointing to the
+WebAssembly module, it points to the <code>krew-wasm</code> executable.</p>
+
+<p>Once invoked, <code>krew-wasm</code> determines its usage mode which could either be a
+&ldquo;direct invocation&rdquo; (when the user invokes the <code>krew-wasm</code> binary to manage plugins)
+or it could be a &ldquo;wrapper invocation&rdquo; done via <code>kubectl</code>.</p>
+
+<p>When invoked in &ldquo;wrapper mode&rdquo;, krew-wasm takes care of loading the WebAssembly
+plugin and invoking it. krew-wasm works as a WebAssembly host, and takes care of
+setting up the WASI environment used by the plugin.</p>
+
+<p>I&rsquo;ll leave the technical details out of this post, but if you want you can
+find more on the <a href="https://github.com/flavio/krew-wasm">GitHub project</a> page.</p>
+
+<h2 id="some-examples">Some examples</h2>
+
+<p>The POC would not be complete without some plugins to run. Guess what, you can find
+a one right <a href="https://github.com/flavio/kubectl-decoder">here</a>!</p>
+
+<p>The <code>kubectl decoder</code> plugin dumps Kubernetes Secret objects to the standard output,
+decoding all the data that is base64-encoded. On top of that, when a x509 certificate
+is found inside of the Secret, a detailed output is shown rather then the not so helpful
+PEM encoded representation of the certificate.</p>
+
+<p>If you want to experiment with this idea, you can write your plugins using Rust and <a href="https://github.com/flavio/krew-wasm-plugin-sdk-rust">this SDK</a>.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>This has been a nice experiment. It proves the combination of WebAssembly and WASI
+can be used to produce working kubectl plugins.</p>
+
+<p>What&rsquo;s more interesting is the fact these technologies could be used to extend other Cloud Native projects. Did
+someone say <a href="https://helm.sh/docs/topics/plugins/">helm</a>? 😜</p>
+
+<p>There are however some limitations, mostly caused by the freshness of WASI. These
+are documented <a href="https://github.com/flavio/krew-wasm#limitations=">here</a>. However, I&rsquo;m pretty sure things will definitely improve over the next months.
+After all the WebAssembly ecosystem is moving at a fast pace!</p>
+]]></content>
+            
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="http://flavio.castelli.me/categories/kubernetes" term="kubernetes" label="kubernetes" />
+                             
+                                <category scheme="http://flavio.castelli.me/categories/webassembly" term="webassembly" label="WebAssembly" />
+                             
+                                <category scheme="http://flavio.castelli.me/categories/wasi" term="wasi" label="WASI" />
+                            
+                        
+                    
+                 
+                    
+                
+            
+        </entry>
+    
         
         <entry>
             <title type="html"><![CDATA[Build multi-architecture container images using argo workflow]]></title>

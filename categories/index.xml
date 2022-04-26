@@ -185,7 +185,7 @@
     <item>
       <title>Kubernetes</title>
       <link>http://flavio.castelli.me/categories/kubernetes/</link>
-      <pubDate>Mon, 05 Oct 2020 18:30:00 +0200</pubDate>
+      <pubDate>Tue, 26 Apr 2022 21:00:00 +0200</pubDate>
       
       <guid>http://flavio.castelli.me/categories/kubernetes/</guid>
       <description></description>
@@ -404,6 +404,24 @@
       <pubDate>Fri, 28 May 2010 15:57:57 +0000</pubDate>
       
       <guid>http://flavio.castelli.me/categories/tdd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Wasi</title>
+      <link>http://flavio.castelli.me/categories/wasi/</link>
+      <pubDate>Tue, 26 Apr 2022 21:00:00 +0200</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/wasi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Webassembly</title>
+      <link>http://flavio.castelli.me/categories/webassembly/</link>
+      <pubDate>Tue, 26 Apr 2022 21:00:00 +0200</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/webassembly/</guid>
       <description></description>
     </item>
     
