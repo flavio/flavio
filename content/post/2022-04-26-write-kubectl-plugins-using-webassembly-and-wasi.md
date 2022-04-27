@@ -115,5 +115,5 @@ What's more interesting is the fact these technologies could be used to extend o
 someone say [helm](https://helm.sh/docs/topics/plugins/)? 😜
 
 There are however some limitations, mostly caused by the freshness of WASI. These
-are documented [here](https://github.com/flavio/krew-wasm#limitations=). However, I'm pretty sure things will definitely improve over the next months.
+are documented [here](https://github.com/flavio/krew-wasm#limitations). However, I'm pretty sure things will definitely improve over the next months.
 After all the WebAssembly ecosystem is moving at a fast pace!
