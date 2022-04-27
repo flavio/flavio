@@ -5,7 +5,7 @@
         
         Flavio Castelli</title>
         <link href="http://flavio.castelli.me/atom.xml" rel="self" type="application/atom" /><link href="http://flavio.castelli.me/"/>
-    <updated>2022-04-26T21:04:06+02:00</updated>
+    <updated>2022-04-27T09:05:09+02:00</updated>
     
     <id>http://flavio.castelli.me/</id>
         
@@ -128,7 +128,7 @@ can be used to produce working kubectl plugins.</p>
 someone say <a href="https://helm.sh/docs/topics/plugins/">helm</a>? 😜</p>
 
 <p>There are however some limitations, mostly caused by the freshness of WASI. These
-are documented <a href="https://github.com/flavio/krew-wasm#limitations=">here</a>. However, I&rsquo;m pretty sure things will definitely improve over the next months.
+are documented <a href="https://github.com/flavio/krew-wasm#limitations">here</a>. However, I&rsquo;m pretty sure things will definitely improve over the next months.
 After all the WebAssembly ecosystem is moving at a fast pace!</p>
 ]]></content>
             
