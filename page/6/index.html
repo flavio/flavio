@@ -123,6 +123,39 @@
         
 
 <header>
+    <p class="meta">Jul 10, 2007
+         - 1 minute read 
+         - <a href="http://flavio.castelli.me/2007/07/10/lots-of-improvements-into-strigi-inotify-support/#disqus_thread">Comments</a>
+
+        
+        
+        
+            - <a class="label" href="http://flavio.castelli.me/categories/c&#43;&#43;/">c&#43;&#43; </a><a class="label" href="http://flavio.castelli.me/categories/strigi/">strigi </a><a class="label" href="http://flavio.castelli.me/categories/kde/">KDE </a>
+        
+    </p>
+    <h1 class="entry-title">
+        <a href="http://flavio.castelli.me/2007/07/10/lots-of-improvements-into-strigi-inotify-support/">Lots of improvements into Strigi inotify support</a>
+    </h1>
+</header>
+
+
+        
+          <p>Some days ago I committed lots of changes regarding inotify support. Goodies and improvements have been introduced&hellip; I had this code laying on my laptop for several weeks because I wasn&rsquo;t able to fully test it. An annoying bug afflicting the update index operations was blocking me. But some days ago Jos fixed it, so I didn&rsquo;t have any excuse :)
+These are the major changes introduced:
+ event caching: using a small cache it&rsquo;s now possible to simplify multiple events and prevent high cpu usage when lot of changes occur on the same files interruption handling during the re-index operations: changing the directories to watch during an indexing operation will break the previous job and start a new one other small changes for improving cpu utilization   Actually I&rsquo;m very happy of the first point, but I think the second one can still be improved&hellip;</p>
+
+          
+
+        
+
+    </article>
+    
+    <article>
+
+        
+        
+
+<header>
     <p class="meta">Jul 5, 2007
          - 1 minute read 
          - <a href="http://flavio.castelli.me/2007/07/05/remember-to-commit/#disqus_thread">Comments</a>
@@ -411,43 +444,6 @@ Saturday Small tour in Bruxelles. As we thought Bruxelles is a beautiful city wi
 
     </article>
     
-    <article>
-
-        
-        
-
-<header>
-    <p class="meta">Feb 28, 2007
-         - 2 minute read 
-         - <a href="http://flavio.castelli.me/2007/02/28/strigi-desktop-integration/#disqus_thread">Comments</a>
-
-        
-        
-        
-            - <a class="label" href="http://flavio.castelli.me/categories/kde/">KDE </a><a class="label" href="http://flavio.castelli.me/categories/strigi/">strigi </a>
-        
-    </p>
-    <h1 class="entry-title">
-        <a href="http://flavio.castelli.me/2007/02/28/strigi-desktop-integration/">Strigi Desktop integration</a>
-    </h1>
-</header>
-
-
-        
-          <p>Short abstract: Strigi desktop integration: how to access Strigi features.
-Strigi, the fastest and smallest desktop search engine, provides fast searches and good metadata extraction capabilities. It will be used by the next KDE, but it can be easily integrated in other programs.
-Long abstract: Modern humans are using more and more data every day. Keeping data organized is becoming insufficient, so finding and filtering documents have become key tasks in modern operating systems.</p>
-
-          
-              <footer>
-                  <a href="http://flavio.castelli.me/2007/02/28/strigi-desktop-integration/" rel="full-article">Read On &rarr;</a>
-              </footer>
-          
-
-        
-
-    </article>
-    
     
     
 
@@ -485,6 +481,8 @@ Long abstract: Modern humans are using more and more data every day. Keeping dat
     
         <a href="/page/8/" class="label-pagination">8</a>
     
+        <a href="/page/9/" class="label-pagination">9</a>
+    
 
     
     
@@ -493,7 +491,7 @@ Long abstract: Modern humans are using more and more data every day. Keeping dat
 
     
     
-        <a href="/page/8/" aria-label="Last"><i class="fa fa-angle-double-right fa-lg"></i></a>
+        <a href="/page/9/" aria-label="Last"><i class="fa fa-angle-double-right fa-lg"></i></a>
     
 
 </div>
@@ -566,6 +564,12 @@ Long abstract: Modern humans are using more and more data every day. Keeping dat
           
             
               <li class="post">
+                <a href="/2022/07/21/playing-with-common-expression-language/">Playing with Common Expression Language</a>
+              </li>
+            
+          
+            
+              <li class="post">
                 <a href="/2022/04/26/write-kubectl-plugins-using-webassembly-and-wasi/">Write kubectl plugins using WebAssembly and WASI</a>
               </li>
             
@@ -579,12 +583,6 @@ Long abstract: Modern humans are using more and more data every day. Keeping dat
             
               <li class="post">
                 <a href="/2020/09/16/build-multi-architecture-container-images-using-kubernetes/">Build multi-architecture container images using Kubernetes</a>
-              </li>
-            
-          
-            
-              <li class="post">
-                <a href="/2020/02/27/semantic-versioning-and-containers/">Semantic versioning and containers</a>
               </li>
             
           

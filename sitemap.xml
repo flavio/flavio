@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://flavio.castelli.me/2022/07/21/playing-with-common-expression-language/</loc>
+    <lastmod>2022-07-21T19:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://flavio.castelli.me/2022/04/26/write-kubectl-plugins-using-webassembly-and-wasi/</loc>
     <lastmod>2022-04-26T21:00:00+02:00</lastmod>
   </url>
@@ -463,8 +468,20 @@
   </url>
   
   <url>
+    <loc>http://flavio.castelli.me/categories/common-expression-language/</loc>
+    <lastmod>2022-07-21T19:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://flavio.castelli.me/categories/containers/</loc>
     <lastmod>2020-10-05T18:30:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://flavio.castelli.me/categories/cpp/</loc>
+    <lastmod>2022-07-21T19:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -476,7 +493,7 @@
   
   <url>
     <loc>http://flavio.castelli.me/</loc>
-    <lastmod>2022-04-26T21:00:00+02:00</lastmod>
+    <lastmod>2022-07-21T19:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -530,7 +547,7 @@
   
   <url>
     <loc>http://flavio.castelli.me/categories/kubernetes/</loc>
-    <lastmod>2022-04-26T21:00:00+02:00</lastmod>
+    <lastmod>2022-07-21T19:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -608,7 +625,7 @@
   
   <url>
     <loc>http://flavio.castelli.me/post/</loc>
-    <lastmod>2022-04-26T21:00:00+02:00</lastmod>
+    <lastmod>2022-07-21T19:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -697,7 +714,7 @@
   
   <url>
     <loc>http://flavio.castelli.me/categories/webassembly/</loc>
-    <lastmod>2022-04-26T21:00:00+02:00</lastmod>
+    <lastmod>2022-07-21T19:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   

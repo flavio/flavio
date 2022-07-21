@@ -93,11 +93,29 @@
     </item>
     
     <item>
+      <title>Common Expression Language</title>
+      <link>http://flavio.castelli.me/categories/common-expression-language/</link>
+      <pubDate>Thu, 21 Jul 2022 19:00:00 +0200</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/common-expression-language/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Containers</title>
       <link>http://flavio.castelli.me/categories/containers/</link>
       <pubDate>Mon, 05 Oct 2020 18:30:00 +0200</pubDate>
       
       <guid>http://flavio.castelli.me/categories/containers/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cpp</title>
+      <link>http://flavio.castelli.me/categories/cpp/</link>
+      <pubDate>Thu, 21 Jul 2022 19:00:00 +0200</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/cpp/</guid>
       <description></description>
     </item>
     
@@ -185,7 +203,7 @@
     <item>
       <title>Kubernetes</title>
       <link>http://flavio.castelli.me/categories/kubernetes/</link>
-      <pubDate>Tue, 26 Apr 2022 21:00:00 +0200</pubDate>
+      <pubDate>Thu, 21 Jul 2022 19:00:00 +0200</pubDate>
       
       <guid>http://flavio.castelli.me/categories/kubernetes/</guid>
       <description></description>
@@ -419,7 +437,7 @@
     <item>
       <title>Webassembly</title>
       <link>http://flavio.castelli.me/categories/webassembly/</link>
-      <pubDate>Tue, 26 Apr 2022 21:00:00 +0200</pubDate>
+      <pubDate>Thu, 21 Jul 2022 19:00:00 +0200</pubDate>
       
       <guid>http://flavio.castelli.me/categories/webassembly/</guid>
       <description></description>

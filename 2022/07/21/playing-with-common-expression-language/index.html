@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>Playing with Common Expression Language</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="http://flavio.castelli.me/favicon.png" rel="icon">
+
+  
+  
+  
+
+  
+
+  <link href="/atom.xml" rel="alternate" title="Flavio Castelli" type="application/atom+xml">
+
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.49.2" />
+
+  
+  
+
+  
+  
+
+</head>
+<body>
+
+
+<header role="banner"><hgroup>
+  
+  <h1><a href="http://flavio.castelli.me/">Flavio Castelli</a></h1>
+    <h2>Debugging my life</h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+        <option value="http://flavio.castelli.me/">» Blog</option>
+      
+        <option value="http://flavio.castelli.me/post">» Archive</option>
+      
+
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+    
+      <li><a href="http://flavio.castelli.me/" title="Blog">Blog</a></li>
+    
+  
+    
+      <li><a href="http://flavio.castelli.me/post" title="Archive" >Archive</a></li>
+    
+  
+</ul>
+
+
+<ul class="subscription">
+  
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS"><i class="fa fa-rss-square fa-lg"></i></a></li>
+
+</ul>
+
+
+<form action="https://www.google.com/search" method="get" target="_blank">
+  <fieldset role="search">
+  	<input class="search" type="text" name="q" results="0" placeholder="Search"/>
+    <input type="hidden" name="q" value="site:http://flavio.castelli.me/" />
+  </fieldset>
+</form>
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+    <p class="meta">Jul 21, 2022
+         - 8 minute read 
+         - <a href="http://flavio.castelli.me/2022/07/21/playing-with-common-expression-language/#disqus_thread">Comments</a>
+
+        
+        
+        
+            - <a class="label" href="http://flavio.castelli.me/categories/kubernetes/">kubernetes </a><a class="label" href="http://flavio.castelli.me/categories/webassembly/">WebAssembly </a><a class="label" href="http://flavio.castelli.me/categories/cpp/">CPP </a><a class="label" href="http://flavio.castelli.me/categories/common-expression-language/">Common expression language </a>
+        
+    </p>
+    <h1 class="entry-title">
+         Playing with Common Expression Language 
+    </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          
+          
+
+<p><a href="https://github.com/google/cel-spec">Common Expression Language (CEL)</a> is
+an expression language created by Google. It allows to define constraints
+that can be used to validate input data.</p>
+
+<p>This language is being used by some open source projects and products, like:</p>
+
+<ul>
+<li><a href="https://cloud.google.com/certificate-authority-service/docs/using-cel">Google Cloud Certificate Authority Service</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/xds/type/matcher/v3/cel.proto">Envoy</a></li>
+<li>There&rsquo;s even a <a href="https://github.com/kubernetes/enhancements/blob/master/keps/sig-api-machinery/2876-crd-validation-expression-language/README.md">Kubernetes Enhancement Proposal</a>
+that would use CEL to validate Kubernetes&rsquo; CRDs.</li>
+</ul>
+
+<p>I&rsquo;ve been looking at CEL since some time, wondering how hard it would be to
+find a way to write
+<a href="https://kubewarden.io">Kubewarden</a>
+validation policies using this expression language.</p>
+
+<p>Some weeks ago <a href="https://hackweek.opensuse.org/">SUSE Hackweek 21</a> took place,
+which gave me some time to play with this idea.</p>
+
+<p>This blog post describes the first step of this journey. Two other blog posts
+will follow.</p>
+
+<h2 id="picking-a-cel-runtime">Picking a CEL runtime</h2>
+
+<p>Currently the only mature implementations of the CEL language are written in
+<a href="https://github.com/google/cel-go">Go</a> and
+<a href="https://github.com/google/cel-cpp">C++</a>.</p>
+
+<p>Kubewarden policies are implemented using <a href="https://webassembly.org/">WebAssembly</a>
+modules.</p>
+
+<p>The official Go compiler isn&rsquo;t yet capable of producing WebAssembly modules that can
+be run outside of the browser. <a href="https://tinygo.org/">TinyGo</a>, an alternative
+implementation of the Go compiler,
+can produce WebAssembly modules targeting the WASI interface. Unfortunately
+TinyGo doesn&rsquo;t yet support the whole Go standard library. Hence it cannot be
+used to compile <a href="https://github.com/google/cel-go">cel-go</a>.</p>
+
+<p>Because of that, I was left with no other choice than to use the
+<a href="https://github.com/google/cel-cpp">cel-cpp</a> runtime.</p>
+
+<p>C and C++ can be compiled to WebAssembly, so I thought everything would have
+been fine.</p>
+
+<blockquote>
+<p>Spoiler alert: this didn&rsquo;t turn out to be <em>&ldquo;fine&rdquo;</em>, but that&rsquo;s for another
+blog post.</p>
+</blockquote>
+
+<h2 id="cel-and-protobuf">CEL and protobuf</h2>
+
+<p>CEL is built on top of <a href="https://en.wikipedia.org/wiki/Protocol_Buffers">protocol buffer</a>
+types.
+That means CEL expects the input data (the one to be validated by the constraint)
+to be described using a protocol buffer type. In the context of Kubewarden
+this is a problem.</p>
+
+<p>Some Kubewarden policies focus on a specific Kubernetes resource; for example,
+all the ones implementing Pod Security Policies are inspecting only <code>Pod</code> resources.
+Others, like the ones looking at <code>labels</code> or <code>annotations</code> attributes, are instead
+evaluating any kind of Kubernetes resource.</p>
+
+<p>Forcing a Kubewarden policy author to provide a protocol buffer definition of
+the object to be evaluated would be painful.
+Luckily, CEL evaluation libraries are also capable of working against free-form
+JSON objects.</p>
+
+<h2 id="the-grand-picture">The grand picture</h2>
+
+<p>The long term goal is to have a CEL evaluator program compiled into a
+WebAssembly module.</p>
+
+<p>At runtime, the CEL evaluator WebAssembly module would be instantiated and would
+receive as input three objects:</p>
+
+<ul>
+<li>The validation logic: a CEL constraint</li>
+<li>Policy settings <em>(optional)</em>: these would provide a way to tune the
+constraint. They would be delivered as a JSON object</li>
+<li>The actual object to evaluate: this would be a JSON object</li>
+</ul>
+
+<p>Having set the goals, the first step is to write a C++ program that takes as
+input a CEL constraint and applies that against a JSON object provided by the
+user.</p>
+
+<p>There&rsquo;s going to be no WebAssembly today.</p>
+
+<h2 id="taking-a-look-at-the-code">Taking a look at the code</h2>
+
+<p>In this section I&rsquo;ll go through the critical parts of the code. I&rsquo;ll do that
+to help other people who might want to make a similar use of cel-cpp.</p>
+
+<p>There&rsquo;s basically zero documentation about how to use the cel-cpp library. I had to learn how to
+use it by looking at the excellent test suite. Moreover, the topic of validating
+a JSON object (instead of a protocol buffer type) isn&rsquo;t covered by the tests.
+I just found some tips inside of the GitHub issues and then I had to connect the
+dots by looking at the protocol buffer documentation and other pieces of cel-cpp.</p>
+
+<blockquote>
+<p><strong>TL;DR</strong> The code of this POC can be found inside of
+<a href="https://github.com/flavio/cel-evaluator-poc">this repository</a>.</p>
+</blockquote>
+
+<h3 id="parse-the-cel-constraint">Parse the CEL constraint</h3>
+
+<p>The program receives a string containing the CEL constraint and has to
+use it to create a <code>CelExpression</code> object.</p>
+
+<p>This is pretty straightforward, and is done inside of <a href="https://github.com/flavio/cel-evaluator-poc/blob/0cb59fb7d1efd9ef67b2e943309a21c744bcd479/main/evaluate.cc#L55-L86">these lines</a>
+of the <code>evaluate.cc</code> file.</p>
+
+<p>As you will notice, cel-cpp makes use of the <a href="https://abseil.io/">Abseil</a>
+library. A lot of cel-cpp APIs are returning <a href="https://abseil.io/docs/cpp/guides/status">absl::StatusOr<T></a>
+objects. That leads to use a specific pattern, something like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">// invoke API
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">auto</span> parse_status <span style="color:#f92672">=</span> cel_parser<span style="color:#f92672">::</span>Parse(constraint);
+<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>parse_status.ok())
+{
+  <span style="color:#75715e">// handle error
+</span><span style="color:#75715e"></span>  std<span style="color:#f92672">::</span>string errorMsg <span style="color:#f92672">=</span> absl<span style="color:#f92672">::</span>StrFormat(
+      <span style="color:#e6db74">&#34;Cannot parse CEL constraint: %s&#34;</span>,
+      parse_status.status().ToString());
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">EvaluationResult</span>(errorMsg);
+}
+
+<span style="color:#75715e">// Obtain the actual result
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">auto</span> parsed_expr <span style="color:#f92672">=</span> parse_status.value();
+</code></pre></div>
+<h3 id="handle-the-json-input">Handle the JSON input</h3>
+
+<p>cel-cpp expects the data to be validated to be loaded into a <code>CelValue</code>
+object.</p>
+
+<p>As I said before, we want the final program to read a generic JSON object as
+input data. Because of that, we need to perform a series of transformations.</p>
+
+<p>First of all, we need to convert the JSON data into a <code>protobuf::Value</code> object.
+This can be done using the <code>protobuf::util::JsonStringToMessage</code>
+<a href="https://developers.google.com/protocol-buffers/docs/reference/cpp/google.protobuf.util.json_util#JsonStringToMessage.details">function</a>.
+This is done by <a href="https://github.com/flavio/cel-evaluator-poc/blob/0cb59fb7d1efd9ef67b2e943309a21c744bcd479/main/evaluate.cc#L92-L101">these lines</a>
+of code.</p>
+
+<p>Next, we have to convert the <code>protobuf::Value</code> object into a <code>CelValue</code> one.
+The cel-cpp library doesn&rsquo;t offer any helper. As a matter of fact, one of
+the oldest <a href="https://github.com/google/cel-cpp/issues/24">open issue</a> of cel-cpp
+is exactly about that.</p>
+
+<p>This last conversion is done using a series of helper functions I wrote inside
+of the <code>proto_to_cel.cc</code> <a href="https://github.com/flavio/cel-evaluator-poc/blob/0cb59fb7d1efd9ef67b2e943309a21c744bcd479/main/proto_to_cel.cc">file</a>.
+The code relies on the introspection capabilities of <code>protobuf::Value</code> to
+build the correct <code>CelValue</code>.</p>
+
+<h3 id="evaluate-the-constraint">Evaluate the constraint</h3>
+
+<p>Once the CEL expression object has been created, and the JSON data has been
+converted into a `CelValue, there&rsquo;s only one last thing to do: evaluate
+the constraint against the input.</p>
+
+<p>First of all we have to create a CEL <code>Activation</code> object and insert the
+<code>CelValue</code> holding the input data into it. This takes <a href="https://github.com/flavio/cel-evaluator-poc/blob/0cb59fb7d1efd9ef67b2e943309a21c744bcd479/main/evaluate.cc#L105-L117">just few lines of code</a>.</p>
+
+<p>Finally, we can use the <code>Evaluate</code> method of the <code>CelExpression</code> instance
+and look at its result. This is done by <a href="https://github.com/flavio/cel-evaluator-poc/blob/0cb59fb7d1efd9ef67b2e943309a21c744bcd479/main/evaluate.cc#L119-L142">these lines of code</a>,
+which include the usual pattern that handles <code>absl::StatusOr&lt;T&gt;</code> objects.</p>
+
+<p>The actual result of the evaluation is going to be a <code>CelValue</code> that holds
+a boolean type inside of itself.</p>
+
+<h2 id="building">Building</h2>
+
+<p>This project uses the Bazel build system. I never used Bazel before, which
+proved to be another interesting learning experience.</p>
+
+<p>A recent C++ compiler is required by cel-cpp. You can use either gcc (version 9+) or
+clang (version 10+).
+Personally, I&rsquo;ve been using clag 13.</p>
+
+<p>Building the code can be done in this way:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">CC=clang bazel build //main:evaluator</code></pre></div>
+<p>The final binary can be found under <code>bazel-bin/main/evaluator</code>.</p>
+
+<h2 id="usage">Usage</h2>
+
+<p>The program loads a JSON object called <code>request</code> which is then embedded
+into a bigger JSON object.</p>
+
+<p>This is the input received by the CEL constraint:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;request&#34;</span>: <span style="color:#960050;background-color:#1e0010">&lt;</span> <span style="color:#960050;background-color:#1e0010">JSON_OBJECT_PROVIDED_BY_THE_USER</span> <span style="color:#960050;background-color:#1e0010">&gt;</span>
+}</code></pre></div>
+<blockquote>
+<p>The idea is to later add another top level key called <code>settings</code>. This one would
+be used by the user to tune the behavior of the constraint.</p>
+</blockquote>
+
+<p>Because of that, the CEL constraint must access the request values by
+going through the <code>request.</code> key.</p>
+
+<p>This is easier to explain by using a concrete example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">./bazel-bin/main/evaluator \
+  --constraint &#39;request.path == &#34;v1&#34;&#39; \
+  --request &#39;{ &#34;path&#34;: &#34;v1&#34;, &#34;token&#34;: &#34;admin&#34; }&#39;</code></pre></div>
+<p>The CEL constraint is satisfied because the <code>path</code> key of the request
+is equal to <code>v1</code>.</p>
+
+<p>On the other hand, this evaluation fails because the constraint is
+not satisfied:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ ./bazel-bin/main/evaluator \
+  --constraint &#39;request.path == &#34;v1&#34;&#39; \
+  --request &#39;{ &#34;path&#34;: &#34;v2&#34;, &#34;token&#34;: &#34;admin&#34; }&#39;
+The constraint has not been satisfied</code></pre></div>
+<p>The constraint can be loaded from file. Create a file
+named <code>constraint.cel</code> with the following contents:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cel" data-lang="cel">!(request.ip in [&#34;10.0.1.4&#34;, &#34;10.0.1.5&#34;, &#34;10.0.1.6&#34;]) &amp;&amp;
+  ((request.path.startsWith(&#34;v1&#34;) &amp;&amp; request.token in [&#34;v1&#34;, &#34;v2&#34;, &#34;admin&#34;]) ||
+  (request.path.startsWith(&#34;v2&#34;) &amp;&amp; request.token in [&#34;v2&#34;, &#34;admin&#34;]) ||
+  (request.path.startsWith(&#34;/admin&#34;) &amp;&amp; request.token == &#34;admin&#34; &amp;&amp;
+  request.ip in [&#34;10.0.1.1&#34;,  &#34;10.0.1.2&#34;, &#34;10.0.1.3&#34;]))</code></pre></div>
+<p>Then create a file named <code>request.json</code> with the following contents:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;ip&#34;</span>: <span style="color:#e6db74">&#34;10.0.1.4&#34;</span>,
+  <span style="color:#f92672">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;v1&#34;</span>,
+  <span style="color:#f92672">&#34;token&#34;</span>: <span style="color:#e6db74">&#34;admin&#34;</span>,
+}</code></pre></div>
+<p>Then run the following command:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">./bazel-bin/main/evaluator \
+  --constraint_file constraint.cel \
+  --request_file request.json</code></pre></div>
+<p>This time the constraint will not be satisfied.</p>
+
+<blockquote>
+<p><strong>Note:</strong> I find the <code>_</code> symbols inside of the flags a bit weird. But this is
+what is done by the <a href="https://abseil.io/docs/cpp/guides/flags">Abseil flags</a>
+library that I experimented with. 🤷</p>
+</blockquote>
+
+<p>Let&rsquo;s evaluate a different kind of request:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">./bazel-bin/main/evaluator \
+  --constraint_file constraint.cel \
+  --request &#39;{&#34;ip&#34;: &#34;10.0.1.1&#34;, &#34;path&#34;: &#34;/admin&#34;, &#34;token&#34;: &#34;admin&#34;}&#39;</code></pre></div>
+<p>This time the constraint will be satisfied.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>This has been a stimulating challenge.</p>
+
+<h3 id="getting-back-to-c">Getting back to C++</h3>
+
+<p>I didn&rsquo;t write big chunks of C++ code since a long time!
+Actually, I never had a chance to look at the latest C++ standards. I
+gotta say, lots of things changed for the better, but I still prefer to pick
+other programming languages 😅</p>
+
+<h3 id="building-the-universe-with-bazel">Building the universe with Bazel</h3>
+
+<p>I had prior experience with <code>autoconf</code> &amp; friends, <code>qmake</code> and <code>cmake</code>, but I
+never used Bazel before.
+As a newcomer, I found the documentation of Bazel quite good. I appreciated
+how easy it is to consume libraries that are using Bazel. I also like how
+Bazel can solve the problem of downloading dependencies, something
+you had to solve on your own with <code>cmake</code> and similar tools.</p>
+
+<p>The concept of building inside of a sandbox, with all the dependencies vendored,
+is interesting but can be kinda scary. Try building this
+project and you will see that Bazel seems to be downloading the whole universe.
+I&rsquo;m not kidding, I&rsquo;ve spotted a Java runtime, a Go compiler plus a lot of other
+C++ libraries.</p>
+
+<p>Bazel <code>build</code> command gives a nice progress bar. However, the number of tasks to
+be done keeps growing during the build process. It kinda reminded me of the old
+Windows progress bar!</p>
+
+<p>I gotta say, I regularly have this feeling of &ldquo;building the universe&rdquo; with Rust, but
+Bazel took that to the next level! 🤯</p>
+
+<h3 id="code-spelunking">Code spelunking</h3>
+
+<p>Finally, I had to do a lot of spelunking inside of different C++ code bases:
+envoy, protobuf&rsquo;s c++ implementation, cel-cpp and Abseil to name a few.
+This kind of activity can be a bit exhausting, but it&rsquo;s also a great way to
+learn from the others.</p>
+
+<h2 id="what-s-next">What&rsquo;s next?</h2>
+
+<p>Well, in a couple of weeks I&rsquo;ll blog about my next step of this
+journey: building C++ code to standalone WebAssembly!</p>
+
+<p>Now I need to take some deserved vacation time 😊!</p>
+
+<p>⛰️ 🚶👋</p>
+
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn"></span></span>
+    
+    <time>Jul 21, 2022</time>
+    
+    </span>
+  </p>
+
+  
+  
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="http://flavio.castelli.me/2022/04/26/write-kubectl-plugins-using-webassembly-and-wasi/" title="Write kubectl plugins using WebAssembly and WASI">Write kubectl plugins using WebAssembly and WASI</a>
+    
+
+    
+  </p>
+  
+    
+      <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'flavio-castelli-name';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+
+    <p>
+      
+        <p>Father, husband and passionate programmer.</p>
+
+<p>Distinguished engineer at SUSE.</p>
+
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" href="https://github.com/flavio/" title="https://github.com/flavio/"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      <a target="_blank" href="https://twitter.com/flavio_castelli/" title="https://twitter.com/flavio_castelli/"><i class="fa fa-twitter fa-3x"></i></a>
+      
+         
+      
+      <a target="_blank" href="https://www.linkedin.com/in/flaviocastelli/" title="https://www.linkedin.com/in/flaviocastelli/"><i class="fa fa-linkedin fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+    
+      <section class="odd">
+        
+        
+      </section>
+    
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+            
+              <li class="post">
+                <a href="/2022/07/21/playing-with-common-expression-language/">Playing with Common Expression Language</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/2022/04/26/write-kubectl-plugins-using-webassembly-and-wasi/">Write kubectl plugins using WebAssembly and WASI</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/2020/10/05/build-multi-architecture-container-images-using-argo-workflow/">Build multi-architecture container images using argo workflow</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/2020/09/16/build-multi-architecture-container-images-using-kubernetes/">Build multi-architecture container images using Kubernetes</a>
+              </li>
+            
+          
+        </ul>
+      </section>
+    
+  
+</aside>
+
+  </div>
+</div>
+
+<footer role="contentinfo">
+  <p>Copyright &copy; 2022  - <a href="http://flavio.castelli.me/license/">License</a> -
+  <span class="credit">Powered by <a target="_blank" href="https://gohugo.io">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/">Hugo-Octopress</a> theme.
+</p>
+
+</footer>
+
+
+
+
+
+
+</body>
+</html>
+
