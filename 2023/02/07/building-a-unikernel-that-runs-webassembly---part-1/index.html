@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>Building a unikernel that runs WebAssembly - part 1</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="http://flavio.castelli.me/favicon.png" rel="icon">
+
+  
+  
+  
+
+  
+
+  <link href="/atom.xml" rel="alternate" title="Flavio Castelli" type="application/atom+xml">
+
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.49.2" />
+
+  
+  
+
+  
+  
+
+</head>
+<body>
+
+
+<header role="banner"><hgroup>
+  
+  <h1><a href="http://flavio.castelli.me/">Flavio Castelli</a></h1>
+    <h2>Debugging my life</h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+        <option value="http://flavio.castelli.me/">» Blog</option>
+      
+        <option value="http://flavio.castelli.me/post">» Archive</option>
+      
+
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+    
+      <li><a href="http://flavio.castelli.me/" title="Blog">Blog</a></li>
+    
+  
+    
+      <li><a href="http://flavio.castelli.me/post" title="Archive" >Archive</a></li>
+    
+  
+</ul>
+
+
+<ul class="subscription">
+  
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS"><i class="fa fa-rss-square fa-lg"></i></a></li>
+
+</ul>
+
+
+<form action="https://www.google.com/search" method="get" target="_blank">
+  <fieldset role="search">
+  	<input class="search" type="text" name="q" results="0" placeholder="Search"/>
+    <input type="hidden" name="q" value="site:http://flavio.castelli.me/" />
+  </fieldset>
+</form>
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+    <p class="meta">Feb 7, 2023
+         - 6 minute read 
+         - <a href="http://flavio.castelli.me/2023/02/07/building-a-unikernel-that-runs-webassembly---part-1/#disqus_thread">Comments</a>
+
+        
+        
+        
+            - <a class="label" href="http://flavio.castelli.me/categories/unikernel/">Unikernel </a><a class="label" href="http://flavio.castelli.me/categories/webassembly/">WebAssembly </a><a class="label" href="http://flavio.castelli.me/categories/rust/">Rust </a>
+        
+    </p>
+    <h1 class="entry-title">
+         Building a unikernel that runs WebAssembly - part 1 
+    </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          
+          
+
+<p><a href="https://hackweek.opensuse.org/">Hackweek 22</a> took place last week. During
+this week all the SUSE employees are free to hack on whatever they want. This one of
+the perks of working at SUSE 😎.</p>
+
+<p>This time my personal project has been about
+<a href="https://hackweek.opensuse.org/22/projects/build-a-unikernel-that-runs-webassembly">building a unikernel that runs WebAssembly</a>.</p>
+
+<blockquote>
+<p>I wanted this blog post to contain all the details about this journey. However
+I realized this would have been too much for a single post. I hence decided to
+split everything into smaller chunks.
+I&rsquo;ll update this section to keep track of all the posts.</p>
+
+<p>In the meantime, you can find the code of the POC <a href="https://github.com/flavio/hermit-wasm">here</a>.</p>
+</blockquote>
+
+<h2 id="why">Why</h2>
+
+<p>There are multiple reasons why I did that, but I don&rsquo;t want to repeat what I
+wrote inside of the <a href="https://hackweek.opensuse.org/22/projects/build-a-unikernel-that-runs-webassembly">project description</a>.
+Learning and fun goals aside, I think there&rsquo;s actually a good reason to mix
+unikernels and WebAssembly.</p>
+
+<p>From the application developer POV, porting/writing an application to the
+unikernel is not an easy task. The application and all its dependencies
+have to support the target unikernel. Some patching might be required inside
+of the whole application stack to make it work.</p>
+
+<p>From the unikernel maintainers POV, they have to invest quite some energies
+to ensure any kind of application can run in a seamless way on top of their
+platform. They don&rsquo;t know which kind of system primitives the user applications
+will leverage, this makes everything harder.</p>
+
+<p>On the other hand, when targeting a WebAssembly platform (think of
+<a href="https://github.com/fermyon/spin">Spin</a>
+or <a href="https://github.com/deislabs/spiderlightning">Spiderlightning</a>), the
+application has a clear set of capabilities that have to be provided by
+the WebAssembly runtime.</p>
+
+<p>If you look at the Spiderlightning scenario, an application might be requiring
+Key/Value store capabilities at runtime. However, how these capabilities are
+implemented on the host side is not relevant to the application. That means
+the same <code>.wasm</code> module can be run by a runtime that implements the K/V store
+using Redis or using <a href="https://azure.microsoft.com/en-us/products/cosmos-db/">Azure Cosmos DB</a>.
+That would be totally transparent to the end user application.</p>
+
+<p>You might see where I&rsquo;m going with all that&hellip;</p>
+
+<p>If we write a unikernel application that runs WebAssembly modules and supports a
+set of Spiderlightning APIs, then the same Spiderlightning application could be
+run both on top of the regular <code>slight</code> runtime and of this unikernel.</p>
+
+<p>All of that without any additional work from the application developer. The Wasm
+module wouldn&rsquo;t even realize that.
+The complexity would fall only on the unikernel developer who, whoever, would
+have a clear set of functionalities to implement (as opposed to &ldquo;let&rsquo;s try to
+make any kind of application work&rdquo;).</p>
+
+<h2 id="how">How</h2>
+
+<p>Sometimes ago I stumbled over the <a href="https://github.com/hermitcore/rusty-hermit">RustyHermit</a>
+project, this is a unikernel written in Rust.
+I decided to use it as the foundation to write my unikernel application.</p>
+
+<p>Building a RustyHermit application is pretty straightforward. Their documentation,
+even though is a bit scattered, is good and their examples help a lot.</p>
+
+<p>The cool thing is that RustyHermit is part of Rust nightly, which makes the whole
+developer experience great. It feels like writing a regular Rust application.</p>
+
+<p>Obviously you cannot expect all kind of Rust crates to just work with RustyHermit.
+You will see how that influenced the development of the POC.</p>
+
+<p>The next sections go over some of the major challenges I faced during the last week.
+I&rsquo;ll share more details inside of the upcoming blog posts (see the disclaimer
+section at the top of the page).</p>
+
+<h3 id="the-webassembly-runtime">The WebAssembly runtime</h3>
+
+<p>Unfortunately <a href="https://wasmtime.dev/">Wasmtime</a>, my favorite WebAssembly runtime,
+does not build on top of RustyHermit. Many of its dependencies expect <code>libc</code>
+or other low level libraries to be around.
+The same applies to <a href="https://github.com/wasmerio/wasmer">wasmer</a>.</p>
+
+<p>I thought about using something like <a href="https://github.com/bytecodealliance/wasm-micro-runtime">WebAssembly Micro Runtime (WAMR)</a>,
+but I preferred to stick with something written in Rust and have the
+&ldquo;full RustyHermit experience&rdquo;.</p>
+
+<p>After some searching I found <a href="https://crates.io/crates/wasmi">wasmi</a> a pure Rust
+WebAssembly runtime. This works fine on top of RustyHermit, plus its design
+is inspired by the one of Wasmtime, which allowed me to reuse a lot of my previous
+knowledge.</p>
+
+<h3 id="webassembly-component-model">WebAssembly Component Model</h3>
+
+<p>Spiderlightning leverages the <a href="https://github.com/webassembly/component-model">WebAssembly Component Model</a>
+proposal to offer capabilities to the WebAssembly guests and
+to allow the host to consume capabilities offered by the WebAssembly guest.</p>
+
+<p>The communication between the host and the guest happens using types defined
+with the <a href="https://github.com/WebAssembly/component-model/blob/main/design/mvp/WIT.md">Wasm Interface Type</a>.</p>
+
+<p>To give some concrete examples, the demo I&rsquo;m going to run leverages the
+WebAssembly Component Model in these ways:</p>
+
+<ul>
+<li>The guest asks the host to start a HTTP server. When doing that, the guest
+informs the host about the HTTP routes that have to be registered, plus
+the names of its internal handlers (the functions that have to be executed).
+This is done by using the <a href="https://github.com/deislabs/spiderlightning/blob/main/wit/http-server.wit"><code>http-server</code></a>
+types. In this case it&rsquo;s the guest that leverages capabilities offered by the
+host.</li>
+<li>The host handles the incoming HTTP requests using the routing
+information provided by the guest. The http handlers mentioned before are
+functions exposes by the WebAssembly guest. The server is now consuming
+capabilities offered by the guest. The communication is done using the
+<a href="https://github.com/deislabs/spiderlightning/blob/main/wit/http-handler.wit"><code>http-handler</code></a>
+types.</li>
+<li>Some of the http handlers defined by the guest are also interacting with
+a Key/Value store. Also in this case the guest is leveraging a set of
+capabilities offered by the host. These are defined using the
+<a href="https://github.com/deislabs/spiderlightning/blob/main/wit/keyvalue.wit"><code>keyvalue</code></a>
+types.</li>
+</ul>
+
+<p>As you can see there are many WIT types involved. For each one of them we
+need code both inside of the guest (a SDK basically) and on the host (the
+code that implements the guest SDK).
+This code can be scaffolded by a cli tool called <a href="https://github.com/bytecodealliance/wit-bindgen"><code>wit-bindgen</code></a>,
+which generates host/guest code starting from a <code>.wit</code> file.</p>
+
+<p>In this case I only had to implement the host side of these interfaces inside
+of the unikernel.</p>
+
+<p>The code generated by <code>wit-bindgen</code> is doing low level operations using the
+WebAssembly runtime. The code to be scaffolded depends on the programming language
+and on the WebAssembly runtime used on the host side.</p>
+
+<p>Obviously the <code>wasmi</code> WebAssembly runtime was not supported by <code>wit-bindgen</code>,
+hence I had to extend <code>wit-bindgen</code> to handle it. The code can be found inside of
+<a href="https://github.com/flavio/wit-bindgen/tree/wasmi">this fork</a>, under the <code>wasmi</code>
+branch.</p>
+
+<p>With all of that in place, I scaffolded the host side of the Key/Value capability
+and I made a simple implementation of the host traits. The host code was just
+emitting some debug information.
+I was then able run the vanilla <a href="https://github.com/deislabs/spiderlightning/tree/main/examples/keyvalue-demo">keyvalue-demo</a>
+from the Spiderlightning project. 🥳</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>You made to the bottom of this long post, kudos! I think you deserve a prize for
+that, so here we go&hellip;</p>
+
+<p>This is a recording of the unikernel application running the Spiderlightning http-server
+demo.</p>
+
+<p><img src="/images/unikernel-webassembly/demo.gif" alt="A screencast of the unikernel application running the Spiderlightning http-server demo" title="It's alive!" /></p>
+
+<p>I hope you enjoyed the reading.
+Stay tuned for the next part of the journey. This will cover Rust async, Redis
+and some weird errors.</p>
+
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn"></span></span>
+    
+    <time>Feb 7, 2023</time>
+    
+    </span>
+  </p>
+
+  
+  
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="http://flavio.castelli.me/2022/07/21/playing-with-common-expression-language/" title="Playing with Common Expression Language">Playing with Common Expression Language</a>
+    
+
+    
+  </p>
+  
+    
+      <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'flavio-castelli-name';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+
+    <p>
+      
+        <p>Father, husband and passionate programmer.</p>
+
+<p>Distinguished engineer at SUSE.</p>
+
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" href="https://github.com/flavio/" title="https://github.com/flavio/"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      <a target="_blank" href="https://twitter.com/flavio_castelli/" title="https://twitter.com/flavio_castelli/"><i class="fa fa-twitter fa-3x"></i></a>
+      <a rel="me" target="_blank" href="https://hachyderm.io/@flavio" title="https://hachyderm.io/@flavio"><i class="fa fa-mastodon fa-3x"></i></a>
+      
+         
+      
+      <a target="_blank" href="https://www.linkedin.com/in/flaviocastelli/" title="https://www.linkedin.com/in/flaviocastelli/"><i class="fa fa-linkedin fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+    
+      <section class="odd">
+        
+        
+      </section>
+    
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+            
+              <li class="post">
+                <a href="/2023/02/07/building-a-unikernel-that-runs-webassembly---part-1/">Building a unikernel that runs WebAssembly - part 1</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/2022/07/21/playing-with-common-expression-language/">Playing with Common Expression Language</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/2022/04/26/write-kubectl-plugins-using-webassembly-and-wasi/">Write kubectl plugins using WebAssembly and WASI</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/2020/10/05/build-multi-architecture-container-images-using-argo-workflow/">Build multi-architecture container images using argo workflow</a>
+              </li>
+            
+          
+        </ul>
+      </section>
+    
+  
+</aside>
+
+  </div>
+</div>
+
+<footer role="contentinfo">
+  <p>Copyright &copy; 2023  - <a href="http://flavio.castelli.me/license/">License</a> -
+  <span class="credit">Powered by <a target="_blank" href="https://gohugo.io">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/">Hugo-Octopress</a> theme.
+</p>
+
+</footer>
+
+
+
+
+
+
+</body>
+</html>
+

@@ -125,6 +125,40 @@
 <header>
     <p class="meta">May 12, 2006
          - 1 minute read 
+         - <a href="http://flavio.castelli.me/2006/05/12/ibook-x-keyboard-mapping/#disqus_thread">Comments</a>
+
+        
+        
+        
+            - <a class="label" href="http://flavio.castelli.me/categories/howto/">howto </a>
+        
+    </p>
+    <h1 class="entry-title">
+        <a href="http://flavio.castelli.me/2006/05/12/ibook-x-keyboard-mapping/">iBook X keyboard mapping</a>
+    </h1>
+</header>
+
+
+        
+          <p>How to have a comfortable keyboard layout under X. A guide destinated to italian iBook linux users
+Target have the following keymap: apple keyboard = alt gr
+Instructions You&rsquo;ve to edit your /etc/X11/xkb/keycodes/xfree86 file. Remember to make a backup copy of this file before editing. These&rsquo;re the easy steps:
+ under X run a program like xev to find the exact keycode of your apple key change the code with the new one comment all the old command referring the new keycode   Restart X and keep your finger crossed ;)</p>
+
+          
+
+        
+
+    </article>
+    
+    <article>
+
+        
+        
+
+<header>
+    <p class="meta">May 12, 2006
+         - 1 minute read 
          - <a href="http://flavio.castelli.me/2006/05/12/ibook-console-keyboard-mapping/#disqus_thread">Comments</a>
 
         
@@ -444,43 +478,6 @@ Features:  mail notification support (straight to guide&rsquo;s translator or to
 
     </article>
     
-    <article>
-
-        
-        
-
-<header>
-    <p class="meta">Dec 8, 2005
-         - 1 minute read 
-         - <a href="http://flavio.castelli.me/2005/12/08/howto-edit-multime-id3-tags-from-command-line/#disqus_thread">Comments</a>
-
-        
-        
-        
-            - <a class="label" href="http://flavio.castelli.me/categories/bash/">bash </a>
-        
-    </p>
-    <h1 class="entry-title">
-        <a href="http://flavio.castelli.me/2005/12/08/howto-edit-multime-id3-tags-from-command-line/">Howto edit multime id3 tags from command line</a>
-    </h1>
-</header>
-
-
-        
-          <p>Goal id3medit is a simple script for tagging all mp3/ogg files present in a directory.
-Requirements: id3medit relies on id3v2, a command-line tool for editing id3v2 tags file names must be in format: &rsquo;## - trackname.ext&rsquo;. Where ## is track&rsquo;s number, and ext is file&rsquo;s extension (mp3 or ogg in case insensitive format)
-Synopsis: id3medit syntax is: id3medit artist album year(*) genre(*) Where * denotes optional arguments You can obtain genre identification number in this way: id3v2 -L | grep -i genre</p>
-
-          
-              <footer>
-                  <a href="http://flavio.castelli.me/2005/12/08/howto-edit-multime-id3-tags-from-command-line/" rel="full-article">Read On &rarr;</a>
-              </footer>
-          
-
-        
-
-    </article>
-    
     
     
 
@@ -602,6 +599,12 @@ Synopsis: id3medit syntax is: id3medit artist album year(*) genre(*) Where * den
           
             
               <li class="post">
+                <a href="/2023/02/07/building-a-unikernel-that-runs-webassembly---part-1/">Building a unikernel that runs WebAssembly - part 1</a>
+              </li>
+            
+          
+            
+              <li class="post">
                 <a href="/2022/07/21/playing-with-common-expression-language/">Playing with Common Expression Language</a>
               </li>
             
@@ -618,12 +621,6 @@ Synopsis: id3medit syntax is: id3medit artist album year(*) genre(*) Where * den
               </li>
             
           
-            
-              <li class="post">
-                <a href="/2020/09/16/build-multi-architecture-container-images-using-kubernetes/">Build multi-architecture container images using Kubernetes</a>
-              </li>
-            
-          
         </ul>
       </section>
     
@@ -634,7 +631,7 @@ Synopsis: id3medit syntax is: id3medit artist album year(*) genre(*) Where * den
 </div>
 
 <footer role="contentinfo">
-  <p>Copyright &copy; 2022  - <a href="http://flavio.castelli.me/license/">License</a> -
+  <p>Copyright &copy; 2023  - <a href="http://flavio.castelli.me/license/">License</a> -
   <span class="credit">Powered by <a target="_blank" href="https://gohugo.io">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/">Hugo-Octopress</a> theme.
 </p>
 
