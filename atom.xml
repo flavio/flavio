@@ -5,9 +5,52 @@
         
         Flavio Castelli</title>
         <link href="http://flavio.castelli.me/atom.xml" rel="self" type="application/atom" /><link href="http://flavio.castelli.me/"/>
-    <updated>2023-02-08T12:38:29+01:00</updated>
+    <updated>2024-06-25T11:23:10+02:00</updated>
     
     <id>http://flavio.castelli.me/</id>
+        
+        <entry>
+            <title type="html"><![CDATA[KCD Italy - CEL, Kubernetes ValidatingAdmissionPolicy and Kubewarden]]></title>
+            <link href="http://flavio.castelli.me/2024/06/25/kcd-italy---cel-kubernetes-validatingadmissionpolicy-and-kubewarden/"/>
+            <id>http://flavio.castelli.me/2024/06/25/kcd-italy---cel-kubernetes-validatingadmissionpolicy-and-kubewarden/</id>
+            
+            <published>2024-06-25T11:00:00+02:00</published>
+            <updated>2024-06-25T11:00:00+02:00</updated>
+            
+            
+            <content type="html"><![CDATA[<p>Last week I had the opportunity to speak at <a href="https://community.cncf.io/events/details/cncf-kcd-italy-presents-kcd-italy-2024/">KCD Italy</a>, a Kubernetes Community Days event.
+I delivered a talk titled &ldquo;How to leverage and extend CEL for your cluster security&rdquo;. The talk gives an overview about
+the <a href="https://cel.dev/">Common Expression Language (CEL)</a>,
+<a href="https://kubernetes.io/docs/reference/access-authn-authz/validating-admission-policy/">Kubernetes ValidatingAdmissionPolicy</a>,
+and <a href="https://kubewarden.io">Kubewarden</a>.</p>
+
+<p>While the talk has been delivered in Italian, the slides are in English and can be found <a href="/files/2024/kcd-italy-2024-kubernetes-and-cel.pdf">here</a>.</p>
+]]></content>
+            
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="http://flavio.castelli.me/categories/kubernetes" term="kubernetes" label="Kubernetes" />
+                             
+                                <category scheme="http://flavio.castelli.me/categories/cel" term="cel" label="CEL" />
+                             
+                                <category scheme="http://flavio.castelli.me/categories/common-expression-language" term="common-expression-language" label="Common Expression Language" />
+                             
+                                <category scheme="http://flavio.castelli.me/categories/kubewarden" term="kubewarden" label="Kubewarden" />
+                             
+                                <category scheme="http://flavio.castelli.me/categories/talk" term="talk" label="Talk" />
+                            
+                        
+                    
+                 
+                    
+                
+            
+        </entry>
+    
         
         <entry>
             <title type="html"><![CDATA[Building a unikernel that runs WebAssembly - part 1]]></title>

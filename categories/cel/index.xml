@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cel on Flavio Castelli</title>
+    <link>http://flavio.castelli.me/categories/cel/</link>
+    <description>Recent content in Cel on Flavio Castelli</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 25 Jun 2024 11:00:00 +0200</lastBuildDate>
+    
+	<atom:link href="http://flavio.castelli.me/categories/cel/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>KCD Italy - CEL, Kubernetes ValidatingAdmissionPolicy and Kubewarden</title>
+      <link>http://flavio.castelli.me/2024/06/25/kcd-italy---cel-kubernetes-validatingadmissionpolicy-and-kubewarden/</link>
+      <pubDate>Tue, 25 Jun 2024 11:00:00 +0200</pubDate>
+      
+      <guid>http://flavio.castelli.me/2024/06/25/kcd-italy---cel-kubernetes-validatingadmissionpolicy-and-kubewarden/</guid>
+      <description>Last week I had the opportunity to speak at KCD Italy, a Kubernetes Community Days event. I delivered a talk titled &amp;ldquo;How to leverage and extend CEL for your cluster security&amp;rdquo;. The talk gives an overview about the Common Expression Language (CEL), Kubernetes ValidatingAdmissionPolicy, and Kubewarden.
+While the talk has been delivered in Italian, the slides are in English and can be found here.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -84,6 +84,15 @@
     </item>
     
     <item>
+      <title>Cel</title>
+      <link>http://flavio.castelli.me/categories/cel/</link>
+      <pubDate>Tue, 25 Jun 2024 11:00:00 +0200</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/cel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Cloud</title>
       <link>http://flavio.castelli.me/categories/cloud/</link>
       <pubDate>Tue, 06 May 2014 00:00:00 +0000</pubDate>
@@ -95,7 +104,7 @@
     <item>
       <title>Common Expression Language</title>
       <link>http://flavio.castelli.me/categories/common-expression-language/</link>
-      <pubDate>Thu, 21 Jul 2022 19:00:00 +0200</pubDate>
+      <pubDate>Tue, 25 Jun 2024 11:00:00 +0200</pubDate>
       
       <guid>http://flavio.castelli.me/categories/common-expression-language/</guid>
       <description></description>
@@ -203,9 +212,18 @@
     <item>
       <title>Kubernetes</title>
       <link>http://flavio.castelli.me/categories/kubernetes/</link>
-      <pubDate>Thu, 21 Jul 2022 19:00:00 +0200</pubDate>
+      <pubDate>Tue, 25 Jun 2024 11:00:00 +0200</pubDate>
       
       <guid>http://flavio.castelli.me/categories/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kubewarden</title>
+      <link>http://flavio.castelli.me/categories/kubewarden/</link>
+      <pubDate>Tue, 25 Jun 2024 11:00:00 +0200</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/kubewarden/</guid>
       <description></description>
     </item>
     
@@ -422,6 +440,15 @@
       <pubDate>Fri, 23 Nov 2007 15:49:12 +0000</pubDate>
       
       <guid>http://flavio.castelli.me/categories/svn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Talk</title>
+      <link>http://flavio.castelli.me/categories/talk/</link>
+      <pubDate>Tue, 25 Jun 2024 11:00:00 +0200</pubDate>
+      
+      <guid>http://flavio.castelli.me/categories/talk/</guid>
       <description></description>
     </item>
     
