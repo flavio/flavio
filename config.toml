@@ -9,7 +9,7 @@ theme = ["hugo-atom-feed", "octopress"]
 disqusShortname = "flavio-castelli-name"
 
 # highlighting
-pygmentsCodefences=true
+pygmentsCodefences = true
 
 # Atom configuration - begin
 [mediaTypes]
@@ -22,7 +22,7 @@ baseName = "atom"
 isPlainText = false
 
 [outputs]
-home = [ "HTML", "Atom" ]
+home = ["HTML", "Atom"]
 # Atom configuration - end
 
 [permalinks]
@@ -45,16 +45,16 @@ sidebarRecentLimit = 4
 
 sidebarText = """Father, husband and passionate programmer.
 
-Distinguished engineer at SUSE.
+Distinguished Engineer at SUSE.
 """
 
 
 [[menu.main]]
-  Name = "Blog"
-  URL = "/"
-  weight = -10
+Name = "Blog"
+URL = "/"
+weight = -10
 
 [[menu.main]]
-  Name = "Archive"
-  URL = "/post"
-  weight = -9
+Name = "Archive"
+URL = "/post"
+weight = -9
